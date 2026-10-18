@@ -102,21 +102,40 @@ node scripts/render_final.js --project projects/mi_video/
 python scripts/quality_check.py --project projects/mi_video/
 ```
 
+## Componentes del Motor
+
+| Tipo | Componente | Descripción |
+|---|---|---|
+| **Figuras & Siluetas** | `figure` | Siluetas vectoriales SVG de alta definición: `dinosaur-trex`, `dinosaur-brachiosaurus`, `dinosaur-raptor`, `mountains`, `volcano`, `city-skyline`, `planet`, `meteor` o SVG personalizado |
+| **Imágenes Transparentes** | `image` | Capas PNG / WebP con canal alpha con sombras, glow y movimiento parallax |
+| **Tipografía** | `title` | Rótulos de impacto con palabras destacadas (`accentWords`) |
+| **Métricas** | `counter` | Contadores numéricos animados con easing exponencial |
+| **Subtítulos** | `caption` | Subtítulos sincronizados palabra a palabra con la narración |
+| **Tarjetas & Datos** | `card`, `ranking`, `badge` | Cajas de datos, ránkings y etiquetas de aviso |
+| **Efectos** | `particles`, `camera` | Polvo estelar/estrellas con glow y movimientos de cámara (ken-burns, zoom, pan) |
+| **Velas & Símbolos** | `candle`, `emoji` | Vela procedural con llama oscilante y emojis flotantes |
+
 ## Herramientas utilizadas
 
 | Herramienta | Uso |
 |---|---|
 | **ElevenLabs** (Carmen, español peninsular) | Narración en voz humana |
 | **Claude Code Cloud** | Motor de código y montaje |
-| **Playwright + Chromium** | Renderizado de frames |
-| **FFmpeg** | Muxeo de vídeo |
-| **NumPy/SciPy** | Síntesis DSP de audio |
+| **Playwright + Chromium** | Renderizado de frames determinista |
+| **FFmpeg** | Muxeo de vídeo y audio |
+| **NumPy/SciPy** | Síntesis DSP de audio a 48 kHz |
 
-## Conectar a Claude Code Cloud
+## Repositorio Oficial en GitHub
 
-1. Crear repositorio privado en GitHub: `creator-imagine-engine`
-2. Subir todos estos archivos
-3. Ir a [claude.ai/code](https://claude.ai/code)
-4. Conectar GitHub → seleccionar el repositorio
-5. Crear Cloud Environment con script: `bash scripts/setup_cloud.sh`
-6. Primera sesión de validación con el sistema de test
+Repositorio: **[https://github.com/randonautico71-spec/CREATOR-IMAGINE](https://github.com/randonautico71-spec/CREATOR-IMAGINE)**
+
+### Pasos en Claude Code Cloud:
+1. Conectar el repositorio `randonautico71-spec/CREATOR-IMAGINE` en [claude.ai/code](https://claude.ai/code).
+2. Crear Cloud Environment con el script:
+   ```bash
+   bash scripts/setup_cloud.sh
+   ```
+3. Ejecutar el smoke test inicial de 5 segundos:
+   ```bash
+   python scripts/build_video.py examples/cloud_smoke_test
+   ```
