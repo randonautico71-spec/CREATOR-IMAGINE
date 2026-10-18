@@ -349,7 +349,14 @@
         inner.appendChild(span);
       });
     } else if (el.text) {
-      inner.textContent = el.text;
+      // Fix: el texto plano (captions sin "words") no heredaba el estilo de
+      // .caption-word (color/tamaño/text-shadow), por lo que se renderizaba
+      // en negro invisible sobre el fondo oscuro. Se envuelve igual que las
+      // palabras con timestamp para que use el mismo estilo visible.
+      const span = document.createElement('span');
+      span.className = 'caption-word';
+      span.textContent = el.text;
+      inner.appendChild(span);
     }
 
     box.appendChild(inner);
