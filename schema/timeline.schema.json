@@ -81,7 +81,10 @@
         "countDuration": { "$ref": "#/definitions/duration" },
         "easing": { "$ref": "#/definitions/easing" },
         "position": { "$ref": "#/definitions/position" },
-        "delay": { "type": "number", "minimum": 0 }
+        "delay": { "type": "number", "minimum": 0 },
+        "entryDuration": { "type": "number", "minimum": 0.1, "maximum": 3, "description": "Duración del efecto spring de entrada en segundos" },
+        "springTension": { "type": "number", "minimum": 10, "maximum": 500, "description": "Tensión del resorte (mayor = más rígido, menos rebote)" },
+        "springFriction": { "type": "number", "minimum": 1, "maximum": 50, "description": "Fricción del resorte (mayor = más amortiguado)" }
       }
     },
 
@@ -248,6 +251,17 @@
       }
     },
 
+    "motionPath": {
+      "type": "object",
+      "required": ["path"],
+      "properties": {
+        "path": { "type": "string", "description": "Trayectoria SVG en formato d (ej. M 100 200 C ...)" },
+        "autoRotate": { "type": "boolean", "description": "Rotar automáticamente el elemento siguiendo la tangente de la curva" },
+        "start": { "type": "number", "minimum": 0, "maximum": 1 },
+        "end": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    },
+
     "elementFigure": {
       "type": "object",
       "required": ["type"],
@@ -286,7 +300,15 @@
         "height": { "type": "number", "minimum": 10, "maximum": 2000 },
         "scale": { "type": "number", "minimum": 0.1, "maximum": 10 },
         "flip": { "type": "boolean", "description": "Invertir horizontalmente" },
-        "motion": { "type": "string", "enum": ["none", "float", "breathe", "rise", "pan", "parallax"] },
+        "motion": {
+          "type": "string",
+          "enum": ["none", "float", "breathe", "rise", "pan", "parallax", "wiggle", "sway", "pulse"]
+        },
+        "wiggleAmount": { "type": "number", "minimum": 1, "maximum": 45, "description": "Amplitud máxima del wiggle en grados" },
+        "swayAmount": { "type": "number", "minimum": 1, "maximum": 30, "description": "Amplitud máxima del sway en grados" },
+        "pulseFreq": { "type": "number", "minimum": 0.5, "maximum": 10, "description": "Frecuencia de pulsación en Hz" },
+        "pulseAmount": { "type": "number", "minimum": 0.01, "maximum": 0.5, "description": "Amplitud de la pulsación (0.08 = 8% de escala)" },
+        "motionPath": { "$ref": "#/definitions/motionPath" },
         "position": { "$ref": "#/definitions/position" },
         "delay": { "type": "number", "minimum": 0 },
         "duration": { "$ref": "#/definitions/duration" },
@@ -307,12 +329,71 @@
         "fit": { "type": "string", "enum": ["contain", "cover", "fill"] },
         "glow": { "type": "boolean" },
         "shadow": { "type": "boolean" },
-        "motion": { "type": "string", "enum": ["none", "float", "breathe", "rise", "zoom-in", "zoom-out", "pan-left", "pan-right"] },
+        "motion": {
+          "type": "string",
+          "enum": ["none", "float", "breathe", "rise", "zoom-in", "zoom-out", "pan-left", "pan-right", "wiggle", "sway", "pulse"]
+        },
+        "wiggleAmount": { "type": "number", "minimum": 1, "maximum": 45 },
+        "swayAmount": { "type": "number", "minimum": 1, "maximum": 30 },
+        "pulseFreq": { "type": "number", "minimum": 0.5, "maximum": 10 },
+        "pulseAmount": { "type": "number", "minimum": 0.01, "maximum": 0.5 },
+        "motionPath": { "$ref": "#/definitions/motionPath" },
         "position": { "$ref": "#/definitions/position" },
         "delay": { "type": "number", "minimum": 0 },
         "duration": { "$ref": "#/definitions/duration" },
         "opacity": { "type": "number", "minimum": 0, "maximum": 1 },
         "layer": { "type": "string", "enum": ["background", "midground", "foreground"] }
+      }
+    },
+
+    "elementLottie": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": { "const": "lottie" },
+        "src": { "type": "string", "description": "Ruta local o URL a animación Lottie (.json)" },
+        "data": { "type": "object", "description": "JSON de animación Lottie inline" },
+        "width": { "type": "number", "minimum": 10, "maximum": 2000 },
+        "height": { "type": "number", "minimum": 10, "maximum": 2000 },
+        "scale": { "type": "number", "minimum": 0.1, "maximum": 10 },
+        "speed": { "type": "number", "minimum": 0.1, "maximum": 10 },
+        "loop": { "type": "boolean" },
+        "position": { "$ref": "#/definitions/position" },
+        "motionPath": { "$ref": "#/definitions/motionPath" },
+        "delay": { "type": "number", "minimum": 0 },
+        "duration": { "$ref": "#/definitions/duration" },
+        "opacity": { "type": "number", "minimum": 0, "maximum": 1 },
+        "layer": { "type": "string", "enum": ["background", "midground", "foreground"] }
+      }
+    },
+
+    "elementCanvasBg": {
+      "type": "object",
+      "required": ["type", "bgType"],
+      "properties": {
+        "type": { "const": "canvas-bg" },
+        "bgType": {
+          "type": "string",
+          "enum": ["radar", "waves"],
+          "description": "Tipo de fondo procedural Canvas2D"
+        },
+        "options": {
+          "type": "object",
+          "description": "Opciones específicas del tipo de fondo",
+          "properties": {
+            "rings": { "type": "integer", "minimum": 2, "maximum": 20 },
+            "color": { "type": "string" },
+            "speed": { "type": "number", "minimum": 0.05, "maximum": 5 },
+            "maxR": { "type": "number", "minimum": 100 },
+            "bgColor": { "type": "string" },
+            "cx": { "type": "number", "minimum": 0, "maximum": 1 },
+            "cy": { "type": "number", "minimum": 0, "maximum": 1 },
+            "layers": { "type": "integer", "minimum": 1, "maximum": 8 },
+            "amplitude": { "type": "number", "minimum": 10, "maximum": 400 },
+            "skyColor": { "type": "string" },
+            "foamColor": { "type": "string" }
+          }
+        }
       }
     },
 
@@ -330,7 +411,9 @@
         { "$ref": "#/definitions/elementEmoji" },
         { "$ref": "#/definitions/elementCandle" },
         { "$ref": "#/definitions/elementFigure" },
-        { "$ref": "#/definitions/elementImage" }
+        { "$ref": "#/definitions/elementImage" },
+        { "$ref": "#/definitions/elementLottie" },
+        { "$ref": "#/definitions/elementCanvasBg" }
       ]
     },
 

@@ -1,18 +1,18 @@
 /**
- * timeline_runtime.js — CREATOR IMAGINE Engine v1.1
+ * timeline_runtime.js — CREATOR IMAGINE Engine v1.2
  *
  * CORRECCIONES v1.1:
  * - init() ya NO se llama en DOMContentLoaded ni en módulo IIFE automático.
- *   Espera a que render_worker.js inyecte window.__TIMELINE__ primero,
- *   luego el propio script llama a init() al final de su evaluación.
- * - Todos los efectos de setTimeout para animaciones se eliminan: el control
- *   de tiempo es DETERMINISTA a través de seekTo(videoTime), no mediante
- *   reloj del sistema. Las animaciones basadas en delay usan el tiempo local
- *   de la escena en lugar de setTimeout.
+ * - Render determinista a través de seekTo(videoTime).
  * - Se añaden los tipos 'emoji' y 'candle' para el smoke test.
  * - Se añade el tipo 'badge'.
- * - seekTo() hace un renderScene() completo en cada llamada para garantizar
- *   idempotencia: el mismo tiempo siempre produce el mismo frame.
+ *
+ * MEJORAS v1.2 (Task B):
+ * - Fondos procedurales Canvas2D: 'radar' y 'waves' (sin librerías externas).
+ * - Animación orgánica 'wiggle' para figuras/imágenes (oscilación sinusoidal compuesta).
+ * - Spring/elastic physics en renderCounter (rebote elástico en la entrada del valor).
+ * - Nuevo tipo de elemento 'canvas-bg' para fondos de partículas/geométricos custom.
+ * - Función easeOutElastic y easeOutSpring para físicas de resorte.
  */
 
 (function () {
@@ -55,6 +55,8 @@
   let timeline  = null;
   let theme     = null;
   let particles = [];
+  const lottieInstances = new Map();
+  const motionPathCache = new Map();
 
   // Referencias DOM
   const stage         = document.getElementById('stage');
@@ -84,6 +86,13 @@
     applyBranding();
     initParticles();
     applyGlobalEffects();
+
+    // Registrar plugins GSAP si están disponibles
+    if (typeof gsap !== 'undefined' && typeof MotionPathPlugin !== 'undefined') {
+      try {
+        gsap.registerPlugin(MotionPathPlugin);
+      } catch (e) {}
+    }
 
     // Señal para Playwright
     window.__RUNTIME_READY__ = true;
@@ -201,7 +210,7 @@
     layerCaptions.innerHTML = '';
     const overlay = document.getElementById('layer-overlay');
     if (overlay) overlay.innerHTML = '';
-    document.querySelectorAll('#layer-bg .c-figure, #layer-bg .c-image').forEach(n => n.remove());
+    document.querySelectorAll('#layer-bg .c-figure, #layer-bg .c-image, #layer-bg .c-lottie').forEach(n => n.remove());
 
     // 3. Reset cámara
     stage.style.transform = '';
@@ -220,16 +229,18 @@
     // 6. Renderizar resto de elementos
     (scene.elements || []).forEach(el => {
       switch (el.type) {
-        case 'title':    renderTitle(el, localTime);   break;
-        case 'badge':    renderBadge(el, localTime);   break;
-        case 'counter':  renderCounter(el, localTime); break;
-        case 'caption':  renderCaption(el, videoTime); break;
-        case 'ranking':  renderRanking(el, localTime); break;
-        case 'card':     renderCard(el, localTime);    break;
-        case 'emoji':    renderEmoji(el, localTime);   break;
-        case 'candle':   renderCandle(el, localTime);  break;
-        case 'figure':   renderFigure(el, localTime);  break;
-        case 'image':    renderImage(el, localTime);   break;
+        case 'title':      renderTitle(el, localTime);   break;
+        case 'badge':      renderBadge(el, localTime);   break;
+        case 'counter':    renderCounter(el, localTime); break;
+        case 'caption':    renderCaption(el, videoTime); break;
+        case 'ranking':    renderRanking(el, localTime); break;
+        case 'card':       renderCard(el, localTime);    break;
+        case 'emoji':      renderEmoji(el, localTime);   break;
+        case 'candle':     renderCandle(el, localTime);  break;
+        case 'figure':     renderFigure(el, localTime);  break;
+        case 'image':      renderImage(el, localTime);   break;
+        case 'lottie':     renderLottie(el, localTime, sceneIdx); break;
+        case 'canvas-bg':  renderCanvasBg(el, localTime, videoTime); break;
         // background y camera ya procesados
       }
     });
@@ -247,8 +258,41 @@
     return Math.min((localTime - delay) / animDuration, 1);
   }
 
-  function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
-  function easeOutExpo(t)  { return t === 1 ? 1 : 1 - Math.pow(2, -10 * t); }
+  function easeOutCubic(t)   { return 1 - Math.pow(1 - t, 3); }
+  function easeOutExpo(t)    { return t === 1 ? 1 : 1 - Math.pow(2, -10 * t); }
+
+  /**
+   * Spring elástico: simula un resorte amortiguado.
+   * amplitude: amplitud del rebote (0.3–0.6 recomendado)
+   * period: longitud del período de oscilación
+   */
+  function easeOutElastic(t, amplitude, period) {
+    amplitude = amplitude || 0.4;
+    period    = period    || 0.5;
+    if (t === 0 || t === 1) return t;
+    const s = (period / (2 * Math.PI)) * Math.asin(1 / amplitude);
+    return amplitude * Math.pow(2, -10 * t) * Math.sin(((t - s) * (2 * Math.PI)) / period) + 1;
+  }
+
+  /**
+   * Damped spring physics: x = 1 - e^(-zeta*omega*t) * cos(omega_d * t)
+   * Produce un overshooting natural con decay exponencial.
+   */
+  function easeOutSpring(t, tension, friction) {
+    tension = tension || 180;
+    friction = friction || 12;
+    const omega0 = Math.sqrt(tension);
+    const zeta   = friction / (2 * Math.sqrt(tension));
+    if (zeta < 1) {
+      // Sub-amortiguado (rebota)
+      const omegaD = omega0 * Math.sqrt(1 - zeta * zeta);
+      return 1 - Math.exp(-zeta * omega0 * t) * (
+        Math.cos(omegaD * t) + (zeta / Math.sqrt(1 - zeta * zeta)) * Math.sin(omegaD * t)
+      );
+    }
+    // Sobreamortiguado (sin rebote)
+    return 1 - Math.exp(-omega0 * t);
+  }
 
   // =========================================================
   // RENDERIZADORES — deterministas
@@ -304,20 +348,30 @@
     layerContent.appendChild(span);
   }
 
-  // --- COUNTER ---
+  // --- COUNTER (con spring physics en la entrada) ---
   function renderCounter(el, lt) {
-    const delay    = el.delay        || 0;
+    const delay    = el.delay         || 0;
     const countDur = el.countDuration || 1.5;
-    const progress = getAnimProgress(lt, delay, 0.4);       // visibilidad
+    const progress = getAnimProgress(lt, delay, 0.4);
     if (progress <= 0) return;
 
-    const countProg = getAnimProgress(lt, delay, countDur); // valor
+    const countProg = getAnimProgress(lt, delay, countDur);
     const ease      = easeOutExpo(countProg);
     const from      = el.valueStart || 0;
     const to        = el.value      || 0;
     const current   = from + (to - from) * ease;
     const dec       = el.decimals   || 0;
     const formatted = formatNumber(current, dec);
+
+    // Spring physics en la entrada: rebote elástico en escala al aparecer
+    const entryDur    = el.entryDuration || 0.8;
+    const entryProg   = getAnimProgress(lt, delay, entryDur);
+    const useTension  = el.springTension  || 180;
+    const useFriction = el.springFriction || 12;
+    const springScale = entryProg < 1
+      ? easeOutSpring(Math.min(entryProg, 1), useTension, useFriction)
+      : 1;
+    const entryScale  = 0.65 + springScale * 0.35;
 
     const wrapper = document.createElement('div');
     wrapper.className = 'c-counter counter-card';
@@ -333,7 +387,7 @@
 
     const vis = easeOutCubic(Math.min(progress, 1));
     wrapper.style.opacity   = String(vis);
-    wrapper.style.transform = wrapper.style.transform + ` scale(${0.85 + vis * 0.15})`;
+    wrapper.style.transform = (wrapper.style.transform || '') + ` scale(${entryScale})`;
     layerContent.appendChild(wrapper);
   }
 
@@ -685,13 +739,18 @@
 
     switch (el.motion) {
       case 'breathe': {
-        const br = Math.sin(lt * 2.8) * 0.025;
+        // Oscilación orgánica compuesta (2 frecuencias para naturalidad)
+        const br1 = Math.sin(lt * 2.8) * 0.025;
+        const br2 = Math.sin(lt * 5.1) * 0.008;
+        const br  = br1 + br2;
         extraTransform = ` scale(${baseScale * flipX * (1 - br * 0.5)}, ${baseScale * (1 + br)})`;
         break;
       }
       case 'float': {
-        const fl = Math.sin(lt * 2.0) * 14;
-        extraTransform = ` scale(${baseScale * flipX}, ${baseScale}) translateY(${fl}px)`;
+        // Float con ligero balanceo lateral orgánico
+        const fl  = Math.sin(lt * 2.0) * 14;
+        const flX = Math.sin(lt * 1.3) * 5;
+        extraTransform = ` scale(${baseScale * flipX}, ${baseScale}) translate(${flX}px, ${fl}px)`;
         break;
       }
       case 'rise': {
@@ -707,6 +766,30 @@
       case 'parallax': {
         const para = (lt * 18);
         extraTransform = ` scale(${baseScale * flipX}, ${baseScale}) translateX(${para}px)`;
+        break;
+      }
+      case 'wiggle': {
+        // Wiggle orgánico: rotación sinusoidal compuesta de alta frecuencia
+        const deg1 = Math.sin(lt * 6.28) * (el.wiggleAmount || 8);
+        const deg2 = Math.sin(lt * 11.4) * (el.wiggleAmount || 8) * 0.4;
+        const wigDeg = deg1 + deg2;
+        const wigY  = Math.sin(lt * 3.7) * 6;
+        extraTransform = ` scale(${baseScale * flipX}, ${baseScale}) translateY(${wigY}px) rotate(${wigDeg}deg)`;
+        break;
+      }
+      case 'sway': {
+        // Balanceo suave como árbol al viento (desde la base)
+        const swayDeg = Math.sin(lt * 1.8) * (el.swayAmount || 5) +
+                        Math.sin(lt * 3.1) * (el.swayAmount || 5) * 0.3;
+        extraTransform = ` scale(${baseScale * flipX}, ${baseScale}) rotate(${swayDeg}deg)`;
+        break;
+      }
+      case 'pulse': {
+        // Pulsación rítmica (corazón, impacto)
+        const pulseRaw  = Math.sin(lt * (el.pulseFreq || 3.0) * Math.PI);
+        const pulseHalf = Math.max(0, pulseRaw);
+        const pulseScale = baseScale * (1 + pulseHalf * (el.pulseAmount || 0.08));
+        extraTransform = ` scale(${pulseScale * flipX}, ${pulseScale})`;
         break;
       }
       default:
@@ -781,6 +864,26 @@
         extraTransform = ` scale(${baseScale}) translateX(${p}px)`;
         break;
       }
+      case 'wiggle': {
+        const deg1 = Math.sin(lt * 6.28) * (el.wiggleAmount || 8);
+        const deg2 = Math.sin(lt * 11.4) * (el.wiggleAmount || 8) * 0.4;
+        const wigY = Math.sin(lt * 3.7) * 6;
+        extraTransform = ` scale(${baseScale}) translateY(${wigY}px) rotate(${deg1 + deg2}deg)`;
+        break;
+      }
+      case 'sway': {
+        const swayDeg = Math.sin(lt * 1.8) * (el.swayAmount || 5) +
+                        Math.sin(lt * 3.1) * (el.swayAmount || 5) * 0.3;
+        extraTransform = ` scale(${baseScale}) rotate(${swayDeg}deg)`;
+        break;
+      }
+      case 'pulse': {
+        const pulseRaw  = Math.sin(lt * (el.pulseFreq || 3.0) * Math.PI);
+        const pulseHalf = Math.max(0, pulseRaw);
+        const pulseS    = baseScale * (1 + pulseHalf * (el.pulseAmount || 0.08));
+        extraTransform = ` scale(${pulseS})`;
+        break;
+      }
       default:
         extraTransform = ` scale(${baseScale * (0.85 + ease * 0.15)})`;
     }
@@ -795,6 +898,96 @@
     if (targetLayer) targetLayer.appendChild(div);
   }
 
+  // =========================================================
+  // MOTION PATH HELPER (Curvas Bezier deterministas)
+  // =========================================================
+  function sampleMotionPath(pathD, progress) {
+    let pEl = motionPathCache.get(pathD);
+    if (!pEl) {
+      pEl = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      pEl.setAttribute('d', pathD);
+      motionPathCache.set(pathD, pEl);
+    }
+    const totalLength = pEl.getTotalLength();
+    const targetLength = Math.max(0, Math.min(progress, 1)) * totalLength;
+    const pt = pEl.getPointAtLength(targetLength);
+
+    const delta = 1.0;
+    const pPrev = pEl.getPointAtLength(Math.max(0, targetLength - delta));
+    const pNext = pEl.getPointAtLength(Math.min(totalLength, targetLength + delta));
+    const angleRad = Math.atan2(pNext.y - pPrev.y, pNext.x - pPrev.x);
+    const angleDeg = (angleRad * 180) / Math.PI;
+
+    return { x: pt.x, y: pt.y, angle: angleDeg };
+  }
+
+  // --- LOTTIE (Animaciones After Effects deterministas) ---
+  function renderLottie(el, lt, sceneIdx) {
+    const progress = getAnimProgress(lt, el.delay || 0, el.duration || 1.0);
+    if (progress <= 0) return;
+
+    const div = document.createElement('div');
+    div.className = 'c-lottie';
+
+    div.style.width  = (el.width  || 500) + 'px';
+    div.style.height = (el.height || 500) + 'px';
+
+    if (el.motionPath && el.motionPath.path) {
+      const sampled = sampleMotionPath(el.motionPath.path, progress);
+      div.style.position = 'absolute';
+      div.style.left = sampled.x + 'px';
+      div.style.top  = sampled.y + 'px';
+      div.style.transform = 'translate(-50%, -50%)' + (el.motionPath.autoRotate ? ` rotate(${sampled.angle}deg)` : '');
+    } else {
+      positionElement(div, el.position, 'center');
+    }
+
+    const baseScale = (el.scale || 1.0);
+    div.style.transform = (div.style.transform || '') + ` scale(${baseScale})`;
+    const maxOpacity = el.opacity != null ? el.opacity : 1.0;
+    div.style.opacity = String(Math.min(progress / 0.15, 1) * maxOpacity);
+
+    const targetLayer = el.layer === 'background'
+      ? document.getElementById('layer-bg')
+      : (el.layer === 'foreground' ? document.getElementById('layer-overlay') : layerContent);
+    if (targetLayer) targetLayer.appendChild(div);
+
+    // Carga e interpolación determinista vía lottie-web
+    if (typeof lottie !== 'undefined') {
+      const animKey = `scene_${sceneIdx}_${el.id || el.src || 'lottie'}`;
+      let anim = lottieInstances.get(animKey);
+
+      if (!anim || anim.__container !== div) {
+        try {
+          anim = lottie.loadAnimation({
+            container: div,
+            renderer: 'svg',
+            loop: false,
+            autoplay: false,
+            animationData: el.data || null,
+            path: el.src || null
+          });
+          anim.__container = div;
+          lottieInstances.set(animKey, anim);
+        } catch (err) {
+          console.warn('[Lottie] Error al cargar animación:', err.message);
+        }
+      }
+
+      if (anim && anim.totalFrames) {
+        const total = anim.totalFrames;
+        const localElTime = Math.max(0, lt - (el.delay || 0));
+        let frame = localElTime * (el.speed || 1.0) * 60;
+        if (el.loop) {
+          frame = frame % total;
+        } else {
+          frame = Math.min(Math.max(0, frame), total - 1);
+        }
+        anim.goToAndStop(frame, true);
+      }
+    }
+  }
+
   // --- FONDO ---
   function renderBackground(el) {
     const bg = document.getElementById('bg-element');
@@ -805,6 +998,193 @@
       bg.style.background = `linear-gradient(180deg, ${el.colors.join(', ')})`;
     } else if (el.style === 'solid' && el.colors) {
       bg.style.background = el.colors[0];
+    }
+  }
+
+  // =========================================================
+  // FONDOS PROCEDURALES CANVAS2D (Task B)
+  // Radar pulsante y olas marinas — 100% deterministas (sin RAF)
+  // =========================================================
+
+  /**
+   * Dibuja fondo de radar procedural en un canvas2D.
+   * rings: número de anillos pulsantes
+   * color: color base del radar (hex)
+   * speed: velocidad de pulsación (ondas/s)
+   */
+  function drawRadarBackground(ctx, t, opts) {
+    const W = ctx.canvas.width;
+    const H = ctx.canvas.height;
+    opts = opts || {};
+    const cx      = (opts.cx || 0.5) * W;
+    const cy      = (opts.cy || 0.5) * H;
+    const rings   = opts.rings   || 5;
+    const color   = opts.color   || theme.colors.accent;
+    const speed   = opts.speed   || 0.6;
+    const maxR    = opts.maxR    || Math.max(W, H) * 0.8;
+    const bgColor = opts.bgColor || theme.colors.bg[0] || '#160D28';
+
+    // Fondo sólido
+    ctx.fillStyle = bgColor;
+    ctx.fillRect(0, 0, W, H);
+
+    // Cuadrícula polar suave
+    ctx.save();
+    ctx.strokeStyle = hexToRgba(color, 0.06);
+    ctx.lineWidth = 1.5;
+    for (let r = maxR / rings; r <= maxR; r += maxR / rings) {
+      ctx.beginPath();
+      ctx.arc(cx, cy, r, 0, Math.PI * 2);
+      ctx.stroke();
+    }
+    // Líneas cruzadas de radar
+    ctx.strokeStyle = hexToRgba(color, 0.05);
+    for (let a = 0; a < Math.PI * 2; a += Math.PI / 6) {
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.lineTo(cx + Math.cos(a) * maxR, cy + Math.sin(a) * maxR);
+      ctx.stroke();
+    }
+    ctx.restore();
+
+    // Barrido girador (sweep)
+    const sweepAngle = (t * speed * Math.PI * 2) % (Math.PI * 2);
+    const sweepGrad  = ctx.createConicalGradient
+      ? ctx.createConicalGradient(cx, cy, sweepAngle)
+      : null;
+    ctx.save();
+    // Alternativa sin createConicalGradient (compatibilidad)
+    const sweepArc = ctx.createRadialGradient(cx, cy, 0, cx, cy, maxR * 0.85);
+    sweepArc.addColorStop(0,   hexToRgba(color, 0.0));
+    sweepArc.addColorStop(0.6, hexToRgba(color, 0.08));
+    sweepArc.addColorStop(1,   hexToRgba(color, 0.0));
+    ctx.globalAlpha = 0.7;
+    ctx.fillStyle   = sweepArc;
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.arc(cx, cy, maxR * 0.85, sweepAngle - 0.6, sweepAngle, false);
+    ctx.closePath();
+    ctx.fill();
+    ctx.globalAlpha = 1.0;
+    ctx.restore();
+
+    // Anillos de pulso (propagación hacia afuera)
+    for (let i = 0; i < rings; i++) {
+      const phase  = ((t * speed * 0.8) + (i / rings)) % 1;
+      const radius = phase * maxR;
+      const alpha  = (1 - phase) * 0.35;
+      ctx.beginPath();
+      ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+      ctx.strokeStyle = hexToRgba(color, alpha);
+      ctx.lineWidth   = 2.5 - phase * 1.5;
+      ctx.stroke();
+    }
+
+    // Punto central brillante
+    const glowR = ctx.createRadialGradient(cx, cy, 0, cx, cy, 40);
+    glowR.addColorStop(0,   hexToRgba(color, 0.9));
+    glowR.addColorStop(0.3, hexToRgba(color, 0.4));
+    glowR.addColorStop(1,   hexToRgba(color, 0.0));
+    ctx.beginPath();
+    ctx.arc(cx, cy, 40, 0, Math.PI * 2);
+    ctx.fillStyle = glowR;
+    ctx.fill();
+  }
+
+  /**
+   * Dibuja fondo de olas oceánicas procedurales.
+   * layers: número de capas de ola
+   * amplitude: altura de las olas en px
+   * speed: velocidad de movimiento lateral
+   */
+  function drawWavesBackground(ctx, t, opts) {
+    const W = ctx.canvas.width;
+    const H = ctx.canvas.height;
+    opts = opts || {};
+    const layers    = opts.layers    || 4;
+    const amplitude = opts.amplitude || 80;
+    const speed     = opts.speed     || 0.3;
+    const baseColor = opts.color     || '#1A4A6B';
+    const skyColor  = opts.skyColor  || (theme.colors.bg[0] || '#160D28');
+    const foamColor = opts.foamColor || 'rgba(255,255,255,0.15)';
+
+    // Cielo / fondo superior
+    const skyGrad = ctx.createLinearGradient(0, 0, 0, H * 0.55);
+    skyGrad.addColorStop(0,   skyColor);
+    skyGrad.addColorStop(1,   baseColor);
+    ctx.fillStyle = skyGrad;
+    ctx.fillRect(0, 0, W, H);
+
+    // Capas de ola (de atrás hacia adelante)
+    for (let i = layers - 1; i >= 0; i--) {
+      const layerRatio = i / (layers - 1);        // 0=fondo, 1=frente
+      const baseY      = H * (0.45 + layerRatio * 0.35);
+      const freq       = 0.003 + layerRatio * 0.004; // más frecuencia al frente
+      const amp        = amplitude * (0.4 + layerRatio * 0.6);
+      const layerSpeed = speed * (0.5 + layerRatio * 1.5);
+      const phaseOff   = i * 1.3;
+
+      // Alfa y color según profundidad
+      const alpha   = 0.55 + layerRatio * 0.45;
+      const hBias   = Math.round(26 + layerRatio * 20); // oscurece al frente
+      const layerColor = `rgba(${hBias}, ${Math.round(74 + layerRatio * 30)}, ${Math.round(107 + layerRatio * 40)}, ${alpha})`;
+
+      ctx.beginPath();
+      ctx.moveTo(0, H);
+
+      for (let x = 0; x <= W; x += 6) {
+        const y1 = Math.sin(x * freq + t * layerSpeed * Math.PI * 2 + phaseOff) * amp;
+        const y2 = Math.sin(x * freq * 1.7 + t * layerSpeed * 0.7 * Math.PI * 2) * amp * 0.4;
+        ctx.lineTo(x, baseY + y1 + y2);
+      }
+
+      ctx.lineTo(W, H);
+      ctx.closePath();
+      ctx.fillStyle = layerColor;
+      ctx.fill();
+
+      // Espuma de cresta (línea superior de la ola)
+      if (layerRatio > 0.5) {
+        ctx.beginPath();
+        for (let x = 0; x <= W; x += 6) {
+          const y1 = Math.sin(x * freq + t * layerSpeed * Math.PI * 2 + phaseOff) * amp;
+          const y2 = Math.sin(x * freq * 1.7 + t * layerSpeed * 0.7 * Math.PI * 2) * amp * 0.4;
+          const yTop = baseY + y1 + y2;
+          if (x === 0) ctx.moveTo(x, yTop);
+          else ctx.lineTo(x, yTop);
+        }
+        ctx.strokeStyle = foamColor;
+        ctx.lineWidth   = 2 + layerRatio * 3;
+        ctx.stroke();
+      }
+    }
+  }
+
+  // --- CANVAS-BG (fondo procedural por tipo) ---
+  function renderCanvasBg(el, lt, videoTime) {
+    let cvs = document.getElementById('proc-bg-canvas');
+    if (!cvs) {
+      cvs = document.createElement('canvas');
+      cvs.id     = 'proc-bg-canvas';
+      cvs.width  = 1080;
+      cvs.height = 1920;
+      cvs.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;';
+      const layerBg = document.getElementById('layer-bg');
+      if (layerBg) layerBg.insertBefore(cvs, layerBg.firstChild);
+    }
+    const ctx2 = cvs.getContext('2d');
+    if (!ctx2) return;
+    ctx2.clearRect(0, 0, 1080, 1920);
+
+    switch (el.bgType) {
+      case 'radar':
+        drawRadarBackground(ctx2, videoTime, el.options || {});
+        break;
+      case 'waves':
+        drawWavesBackground(ctx2, videoTime, el.options || {});
+        break;
+      default:
+        break;
     }
   }
 
