@@ -712,6 +712,440 @@
     'grass': `<svg viewBox="0 0 1080 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M0 200 L0 70 L40 100 L80 60 L120 95 L160 55 L200 90 L240 50 L280 85 L320 58 L360 92 L400 55 L440 88 L480 52 L520 90 L560 58 L600 95 L640 55 L680 90 L720 58 L760 95 L800 55 L840 90 L880 58 L920 95 L960 55 L1000 90 L1040 60 L1080 85 L1080 200 Z" fill="#4C8A3B"/>
       <path d="M0 200 L0 110 L50 135 L100 100 L150 140 L200 105 L250 138 L300 100 L350 140 L400 105 L450 138 L500 100 L550 140 L600 105 L650 138 L700 100 L750 140 L800 105 L850 138 L900 100 L950 140 L1000 105 L1050 138 L1080 110 L1080 200 Z" fill="#3B6E2D"/>
+    </svg>`,
+
+    // =======================================================
+    // FAUNA MARINA
+    // =======================================================
+    'whale': `<svg viewBox="0 0 900 500" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M80 250 C80 180 130 130 220 120 C330 108 480 115 600 125 C700 133 780 150 820 190 C855 225 850 270 810 300 C770 330 700 340 620 338 C540 336 440 330 360 340 C280 350 200 380 150 390 C110 398 80 370 80 340 Z"/>
+      <path d="M820 190 C845 175 870 160 890 150 C875 160 875 180 870 200 C865 220 855 235 840 240 C835 215 830 200 820 190 Z" opacity="0.8"/>
+      <path d="M150 390 C140 420 110 460 80 480 C70 485 60 470 65 455 C72 435 90 415 110 400 Z" opacity="0.75"/>
+      <path d="M150 390 C160 418 180 455 200 475 C190 480 178 468 165 450 C152 432 146 410 150 390 Z" opacity="0.6"/>
+      <ellipse cx="755" cy="200" rx="12" ry="8" fill="rgba(255,255,255,0.9)"/>
+      <path d="M380 295 C430 275 500 270 560 285 C580 295 570 315 550 320 C500 325 440 320 390 310 Z" fill="rgba(255,255,255,0.2)"/>
+    </svg>`,
+
+    'shark': `<svg viewBox="0 0 900 450" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M50 280 C120 260 220 250 350 245 C480 240 620 238 750 250 C820 256 870 270 890 290 C870 305 820 315 750 318 C620 322 480 318 350 315 C220 312 120 310 50 295 Z"/>
+      <path d="M480 245 C500 220 510 180 505 145 C515 155 530 185 530 215 C545 195 555 165 552 135 C565 150 575 185 568 220 C580 205 585 180 582 155 C595 165 600 195 590 240 Z" opacity="0.9"/>
+      <path d="M50 280 C30 275 10 265 5 260 C15 255 35 255 55 265 Z"/>
+      <path d="M50 295 C30 305 8 310 5 318 C15 322 35 318 55 308 Z" opacity="0.7"/>
+      <ellipse cx="820" cy="280" rx="16" ry="10" fill="rgba(255,255,255,0.85)"/>
+      <path d="M820 285 C830 285 840 287 845 290 C840 293 830 293 820 291 Z" fill="rgba(0,0,0,0.4)"/>
+      <path d="M600 285 C620 275 650 270 680 272 C700 280 695 300 670 302 C645 304 620 298 605 290 Z" fill="rgba(255,255,255,0.15)"/>
+    </svg>`,
+
+    'dolphin': `<svg viewBox="0 0 800 500" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M100 300 C130 260 190 240 280 235 C390 228 520 235 640 250 C720 260 770 280 790 305 C770 325 720 335 640 338 C520 342 390 338 280 345 C190 350 130 345 100 325 Z"/>
+      <path d="M400 235 C415 205 425 168 420 130 C430 145 445 175 440 210 Z" opacity="0.85"/>
+      <path d="M100 300 C75 290 45 275 25 265 C30 258 50 258 70 268 Z"/>
+      <path d="M100 325 C75 338 45 350 20 355 C25 362 50 360 75 348 Z" opacity="0.75"/>
+      <path d="M100 308 C90 310 80 318 85 325 C95 322 102 315 100 308 Z" opacity="0.6"/>
+      <ellipse cx="730" cy="296" rx="14" ry="10" fill="rgba(255,255,255,0.9)"/>
+      <path d="M280 288 C340 272 440 268 520 278 C540 290 532 308 510 312 C450 316 370 312 290 302 Z" fill="rgba(255,255,255,0.18)"/>
+    </svg>`,
+
+    'octopus': `<svg viewBox="0 0 700 700" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="350" cy="220" rx="160" ry="150"/>
+      <path d="M200 340 C170 380 140 430 100 470 C80 490 60 510 50 540 C65 545 80 535 95 518 C110 498 130 468 150 440 C165 418 180 400 195 390 Z"/>
+      <path d="M240 370 C220 420 200 480 185 530 C175 558 168 580 170 605 C185 606 198 594 205 574 C215 546 230 488 248 430 C258 398 268 375 275 365 Z"/>
+      <path d="M295 385 C285 440 278 505 275 555 C272 578 270 598 275 618 C290 618 302 605 306 585 C312 555 318 490 322 432 C325 400 330 378 335 370 Z"/>
+      <path d="M355 385 C358 440 360 505 358 555 C357 578 356 598 360 618 C375 616 386 602 387 582 C389 552 388 487 386 430 C385 398 382 376 378 368 Z"/>
+      <path d="M415 375 C428 428 440 490 448 540 C453 565 456 585 455 607 C440 610 428 598 423 578 C415 548 406 484 400 428 C396 396 392 373 390 363 Z"/>
+      <path d="M465 360 C490 408 515 462 530 510 C540 535 545 558 542 580 C527 584 514 574 508 555 C497 528 476 472 458 420 C446 386 440 362 440 350 Z"/>
+      <path d="M505 340 C545 378 580 420 605 460 C620 482 632 502 628 528 C614 534 600 525 592 508 C578 484 550 444 520 406 C504 383 490 365 482 352 Z"/>
+      <ellipse cx="295" cy="195" rx="20" ry="25" fill="rgba(0,0,0,0.7)"/>
+      <ellipse cx="405" cy="195" rx="20" ry="25" fill="rgba(0,0,0,0.7)"/>
+      <ellipse cx="300" cy="192" rx="8" ry="10" fill="rgba(255,255,255,0.9)"/>
+      <ellipse cx="410" cy="192" rx="8" ry="10" fill="rgba(255,255,255,0.9)"/>
+    </svg>`,
+
+    'manta-ray': `<svg viewBox="0 0 900 500" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M450 250 C380 210 250 170 120 185 C50 193 10 215 5 240 C10 265 50 285 120 293 C250 308 380 280 450 250 Z"/>
+      <path d="M450 250 C520 210 650 170 780 185 C850 193 890 215 895 240 C890 265 850 285 780 293 C650 308 520 280 450 250 Z"/>
+      <path d="M430 250 C440 300 445 360 440 420 C448 422 455 420 460 415 C462 355 460 295 450 250 Z"/>
+      <path d="M430 255 C390 265 350 270 320 265 C330 278 350 285 375 282 C400 278 418 268 430 255 Z" fill="rgba(255,255,255,0.15)"/>
+      <path d="M465 255 C505 265 545 270 575 265 C565 278 545 285 520 282 C495 278 477 268 465 255 Z" fill="rgba(255,255,255,0.15)"/>
+      <path d="M420 210 C430 200 445 195 455 200 C445 205 438 200 430 205 C422 210 420 218 420 210 Z"/>
+      <path d="M480 210 C470 200 455 195 445 200 C455 205 462 200 470 205 C478 210 480 218 480 210 Z"/>
+      <ellipse cx="418" cy="240" rx="10" ry="7" fill="rgba(0,0,0,0.5)"/>
+      <ellipse cx="482" cy="240" rx="10" ry="7" fill="rgba(0,0,0,0.5)"/>
+    </svg>`,
+
+    'fish-school': `<svg viewBox="0 0 900 600" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <g opacity="0.95">
+        <ellipse cx="200" cy="200" rx="55" ry="25" transform="rotate(-15 200 200)"/>
+        <path d="M155 193 C140 185 130 195 140 205 Z" transform="rotate(-15 200 200)"/>
+        <ellipse cx="5" cy="0" rx="6" ry="4" fill="rgba(0,0,0,0.7)" transform="translate(200 200) rotate(-15) translate(40 -8)"/>
+      </g>
+      <g opacity="0.9">
+        <ellipse cx="320" cy="160" rx="48" ry="22" transform="rotate(-8 320 160)"/>
+        <path d="M278 156 C263 148 253 158 263 168 Z" transform="rotate(-8 320 160)"/>
+        <ellipse cx="5" cy="0" rx="5" ry="3.5" fill="rgba(0,0,0,0.7)" transform="translate(320 160) rotate(-8) translate(36 -6)"/>
+      </g>
+      <g opacity="0.85">
+        <ellipse cx="450" cy="230" rx="60" ry="26" transform="rotate(-20 450 230)"/>
+        <path d="M405 220 C388 210 378 222 390 233 Z" transform="rotate(-20 450 230)"/>
+        <ellipse cx="5" cy="0" rx="6" ry="4" fill="rgba(0,0,0,0.7)" transform="translate(450 230) rotate(-20) translate(44 -9)"/>
+      </g>
+      <g opacity="0.8">
+        <ellipse cx="580" cy="180" rx="52" ry="23" transform="rotate(-12 580 180)"/>
+        <path d="M534 174 C519 165 509 176 521 186 Z" transform="rotate(-12 580 180)"/>
+        <ellipse cx="5" cy="0" rx="5" ry="3.5" fill="rgba(0,0,0,0.7)" transform="translate(580 180) rotate(-12) translate(38 -7)"/>
+      </g>
+      <g opacity="0.7">
+        <ellipse cx="680" cy="280" rx="44" ry="20" transform="rotate(-5 680 280)"/>
+        <path d="M640 277 C626 270 617 280 628 288 Z" transform="rotate(-5 680 280)"/>
+        <ellipse cx="5" cy="0" rx="5" ry="3" fill="rgba(0,0,0,0.7)" transform="translate(680 280) rotate(-5) translate(32 -6)"/>
+      </g>
+      <g opacity="0.6">
+        <ellipse cx="270" cy="340" rx="40" ry="18" transform="rotate(-22 270 340)"/>
+        <path d="M234 330 C220 322 211 332 222 341 Z" transform="rotate(-22 270 340)"/>
+      </g>
+      <g opacity="0.55">
+        <ellipse cx="770" cy="210" rx="36" ry="16" transform="rotate(-10 770 210)"/>
+        <path d="M736 206 C723 199 715 208 725 216 Z" transform="rotate(-10 770 210)"/>
+      </g>
+    </svg>`,
+
+    // =======================================================
+    // OCEANO, PAISAJES COSTEROS Y NAVEGACION
+    // =======================================================
+    'island-palm': `<svg viewBox="0 0 800 600" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="400" cy="520" rx="340" ry="80" fill="#D4A84B"/>
+      <ellipse cx="400" cy="510" rx="290" ry="55" fill="#E8BF65"/>
+      <rect x="372" y="200" width="30" height="310" rx="15" fill="#6B4A1C"/>
+      <path d="M402 200 C395 185 385 170 390 160" stroke="#6B4A1C" stroke-width="26" fill="none" stroke-linecap="round"/>
+      <path d="M402 200 C412 215 425 210 410 190" stroke="#6B4A1C" stroke-width="20" fill="none" stroke-linecap="round"/>
+      <path d="M395 210 C380 220 340 210 320 195 C350 185 380 195 395 210 Z" fill="#2D7A2D"/>
+      <path d="M395 210 C410 200 450 195 470 185 C460 200 435 215 395 210 Z" fill="#3A9A3A"/>
+      <path d="M395 195 C380 175 350 155 330 150 C345 165 368 180 395 195 Z" fill="#2D7A2D"/>
+      <path d="M405 195 C415 175 445 158 465 155 C450 168 430 182 405 195 Z" fill="#3A9A3A"/>
+      <path d="M390 205 C370 225 330 240 310 250 C328 238 358 220 390 205 Z" fill="#258025"/>
+      <path d="M410 205 C430 225 470 240 490 250 C472 238 442 220 410 205 Z" fill="#2D9A2D"/>
+      <path d="M395 208 C385 230 372 265 370 285 C380 268 390 245 395 208 Z" fill="#1E6E1E"/>
+    </svg>`,
+
+    'lighthouse': `<svg viewBox="0 0 400 700" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="600" width="400" height="100" fill="#1A4A6B"/>
+      <path d="M140 600 L160 200 L240 200 L260 600 Z" fill="#F5F0E8"/>
+      <path d="M140 600 L155 480 L245 480 L260 600 Z" fill="#CC3333" opacity="0.9"/>
+      <path d="M155 360 L165 240 L235 240 L245 360 Z" fill="#CC3333" opacity="0.9"/>
+      <rect x="150" y="185" width="100" height="30" rx="5" fill="#8B7355"/>
+      <rect x="155" y="130" width="90" height="60" rx="6" fill="#2B2B35"/>
+      <ellipse cx="200" cy="130" rx="55" ry="18" fill="#8B7355"/>
+      <path d="M155 130 L130 95 L270 95 L245 130 Z" fill="#CC3333"/>
+      <ellipse cx="200" cy="95" rx="70" ry="15" fill="#8B7355"/>
+      <rect x="180" y="140" width="40" height="45" rx="4" fill="#FFE066"/>
+      <circle cx="200" cy="163" r="16" fill="#FFD700" opacity="0.6"/>
+      <rect x="135" y="478" width="130" height="12" rx="4" fill="#8B7355"/>
+      <rect x="150" y="358" width="100" height="10" rx="4" fill="#8B7355"/>
+      <rect x="160" y="238" width="80" height="8" rx="4" fill="#8B7355"/>
+    </svg>`,
+
+    'sailboat': `<svg viewBox="0 0 700 600" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M100 420 C150 380 250 360 350 355 C450 360 550 380 600 420 C570 445 480 460 350 462 C220 460 130 445 100 420 Z" fill="#C8A96E"/>
+      <path d="M100 420 C80 430 60 445 50 460 L650 460 C640 445 620 430 600 420 Z" fill="#8B6A3E"/>
+      <line x1="350" y1="100" x2="350" y2="420" stroke="#5A3A1A" stroke-width="10" stroke-linecap="round"/>
+      <path d="M350 110 C350 110 200 180 160 340 L350 355 Z" fill="rgba(255,255,255,0.92)"/>
+      <path d="M350 110 C350 110 500 180 540 340 L350 355 Z" fill="rgba(220,230,255,0.85)"/>
+      <path d="M350 230 C350 230 430 255 480 330 L350 355 Z" fill="rgba(200,215,245,0.7)"/>
+      <path d="M50 460 L650 460 L680 495 L20 495 Z" fill="#1A5A8A" opacity="0.5"/>
+      <path d="M20 495 L0 530 L700 530 L680 495 Z" fill="#1A5A8A" opacity="0.35"/>
+    </svg>`,
+
+    'ship-cargo': `<svg viewBox="0 0 1000 500" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M50 350 L80 300 L920 300 L950 350 C920 380 800 400 500 402 C200 400 80 380 50 350 Z" fill="#4A4A5A"/>
+      <rect x="80" y="220" width="840" height="85" rx="8" fill="#5A5A6A"/>
+      <rect x="120" y="185" width="760" height="38" rx="6" fill="#6A6A7A"/>
+      <rect x="180" y="140" width="200" height="50" rx="5" fill="#4A4A5A"/>
+      <rect x="620" y="120" width="180" height="70" rx="5" fill="#3A3A4A"/>
+      <rect x="200" y="200" width="60" height="55" rx="4" fill="#CC4422"/>
+      <rect x="280" y="200" width="60" height="55" rx="4" fill="#2255AA"/>
+      <rect x="360" y="200" width="60" height="55" rx="4" fill="#CC4422"/>
+      <rect x="440" y="200" width="60" height="55" rx="4" fill="#2255AA"/>
+      <rect x="520" y="200" width="60" height="55" rx="4" fill="#228833"/>
+      <rect x="600" y="200" width="60" height="55" rx="4" fill="#CC4422"/>
+      <path d="M640" y="110" width="6" height="80" stroke="#888" stroke-width="5" fill="none"/>
+      <line x1="640" y1="108" x2="640" y2="125" stroke="#888" stroke-width="5"/>
+      <rect x="630" y="88" width="50" height="24" rx="3" fill="#FF4444"/>
+      <path d="M50 350 C30 360 10 375 5 390 L995 390 C990 375 970 360 950 350 Z" fill="#2A3A5A"/>
+      <path d="M5 390 L0 420 L1000 420 L995 390 Z" fill="#1A2A4A" opacity="0.7"/>
+    </svg>`,
+
+    'ocean-waves': `<svg viewBox="0 0 1080 400" preserveAspectRatio="none" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 400 L0 280 C80 260 160 240 240 260 C320 280 400 300 480 280 C560 260 640 230 720 250 C800 270 880 295 960 275 C1010 262 1045 250 1080 260 L1080 400 Z" fill="#1A5A8A" opacity="0.9"/>
+      <path d="M0 400 L0 310 C70 290 150 310 230 330 C310 350 390 340 470 310 C550 280 630 265 710 285 C790 305 870 330 950 310 C990 299 1035 285 1080 295 L1080 400 Z" fill="#1A4A7A" opacity="0.8"/>
+      <path d="M0 400 L0 340 C90 320 180 345 270 360 C350 373 430 365 510 340 C590 315 670 300 750 320 C830 340 910 358 990 338 C1025 328 1055 315 1080 325 L1080 400 Z" fill="#0E3460" opacity="0.9"/>
+    </svg>`,
+
+    // =======================================================
+    // NATURALEZA Y FLORA
+    // =======================================================
+    'tree-pine': `<svg viewBox="0 0 400 700" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <rect x="175" y="580" width="50" height="120" rx="8" fill="#6B4A1C"/>
+      <path d="M200 50 L100 240 L140 240 L60 400 L110 400 L40 560 L360 560 L290 400 L340 400 L260 240 L300 240 Z" fill="#2D6E2D"/>
+      <path d="M200 50 L115 240 L150 240 L75 400 L122 400 L55 560 L340 560 L280 400 L322 400 L248 240 L285 240 Z" fill="#3A8A3A"/>
+      <path d="M200 50 L150 200 L175 200 L120 340 L155 340 L100 490 L300 490 L245 340 L280 340 L225 200 L250 200 Z" fill="#44A044"/>
+    </svg>`,
+
+    'tree-oak': `<svg viewBox="0 0 600 700" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <rect x="265" y="480" width="70" height="220" rx="18" fill="#7A5230"/>
+      <ellipse cx="300" cy="280" rx="240" ry="220" fill="#2E7A2E"/>
+      <ellipse cx="180" cy="200" rx="160" ry="140" fill="#368A36"/>
+      <ellipse cx="420" cy="210" rx="150" ry="130" fill="#368A36"/>
+      <ellipse cx="300" cy="160" rx="140" ry="120" fill="#42A042"/>
+      <ellipse cx="190" cy="280" rx="130" ry="110" fill="#339933"/>
+      <ellipse cx="400" cy="300" rx="125" ry="105" fill="#339933"/>
+      <ellipse cx="300" cy="350" rx="160" ry="110" fill="#2D8C2D"/>
+      <ellipse cx="220" cy="170" rx="80" ry="65" fill="#52B852" opacity="0.6"/>
+      <ellipse cx="390" cy="180" rx="70" ry="60" fill="#52B852" opacity="0.5"/>
+    </svg>`,
+
+    'tree-palm-tall': `<svg viewBox="0 0 500 800" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M230 780 C235 720 245 640 255 560 C265 480 270 400 268 320 C266 240 255 170 250 100" stroke="#8B6A2A" stroke-width="36" fill="none" stroke-linecap="round"/>
+      <path d="M250 100 C240 90 230 82 225 76" stroke="#8B6A2A" stroke-width="30" fill="none" stroke-linecap="round"/>
+      <ellipse cx="235" cy="780" rx="50" ry="18" fill="#5A3A0A" opacity="0.5"/>
+      <path d="M250 100 C220 65 160 45 100 55 C130 75 175 80 210 100 Z" fill="#2D8A2D"/>
+      <path d="M250 100 C280 65 340 45 400 55 C370 75 325 80 290 100 Z" fill="#3A9A3A"/>
+      <path d="M250 100 C215 80 155 90 120 115 C155 118 198 105 250 100 Z" fill="#2A7A2A"/>
+      <path d="M250 100 C285 80 345 90 380 115 C345 118 302 105 250 100 Z" fill="#2A7A2A"/>
+      <path d="M250 100 C225 120 195 148 180 180 C208 165 232 140 250 100 Z" fill="#258025"/>
+      <path d="M250 100 C275 120 305 148 320 180 C292 165 268 140 250 100 Z" fill="#258025"/>
+      <path d="M250 100 C238 130 228 170 232 205 C240 180 248 148 250 100 Z" fill="#1E6E1E"/>
+      <circle cx="252" cy="108" r="15" fill="#D4A84B"/>
+      <circle cx="235" cy="120" r="12" fill="#C89840"/>
+      <circle cx="268" cy="118" r="11" fill="#D4A84B"/>
+    </svg>`,
+
+    'eagle': `<svg viewBox="0 0 900 500" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M450 220 C430 200 400 185 360 180 C280 170 180 190 100 220 C60 234 30 250 10 265 C40 258 80 248 130 242 C185 235 250 232 310 238 C340 241 368 248 388 258 C368 268 340 272 310 270 C250 265 185 260 130 264 C80 268 40 275 10 285 C30 295 60 308 100 318 C180 342 280 355 360 342 C400 335 430 322 450 305 Z"/>
+      <path d="M450 220 C470 200 500 185 540 180 C620 170 720 190 800 220 C840 234 870 250 890 265 C860 258 820 248 770 242 C715 235 650 232 590 238 C560 241 532 248 512 258 C532 268 560 272 590 270 C650 265 715 260 770 264 C820 268 860 275 890 285 C870 295 840 308 800 318 C720 342 620 355 540 342 C500 335 470 322 450 305 Z"/>
+      <ellipse cx="450" cy="260" rx="65" ry="50"/>
+      <path d="M415 240 C415 225 450 218 485 240 L475 250 C462 240 438 240 425 250 Z" fill="#F5C518"/>
+      <ellipse cx="425" cy="252" rx="10" ry="12" fill="rgba(0,0,0,0.8)"/>
+      <ellipse cx="475" cy="252" rx="10" ry="12" fill="rgba(0,0,0,0.8)"/>
+      <path d="M450 295 C440 310 438 330 450 340 C462 330 460 310 450 295 Z" fill="#F5C518"/>
+      <circle cx="428" cy="248" r="4" fill="#fff"/>
+      <circle cx="478" cy="248" r="4" fill="#fff"/>
+    </svg>`,
+
+    'bird-flock': `<svg viewBox="0 0 900 500" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M200 200 C215 188 235 182 250 188 C235 195 220 200 215 210 C210 200 205 195 200 200 Z"/>
+      <path d="M250 188 C265 182 285 188 300 200 C285 195 270 200 265 210 C260 200 255 195 250 188 Z"/>
+      <path d="M380 150 C395 138 415 132 430 138 C415 145 400 150 395 160 C390 150 385 145 380 150 Z"/>
+      <path d="M430 138 C445 132 465 138 480 150 C465 145 450 150 445 160 C440 150 435 145 430 138 Z"/>
+      <path d="M540 220 C553 210 570 205 582 210 C570 215 558 220 554 228 C550 220 545 216 540 220 Z"/>
+      <path d="M582 210 C595 205 611 210 624 220 C611 215 600 220 596 228 C592 220 587 216 582 210 Z"/>
+      <path d="M680 170 C692 161 707 156 718 161 C707 166 696 170 693 178 C689 170 685 166 680 170 Z"/>
+      <path d="M718 161 C729 156 744 161 756 170 C744 166 734 170 731 178 C727 170 722 166 718 161 Z"/>
+      <path d="M100 280 C111 272 124 268 134 272 C124 276 114 280 111 287 C108 280 104 276 100 280 Z"/>
+      <path d="M134 272 C144 268 157 272 168 280 C157 276 148 280 145 287 C142 280 138 276 134 272 Z"/>
+      <path d="M810 250 C820 243 832 239 841 243 C832 247 823 250 820 257 C817 250 813 247 810 250 Z"/>
+      <path d="M841 243 C850 239 862 243 872 250 C862 247 854 250 851 257 C848 250 845 247 841 243 Z"/>
+      <path d="M460 310 C468 304 478 301 486 304 C478 308 470 310 468 316 C465 310 462 307 460 310 Z" opacity="0.7"/>
+      <path d="M486 304 C494 301 504 304 512 310 C504 307 496 310 494 316 C491 310 488 307 486 304 Z" opacity="0.7"/>
+    </svg>`,
+
+    // =======================================================
+    // COSMOS Y ESPACIO
+    // =======================================================
+    'rocket': `<svg viewBox="0 0 400 800" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M200 30 C160 80 130 160 120 260 L280 260 C270 160 240 80 200 30 Z" fill="#E8E8F0"/>
+      <rect x="120" y="255" width="160" height="280" rx="10" fill="#D0D0E0"/>
+      <path d="M120 380 L60 460 L60 535 L120 535 Z" fill="#CC3333"/>
+      <path d="M280 380 L340 460 L340 535 L280 535 Z" fill="#CC3333"/>
+      <ellipse cx="200" cy="360" rx="55" ry="55" fill="#BFEFFF" opacity="0.9"/>
+      <ellipse cx="200" cy="350" rx="35" ry="38" fill="#4488CC" opacity="0.8"/>
+      <rect x="135" y="535" width="130" height="50" rx="8" fill="#AA2222"/>
+      <path d="M155 585 C130 620 110 660 100 700 C130 680 160 645 175 610 Z" fill="#FF6600" opacity="0.8"/>
+      <path d="M245 585 C270 620 290 660 300 700 C270 680 240 645 225 610 Z" fill="#FF6600" opacity="0.8"/>
+      <path d="M178 585 C165 610 160 640 162 670 C175 648 182 618 178 585 Z" fill="#FFAA00" opacity="0.9"/>
+      <path d="M222 585 C235 610 240 640 238 670 C225 648 218 618 222 585 Z" fill="#FFAA00" opacity="0.9"/>
+      <path d="M200 585 C193 615 192 645 196 672 C200 648 207 618 200 585 Z" fill="#FFE066"/>
+      <rect x="162" y="280" width="16" height="14" rx="3" fill="#4488CC"/>
+      <rect x="222" y="280" width="16" height="14" rx="3" fill="#4488CC"/>
+    </svg>`,
+
+    'satellite': `<svg viewBox="0 0 700 500" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <rect x="280" y="200" width="140" height="100" rx="12" fill="#8888AA"/>
+      <rect x="290" y="210" width="120" height="80" rx="8" fill="#6666AA"/>
+      <rect x="300" y="220" width="100" height="60" rx="5" fill="#4455AA"/>
+      <rect x="310" y="230" width="35" height="40" rx="3" fill="#3366CC"/>
+      <rect x="355" y="230" width="35" height="40" rx="3" fill="#3366CC"/>
+      <rect x="60" y="215" width="220" height="70" rx="8" fill="#3344AA"/>
+      <rect x="80" y="225" width="180" height="50" rx="5" fill="#2255BB"/>
+      <rect x="420" y="215" width="220" height="70" rx="8" fill="#3344AA"/>
+      <rect x="440" y="225" width="180" height="50" rx="5" fill="#2255BB"/>
+      <line x1="60" y1="250" x2="280" y2="250" stroke="#6688CC" stroke-width="10"/>
+      <line x1="420" y1="250" x2="640" y2="250" stroke="#6688CC" stroke-width="10"/>
+      <ellipse cx="350" cy="250" rx="28" ry="28" fill="#AABBDD"/>
+      <ellipse cx="350" cy="250" rx="18" ry="18" fill="#6688AA"/>
+      <line x1="350" y1="300" x2="350" y2="380" stroke="#8888AA" stroke-width="8"/>
+      <path d="M310 380 C310 360 390 360 390 380 C390 400 310 400 310 380 Z" fill="#8888AA"/>
+    </svg>`,
+
+    'astronaut': `<svg viewBox="0 0 400 700" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <rect x="115" y="310" width="170" height="220" rx="40" fill="#E8E8F0"/>
+      <ellipse cx="200" cy="220" rx="90" ry="100" fill="#E8E8F0"/>
+      <ellipse cx="200" cy="215" rx="68" ry="75" fill="#BFEFFF" opacity="0.9"/>
+      <ellipse cx="200" cy="210" rx="50" ry="58" fill="#88CCEE" opacity="0.7"/>
+      <path d="M152 180 C155 160 200 150 248 180" stroke="rgba(255,255,255,0.5)" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <rect x="85" y="330" width="55" height="120" rx="28" fill="#D0D0E0"/>
+      <rect x="260" y="330" width="55" height="120" rx="28" fill="#D0D0E0"/>
+      <rect x="75" y="345" width="30" height="80" rx="15" fill="#C0C0D0"/>
+      <rect x="295" y="345" width="30" height="80" rx="15" fill="#C0C0D0"/>
+      <rect x="145" y="528" width="55" height="120" rx="28" fill="#D0D0E0"/>
+      <rect x="200" y="528" width="55" height="120" rx="28" fill="#D0D0E0"/>
+      <ellipse cx="170" cy="648" rx="34" ry="15" fill="#B0B0C0"/>
+      <ellipse cx="228" cy="648" rx="34" ry="15" fill="#B0B0C0"/>
+      <rect x="160" y="320" width="80" height="45" rx="8" fill="#AABBCC"/>
+      <rect x="170" y="328" width="60" height="28" rx="5" fill="#6688AA"/>
+      <rect x="155" y="430" width="90" height="60" rx="6" fill="#CCCCDD"/>
+      <rect x="163" y="438" width="36" height="44" rx="4" fill="#2255CC"/>
+      <rect x="205" y="438" width="32" height="44" rx="4" fill="#2255CC"/>
+    </svg>`,
+
+    'black-hole': `<svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="bhGrad" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#000000"/>
+          <stop offset="40%" stop-color="#0A0015"/>
+          <stop offset="65%" stop-color="#1A0035"/>
+          <stop offset="85%" stop-color="#3A0060" stop-opacity="0.8"/>
+          <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <ellipse cx="300" cy="300" rx="290" ry="60" fill="none" stroke="#7B00FF" stroke-width="18" opacity="0.35" transform="rotate(-20 300 300)"/>
+      <ellipse cx="300" cy="300" rx="240" ry="45" fill="none" stroke="#AA44FF" stroke-width="12" opacity="0.45" transform="rotate(-20 300 300)"/>
+      <ellipse cx="300" cy="300" rx="180" ry="28" fill="none" stroke="#CC88FF" stroke-width="8" opacity="0.6" transform="rotate(-20 300 300)"/>
+      <ellipse cx="300" cy="300" rx="120" ry="16" fill="#330044" opacity="0.95" transform="rotate(-20 300 300)"/>
+      <circle cx="300" cy="300" r="280" fill="url(#bhGrad)"/>
+      <circle cx="300" cy="300" r="95" fill="#000000"/>
+      <circle cx="300" cy="300" r="110" fill="none" stroke="#9B30FF" stroke-width="5" opacity="0.6"/>
+    </svg>`,
+
+    // =======================================================
+    // EXPLORACION E HISTORIA
+    // =======================================================
+    'compass': `<svg viewBox="0 0 500 500" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="250" cy="250" r="240" fill="none" stroke="currentColor" stroke-width="20"/>
+      <circle cx="250" cy="250" r="210" fill="none" stroke="currentColor" stroke-width="4" opacity="0.3"/>
+      <path d="M250 30 L262 240 L250 250 L238 240 Z" fill="#CC3333"/>
+      <path d="M250 470 L262 260 L250 250 L238 260 Z"/>
+      <path d="M30 250 L240 238 L250 250 L240 262 Z"/>
+      <path d="M470 250 L260 238 L250 250 L260 262 Z"/>
+      <circle cx="250" cy="250" r="28" fill="currentColor"/>
+      <circle cx="250" cy="250" r="16" fill="rgba(0,0,0,0.4)"/>
+      <text x="250" y="72" text-anchor="middle" font-size="38" font-weight="bold" fill="currentColor" font-family="sans-serif">N</text>
+      <text x="250" y="455" text-anchor="middle" font-size="32" fill="currentColor" font-family="sans-serif" opacity="0.7">S</text>
+      <text x="60" y="262" text-anchor="middle" font-size="32" fill="currentColor" font-family="sans-serif" opacity="0.7">W</text>
+      <text x="448" y="262" text-anchor="middle" font-size="32" fill="currentColor" font-family="sans-serif" opacity="0.7">E</text>
+    </svg>`,
+
+    'pyramid': `<svg viewBox="0 0 900 600" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="480" width="900" height="120" fill="#C8A84A" opacity="0.4"/>
+      <path d="M450 50 L820 480 L80 480 Z"/>
+      <path d="M450 50 L820 480 L640 480 L450 120 Z" fill="rgba(255,255,255,0.12)"/>
+      <path d="M450 50 L80 480 L260 480 L450 120 Z" fill="rgba(0,0,0,0.2)"/>
+      <path d="M80 480 L820 480 L820 500 L80 500 Z" fill="rgba(255,255,255,0.1)"/>
+      <path d="M370 240 L530 240 L560 280 L340 280 Z" fill="rgba(0,0,0,0.4)"/>
+      <path d="M390 250 L510 250 L535 275 L365 275 Z" fill="rgba(0,0,0,0.6)"/>
+    </svg>`,
+
+    'ancient-temple': `<svg viewBox="0 0 1000 600" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="500" width="1000" height="100" fill="#8B7355" opacity="0.5"/>
+      <rect x="50" y="460" width="900" height="50" rx="4"/>
+      <rect x="80" y="380" width="840" height="85"/>
+      <rect x="100" y="340" width="800" height="45" rx="3"/>
+      <rect x="100" y="200" width="140" height="145"/>
+      <rect x="290" y="200" width="140" height="145"/>
+      <rect x="480" y="200" width="140" height="145"/>
+      <rect x="670" y="200" width="140" height="145"/>
+      <path d="M100 200 L170 100 L240 200 Z" fill="rgba(0,0,0,0.2)"/>
+      <path d="M290 200 L360 100 L430 200 Z" fill="rgba(0,0,0,0.2)"/>
+      <path d="M480 200 L550 100 L620 200 Z" fill="rgba(0,0,0,0.2)"/>
+      <path d="M670 200 L740 100 L810 200 Z" fill="rgba(0,0,0,0.2)"/>
+      <rect x="80" y="190" width="840" height="18"/>
+      <rect x="60" y="90" width="880" height="30" rx="4"/>
+      <path d="M60 90 L500 30 L940 90 Z"/>
+    </svg>`,
+
+    'map-scroll': `<svg viewBox="0 0 700 500" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="80" cy="250" rx="80" ry="240" fill="#C8A068"/>
+      <ellipse cx="620" cy="250" rx="80" ry="240" fill="#C8A068"/>
+      <rect x="80" y="10" width="540" height="480" fill="#E8C88A"/>
+      <rect x="80" y="10" width="540" height="480" fill="none" stroke="#B89050" stroke-width="4"/>
+      <path d="M120 100 C200 80 300 120 350 100 C400 80 500 110 580 90" stroke="#8B6A30" stroke-width="3" fill="none" opacity="0.6"/>
+      <path d="M120 150 C180 140 260 160 350 145 C420 132 510 155 580 140" stroke="#8B6A30" stroke-width="2.5" fill="none" opacity="0.5"/>
+      <path d="M140 200 C220 185 320 210 380 195 C450 178 530 205 580 190" stroke="#8B6A30" stroke-width="2" fill="none" opacity="0.4"/>
+      <path d="M150 280 C180 260 240 250 280 260 C320 270 360 250 400 260 C440 270 480 255 510 265" stroke="#6B4A20" stroke-width="3" fill="none"/>
+      <path d="M280 260 C290 230 310 220 320 240" stroke="#6B4A20" stroke-width="2.5" fill="none"/>
+      <path d="M400 258 C415 235 435 225 445 245" stroke="#6B4A20" stroke-width="2.5" fill="none"/>
+      <circle cx="350" cy="300" r="18" fill="none" stroke="#AA3333" stroke-width="5"/>
+      <line x1="350" y1="282" x2="350" y2="258" stroke="#AA3333" stroke-width="4"/>
+      <path d="M330 258 L350 235 L370 258" fill="#AA3333"/>
+      <rect x="200" y="370" width="100" height="70" rx="6" fill="rgba(0,0,0,0.1)" stroke="#8B6A30" stroke-width="2"/>
+      <text x="250" y="411" text-anchor="middle" font-size="22" fill="#5A3A10" font-family="serif" font-style="italic">Mapa</text>
+    </svg>`,
+
+    // =======================================================
+    // ICONOS DE DATOS Y ALERTAS
+    // =======================================================
+    'alert-triangle': `<svg viewBox="0 0 600 550" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M300 40 L560 500 L40 500 Z"/>
+      <path d="M300 40 L540 490 L60 490 Z" fill="rgba(255,200,0,0.08)"/>
+      <rect x="272" y="200" width="56" height="170" rx="14" fill="rgba(0,0,0,0.55)"/>
+      <circle cx="300" cy="420" r="32" fill="rgba(0,0,0,0.55)"/>
+    </svg>`,
+
+    'data-chart': `<svg viewBox="0 0 700 500" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <rect x="40" y="40" width="620" height="380" rx="16" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.1)" stroke-width="2"/>
+      <line x1="80" y1="380" x2="660" y2="380" stroke="currentColor" stroke-width="3" opacity="0.4"/>
+      <line x1="80" y1="380" x2="80" y2="80" stroke="currentColor" stroke-width="3" opacity="0.4"/>
+      <polyline points="80,380 160,320 240,290 320,200 400,230 480,150 560,120 640,90" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M80,380 L160,320 L240,290 L320,200 L400,230 L480,150 L560,120 L640,90 L640,380 Z" fill="currentColor" opacity="0.15"/>
+      <circle cx="160" cy="320" r="8" fill="currentColor"/>
+      <circle cx="240" cy="290" r="8" fill="currentColor"/>
+      <circle cx="320" cy="200" r="10" fill="currentColor"/>
+      <circle cx="400" cy="230" r="8" fill="currentColor"/>
+      <circle cx="480" cy="150" r="10" fill="currentColor"/>
+      <circle cx="560" cy="120" r="8" fill="currentColor"/>
+      <circle cx="640" cy="90" r="10" fill="currentColor"/>
+    </svg>`,
+
+    'dna-helix': `<svg viewBox="0 0 300 800" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M80 50 C200 100 200 150 80 200 C200 250 200 300 80 350 C200 400 200 450 80 500 C200 550 200 600 80 650 C200 700 200 750 80 800" fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="round"/>
+      <path d="M220 50 C100 100 100 150 220 200 C100 250 100 300 220 350 C100 400 100 450 220 500 C100 550 100 600 220 650 C100 700 100 750 220 800" fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="round" opacity="0.6"/>
+      <line x1="80" y1="125" x2="220" y2="125" stroke="currentColor" stroke-width="7" stroke-linecap="round" opacity="0.8"/>
+      <line x1="80" y1="275" x2="220" y2="275" stroke="currentColor" stroke-width="7" stroke-linecap="round" opacity="0.8"/>
+      <line x1="80" y1="425" x2="220" y2="425" stroke="currentColor" stroke-width="7" stroke-linecap="round" opacity="0.8"/>
+      <line x1="80" y1="575" x2="220" y2="575" stroke="currentColor" stroke-width="7" stroke-linecap="round" opacity="0.8"/>
+      <line x1="80" y1="725" x2="220" y2="725" stroke="currentColor" stroke-width="7" stroke-linecap="round" opacity="0.8"/>
+      <line x1="113" y1="80" x2="187" y2="170" stroke="currentColor" stroke-width="5" stroke-linecap="round" opacity="0.5"/>
+      <line x1="150" y1="200" x2="150" y2="350" stroke="none"/>
+      <line x1="113" y1="230" x2="187" y2="320" stroke="currentColor" stroke-width="5" stroke-linecap="round" opacity="0.5"/>
+      <line x1="187" y1="380" x2="113" y2="470" stroke="currentColor" stroke-width="5" stroke-linecap="round" opacity="0.5"/>
+      <line x1="113" y1="530" x2="187" y2="620" stroke="currentColor" stroke-width="5" stroke-linecap="round" opacity="0.5"/>
+      <line x1="187" y1="680" x2="113" y2="770" stroke="currentColor" stroke-width="5" stroke-linecap="round" opacity="0.5"/>
+    </svg>`,
+
+    'radar-circle': `<svg viewBox="0 0 500 500" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="250" cy="250" r="235" fill="none" stroke="currentColor" stroke-width="8" opacity="0.5"/>
+      <circle cx="250" cy="250" r="175" fill="none" stroke="currentColor" stroke-width="5" opacity="0.35"/>
+      <circle cx="250" cy="250" r="115" fill="none" stroke="currentColor" stroke-width="4" opacity="0.25"/>
+      <circle cx="250" cy="250" r="55" fill="none" stroke="currentColor" stroke-width="3" opacity="0.2"/>
+      <line x1="250" y1="15" x2="250" y2="485" stroke="currentColor" stroke-width="2" opacity="0.15"/>
+      <line x1="15" y1="250" x2="485" y2="250" stroke="currentColor" stroke-width="2" opacity="0.15"/>
+      <line x1="84" y1="84" x2="416" y2="416" stroke="currentColor" stroke-width="1.5" opacity="0.1"/>
+      <line x1="416" y1="84" x2="84" y2="416" stroke="currentColor" stroke-width="1.5" opacity="0.1"/>
+      <path d="M250 250 L430 130 A235 235 0 0 0 250 15 Z" fill="currentColor" opacity="0.2"/>
+      <path d="M250 250 L430 130 A150 150 0 0 0 250 100 Z" fill="currentColor" opacity="0.15"/>
+      <circle cx="250" cy="250" r="14" fill="currentColor"/>
+      <circle cx="380" cy="150" r="10" fill="currentColor" opacity="0.9"/>
+      <circle cx="180" cy="320" r="7" fill="currentColor" opacity="0.6"/>
+      <circle cx="310" cy="380" r="5" fill="currentColor" opacity="0.4"/>
     </svg>`
   };
 
@@ -730,6 +1164,28 @@
     div.style.width  = (el.width  || 450) + 'px';
     div.style.height = (el.height || 350) + 'px';
     if (el.color) div.style.color = el.color;
+    if (el.primaryColor) {
+      div.style.color = el.primaryColor;
+      div.style.setProperty('--figure-primary', el.primaryColor);
+    }
+    if (el.secondaryColor) {
+      div.style.setProperty('--figure-secondary', el.secondaryColor);
+      div.querySelectorAll('[opacity], g:nth-child(even) path, path:nth-of-type(2)').forEach(node => {
+        const fill = node.getAttribute('fill');
+        if (!fill || fill === 'currentColor') {
+          node.style.fill = el.secondaryColor;
+        }
+      });
+    }
+    if (el.accentColor) {
+      div.style.setProperty('--figure-accent', el.accentColor);
+    }
+    if (el.stroke) {
+      div.querySelectorAll('path, polygon, circle, ellipse, line, rect').forEach(node => {
+        node.style.stroke = el.stroke;
+        if (el.strokeWidth) node.style.strokeWidth = el.strokeWidth + 'px';
+      });
+    }
 
     positionElement(div, el.position, 'center');
 

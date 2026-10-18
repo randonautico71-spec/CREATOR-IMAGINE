@@ -106,10 +106,14 @@ python scripts/quality_check.py --project projects/mi_video/
 
 | Tipo | Componente | Descripción |
 |---|---|---|
-| **Figuras & Siluetas** | `figure` | Ilustraciones vectoriales SVG a color, bien trazadas: paisajes/criaturas (`dinosaur-trex`, `dinosaur-brachiosaurus`, `dinosaur-raptor`, `mountains`, `volcano`, `city-skyline`, `planet`, `meteor`) y escenas humanas/domésticas (`person-standing`, `person-sitting`, `entity-glow`, `house`, `room-interior`, `sofa`, `table`, `lamp-floor`, `bush`, `entrance-gate`, `grass`) o SVG personalizado vía `svg` |
+| **Catálogo de Figuras SVG (48 Formas)** | `figure` | Repositorio interno de formas temáticas vectoriales editables por capas: fauna marina (`whale`, `shark`, `dolphin`, `octopus`, `manta-ray`, `fish-school`), náutica (`island-palm`, `lighthouse`, `sailboat`, `ship-cargo`, `ocean-waves`), naturaleza (`tree-pine`, `tree-oak`, `tree-palm-tall`, `eagle`, `bird-flock`), dinosaurios/paisajes (`dinosaur-trex`, `mountains`, `volcano`, `city-skyline`), entorno doméstico (`house`, `room-interior`, `sofa`, `table`, `lamp-floor`, `bush`, `entrance-gate`, `grass`, `person-standing`), espacio (`rocket`, `satellite`, `astronaut`, `black-hole`, `dna-helix`), iconografía (`compass`, `pyramid`, `ancient-temple`, `map-scroll`, `alert-triangle`, `data-chart`, `radar-circle`) |
+| **Estilos & Capas de Color** | `figure` | Modos `silhouette`, `glow`, `outline`, `duotone`, `neon`, `flat`; capas `primaryColor`, `secondaryColor`, `accentColor`, `stroke`, `strokeWidth` |
+| **Animación Orgánica Secundaria** | `motion` | Bucles continuos: `breathe`, `float`, `rise`, `pan`, `parallax`, `wiggle` (con amplitud angular), `sway` (balanceo natural de árboles/mástiles), `pulse` (latido/impacto rítmico) |
+| **Animaciones Lottie Vectoriales** | `lottie` | Renderizado nativo de JSON vectoriales Lottie a 60 fps con soporte opcional de trayectorias Bézier curvas `motionPath` |
+| **Fondos Procedurales Canvas2D** | `canvas-bg` | Anillos de radar concéntricos (`radar`) y oleaje oceánico multicapa con espuma procedimental (`waves`) sin assets pre-renderizados |
 | **Imágenes Transparentes** | `image` | Capas PNG / WebP con canal alpha con sombras, glow y movimiento parallax |
 | **Tipografía** | `title` | Rótulos de impacto con palabras destacadas (`accentWords`) |
-| **Métricas** | `counter` | Contadores numéricos animados con easing exponencial |
+| **Métricas** | `counter` | Contadores numéricos animados con física de muelle (`springTension`, `springFriction`) |
 | **Subtítulos** | `caption` | Subtítulos sincronizados palabra a palabra con la narración |
 | **Tarjetas & Datos** | `card`, `ranking`, `badge` | Cajas de datos, ránkings y etiquetas de aviso |
 | **Efectos** | `particles`, `camera` | Polvo estelar/estrellas con glow y movimientos de cámara (ken-burns, zoom, pan) |

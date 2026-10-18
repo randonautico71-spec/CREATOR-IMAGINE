@@ -417,7 +417,7 @@
     }
 
     .c-figure.style-glow {
-      filter: drop-shadow(0 0 35px var(--accent)) drop-shadow(0 0 10px rgba(255,255,255,0.4));
+      filter: drop-shadow(0 0 35px var(--figure-accent, var(--accent))) drop-shadow(0 0 10px rgba(255,255,255,0.4));
     }
 
     .c-figure.style-silhouette {
@@ -425,12 +425,30 @@
     }
 
     .c-figure.style-outline svg path,
-    .c-figure.style-outline svg polygon {
+    .c-figure.style-outline svg polygon,
+    .c-figure.style-outline svg circle,
+    .c-figure.style-outline svg ellipse,
+    .c-figure.style-outline svg rect {
       fill: none !important;
-      stroke: var(--accent);
+      stroke: var(--figure-accent, var(--accent));
       stroke-width: 4px;
       stroke-linejoin: round;
       stroke-linecap: round;
+    }
+
+    .c-figure.style-duotone svg [opacity],
+    .c-figure.style-duotone svg g:nth-child(even) path,
+    .c-figure.style-duotone svg path:nth-of-type(2) {
+      fill: var(--figure-secondary, var(--accent)) !important;
+      opacity: 0.85 !important;
+    }
+
+    .c-figure.style-neon {
+      filter: drop-shadow(0 0 8px var(--figure-accent, var(--accent))) drop-shadow(0 0 25px var(--figure-accent, var(--accent)));
+    }
+
+    .c-figure.style-flat {
+      filter: none !important;
     }
 
     /* ============================================================

@@ -1,25 +1,25 @@
 {
   "meta": {
-    "title": "TEST — Nuevas figuras",
+    "title": "SHOWCASE FIGURAS VECTORIALES",
     "slug": "shape_test",
-    "description": "Prueba visual de las nuevas siluetas vectoriales",
-    "duration": 6,
+    "description": "Catalogo tematico completo: fauna marina, nautica, mapas, cosmos y naturaleza",
+    "duration": 12,
     "fps": 30,
     "width": 1080,
     "height": 1920,
     "category": "documentary",
-    "tags": ["test"],
+    "tags": ["showcase", "vector", "shapes"],
     "brand": "CREATOR IMAGINE",
-    "brandTag": "TEST FIGURAS",
+    "brandTag": "CATALOGO VECTORIAL",
     "createdAt": "2026-10-18T00:00:00Z"
   },
   "theme": "dramatic",
-  "music": { "bpm": 80, "genre": "minimal", "intensity": 0.3, "baseVolume": 0.3, "fadeIn": 0.3, "fadeOut": 0.5 },
-  "globalEffects": { "grain": 0.03, "vignette": 0.5, "bloom": 0.15, "colorGrading": "cinematic" },
+  "music": { "bpm": 80, "genre": "minimal", "intensity": 0.35, "baseVolume": 0.3, "fadeIn": 0.3, "fadeOut": 0.5 },
+  "globalEffects": { "grain": 0.03, "vignette": 0.4, "bloom": 0.15, "colorGrading": "cinematic" },
   "scenes": [
     {
       "id": "casa_jardin",
-      "label": "Casa y jardin",
+      "label": "Escena terrestre y figuras humanas",
       "duration": 3,
       "transition": { "in": "fade", "out": "fade", "duration": 0.3 },
       "elements": [
@@ -29,21 +29,51 @@
         { "type": "figure", "shape": "bush", "position": {"x":0.9,"y":0.86,"anchor":"bottom-right"}, "flip": true, "width": 220, "height": 165, "delay": 0.15, "duration": 0.6 },
         { "type": "figure", "shape": "entrance-gate", "position": {"x":0.5,"y":0.78,"anchor":"bottom-center"}, "width": 300, "height": 214, "delay": 0.05, "duration": 0.6 },
         { "type": "figure", "shape": "house", "position": {"x":0.5,"y":0.55,"anchor":"center"}, "width": 640, "height": 480, "delay": 0.2, "motion": "none", "duration": 0.7 },
-        { "type": "figure", "shape": "person-standing", "position": {"x":0.75,"y":0.78,"anchor":"bottom-center"}, "width": 90, "height": 195, "delay": 0.5, "motion": "breathe", "duration": 0.6 }
+        { "type": "figure", "shape": "person-standing", "position": {"x":0.75,"y":0.78,"anchor":"bottom-center"}, "width": 90, "height": 195, "delay": 0.5, "motion": "breathe", "duration": 0.6 },
+        { "type": "badge", "text": "FIGURAS Y ENTORNO", "style": "default", "position": {"x":0.5,"y":0.15,"anchor":"center"}, "delay": 0.3 }
       ]
     },
     {
-      "id": "salon",
-      "label": "Salon interior",
+      "id": "oceano_nautico",
+      "label": "Fauna marina e islas oceanicas",
       "duration": 3,
       "transition": { "in": "fade", "out": "fade", "duration": 0.3 },
       "elements": [
-        { "type": "figure", "shape": "room-interior", "position": {"x":0.5,"y":0.0,"anchor":"top-center"}, "width": 1080, "height": 1200, "delay": 0, "duration": 0.5, "layer": "background" },
-        { "type": "figure", "shape": "sofa", "position": {"x":0.5,"y":0.78,"anchor":"bottom-center"}, "width": 560, "height": 280, "delay": 0.15, "duration": 0.6 },
-        { "type": "figure", "shape": "person-sitting", "position": {"x":0.42,"y":0.72,"anchor":"bottom-center"}, "width": 220, "height": 192, "delay": 0.3, "duration": 0.6 },
-        { "type": "figure", "shape": "table", "position": {"x":0.78,"y":0.82,"anchor":"bottom-center"}, "width": 260, "height": 148, "delay": 0.2, "duration": 0.6 },
-        { "type": "figure", "shape": "lamp-floor", "position": {"x":0.92,"y":0.80,"anchor":"bottom-center"}, "style": "glow", "width": 110, "height": 260, "delay": 0.1, "duration": 0.6 },
-        { "type": "figure", "shape": "entity-glow", "position": {"x":0.5,"y":0.35,"anchor":"center"}, "style": "glow", "width": 140, "height": 300, "opacity": 0.85, "delay": 0.6, "motion": "float", "duration": 0.8 }
+        { "type": "canvas-bg", "bgType": "waves", "options": { "amplitude": 80, "layers": 4, "speed": 0.8 } },
+        { "type": "figure", "shape": "island-palm", "position": {"x":0.22,"y":0.68,"anchor":"bottom-center"}, "width": 420, "height": 250, "delay": 0.1, "motion": "sway", "swayAmount": 3, "duration": 0.6 },
+        { "type": "figure", "shape": "lighthouse", "position": {"x":0.82,"y":0.65,"anchor":"bottom-center"}, "style": "glow", "width": 180, "height": 380, "delay": 0.2, "duration": 0.6 },
+        { "type": "figure", "shape": "sailboat", "position": {"x":0.55,"y":0.72,"anchor":"bottom-center"}, "width": 260, "height": 240, "delay": 0.3, "motion": "float", "duration": 0.6 },
+        { "type": "figure", "shape": "whale", "position": {"x":0.5,"y":0.88,"anchor":"center"}, "width": 650, "height": 360, "primaryColor": "#1E293B", "secondaryColor": "#0EA5E9", "style": "duotone", "delay": 0.2, "motion": "breathe", "duration": 0.8 },
+        { "type": "figure", "shape": "bird-flock", "position": {"x":0.5,"y":0.25,"anchor":"center"}, "width": 450, "height": 180, "delay": 0.4, "motion": "pan", "duration": 0.7 },
+        { "type": "badge", "text": "FAUNA & NAUTICA", "style": "default", "position": {"x":0.5,"y":0.12,"anchor":"center"}, "delay": 0.3 }
+      ]
+    },
+    {
+      "id": "cartografia_misterio",
+      "label": "Mapas, pergaminos y alertas",
+      "duration": 3,
+      "transition": { "in": "fade", "out": "fade", "duration": 0.3 },
+      "elements": [
+        { "type": "canvas-bg", "bgType": "radar", "options": { "rings": 6, "speed": 0.6, "color": "#EAB308" } },
+        { "type": "figure", "shape": "map-scroll", "position": {"x":0.5,"y":0.48,"anchor":"center"}, "style": "duotone", "primaryColor": "#D97706", "secondaryColor": "#FDE68A", "width": 540, "height": 420, "delay": 0.1, "duration": 0.6 },
+        { "type": "figure", "shape": "compass", "position": {"x":0.25,"y":0.35,"anchor":"center"}, "style": "duotone", "primaryColor": "#F59E0B", "secondaryColor": "#FFFFFF", "width": 260, "height": 260, "delay": 0.3, "motion": "wiggle", "wiggleAmount": 10, "duration": 0.5 },
+        { "type": "figure", "shape": "alert-triangle", "position": {"x":0.78,"y":0.35,"anchor":"center"}, "style": "neon", "accentColor": "#EF4444", "width": 200, "height": 200, "delay": 0.4, "motion": "pulse", "pulseFreq": 2.5, "duration": 0.5 },
+        { "type": "figure", "shape": "ancient-temple", "position": {"x":0.5,"y":0.85,"anchor":"bottom-center"}, "style": "silhouette", "color": "#78350F", "width": 650, "height": 380, "delay": 0.2, "duration": 0.6 },
+        { "type": "badge", "text": "CARTOGRAFIA & SIMBOLOS", "style": "default", "position": {"x":0.5,"y":0.12,"anchor":"center"}, "delay": 0.3 }
+      ]
+    },
+    {
+      "id": "cosmos_futurista",
+      "label": "Espacio, cohetes y radar",
+      "duration": 3,
+      "transition": { "in": "fade", "out": "fade", "duration": 0.3 },
+      "elements": [
+        { "type": "background", "style": "space", "animated": true },
+        { "type": "figure", "shape": "black-hole", "position": {"x":0.5,"y":0.4,"anchor":"center"}, "style": "glow", "accentColor": "#8B5CF6", "width": 600, "height": 600, "delay": 0, "motion": "pulse", "pulseFreq": 1.2, "duration": 0.7 },
+        { "type": "figure", "shape": "rocket", "position": {"x":0.5,"y":0.62,"anchor":"center"}, "style": "duotone", "primaryColor": "#F8FAFC", "secondaryColor": "#EF4444", "width": 280, "height": 380, "delay": 0.2, "motion": "rise", "duration": 0.7 },
+        { "type": "figure", "shape": "astronaut", "position": {"x":0.22,"y":0.68,"anchor":"center"}, "style": "silhouette", "color": "#38BDF8", "width": 240, "height": 280, "delay": 0.4, "motion": "float", "duration": 0.6 },
+        { "type": "figure", "shape": "satellite", "position": {"x":0.78,"y":0.68,"anchor":"center"}, "style": "duotone", "primaryColor": "#38BDF8", "secondaryColor": "#F59E0B", "width": 240, "height": 240, "delay": 0.3, "motion": "wiggle", "wiggleAmount": 6, "duration": 0.6 },
+        { "type": "badge", "text": "COSMOS & TECNOLOGIA", "style": "default", "position": {"x":0.5,"y":0.12,"anchor":"center"}, "delay": 0.3 }
       ]
     }
   ]

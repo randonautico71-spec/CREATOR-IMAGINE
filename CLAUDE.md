@@ -69,9 +69,23 @@ python scripts/verify_output.py --project projects/<slug>/
 - `dramatic` — Púrpura profundo, glow, cinemático
 
 ## Componentes disponibles
-- **Visuales & Siluetas**: `figure` — paisajes/criaturas (dinosaur-trex, dinosaur-brachiosaurus, dinosaur-raptor, mountains, volcano, city-skyline, planet, meteor) y escenas humanas/domésticas (person-standing, person-sitting, entity-glow, house, room-interior, sofa, table, lamp-floor, bush, entrance-gate, grass, o SVG personalizado vía `svg`); `image` (PNG/WebP/SVG transparentes con alpha y parallax), `candle` (vela procedural), `emoji`
-- **Tipografía & Datos**: `title` (con accentWords), `badge`, `card`, `counter` (numérico animado), `caption` (subtítulos dinámicos palabra por palabra), `ranking`
-- **Efectos & Cámara**: `particles` (estrellas/partículas con glow), `camera` (ken-burns, zoom-in, zoom-out, pan, parallax), `background` (space, gradient, solid)
+- **Visuales & Siluetas**: `figure` — Catálogo temático de 48 formas SVG editables:
+  - *Dinosaurios y Paisajes*: `dinosaur-trex`, `dinosaur-brachiosaurus`, `dinosaur-raptor`, `mountains`, `volcano`, `city-skyline`, `planet`, `meteor`
+  - *Fauna Marina*: `whale`, `shark`, `dolphin`, `octopus`, `manta-ray`, `fish-school`
+  - *Náutica e Islas*: `island-palm`, `lighthouse`, `sailboat`, `ship-cargo`, `ocean-waves`
+  - *Naturaleza y Aves*: `tree-pine`, `tree-oak`, `tree-palm-tall`, `eagle`, `bird-flock`
+  - *Escenas Domésticas y Personas*: `person-standing`, `person-sitting`, `entity-glow`, `house`, `room-interior`, `sofa`, `table`, `lamp-floor`, `bush`, `entrance-gate`, `grass`
+  - *Espacio y Ciencia*: `rocket`, `satellite`, `astronaut`, `black-hole`, `dna-helix`
+  - *Cartografía y Símbolos*: `compass`, `pyramid`, `ancient-temple`, `map-scroll`, `alert-triangle`, `data-chart`, `radar-circle`
+  - *SVG propio*: `custom` o código SVG embebido mediante `svg`.
+  - *Estilos de figura*: `silhouette`, `glow`, `outline`, `duotone`, `neon`, `flat`, `gradient`.
+  - *Capas de color y trazos*: `primaryColor`, `secondaryColor`, `accentColor`, `stroke`, `strokeWidth`.
+  - *Movimientos orgánicos*: `none`, `breathe`, `float`, `rise`, `pan`, `parallax`, `wiggle` (con `wiggleAmount`), `sway` (con `swayAmount`), `pulse` (con `pulseFreq`, `pulseAmount`), `motionPath`.
+- **Fondos Procedurales & Espaciales**: `canvas-bg` (`radar`, `waves`), `background` (`space`, `gradient`, `solid`)
+- **Animaciones Vectoriales Lottie**: `lottie` — Archivos JSON Lottie a 60 fps sincronizados con el timeline de Playwright y soporte opcional para trayectorias curvas `motionPath`
+- **Ilustraciones & Assets**: `image` (PNG/WebP/SVG transparentes con alpha y parallax), `candle` (vela procedural), `emoji`
+- **Tipografía & Datos**: `title` (con accentWords), `badge`, `card`, `counter` (numérico animado con física spring: `springTension`, `springFriction`), `caption` (subtítulos dinámicos palabra por palabra), `ranking`
+- **Efectos & Cámara**: `particles` (estrellas/partículas con glow), `camera` (ken-burns, zoom-in, zoom-out, pan, parallax)
 
 ## Estilo de referencia (CREATOR IMAGINE)
 - Fondo espacial/oscuro con gradientes
