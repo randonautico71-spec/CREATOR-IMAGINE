@@ -1,0 +1,44 @@
+node_modules/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Output binaries (no subir a Git)
+output/*
+!output/.gitkeep
+
+# Archivos pesados de proyectos y ejemplos
+projects/*/music.wav
+projects/*/voice.wav
+projects/*/preview.mp4
+projects/*/video.mp4
+projects/*/frames/
+projects/*/frames_*
+projects/*/temp/
+projects/*/*.jpg
+projects/*/*.png
+examples/*/music.wav
+examples/*/voice.wav
+examples/*/preview.mp4
+examples/*/video.mp4
+examples/*/frames/
+examples/*/frames_*
+examples/*/temp/
+examples/*/*.jpg
+examples/*/*.png
+output/*
+!output/.gitkeep
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/settings.json
+*.log

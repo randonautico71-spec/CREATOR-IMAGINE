@@ -1,0 +1,32 @@
+{
+  "id": "dramatic",
+  "name": "Dramatic",
+  "description": "Púrpura profundo, glow violeta, cinemático.",
+  "colors": {
+    "bg": ["#0C0014", "#130020", "#060008"],
+    "primary": "#FFFFFF",
+    "accent": "#BF5CFF",
+    "secondary": "#FF6B9D",
+    "danger": "#FF2D55"
+  },
+  "typography": {
+    "title": "Archivo Black",
+    "body": "Inter",
+    "numbers": "Roboto Condensed"
+  },
+  "motion": {
+    "defaultEnter": "rise",
+    "defaultExit": "fade",
+    "cameraIntensity": 0.06
+  },
+  "effects": {
+    "particleDensity": 0.45,
+    "glowIntensity": 0.55,
+    "grainIntensity": 0.04,
+    "vignetteIntensity": 0.7
+  },
+  "music": {
+    "defaultGenre": "tension",
+    "defaultBpm": 90
+  }
+}

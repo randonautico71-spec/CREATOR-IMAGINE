@@ -1,0 +1,381 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://creatorima gine.com/schema/timeline.schema.json",
+  "title": "Timeline Schema — CREATOR IMAGINE Engine",
+  "description": "Contrato de datos para vídeos audiovisuales verticales 1080x1920",
+  "type": "object",
+  "required": ["meta", "theme", "scenes"],
+  "additionalProperties": false,
+
+  "definitions": {
+    "color": {
+      "type": "string",
+      "pattern": "^#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6}|[0-9A-Fa-f]{8})$"
+    },
+    "duration": {
+      "type": "number",
+      "minimum": 0.1,
+      "maximum": 600
+    },
+    "easing": {
+      "type": "string",
+      "enum": ["linear","ease","ease-in","ease-out","ease-in-out","spring","bounce","elastic"]
+    },
+    "enterAnimation": {
+      "type": "string",
+      "enum": ["rise","fade","slide-left","slide-right","slide-up","slide-down","scale","flip","typewriter","none"]
+    },
+    "exitAnimation": {
+      "type": "string",
+      "enum": ["fade","slide-left","slide-right","slide-up","slide-down","scale","none"]
+    },
+    "position": {
+      "type": "object",
+      "properties": {
+        "x": { "type": "number", "minimum": 0, "maximum": 1 },
+        "y": { "type": "number", "minimum": 0, "maximum": 1 },
+        "anchor": {
+          "type": "string",
+          "enum": ["top-left","top-center","top-right","center-left","center","center-right","bottom-left","bottom-center","bottom-right"]
+        }
+      }
+    },
+
+    "elementTitle": {
+      "type": "object",
+      "required": ["type","text"],
+      "properties": {
+        "type": { "const": "title" },
+        "text": { "type": "string", "maxLength": 120 },
+        "subtext": { "type": "string", "maxLength": 200 },
+        "size": { "type": "string", "enum": ["xl","lg","md","sm"] },
+        "color": { "$ref": "#/definitions/color" },
+        "accentColor": { "$ref": "#/definitions/color" },
+        "accentWords": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "align": { "type": "string", "enum": ["left","center","right"] },
+        "enter": { "$ref": "#/definitions/enterAnimation" },
+        "exit": { "$ref": "#/definitions/exitAnimation" },
+        "position": { "$ref": "#/definitions/position" },
+        "delay": { "type": "number", "minimum": 0 },
+        "duration": { "$ref": "#/definitions/duration" }
+      }
+    },
+
+    "elementCounter": {
+      "type": "object",
+      "required": ["type","value","label"],
+      "properties": {
+        "type": { "const": "counter" },
+        "value": { "type": "number" },
+        "valueStart": { "type": "number" },
+        "prefix": { "type": "string", "maxLength": 10 },
+        "suffix": { "type": "string", "maxLength": 20 },
+        "decimals": { "type": "integer", "minimum": 0, "maximum": 3 },
+        "label": { "type": "string", "maxLength": 100 },
+        "sublabel": { "type": "string", "maxLength": 150 },
+        "color": { "$ref": "#/definitions/color" },
+        "accentColor": { "$ref": "#/definitions/color" },
+        "countDuration": { "$ref": "#/definitions/duration" },
+        "easing": { "$ref": "#/definitions/easing" },
+        "position": { "$ref": "#/definitions/position" },
+        "delay": { "type": "number", "minimum": 0 }
+      }
+    },
+
+    "elementCaption": {
+      "type": "object",
+      "required": ["type","text"],
+      "properties": {
+        "type": { "const": "caption" },
+        "text": { "type": "string", "maxLength": 500 },
+        "words": {
+          "type": "array",
+          "description": "Palabras con timestamps para subtítulos animados sincronizados",
+          "items": {
+            "type": "object",
+            "required": ["word","start","end"],
+            "properties": {
+              "word": { "type": "string" },
+              "start": { "type": "number", "minimum": 0 },
+              "end": { "type": "number", "minimum": 0 },
+              "accent": { "type": "boolean" }
+            }
+          }
+        },
+        "style": { "type": "string", "enum": ["standard","cinematic","bold","minimal"] },
+        "position": { "$ref": "#/definitions/position" },
+        "color": { "$ref": "#/definitions/color" },
+        "accentColor": { "$ref": "#/definitions/color" },
+        "fontSize": { "type": "string", "enum": ["lg","md","sm"] }
+      }
+    },
+
+    "elementParticles": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": { "const": "particles" },
+        "density": { "type": "number", "minimum": 0, "maximum": 1 },
+        "color": { "$ref": "#/definitions/color" },
+        "speed": { "type": "number", "minimum": 0.1, "maximum": 5 },
+        "size": { "type": "number", "minimum": 0.5, "maximum": 8 },
+        "glow": { "type": "boolean" },
+        "layer": { "type": "string", "enum": ["background","foreground"] }
+      }
+    },
+
+    "elementRanking": {
+      "type": "object",
+      "required": ["type","items"],
+      "properties": {
+        "type": { "const": "ranking" },
+        "title": { "type": "string", "maxLength": 80 },
+        "items": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 10,
+          "items": {
+            "type": "object",
+            "required": ["rank","label","value"],
+            "properties": {
+              "rank": { "type": "integer", "minimum": 1 },
+              "label": { "type": "string", "maxLength": 60 },
+              "value": { "type": ["string","number"] },
+              "highlight": { "type": "boolean" },
+              "flag": { "type": "string", "maxLength": 4 }
+            }
+          }
+        },
+        "position": { "$ref": "#/definitions/position" },
+        "accentColor": { "$ref": "#/definitions/color" },
+        "enter": { "$ref": "#/definitions/enterAnimation" },
+        "delay": { "type": "number", "minimum": 0 },
+        "stagger": { "type": "number", "minimum": 0.05, "maximum": 1 }
+      }
+    },
+
+    "elementCard": {
+      "type": "object",
+      "required": ["type","title"],
+      "properties": {
+        "type": { "const": "card" },
+        "title": { "type": "string", "maxLength": 80 },
+        "value": { "type": "string", "maxLength": 120 },
+        "description": { "type": "string", "maxLength": 300 },
+        "icon": { "type": "string", "maxLength": 50 },
+        "badge": { "type": "string", "maxLength": 30 },
+        "color": { "$ref": "#/definitions/color" },
+        "accentColor": { "$ref": "#/definitions/color" },
+        "position": { "$ref": "#/definitions/position" },
+        "enter": { "$ref": "#/definitions/enterAnimation" },
+        "delay": { "type": "number", "minimum": 0 }
+      }
+    },
+
+    "elementBackground": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": { "const": "background" },
+        "style": {
+          "type": "string",
+          "enum": ["gradient","solid","space","noise","radial","cinematic"]
+        },
+        "colors": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 4,
+          "items": { "$ref": "#/definitions/color" }
+        },
+        "animated": { "type": "boolean" },
+        "intensity": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    },
+
+    "elementCamera": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": { "const": "camera" },
+        "effect": {
+          "type": "string",
+          "enum": ["ken-burns","zoom-in","zoom-out","pan-left","pan-right","tilt","shake","none"]
+        },
+        "intensity": { "type": "number", "minimum": 0, "maximum": 1 },
+        "duration": { "$ref": "#/definitions/duration" },
+        "easing": { "$ref": "#/definitions/easing" }
+      }
+    },
+
+    "elementBadge": {
+      "type": "object",
+      "required": ["type", "text"],
+      "properties": {
+        "type": { "const": "badge" },
+        "text": { "type": "string", "maxLength": 80 },
+        "style": { "type": "string", "enum": ["default", "outline", "danger"] },
+        "color": { "$ref": "#/definitions/color" },
+        "position": { "$ref": "#/definitions/position" },
+        "delay": { "type": "number", "minimum": 0 }
+      }
+    },
+
+    "elementEmoji": {
+      "type": "object",
+      "required": ["type", "emoji"],
+      "properties": {
+        "type": { "const": "emoji" },
+        "emoji": { "type": "string", "maxLength": 10 },
+        "size": { "type": "string" },
+        "position": { "$ref": "#/definitions/position" },
+        "delay": { "type": "number", "minimum": 0 }
+      }
+    },
+
+    "elementCandle": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": { "const": "candle" },
+        "height": { "type": "number", "minimum": 10, "maximum": 500 },
+        "width": { "type": "number", "minimum": 5, "maximum": 200 },
+        "color": { "type": "string" },
+        "position": { "$ref": "#/definitions/position" },
+        "delay": { "type": "number", "minimum": 0 }
+      }
+    },
+
+    "element": {
+      "oneOf": [
+        { "$ref": "#/definitions/elementTitle" },
+        { "$ref": "#/definitions/elementCounter" },
+        { "$ref": "#/definitions/elementCaption" },
+        { "$ref": "#/definitions/elementParticles" },
+        { "$ref": "#/definitions/elementRanking" },
+        { "$ref": "#/definitions/elementCard" },
+        { "$ref": "#/definitions/elementBackground" },
+        { "$ref": "#/definitions/elementCamera" },
+        { "$ref": "#/definitions/elementBadge" },
+        { "$ref": "#/definitions/elementEmoji" },
+        { "$ref": "#/definitions/elementCandle" }
+      ]
+    },
+
+    "scene": {
+      "type": "object",
+      "required": ["id","duration","elements"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9_-]+$" },
+        "label": { "type": "string", "maxLength": 80 },
+        "duration": { "$ref": "#/definitions/duration" },
+        "transition": {
+          "type": "object",
+          "properties": {
+            "in": { "type": "string", "enum": ["fade","wipe-left","wipe-right","mask-circle","none"] },
+            "out": { "type": "string", "enum": ["fade","wipe-left","wipe-right","mask-circle","none"] },
+            "duration": { "type": "number", "minimum": 0.1, "maximum": 2 }
+          }
+        },
+        "elements": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/definitions/element" }
+        },
+        "narration": {
+          "type": "object",
+          "properties": {
+            "text": { "type": "string", "maxLength": 1000 },
+            "voice": { "type": "string", "enum": ["carmen"] },
+            "stability": { "type": "number", "minimum": 0, "maximum": 1 },
+            "similarity": { "type": "number", "minimum": 0, "maximum": 1 }
+          }
+        },
+        "audio": {
+          "type": "object",
+          "properties": {
+            "sfx": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["type","at"],
+                "properties": {
+                  "type": { "type": "string", "enum": ["whoosh","impact","rise","chime","pulse","deep-hit","sweep","sparkle"] },
+                  "at": { "type": "number", "minimum": 0 },
+                  "volume": { "type": "number", "minimum": 0, "maximum": 1 }
+                }
+              }
+            },
+            "musicVolume": { "type": "number", "minimum": 0, "maximum": 1 }
+          }
+        }
+      }
+    }
+  },
+
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["title","slug","duration","fps","width","height"],
+      "properties": {
+        "title": { "type": "string", "maxLength": 200 },
+        "slug": { "type": "string", "pattern": "^[a-z0-9_-]+$" },
+        "description": { "type": "string", "maxLength": 500 },
+        "duration": { "$ref": "#/definitions/duration" },
+        "fps": { "type": "integer", "enum": [24, 30, 60] },
+        "width": { "type": "integer", "enum": [1080, 720] },
+        "height": { "type": "integer", "enum": [1920, 1280] },
+        "category": {
+          "type": "string",
+          "enum": ["history","science","sports","finance","documentary","technology","culture"]
+        },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "createdAt": { "type": "string", "format": "date-time" }
+      }
+    },
+
+    "theme": {
+      "type": "string",
+      "enum": ["documentary","luxury","sports","technology","dramatic"]
+    },
+
+    "music": {
+      "type": "object",
+      "properties": {
+        "bpm": { "type": "integer", "minimum": 60, "maximum": 180 },
+        "genre": {
+          "type": "string",
+          "enum": ["dramatic","epic","minimal","electronic","orchestral","tension","upbeat"]
+        },
+        "key": { "type": "string" },
+        "intensity": { "type": "number", "minimum": 0, "maximum": 1 },
+        "baseVolume": { "type": "number", "minimum": 0, "maximum": 1 },
+        "fadeIn": { "type": "number", "minimum": 0 },
+        "fadeOut": { "type": "number", "minimum": 0 }
+      }
+    },
+
+    "scenes": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 50,
+      "items": { "$ref": "#/definitions/scene" }
+    },
+
+    "globalEffects": {
+      "type": "object",
+      "properties": {
+        "grain": { "type": "number", "minimum": 0, "maximum": 1 },
+        "vignette": { "type": "number", "minimum": 0, "maximum": 1 },
+        "bloom": { "type": "number", "minimum": 0, "maximum": 1 },
+        "colorGrading": {
+          "type": "string",
+          "enum": ["none","cinematic","warm","cold","desaturated","vivid"]
+        }
+      }
+    }
+  }
+}

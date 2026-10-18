@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CREATOR IMAGINE — Render Engine</title>
+
+  <!--
+    NOTA CLOUD: Las fuentes se cargan con font-display:swap y stack de fallback seguro.
+    Si el entorno cloud no tiene acceso a Google Fonts, el motor usa las fuentes del sistema.
+    No bloquea el render en ningún caso.
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;700;800;900&family=Roboto+Condensed:wght@400;700;900&display=swap"
+        rel="stylesheet" media="print" onload="this.media='all'">
+
+  <style>
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      /* Dimensiones fijas del canvas de render */
+      --W: 1080px;
+      --H: 1920px;
+
+      /* Paleta activa (sobreescrita por el tema vía JS) */
+      --bg-1: #160D28;
+      --bg-2: #07131F;
+      --bg-3: #02050A;
+      --primary: #FFFFFF;
+      --accent:  #FFD43B;
+      --secondary: #55E6FF;
+      --danger:  #FF4C6B;
+
+      /* Tipografía con fallbacks seguros para entornos sin red */
+      --font-title:   'Archivo Black',   'Arial Black', Impact, sans-serif;
+      --font-body:    'Inter',           'Helvetica Neue', Arial, sans-serif;
+      --font-numbers: 'Roboto Condensed','Arial Narrow',  Arial, sans-serif;
+
+      /* Escala tipográfica */
+      --text-xl:      96px;
+      --text-lg:      72px;
+      --text-md:      48px;
+      --text-sm:      36px;
+      --text-xs:      24px;
+      --text-caption: 20px;
+    }
+
+    html, body {
+      width:  var(--W);
+      height: var(--H);
+      overflow: hidden;
+      background: #000;
+      /* Evitar antialias inconsistente entre frames */
+      -webkit-font-smoothing: antialiased;
+      text-rendering: geometricPrecision;
+    }
+
+    /* ============================================================
+       STAGE — Canvas principal del vídeo
+    ============================================================ */
+    #stage {
+      position: relative;
+      width:  var(--W);
+      height: var(--H);
+      overflow: hidden;
+      background: linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 50%, var(--bg-3) 100%);
+      /* Forzar GPU layer para composición consistente */
+      will-change: transform;
+      transform: translateZ(0);
+    }
+
+    /* ============================================================
+       SISTEMA DE CAPAS
+    ============================================================ */
+    .layer {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    #layer-bg      { z-index: 1; }
+    #layer-fx      { z-index: 2; }
+    #layer-content { z-index: 10; }
+    #layer-overlay { z-index: 20; }
+    #layer-captions{ z-index: 30; }
+
+    /* ============================================================
+       FONDOS
+    ============================================================ */
+    .bg-space {
+      background:
+        radial-gradient(ellipse 120% 80% at 50% -20%, rgba(85,230,255,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 80%  60% at 80% 110%, rgba(255,212,59,0.08)  0%, transparent 50%),
+        linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 60%, var(--bg-3) 100%);
+    }
+
+    /* ============================================================
+       COMPONENTE: TÍTULO
+    ============================================================ */
+    .c-title {
+      position: absolute;
+      font-family: var(--font-title);
+      color: var(--primary);
+      text-align: center;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      text-shadow: 0 4px 40px rgba(0,0,0,0.8);
+      will-change: transform, opacity;
+      width: 960px;   /* dejar margen en frame 1080 */
+      max-width: 960px;
+    }
+
+    .c-title.size-xl { font-size: var(--text-xl); }
+    .c-title.size-lg { font-size: var(--text-lg); }
+    .c-title.size-md { font-size: var(--text-md); }
+    .c-title.size-sm { font-size: var(--text-sm); }
+
+    .c-title .accent-word { color: var(--accent); display: inline; }
+
+    .c-title .subtext {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 0.4em;
+      font-weight: 600;
+      color: rgba(255,255,255,0.7);
+      margin-top: 0.4em;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* ============================================================
+       COMPONENTE: BADGE
+    ============================================================ */
+    .c-badge {
+      position: absolute;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-body);
+      font-size: var(--text-caption);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 10px 24px;
+      border-radius: 100px;
+      background: var(--accent);
+      color: #000;
+      will-change: transform, opacity;
+    }
+
+    .c-badge.style-outline {
+      background: transparent;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+    }
+
+    .c-badge.style-danger {
+      background: var(--danger);
+      color: #fff;
+    }
+
+    /* ============================================================
+       COMPONENTE: COUNTER
+    ============================================================ */
+    .c-counter {
+      position: absolute;
+      text-align: center;
+      will-change: transform, opacity;
+    }
+
+    .c-counter .value {
+      font-family: var(--font-numbers);
+      font-size: var(--text-xl);
+      font-weight: 900;
+      color: var(--accent);
+      line-height: 1;
+      text-shadow: 0 0 60px rgba(255,212,59,0.6), 0 4px 20px rgba(0,0,0,0.8);
+    }
+
+    .c-counter .prefix,
+    .c-counter .suffix {
+      font-family: var(--font-numbers);
+      font-size: 0.55em;
+      font-weight: 700;
+      vertical-align: super;
+      opacity: 0.9;
+    }
+
+    .c-counter .label {
+      font-family: var(--font-body);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      color: rgba(255,255,255,0.85);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-top: 10px;
+    }
+
+    .c-counter .sublabel {
+      font-family: var(--font-body);
+      font-size: var(--text-caption);
+      font-weight: 400;
+      color: rgba(255,255,255,0.5);
+      margin-top: 4px;
+    }
+
+    .counter-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,212,59,0.25);
+      border-radius: 20px;
+      padding: 36px 52px;
+      backdrop-filter: blur(20px);
+    }
+
+    /* ============================================================
+       COMPONENTE: CAPTIONS
+    ============================================================ */
+    .c-captions {
+      position: absolute;
+      left: 40px;
+      right: 40px;
+      text-align: center;
+      font-family: var(--font-body);
+    }
+
+    .c-captions .caption-word {
+      display: inline;
+      font-size: var(--text-sm);
+      font-weight: 700;
+      color: rgba(255,255,255,0.95);
+      transition: color 0.08s, text-shadow 0.08s;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.9);
+    }
+
+    .c-captions .caption-word.active {
+      color: var(--accent);
+      text-shadow: 0 0 30px rgba(255,212,59,0.8), 0 2px 12px rgba(0,0,0,0.9);
+    }
+
+    .c-captions.style-cinematic .caption-word {
+      font-family: var(--font-title);
+      font-size: var(--text-md);
+      text-transform: uppercase;
+    }
+
+    .caption-box {
+      background: rgba(0,0,0,0.65);
+      border-radius: 14px;
+      padding: 18px 30px;
+      border-left: 4px solid var(--accent);
+      backdrop-filter: blur(8px);
+    }
+
+    /* ============================================================
+       COMPONENTE: RANKING
+    ============================================================ */
+    .c-ranking {
+      position: absolute;
+      width: 920px;
+    }
+
+    .c-ranking .ranking-title {
+      font-family: var(--font-body);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 24px;
+    }
+
+    .c-ranking .ranking-item {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      padding: 22px 28px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 16px;
+      margin-bottom: 12px;
+      border: 1px solid rgba(255,255,255,0.06);
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .c-ranking .ranking-item.show  { opacity: 1; transform: translateX(0); }
+    .c-ranking .ranking-item.highlight {
+      background: rgba(255,212,59,0.08);
+      border-color: rgba(255,212,59,0.3);
+    }
+
+    .c-ranking .rank-num         { font-family: var(--font-numbers); font-size: var(--text-md); font-weight: 900; color: rgba(255,255,255,0.2); width: 64px; flex-shrink: 0; }
+    .c-ranking .rank-num.top-1   { color: #FFD700; }
+    .c-ranking .rank-num.top-2   { color: #C0C0C0; }
+    .c-ranking .rank-num.top-3   { color: #CD7F32; }
+    .c-ranking .rank-label       { font-family: var(--font-body);    font-size: var(--text-sm); font-weight: 600; color: var(--primary); flex: 1; }
+    .c-ranking .rank-flag        { font-size: var(--text-md); }
+    .c-ranking .rank-value       { font-family: var(--font-numbers); font-size: var(--text-sm); font-weight: 700; color: var(--accent); }
+
+    /* ============================================================
+       COMPONENTE: CARD
+    ============================================================ */
+    .c-card {
+      position: absolute;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 24px;
+      padding: 40px;
+      backdrop-filter: blur(24px);
+      will-change: transform, opacity;
+      max-width: 900px;
+    }
+
+    .c-card .card-icon        { font-size: 64px; margin-bottom: 16px; }
+    .c-card .card-badge       { display: inline-block; font-family: var(--font-body); font-size: var(--text-caption); font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; padding: 6px 18px; border-radius: 100px; background: var(--accent); color: #000; margin-bottom: 16px; }
+    .c-card .card-title       { font-family: var(--font-title);   font-size: var(--text-md); color: var(--primary); margin-bottom: 12px; }
+    .c-card .card-value       { font-family: var(--font-numbers); font-size: var(--text-lg); font-weight: 900; color: var(--accent); }
+    .c-card .card-desc        { font-family: var(--font-body);    font-size: var(--text-xs); color: rgba(255,255,255,0.65); margin-top: 12px; line-height: 1.5; }
+
+    /* ============================================================
+       COMPONENTE: EMOJI (elemento visual decorativo)
+    ============================================================ */
+    .c-emoji {
+      position: absolute;
+      font-size: 140px;
+      line-height: 1;
+      will-change: transform, opacity;
+      filter: drop-shadow(0 0 30px rgba(255,212,59,0.4));
+    }
+
+    /* ============================================================
+       COMPONENTE: CANDLE (vela con llama — puro CSS+SVG)
+    ============================================================ */
+    .c-candle {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      will-change: transform, opacity;
+    }
+
+    .c-candle .flame {
+      width: 40px;
+      height: 70px;
+      background: radial-gradient(ellipse 60% 100% at 50% 100%,
+        #FFD700 0%, #FF8C00 40%, rgba(255,69,0,0.6) 70%, transparent 100%);
+      border-radius: 50% 50% 30% 30% / 60% 60% 40% 40%;
+      animation: flame-flicker 0.18s ease-in-out infinite alternate;
+      filter: blur(2px);
+    }
+
+    .c-candle .flame::after {
+      content: '';
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 16px;
+      height: 30px;
+      background: radial-gradient(ellipse, #fff9e0 0%, transparent 100%);
+      border-radius: 50%;
+    }
+
+    .c-candle .body {
+      width: 36px;
+      height: 120px;
+      background: linear-gradient(180deg, #e8e8e8 0%, #c8c8c8 100%);
+      border-radius: 4px;
+      position: relative;
+    }
+
+    .c-candle .body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 20px;
+      background: #333;
+      border-radius: 2px;
+    }
+
+    @keyframes flame-flicker {
+      0%   { transform: scaleX(1)    scaleY(1)    rotate(-2deg); }
+      100% { transform: scaleX(0.92) scaleY(1.05) rotate(2deg);  }
+    }
+
+    /* ============================================================
+       PARTÍCULAS (canvas)
+    ============================================================ */
+    #particles-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    /* ============================================================
+       EFECTOS GLOBALES
+    ============================================================ */
+    .fx-vignette {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 100% 100% at 50% 50%,
+        transparent 50%, rgba(0,0,0,0.7) 100%);
+    }
+
+    .fx-glow-top {
+      position: absolute;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(85,230,255,0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    /* ============================================================
+       BRANDING
+    ============================================================ */
+    .brand-top-left {
+      position: absolute;
+      top: 60px; left: 60px;
+      font-family: var(--font-body);
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .brand-top-right {
+      position: absolute;
+      top: 60px; right: 60px;
+      font-family: var(--font-body);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+    }
+
+    /* ============================================================
+       ANIMACIONES
+    ============================================================ */
+    @keyframes rise {
+      from { opacity: 0; transform: translate(-50%, calc(-50% + 60px)); }
+      to   { opacity: 1; transform: translate(-50%, -50%); }
+    }
+
+    @keyframes rise-no-center {
+      from { opacity: 0; transform: translateY(60px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fade-in {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    @keyframes slide-left {
+      from { opacity: 0; transform: translate(calc(-50% + 80px), -50%); }
+      to   { opacity: 1; transform: translate(-50%, -50%); }
+    }
+
+    @keyframes scale-in {
+      from { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+      to   { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    }
+
+    @keyframes glow-pulse {
+      0%,100% { filter: brightness(1)   drop-shadow(0 0 20px rgba(255,212,59,0.4)); }
+      50%     { filter: brightness(1.1) drop-shadow(0 0 40px rgba(255,212,59,0.8)); }
+    }
+
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50%     { transform: translateY(-14px); }
+    }
+
+    .will-animate { opacity: 0; }
+  </style>
+</head>
+<body>
+  <div id="stage">
+    <!-- FONDO -->
+    <div id="layer-bg" class="layer">
+      <div id="bg-element" class="bg-space"></div>
+      <canvas id="particles-canvas"></canvas>
+      <div class="fx-glow-top"></div>
+    </div>
+
+    <!-- EFECTOS -->
+    <div id="layer-fx" class="layer">
+      <div class="fx-vignette"></div>
+    </div>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <div id="layer-content" class="layer"></div>
+
+    <!-- OVERLAY (branding) -->
+    <div id="layer-overlay" class="layer">
+      <div class="brand-top-left" id="brand-name">CREATOR IMAGINE</div>
+      <div class="brand-top-right" id="brand-tag"></div>
+    </div>
+
+    <!-- CAPTIONS -->
+    <div id="layer-captions" class="layer"></div>
+  </div>
+
+  <!--
+    IMPORTANTE: timeline_runtime.js se inyecta en tiempo de ejecución
+    por render_worker.js usando page.addScriptTag().
+    El motor NO lo carga con <script src="..."> para evitar race conditions
+    con la inyección del timeline (window.__TIMELINE__).
+    No añadir aquí ningún <script src>.
+  -->
+</body>
+</html>

@@ -1,0 +1,287 @@
+{
+  "meta": {
+    "title": "TEST — Motor CREATOR IMAGINE",
+    "slug": "system_test",
+    "description": "Prueba de sistema del motor audiovisual",
+    "duration": 15,
+    "fps": 60,
+    "width": 1080,
+    "height": 1920,
+    "category": "documentary",
+    "tags": ["test", "sistema"],
+    "brand": "CREATOR IMAGINE",
+    "brandTag": "SISTEMA TEST",
+    "createdAt": "2026-10-18T00:00:00Z"
+  },
+
+  "theme": "documentary",
+
+  "music": {
+    "bpm": 80,
+    "genre": "dramatic",
+    "intensity": 0.7,
+    "baseVolume": 0.5,
+    "fadeIn": 1.0,
+    "fadeOut": 2.0
+  },
+
+  "globalEffects": {
+    "grain": 0.05,
+    "vignette": 0.6,
+    "bloom": 0.2,
+    "colorGrading": "cinematic"
+  },
+
+  "scenes": [
+    {
+      "id": "intro",
+      "label": "Apertura",
+      "duration": 3,
+      "transition": {
+        "in": "fade",
+        "out": "fade",
+        "duration": 0.5
+      },
+      "elements": [
+        {
+          "type": "background",
+          "style": "space",
+          "animated": true
+        },
+        {
+          "type": "particles",
+          "density": 0.4,
+          "glow": true,
+          "speed": 0.3,
+          "layer": "background"
+        },
+        {
+          "type": "camera",
+          "effect": "ken-burns",
+          "intensity": 0.04,
+          "duration": 3,
+          "easing": "ease-out"
+        },
+        {
+          "type": "title",
+          "text": "¿QUÉ PASARÍA SI",
+          "subtext": "la Tierra dejara de girar?",
+          "size": "lg",
+          "accentWords": ["PASARÍA"],
+          "enter": "rise",
+          "delay": 0.3,
+          "position": { "x": 0.5, "y": 0.45, "anchor": "center" }
+        }
+      ],
+      "narration": {
+        "text": "¿Qué pasaría si la Tierra dejara de girar de repente?",
+        "voice": "carmen",
+        "stability": 0.7,
+        "similarity": 0.85
+      },
+      "audio": {
+        "sfx": [
+          { "type": "rise", "at": 0.0, "volume": 0.5 }
+        ],
+        "musicVolume": 0.4
+      }
+    },
+    {
+      "id": "dato_1",
+      "label": "Dato: Velocidad",
+      "duration": 4,
+      "transition": {
+        "in": "fade",
+        "out": "fade",
+        "duration": 0.4
+      },
+      "elements": [
+        {
+          "type": "background",
+          "style": "space",
+          "animated": true
+        },
+        {
+          "type": "particles",
+          "density": 0.35,
+          "glow": true,
+          "speed": 0.2,
+          "layer": "background"
+        },
+        {
+          "type": "camera",
+          "effect": "zoom-in",
+          "intensity": 0.03,
+          "duration": 4
+        },
+        {
+          "type": "title",
+          "text": "VELOCIDAD DE ROTACIÓN",
+          "size": "md",
+          "enter": "slide-right",
+          "delay": 0.1,
+          "position": { "x": 0.5, "y": 0.25, "anchor": "center" }
+        },
+        {
+          "type": "counter",
+          "value": 1674,
+          "valueStart": 0,
+          "suffix": " km/h",
+          "label": "En el ecuador",
+          "sublabel": "Fuente: NASA",
+          "countDuration": 2.5,
+          "easing": "ease-out",
+          "delay": 0.5,
+          "position": { "x": 0.5, "y": 0.5, "anchor": "center" }
+        },
+        {
+          "type": "caption",
+          "text": "La Tierra gira a 1.674 kilómetros por hora",
+          "style": "cinematic",
+          "words": [
+            { "word": "La", "start": 0.2, "end": 0.5 },
+            { "word": "Tierra", "start": 0.5, "end": 0.9 },
+            { "word": "gira", "start": 0.9, "end": 1.2 },
+            { "word": "a", "start": 1.2, "end": 1.4 },
+            { "word": "1.674", "start": 1.4, "end": 2.1, "accent": true },
+            { "word": "kilómetros", "start": 2.1, "end": 2.7 },
+            { "word": "por", "start": 2.7, "end": 2.9 },
+            { "word": "hora", "start": 2.9, "end": 3.4, "accent": true }
+          ],
+          "position": { "x": 0.5, "y": 0.82, "anchor": "bottom-center" }
+        }
+      ],
+      "narration": {
+        "text": "La Tierra gira a mil seiscientos setenta y cuatro kilómetros por hora en el ecuador.",
+        "voice": "carmen"
+      },
+      "audio": {
+        "sfx": [
+          { "type": "impact", "at": 0.1, "volume": 0.6 }
+        ],
+        "musicVolume": 0.5
+      }
+    },
+    {
+      "id": "ranking",
+      "label": "Consecuencias",
+      "duration": 5,
+      "transition": {
+        "in": "wipe-left",
+        "out": "fade",
+        "duration": 0.5
+      },
+      "elements": [
+        {
+          "type": "background",
+          "style": "space",
+          "animated": true
+        },
+        {
+          "type": "particles",
+          "density": 0.3,
+          "glow": true,
+          "speed": 0.15
+        },
+        {
+          "type": "title",
+          "text": "CONSECUENCIAS",
+          "subtext": "Si la rotación se detuviera",
+          "size": "md",
+          "enter": "fade",
+          "delay": 0.1,
+          "position": { "x": 0.5, "y": 0.15, "anchor": "center" }
+        },
+        {
+          "type": "ranking",
+          "items": [
+            { "rank": 1, "label": "Vientos de 1.674 km/h", "value": "💨", "highlight": true },
+            { "rank": 2, "label": "Día de 6 meses", "value": "☀️" },
+            { "rank": 3, "label": "Océanos se desplazan", "value": "🌊" },
+            { "rank": 4, "label": "Campo magnético cae", "value": "⚡" }
+          ],
+          "enter": "rise",
+          "delay": 0.4,
+          "stagger": 0.2,
+          "position": { "x": 0.5, "y": 0.35, "anchor": "top-center" }
+        },
+        {
+          "type": "caption",
+          "text": "Las consecuencias serían catastróficas para toda la vida en la Tierra",
+          "style": "standard",
+          "position": { "x": 0.5, "y": 0.88, "anchor": "bottom-center" }
+        }
+      ],
+      "narration": {
+        "text": "Las consecuencias serían catastróficas. Vientos de más de mil seiscientos kilómetros por hora arrasarían todo.",
+        "voice": "carmen"
+      },
+      "audio": {
+        "sfx": [
+          { "type": "whoosh", "at": 0.0, "volume": 0.5 },
+          { "type": "deep-hit", "at": 2.5, "volume": 0.7 }
+        ],
+        "musicVolume": 0.6
+      }
+    },
+    {
+      "id": "cierre",
+      "label": "Cierre",
+      "duration": 3,
+      "transition": {
+        "in": "fade",
+        "out": "fade",
+        "duration": 0.8
+      },
+      "elements": [
+        {
+          "type": "background",
+          "style": "space",
+          "animated": true
+        },
+        {
+          "type": "particles",
+          "density": 0.5,
+          "glow": true,
+          "speed": 0.4
+        },
+        {
+          "type": "camera",
+          "effect": "zoom-out",
+          "intensity": 0.05,
+          "duration": 3
+        },
+        {
+          "type": "title",
+          "text": "¿Y tú qué harías?",
+          "subtext": "Deja tu respuesta 👇",
+          "size": "lg",
+          "accentWords": ["tú"],
+          "enter": "scale",
+          "delay": 0.5,
+          "position": { "x": 0.5, "y": 0.45, "anchor": "center" }
+        },
+        {
+          "type": "card",
+          "badge": "CREATOR IMAGINE",
+          "title": "Más vídeos así",
+          "description": "Síguenos para más preguntas que cambian tu forma de ver el mundo",
+          "icon": "🎬",
+          "enter": "rise",
+          "delay": 1.0,
+          "position": { "x": 0.5, "y": 0.72, "anchor": "center" }
+        }
+      ],
+      "narration": {
+        "text": "¿Y tú qué harías si tuvieras solo un minuto antes de que la Tierra se detuviera? Déjalo en los comentarios.",
+        "voice": "carmen"
+      },
+      "audio": {
+        "sfx": [
+          { "type": "chime", "at": 0.5, "volume": 0.5 }
+        ],
+        "musicVolume": 0.3
+      }
+    }
+  ]
+}

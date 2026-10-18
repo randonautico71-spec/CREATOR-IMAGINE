@@ -1,0 +1,186 @@
+{
+  "meta": {
+    "title": "Smoke Test — CREATOR IMAGINE",
+    "slug": "cloud_smoke_test",
+    "description": "Prueba de 5 segundos para validar el motor audiovisual en Cloud",
+    "duration": 5,
+    "fps": 60,
+    "width": 1080,
+    "height": 1920,
+    "category": "technology",
+    "tags": ["smoke_test", "cloud", "creator_imagine"],
+    "createdAt": "2026-10-18T16:00:00Z"
+  },
+
+  "theme": "dramatic",
+
+  "music": {
+    "bpm": 80,
+    "genre": "dramatic",
+    "intensity": 0.7,
+    "baseVolume": 0.5,
+    "fadeIn": 0.5,
+    "fadeOut": 0.8
+  },
+
+  "globalEffects": {
+    "grain": 0.05,
+    "vignette": 0.6,
+    "bloom": 0.2,
+    "colorGrading": "cinematic"
+  },
+
+  "scenes": [
+    {
+      "id": "intro_scene",
+      "label": "Apertura y Vela",
+      "duration": 2.5,
+      "transition": {
+        "in": "fade",
+        "out": "fade",
+        "duration": 0.4
+      },
+      "elements": [
+        {
+          "type": "background",
+          "style": "space",
+          "animated": true
+        },
+        {
+          "type": "particles",
+          "density": 0.4,
+          "glow": true,
+          "speed": 0.4,
+          "layer": "background"
+        },
+        {
+          "type": "camera",
+          "effect": "ken-burns",
+          "intensity": 0.05,
+          "duration": 2.5
+        },
+        {
+          "type": "badge",
+          "text": "CREATOR IMAGINE",
+          "style": "default",
+          "position": {
+            "x": 0.5,
+            "y": 0.22,
+            "anchor": "top-center"
+          },
+          "delay": 0.1
+        },
+        {
+          "type": "title",
+          "text": "MOTOR AUDIOVISUAL ACTIVO",
+          "size": "lg",
+          "accentWords": ["AUDIOVISUAL", "ACTIVO"],
+          "position": {
+            "x": 0.5,
+            "y": 0.36,
+            "anchor": "center"
+          },
+          "delay": 0.2
+        },
+        {
+          "type": "candle",
+          "height": 130,
+          "width": 36,
+          "position": {
+            "x": 0.5,
+            "y": 0.65,
+            "anchor": "center"
+          },
+          "delay": 0.3
+        }
+      ],
+      "audio": {
+        "sfx": [
+          {
+            "type": "whoosh",
+            "at": 0.1,
+            "volume": 0.7
+          },
+          {
+            "type": "sparkle",
+            "at": 0.8,
+            "volume": 0.6
+          }
+        ]
+      }
+    },
+    {
+      "id": "metrics_scene",
+      "label": "Contador y Emblema",
+      "duration": 2.5,
+      "transition": {
+        "in": "fade",
+        "out": "fade",
+        "duration": 0.4
+      },
+      "elements": [
+        {
+          "type": "background",
+          "style": "gradient",
+          "colors": ["#0C0014", "#130020", "#060008"],
+          "animated": true
+        },
+        {
+          "type": "particles",
+          "density": 0.45,
+          "glow": true,
+          "speed": 0.5,
+          "layer": "background"
+        },
+        {
+          "type": "camera",
+          "effect": "zoom-in",
+          "intensity": 0.04,
+          "duration": 2.5
+        },
+        {
+          "type": "emoji",
+          "emoji": "🚀",
+          "size": "120px",
+          "position": {
+            "x": 0.5,
+            "y": 0.28,
+            "anchor": "center"
+          },
+          "delay": 0.1
+        },
+        {
+          "type": "counter",
+          "value": 300,
+          "valueStart": 0,
+          "prefix": "",
+          "suffix": " FRAMES",
+          "decimals": 0,
+          "label": "RENDER DETERMINISTA",
+          "sublabel": "60 FPS • 1080×1920",
+          "countDuration": 1.5,
+          "position": {
+            "x": 0.5,
+            "y": 0.56,
+            "anchor": "center"
+          },
+          "delay": 0.2
+        }
+      ],
+      "audio": {
+        "sfx": [
+          {
+            "type": "impact",
+            "at": 0.0,
+            "volume": 0.8
+          },
+          {
+            "type": "chime",
+            "at": 1.2,
+            "volume": 0.5
+          }
+        ]
+      }
+    }
+  ]
+}

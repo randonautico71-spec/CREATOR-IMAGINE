@@ -1,0 +1,32 @@
+{
+  "id": "technology",
+  "name": "Technology",
+  "description": "Azul cian, neón, futurista.",
+  "colors": {
+    "bg": ["#010812", "#020E1A", "#000508"],
+    "primary": "#E0F0FF",
+    "accent": "#00D4FF",
+    "secondary": "#7B61FF",
+    "danger": "#FF3C5A"
+  },
+  "typography": {
+    "title": "Archivo Black",
+    "body": "Inter",
+    "numbers": "Roboto Condensed"
+  },
+  "motion": {
+    "defaultEnter": "slide-left",
+    "defaultExit": "fade",
+    "cameraIntensity": 0.05
+  },
+  "effects": {
+    "particleDensity": 0.6,
+    "glowIntensity": 0.5,
+    "grainIntensity": 0.02,
+    "vignetteIntensity": 0.5
+  },
+  "music": {
+    "defaultGenre": "electronic",
+    "defaultBpm": 128
+  }
+}

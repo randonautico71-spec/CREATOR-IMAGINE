@@ -1,0 +1,32 @@
+{
+  "id": "documentary",
+  "name": "Documentary",
+  "description": "Oscuro, dramático, periodístico. Dorado y azul cian.",
+  "colors": {
+    "bg": ["#160D28", "#07131F", "#02050A"],
+    "primary": "#FFFFFF",
+    "accent": "#FFD43B",
+    "secondary": "#55E6FF",
+    "danger": "#FF4C6B"
+  },
+  "typography": {
+    "title": "Archivo Black",
+    "body": "Inter",
+    "numbers": "Roboto Condensed"
+  },
+  "motion": {
+    "defaultEnter": "rise",
+    "defaultExit": "fade",
+    "cameraIntensity": 0.04
+  },
+  "effects": {
+    "particleDensity": 0.35,
+    "glowIntensity": 0.25,
+    "grainIntensity": 0.05,
+    "vignetteIntensity": 0.6
+  },
+  "music": {
+    "defaultGenre": "dramatic",
+    "defaultBpm": 80
+  }
+}
