@@ -248,6 +248,63 @@
       }
     },
 
+    "elementFigure": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": { "const": "figure" },
+        "shape": {
+          "type": "string",
+          "enum": [
+            "dinosaur-trex",
+            "dinosaur-brachiosaurus",
+            "dinosaur-raptor",
+            "mountains",
+            "volcano",
+            "city-skyline",
+            "planet",
+            "meteor",
+            "custom"
+          ]
+        },
+        "svg": { "type": "string", "description": "Código SVG personalizado o ruta de path" },
+        "style": { "type": "string", "enum": ["silhouette", "glow", "gradient", "outline"] },
+        "color": { "$ref": "#/definitions/color" },
+        "accentColor": { "$ref": "#/definitions/color" },
+        "width": { "type": "number", "minimum": 10, "maximum": 2000 },
+        "height": { "type": "number", "minimum": 10, "maximum": 2000 },
+        "scale": { "type": "number", "minimum": 0.1, "maximum": 10 },
+        "flip": { "type": "boolean", "description": "Invertir horizontalmente" },
+        "motion": { "type": "string", "enum": ["none", "float", "breathe", "rise", "pan", "parallax"] },
+        "position": { "$ref": "#/definitions/position" },
+        "delay": { "type": "number", "minimum": 0 },
+        "duration": { "$ref": "#/definitions/duration" },
+        "opacity": { "type": "number", "minimum": 0, "maximum": 1 },
+        "layer": { "type": "string", "enum": ["background", "midground", "foreground"] }
+      }
+    },
+
+    "elementImage": {
+      "type": "object",
+      "required": ["type", "src"],
+      "properties": {
+        "type": { "const": "image" },
+        "src": { "type": "string", "description": "Ruta local o URL a imagen transparente PNG/WebP/SVG" },
+        "width": { "type": "number", "minimum": 10, "maximum": 2000 },
+        "height": { "type": "number", "minimum": 10, "maximum": 2000 },
+        "scale": { "type": "number", "minimum": 0.1, "maximum": 10 },
+        "fit": { "type": "string", "enum": ["contain", "cover", "fill"] },
+        "glow": { "type": "boolean" },
+        "shadow": { "type": "boolean" },
+        "motion": { "type": "string", "enum": ["none", "float", "breathe", "rise", "zoom-in", "zoom-out", "pan-left", "pan-right"] },
+        "position": { "$ref": "#/definitions/position" },
+        "delay": { "type": "number", "minimum": 0 },
+        "duration": { "$ref": "#/definitions/duration" },
+        "opacity": { "type": "number", "minimum": 0, "maximum": 1 },
+        "layer": { "type": "string", "enum": ["background", "midground", "foreground"] }
+      }
+    },
+
     "element": {
       "oneOf": [
         { "$ref": "#/definitions/elementTitle" },
@@ -260,7 +317,9 @@
         { "$ref": "#/definitions/elementCamera" },
         { "$ref": "#/definitions/elementBadge" },
         { "$ref": "#/definitions/elementEmoji" },
-        { "$ref": "#/definitions/elementCandle" }
+        { "$ref": "#/definitions/elementCandle" },
+        { "$ref": "#/definitions/elementFigure" },
+        { "$ref": "#/definitions/elementImage" }
       ]
     },
 
