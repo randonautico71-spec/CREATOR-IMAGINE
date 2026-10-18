@@ -98,6 +98,16 @@
     /* ============================================================
        FONDOS
     ============================================================ */
+    #bg-element {
+      /* Fix: sin esto el div queda con height:0 (bloque vacío sin
+         contenido) y su background (space/gradient/solid por escena)
+         nunca se pinta; solo se veía el gradiente fijo de #stage. */
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
     .bg-space {
       background:
         radial-gradient(ellipse 120% 80% at 50% -20%, rgba(85,230,255,0.12) 0%, transparent 60%),
