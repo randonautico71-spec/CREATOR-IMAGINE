@@ -35,6 +35,10 @@ examples/*/*.mp3
 examples/*/*.mp4
 examples/*/validation_report.json
 projects/*/validation_report.json
+
+# Backgrounds IA (Canva) y otros assets pesados generados por proyecto
+projects/*/assets/
+examples/*/assets/
 output/*
 !output/.gitkeep
 
