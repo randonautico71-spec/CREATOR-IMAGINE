@@ -1,0 +1,522 @@
+[
+  {
+    "text": "¿Qué",
+    "start": 0.0,
+    "end": 0.221
+  },
+  {
+    "text": "pasa",
+    "start": 0.295,
+    "end": 0.517
+  },
+  {
+    "text": "con",
+    "start": 0.59,
+    "end": 0.664
+  },
+  {
+    "text": "la",
+    "start": 0.701,
+    "end": 0.738
+  },
+  {
+    "text": "energía",
+    "start": 0.849,
+    "end": 1.107
+  },
+  {
+    "text": "de",
+    "start": 1.181,
+    "end": 1.255
+  },
+  {
+    "text": "un",
+    "start": 1.292,
+    "end": 1.328
+  },
+  {
+    "text": "cuerpo",
+    "start": 1.402,
+    "end": 1.624
+  },
+  {
+    "text": "cuando",
+    "start": 1.697,
+    "end": 1.919
+  },
+  {
+    "text": "deja",
+    "start": 1.993,
+    "end": 2.214
+  },
+  {
+    "text": "de",
+    "start": 2.251,
+    "end": 2.288
+  },
+  {
+    "text": "vivir?",
+    "start": 2.362,
+    "end": 2.731
+  },
+  {
+    "text": "Una",
+    "start": 3.542,
+    "end": 3.69
+  },
+  {
+    "text": "pregunta",
+    "start": 3.764,
+    "end": 4.133
+  },
+  {
+    "text": "que",
+    "start": 4.207,
+    "end": 4.28
+  },
+  {
+    "text": "fascina",
+    "start": 4.317,
+    "end": 4.723
+  },
+  {
+    "text": "a",
+    "start": 4.76,
+    "end": 4.797
+  },
+  {
+    "text": "la",
+    "start": 4.834,
+    "end": 4.871
+  },
+  {
+    "text": "física.",
+    "start": 4.945,
+    "end": 5.904
+  },
+  {
+    "text": "El",
+    "start": 6.421,
+    "end": 6.494
+  },
+  {
+    "text": "calor",
+    "start": 6.568,
+    "end": 6.79
+  },
+  {
+    "text": "que",
+    "start": 6.863,
+    "end": 6.937
+  },
+  {
+    "text": "mantenía",
+    "start": 7.048,
+    "end": 7.38
+  },
+  {
+    "text": "esa",
+    "start": 7.491,
+    "end": 7.601
+  },
+  {
+    "text": "casa",
+    "start": 7.675,
+    "end": 7.823
+  },
+  {
+    "text": "con",
+    "start": 7.897,
+    "end": 8.044
+  },
+  {
+    "text": "vida",
+    "start": 8.118,
+    "end": 8.339
+  },
+  {
+    "text": "no",
+    "start": 8.635,
+    "end": 8.782
+  },
+  {
+    "text": "desaparece:",
+    "start": 8.856,
+    "end": 10.258
+  },
+  {
+    "text": "se",
+    "start": 10.332,
+    "end": 10.406
+  },
+  {
+    "text": "disipa",
+    "start": 10.48,
+    "end": 10.849
+  },
+  {
+    "text": "hacia",
+    "start": 10.886,
+    "end": 11.144
+  },
+  {
+    "text": "el",
+    "start": 11.181,
+    "end": 11.218
+  },
+  {
+    "text": "aire,",
+    "start": 11.292,
+    "end": 11.882
+  },
+  {
+    "text": "la",
+    "start": 11.919,
+    "end": 11.956
+  },
+  {
+    "text": "tierra,",
+    "start": 12.103,
+    "end": 12.472
+  },
+  {
+    "text": "y",
+    "start": 12.915,
+    "end": 12.989
+  },
+  {
+    "text": "todo",
+    "start": 13.063,
+    "end": 13.21
+  },
+  {
+    "text": "lo",
+    "start": 13.284,
+    "end": 13.321
+  },
+  {
+    "text": "que",
+    "start": 13.358,
+    "end": 13.432
+  },
+  {
+    "text": "la",
+    "start": 13.469,
+    "end": 13.506
+  },
+  {
+    "text": "rodea.",
+    "start": 13.579,
+    "end": 13.948
+  },
+  {
+    "text": "La",
+    "start": 14.908,
+    "end": 14.982
+  },
+  {
+    "text": "primera",
+    "start": 15.055,
+    "end": 15.351
+  },
+  {
+    "text": "ley",
+    "start": 15.424,
+    "end": 15.498
+  },
+  {
+    "text": "de",
+    "start": 15.572,
+    "end": 15.646
+  },
+  {
+    "text": "la",
+    "start": 15.683,
+    "end": 15.72
+  },
+  {
+    "text": "termodinámica",
+    "start": 15.793,
+    "end": 16.384
+  },
+  {
+    "text": "lo",
+    "start": 16.458,
+    "end": 16.531
+  },
+  {
+    "text": "explica:",
+    "start": 16.642,
+    "end": 17.86
+  },
+  {
+    "text": "la",
+    "start": 17.934,
+    "end": 18.007
+  },
+  {
+    "text": "energía",
+    "start": 18.118,
+    "end": 18.45
+  },
+  {
+    "text": "no",
+    "start": 18.524,
+    "end": 18.598
+  },
+  {
+    "text": "se",
+    "start": 18.672,
+    "end": 18.745
+  },
+  {
+    "text": "crea",
+    "start": 18.819,
+    "end": 19.041
+  },
+  {
+    "text": "ni",
+    "start": 19.114,
+    "end": 19.188
+  },
+  {
+    "text": "se",
+    "start": 19.262,
+    "end": 19.336
+  },
+  {
+    "text": "destruye,",
+    "start": 19.41,
+    "end": 20.369
+  },
+  {
+    "text": "solo",
+    "start": 20.443,
+    "end": 20.664
+  },
+  {
+    "text": "cambia",
+    "start": 20.701,
+    "end": 20.959
+  },
+  {
+    "text": "de",
+    "start": 21.033,
+    "end": 21.107
+  },
+  {
+    "text": "forma.",
+    "start": 21.181,
+    "end": 21.55
+  },
+  {
+    "text": "Esa",
+    "start": 22.731,
+    "end": 22.952
+  },
+  {
+    "text": "energía",
+    "start": 23.063,
+    "end": 23.321
+  },
+  {
+    "text": "química",
+    "start": 23.469,
+    "end": 23.764
+  },
+  {
+    "text": "se",
+    "start": 23.838,
+    "end": 23.911
+  },
+  {
+    "text": "transforma",
+    "start": 23.985,
+    "end": 24.465
+  },
+  {
+    "text": "en",
+    "start": 24.502,
+    "end": 24.576
+  },
+  {
+    "text": "calor,",
+    "start": 24.649,
+    "end": 25.387
+  },
+  {
+    "text": "en",
+    "start": 25.461,
+    "end": 25.535
+  },
+  {
+    "text": "movimiento,",
+    "start": 25.609,
+    "end": 26.716
+  },
+  {
+    "text": "en",
+    "start": 26.79,
+    "end": 26.863
+  },
+  {
+    "text": "la",
+    "start": 26.937,
+    "end": 26.974
+  },
+  {
+    "text": "materia",
+    "start": 27.011,
+    "end": 27.38
+  },
+  {
+    "text": "que",
+    "start": 27.454,
+    "end": 27.528
+  },
+  {
+    "text": "alimenta",
+    "start": 27.565,
+    "end": 27.97
+  },
+  {
+    "text": "nuevas",
+    "start": 28.044,
+    "end": 28.339
+  },
+  {
+    "text": "formas",
+    "start": 28.413,
+    "end": 28.708
+  },
+  {
+    "text": "de",
+    "start": 28.745,
+    "end": 28.782
+  },
+  {
+    "text": "vida.",
+    "start": 28.856,
+    "end": 29.151
+  },
+  {
+    "text": "No",
+    "start": 29.963,
+    "end": 30.037
+  },
+  {
+    "text": "es",
+    "start": 30.111,
+    "end": 30.185
+  },
+  {
+    "text": "magia,",
+    "start": 30.258,
+    "end": 30.923
+  },
+  {
+    "text": "es",
+    "start": 30.996,
+    "end": 31.144
+  },
+  {
+    "text": "física",
+    "start": 31.218,
+    "end": 31.587
+  },
+  {
+    "text": "pura.",
+    "start": 31.661,
+    "end": 32.03
+  },
+  {
+    "text": "Nada",
+    "start": 32.989,
+    "end": 33.21
+  },
+  {
+    "text": "de",
+    "start": 33.284,
+    "end": 33.358
+  },
+  {
+    "text": "lo",
+    "start": 33.395,
+    "end": 33.432
+  },
+  {
+    "text": "que",
+    "start": 33.506,
+    "end": 33.542
+  },
+  {
+    "text": "fuiste",
+    "start": 33.579,
+    "end": 33.948
+  },
+  {
+    "text": "se",
+    "start": 34.022,
+    "end": 34.17
+  },
+  {
+    "text": "pierde:",
+    "start": 34.219,
+    "end": 35.055
+  },
+  {
+    "text": "solo",
+    "start": 35.203,
+    "end": 35.424
+  },
+  {
+    "text": "se",
+    "start": 35.461,
+    "end": 35.498
+  },
+  {
+    "text": "transforma.",
+    "start": 35.572,
+    "end": 36.236
+  },
+  {
+    "text": "Síguenos",
+    "start": 37.196,
+    "end": 37.638
+  },
+  {
+    "text": "para",
+    "start": 37.712,
+    "end": 37.86
+  },
+  {
+    "text": "más",
+    "start": 37.897,
+    "end": 38.007
+  },
+  {
+    "text": "preguntas",
+    "start": 38.081,
+    "end": 38.524
+  },
+  {
+    "text": "que",
+    "start": 38.598,
+    "end": 38.672
+  },
+  {
+    "text": "la",
+    "start": 38.708,
+    "end": 38.745
+  },
+  {
+    "text": "ciencia",
+    "start": 38.819,
+    "end": 39.188
+  },
+  {
+    "text": "responde.",
+    "start": 39.262,
+    "end": 40.0
+  }
+]

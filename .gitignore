@@ -18,6 +18,9 @@ projects/*/frames_*
 projects/*/temp/
 projects/*/*.jpg
 projects/*/*.png
+projects/*/*.wav
+projects/*/*.mp3
+projects/*/*.mp4
 examples/*/music.wav
 examples/*/voice.wav
 examples/*/preview.mp4
@@ -27,8 +30,16 @@ examples/*/frames_*
 examples/*/temp/
 examples/*/*.jpg
 examples/*/*.png
+examples/*/*.wav
+examples/*/*.mp3
+examples/*/*.mp4
+examples/*/validation_report.json
+projects/*/validation_report.json
 output/*
 !output/.gitkeep
+
+# Hooks de entorno locales (workarounds específicos de la sandbox, no del motor)
+.pw_hook.js
 
 # Secrets
 .env

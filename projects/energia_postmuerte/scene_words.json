@@ -1,0 +1,638 @@
+{
+  "hook": [
+    {
+      "word": "¿Qué",
+      "start": 0.0,
+      "end": 0.221,
+      "accent": false
+    },
+    {
+      "word": "pasa",
+      "start": 0.295,
+      "end": 0.517,
+      "accent": false
+    },
+    {
+      "word": "con",
+      "start": 0.59,
+      "end": 0.664,
+      "accent": false
+    },
+    {
+      "word": "la",
+      "start": 0.701,
+      "end": 0.738,
+      "accent": false
+    },
+    {
+      "word": "energía",
+      "start": 0.849,
+      "end": 1.107,
+      "accent": true
+    },
+    {
+      "word": "de",
+      "start": 1.181,
+      "end": 1.255,
+      "accent": false
+    },
+    {
+      "word": "un",
+      "start": 1.292,
+      "end": 1.328,
+      "accent": false
+    },
+    {
+      "word": "cuerpo",
+      "start": 1.402,
+      "end": 1.624,
+      "accent": false
+    },
+    {
+      "word": "cuando",
+      "start": 1.697,
+      "end": 1.919,
+      "accent": false
+    },
+    {
+      "word": "deja",
+      "start": 1.993,
+      "end": 2.214,
+      "accent": false
+    },
+    {
+      "word": "de",
+      "start": 2.251,
+      "end": 2.288,
+      "accent": false
+    },
+    {
+      "word": "vivir?",
+      "start": 2.362,
+      "end": 2.731,
+      "accent": false
+    },
+    {
+      "word": "Una",
+      "start": 3.542,
+      "end": 3.69,
+      "accent": false
+    },
+    {
+      "word": "pregunta",
+      "start": 3.764,
+      "end": 4.133,
+      "accent": false
+    },
+    {
+      "word": "que",
+      "start": 4.207,
+      "end": 4.28,
+      "accent": false
+    },
+    {
+      "word": "fascina",
+      "start": 4.317,
+      "end": 4.723,
+      "accent": false
+    },
+    {
+      "word": "a",
+      "start": 4.76,
+      "end": 4.797,
+      "accent": false
+    },
+    {
+      "word": "la",
+      "start": 4.834,
+      "end": 4.871,
+      "accent": false
+    },
+    {
+      "word": "física.",
+      "start": 4.945,
+      "end": 5.904,
+      "accent": true
+    }
+  ],
+  "disipacion": [
+    {
+      "word": "El",
+      "start": 0.521,
+      "end": 0.594,
+      "accent": false
+    },
+    {
+      "word": "calor",
+      "start": 0.668,
+      "end": 0.89,
+      "accent": false
+    },
+    {
+      "word": "que",
+      "start": 0.963,
+      "end": 1.037,
+      "accent": false
+    },
+    {
+      "word": "mantenía",
+      "start": 1.148,
+      "end": 1.48,
+      "accent": false
+    },
+    {
+      "word": "esa",
+      "start": 1.591,
+      "end": 1.701,
+      "accent": false
+    },
+    {
+      "word": "casa",
+      "start": 1.775,
+      "end": 1.923,
+      "accent": false
+    },
+    {
+      "word": "con",
+      "start": 1.997,
+      "end": 2.144,
+      "accent": false
+    },
+    {
+      "word": "vida",
+      "start": 2.218,
+      "end": 2.439,
+      "accent": false
+    },
+    {
+      "word": "no",
+      "start": 2.735,
+      "end": 2.882,
+      "accent": false
+    },
+    {
+      "word": "desaparece:",
+      "start": 2.956,
+      "end": 4.358,
+      "accent": true
+    },
+    {
+      "word": "se",
+      "start": 4.432,
+      "end": 4.506,
+      "accent": false
+    },
+    {
+      "word": "disipa",
+      "start": 4.58,
+      "end": 4.949,
+      "accent": true
+    },
+    {
+      "word": "hacia",
+      "start": 4.986,
+      "end": 5.244,
+      "accent": false
+    },
+    {
+      "word": "el",
+      "start": 5.281,
+      "end": 5.318,
+      "accent": false
+    },
+    {
+      "word": "aire,",
+      "start": 5.392,
+      "end": 5.982,
+      "accent": false
+    },
+    {
+      "word": "la",
+      "start": 6.019,
+      "end": 6.056,
+      "accent": false
+    },
+    {
+      "word": "tierra,",
+      "start": 6.203,
+      "end": 6.572,
+      "accent": false
+    },
+    {
+      "word": "y",
+      "start": 7.015,
+      "end": 7.089,
+      "accent": false
+    },
+    {
+      "word": "todo",
+      "start": 7.163,
+      "end": 7.31,
+      "accent": false
+    },
+    {
+      "word": "lo",
+      "start": 7.384,
+      "end": 7.421,
+      "accent": false
+    },
+    {
+      "word": "que",
+      "start": 7.458,
+      "end": 7.532,
+      "accent": false
+    },
+    {
+      "word": "la",
+      "start": 7.569,
+      "end": 7.606,
+      "accent": false
+    },
+    {
+      "word": "rodea.",
+      "start": 7.679,
+      "end": 8.048,
+      "accent": false
+    }
+  ],
+  "ley_termodinamica": [
+    {
+      "word": "La",
+      "start": 0.958,
+      "end": 1.032,
+      "accent": false
+    },
+    {
+      "word": "primera",
+      "start": 1.105,
+      "end": 1.401,
+      "accent": false
+    },
+    {
+      "word": "ley",
+      "start": 1.474,
+      "end": 1.548,
+      "accent": false
+    },
+    {
+      "word": "de",
+      "start": 1.622,
+      "end": 1.696,
+      "accent": false
+    },
+    {
+      "word": "la",
+      "start": 1.733,
+      "end": 1.77,
+      "accent": false
+    },
+    {
+      "word": "termodinámica",
+      "start": 1.843,
+      "end": 2.434,
+      "accent": true
+    },
+    {
+      "word": "lo",
+      "start": 2.508,
+      "end": 2.581,
+      "accent": false
+    },
+    {
+      "word": "explica:",
+      "start": 2.692,
+      "end": 3.91,
+      "accent": false
+    },
+    {
+      "word": "la",
+      "start": 3.984,
+      "end": 4.057,
+      "accent": false
+    },
+    {
+      "word": "energía",
+      "start": 4.168,
+      "end": 4.5,
+      "accent": true
+    },
+    {
+      "word": "no",
+      "start": 4.574,
+      "end": 4.648,
+      "accent": false
+    },
+    {
+      "word": "se",
+      "start": 4.722,
+      "end": 4.795,
+      "accent": false
+    },
+    {
+      "word": "crea",
+      "start": 4.869,
+      "end": 5.091,
+      "accent": true
+    },
+    {
+      "word": "ni",
+      "start": 5.164,
+      "end": 5.238,
+      "accent": false
+    },
+    {
+      "word": "se",
+      "start": 5.312,
+      "end": 5.386,
+      "accent": false
+    },
+    {
+      "word": "destruye,",
+      "start": 5.46,
+      "end": 6.419,
+      "accent": true
+    },
+    {
+      "word": "solo",
+      "start": 6.493,
+      "end": 6.714,
+      "accent": false
+    },
+    {
+      "word": "cambia",
+      "start": 6.751,
+      "end": 7.009,
+      "accent": false
+    },
+    {
+      "word": "de",
+      "start": 7.083,
+      "end": 7.157,
+      "accent": false
+    },
+    {
+      "word": "forma.",
+      "start": 7.231,
+      "end": 7.6,
+      "accent": false
+    }
+  ],
+  "transformacion": [
+    {
+      "word": "Esa",
+      "start": 1.181,
+      "end": 1.402,
+      "accent": false
+    },
+    {
+      "word": "energía",
+      "start": 1.513,
+      "end": 1.771,
+      "accent": true
+    },
+    {
+      "word": "química",
+      "start": 1.919,
+      "end": 2.214,
+      "accent": false
+    },
+    {
+      "word": "se",
+      "start": 2.288,
+      "end": 2.361,
+      "accent": false
+    },
+    {
+      "word": "transforma",
+      "start": 2.435,
+      "end": 2.915,
+      "accent": true
+    },
+    {
+      "word": "en",
+      "start": 2.952,
+      "end": 3.026,
+      "accent": false
+    },
+    {
+      "word": "calor,",
+      "start": 3.099,
+      "end": 3.837,
+      "accent": false
+    },
+    {
+      "word": "en",
+      "start": 3.911,
+      "end": 3.985,
+      "accent": false
+    },
+    {
+      "word": "movimiento,",
+      "start": 4.059,
+      "end": 5.166,
+      "accent": false
+    },
+    {
+      "word": "en",
+      "start": 5.24,
+      "end": 5.313,
+      "accent": false
+    },
+    {
+      "word": "la",
+      "start": 5.387,
+      "end": 5.424,
+      "accent": false
+    },
+    {
+      "word": "materia",
+      "start": 5.461,
+      "end": 5.83,
+      "accent": false
+    },
+    {
+      "word": "que",
+      "start": 5.904,
+      "end": 5.978,
+      "accent": false
+    },
+    {
+      "word": "alimenta",
+      "start": 6.015,
+      "end": 6.42,
+      "accent": false
+    },
+    {
+      "word": "nuevas",
+      "start": 6.494,
+      "end": 6.789,
+      "accent": false
+    },
+    {
+      "word": "formas",
+      "start": 6.863,
+      "end": 7.158,
+      "accent": false
+    },
+    {
+      "word": "de",
+      "start": 7.195,
+      "end": 7.232,
+      "accent": false
+    },
+    {
+      "word": "vida.",
+      "start": 7.306,
+      "end": 7.601,
+      "accent": true
+    }
+  ],
+  "nada_se_pierde": [
+    {
+      "word": "No",
+      "start": 0.813,
+      "end": 0.887,
+      "accent": false
+    },
+    {
+      "word": "es",
+      "start": 0.961,
+      "end": 1.035,
+      "accent": false
+    },
+    {
+      "word": "magia,",
+      "start": 1.108,
+      "end": 1.773,
+      "accent": true
+    },
+    {
+      "word": "es",
+      "start": 1.846,
+      "end": 1.994,
+      "accent": false
+    },
+    {
+      "word": "física",
+      "start": 2.068,
+      "end": 2.437,
+      "accent": true
+    },
+    {
+      "word": "pura.",
+      "start": 2.511,
+      "end": 2.88,
+      "accent": false
+    },
+    {
+      "word": "Nada",
+      "start": 3.839,
+      "end": 4.06,
+      "accent": true
+    },
+    {
+      "word": "de",
+      "start": 4.134,
+      "end": 4.208,
+      "accent": false
+    },
+    {
+      "word": "lo",
+      "start": 4.245,
+      "end": 4.282,
+      "accent": false
+    },
+    {
+      "word": "que",
+      "start": 4.356,
+      "end": 4.392,
+      "accent": false
+    },
+    {
+      "word": "fuiste",
+      "start": 4.429,
+      "end": 4.798,
+      "accent": false
+    },
+    {
+      "word": "se",
+      "start": 4.872,
+      "end": 5.02,
+      "accent": false
+    },
+    {
+      "word": "pierde:",
+      "start": 5.069,
+      "end": 5.905,
+      "accent": true
+    },
+    {
+      "word": "solo",
+      "start": 6.053,
+      "end": 6.274,
+      "accent": false
+    },
+    {
+      "word": "se",
+      "start": 6.311,
+      "end": 6.348,
+      "accent": false
+    },
+    {
+      "word": "transforma.",
+      "start": 6.422,
+      "end": 7.086,
+      "accent": true
+    }
+  ],
+  "cierre": [
+    {
+      "word": "Síguenos",
+      "start": 0.956,
+      "end": 1.398,
+      "accent": true
+    },
+    {
+      "word": "para",
+      "start": 1.472,
+      "end": 1.62,
+      "accent": false
+    },
+    {
+      "word": "más",
+      "start": 1.657,
+      "end": 1.767,
+      "accent": false
+    },
+    {
+      "word": "preguntas",
+      "start": 1.841,
+      "end": 2.284,
+      "accent": false
+    },
+    {
+      "word": "que",
+      "start": 2.358,
+      "end": 2.432,
+      "accent": false
+    },
+    {
+      "word": "la",
+      "start": 2.468,
+      "end": 2.505,
+      "accent": false
+    },
+    {
+      "word": "ciencia",
+      "start": 2.579,
+      "end": 2.948,
+      "accent": true
+    },
+    {
+      "word": "responde.",
+      "start": 3.022,
+      "end": 3.76,
+      "accent": false
+    }
+  ]
+}
