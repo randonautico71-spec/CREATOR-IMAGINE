@@ -264,6 +264,17 @@
             "city-skyline",
             "planet",
             "meteor",
+            "person-standing",
+            "person-sitting",
+            "entity-glow",
+            "house",
+            "room-interior",
+            "sofa",
+            "table",
+            "lamp-floor",
+            "bush",
+            "entrance-gate",
+            "grass",
             "custom"
           ]
         },

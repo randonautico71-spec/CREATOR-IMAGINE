@@ -106,7 +106,7 @@ python scripts/quality_check.py --project projects/mi_video/
 
 | Tipo | Componente | Descripción |
 |---|---|---|
-| **Figuras & Siluetas** | `figure` | Siluetas vectoriales SVG de alta definición: `dinosaur-trex`, `dinosaur-brachiosaurus`, `dinosaur-raptor`, `mountains`, `volcano`, `city-skyline`, `planet`, `meteor` o SVG personalizado |
+| **Figuras & Siluetas** | `figure` | Ilustraciones vectoriales SVG a color, bien trazadas: paisajes/criaturas (`dinosaur-trex`, `dinosaur-brachiosaurus`, `dinosaur-raptor`, `mountains`, `volcano`, `city-skyline`, `planet`, `meteor`) y escenas humanas/domésticas (`person-standing`, `person-sitting`, `entity-glow`, `house`, `room-interior`, `sofa`, `table`, `lamp-floor`, `bush`, `entrance-gate`, `grass`) o SVG personalizado vía `svg` |
 | **Imágenes Transparentes** | `image` | Capas PNG / WebP con canal alpha con sombras, glow y movimiento parallax |
 | **Tipografía** | `title` | Rótulos de impacto con palabras destacadas (`accentWords`) |
 | **Métricas** | `counter` | Contadores numéricos animados con easing exponencial |

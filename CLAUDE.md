@@ -69,7 +69,7 @@ python scripts/verify_output.py --project projects/<slug>/
 - `dramatic` — Púrpura profundo, glow, cinemático
 
 ## Componentes disponibles
-- **Visuales & Siluetas**: `figure` (dinosaur-trex, dinosaur-brachiosaurus, dinosaur-raptor, mountains, volcano, city-skyline, planet, meteor, custom SVG), `image` (PNG/WebP/SVG transparentes con alpha y parallax), `candle` (vela procedural), `emoji`
+- **Visuales & Siluetas**: `figure` — paisajes/criaturas (dinosaur-trex, dinosaur-brachiosaurus, dinosaur-raptor, mountains, volcano, city-skyline, planet, meteor) y escenas humanas/domésticas (person-standing, person-sitting, entity-glow, house, room-interior, sofa, table, lamp-floor, bush, entrance-gate, grass, o SVG personalizado vía `svg`); `image` (PNG/WebP/SVG transparentes con alpha y parallax), `candle` (vela procedural), `emoji`
 - **Tipografía & Datos**: `title` (con accentWords), `badge`, `card`, `counter` (numérico animado), `caption` (subtítulos dinámicos palabra por palabra), `ranking`
 - **Efectos & Cámara**: `particles` (estrellas/partículas con glow), `camera` (ken-burns, zoom-in, zoom-out, pan, parallax), `background` (space, gradient, solid)
 

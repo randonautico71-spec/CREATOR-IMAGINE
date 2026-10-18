@@ -520,6 +520,136 @@
       <circle cx="520" cy="65" r="45" fill="#FFF"/>
       <circle cx="520" cy="65" r="35" fill="#FFD43B"/>
       <circle cx="520" cy="65" r="22" fill="#FF4C1A"/>
+    </svg>`,
+
+    // =======================================================
+    // FIGURAS HUMANAS Y ENTIDADES
+    // =======================================================
+    'person-standing': `<svg viewBox="0 0 300 650" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="150" cy="80" rx="55" ry="60" fill="#F2C49B"/>
+      <path d="M150 140 C95 140 70 180 70 232 L70 420 L230 420 L230 232 C230 180 205 140 150 140 Z" fill="#3B6EA8"/>
+      <path d="M70 232 C45 250 30 300 28 360 L55 365 C58 310 68 265 85 240 Z" fill="#345F93"/>
+      <path d="M230 232 C255 250 270 300 272 360 L245 365 C242 310 232 265 215 240 Z" fill="#345F93"/>
+      <path d="M90 420 L90 615 C90 632 104 644 121 644 L131 644 C142 644 147 632 147 615 L147 440 L153 440 L153 615 C153 632 158 644 169 644 L179 644 C196 644 210 632 210 615 L210 420 Z" fill="#2B2B35"/>
+      <ellipse cx="118" cy="644" rx="26" ry="8" fill="#17171C"/>
+      <ellipse cx="182" cy="644" rx="26" ry="8" fill="#17171C"/>
+    </svg>`,
+
+    'person-sitting': `<svg viewBox="0 0 400 350" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="150" cy="60" r="48" fill="#F2C49B"/>
+      <path d="M150 108 C105 108 85 140 85 178 L85 230 L215 230 L215 178 C215 140 195 108 150 108 Z" fill="#3B6EA8"/>
+      <path d="M85 178 C62 192 50 220 50 250 L72 255 C73 228 80 205 92 192 Z" fill="#345F93"/>
+      <path d="M215 178 C238 192 250 220 250 250 L228 255 C227 228 220 205 208 192 Z" fill="#345F93"/>
+      <path d="M85 230 L85 258 C85 273 96 283 113 283 L160 283 L160 230 Z" fill="#2B2B35"/>
+      <path d="M215 230 L215 258 C215 273 204 283 187 283 L160 283 L160 230 Z" fill="#2B2B35"/>
+      <rect x="100" y="283" width="26" height="55" rx="7" fill="#2B2B35"/>
+      <rect x="194" y="283" width="26" height="55" rx="7" fill="#2B2B35"/>
+      <ellipse cx="113" cy="340" rx="24" ry="8" fill="#17171C"/>
+      <ellipse cx="207" cy="340" rx="24" ry="8" fill="#17171C"/>
+    </svg>`,
+
+    'entity-glow': `<svg viewBox="0 0 300 650" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="entityGlowGrad" cx="50%" cy="32%" r="68%">
+          <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95"/>
+          <stop offset="55%" stop-color="#8FD9FF" stop-opacity="0.55"/>
+          <stop offset="100%" stop-color="#8FD9FF" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <path d="M150 55 C182 55 207 85 207 125 C207 157 190 180 172 194 C222 216 248 272 251 342 L257 520 C259 562 230 602 189 617 C163 626 137 626 111 617 C70 602 41 562 43 520 L49 342 C52 272 78 216 128 194 C110 180 93 157 93 125 C93 85 118 55 150 55 Z" fill="url(#entityGlowGrad)"/>
+    </svg>`,
+
+    // =======================================================
+    // CASA, HABITACIÓN Y MOBILIARIO
+    // =======================================================
+    'house': `<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="560" width="800" height="40" fill="#5E8A4A"/>
+      <rect x="180" y="280" width="440" height="280" fill="#D9B48F"/>
+      <path d="M140 300 L400 120 L660 300 Z" fill="#8B3A2A"/>
+      <path d="M170 296 L400 155 L630 296 Z" fill="#A6472F"/>
+      <rect x="520" y="140" width="50" height="95" fill="#8B5A45"/>
+      <rect x="360" y="420" width="80" height="140" rx="6" fill="#5A3324"/>
+      <circle cx="420" cy="495" r="5" fill="#FFD43B"/>
+      <rect x="230" y="340" width="70" height="70" rx="4" fill="#BFEFFF"/>
+      <rect x="500" y="340" width="70" height="70" rx="4" fill="#BFEFFF"/>
+      <g stroke="#5A3324" stroke-width="6" fill="none">
+        <rect x="230" y="340" width="70" height="70" rx="4"/>
+        <rect x="500" y="340" width="70" height="70" rx="4"/>
+        <line x1="265" y1="340" x2="265" y2="410"/>
+        <line x1="230" y1="375" x2="300" y2="375"/>
+        <line x1="535" y1="340" x2="535" y2="410"/>
+        <line x1="500" y1="375" x2="570" y2="375"/>
+      </g>
+    </svg>`,
+
+    'room-interior': `<svg viewBox="0 0 1080 1200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="1080" height="820" fill="#2E2A3D"/>
+      <rect x="0" y="820" width="1080" height="380" fill="#3B2E22"/>
+      <rect x="0" y="815" width="1080" height="14" fill="#241C29"/>
+      <rect x="140" y="160" width="320" height="420" rx="10" fill="#140E1E"/>
+      <rect x="162" y="182" width="276" height="376" fill="#4C6FA5" opacity="0.55"/>
+      <g stroke="#140E1E" stroke-width="10">
+        <line x1="300" y1="182" x2="300" y2="558"/>
+        <line x1="162" y1="370" x2="438" y2="370"/>
+      </g>
+      <rect x="650" y="90" width="20" height="500" fill="#4A3C2C" opacity="0.4"/>
+    </svg>`,
+
+    'sofa': `<svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+      <rect x="40" y="330" width="720" height="50" rx="10" fill="#4B3160"/>
+      <rect x="60" y="180" width="680" height="160" rx="30" fill="#7A4E9E"/>
+      <rect x="60" y="120" width="680" height="110" rx="28" fill="#8E5FB5"/>
+      <rect x="40" y="140" width="90" height="190" rx="24" fill="#6F4690"/>
+      <rect x="670" y="140" width="90" height="190" rx="24" fill="#6F4690"/>
+      <rect x="150" y="150" width="200" height="90" rx="20" fill="#9A6FC2"/>
+      <rect x="380" y="150" width="200" height="90" rx="20" fill="#9A6FC2"/>
+      <rect x="40" y="370" width="36" height="28" rx="5" fill="#2E1E3D"/>
+      <rect x="724" y="370" width="36" height="28" rx="5" fill="#2E1E3D"/>
+    </svg>`,
+
+    'table': `<svg viewBox="0 0 700 400" xmlns="http://www.w3.org/2000/svg">
+      <rect x="60" y="120" width="580" height="30" rx="6" fill="#B98554"/>
+      <rect x="60" y="150" width="580" height="8" fill="#8A5F3B" opacity="0.5"/>
+      <rect x="88" y="158" width="26" height="200" fill="#8A5F3B"/>
+      <rect x="586" y="158" width="26" height="200" fill="#8A5F3B"/>
+      <rect x="150" y="158" width="20" height="186" fill="#6E4A2C" opacity="0.35"/>
+      <rect x="530" y="158" width="20" height="186" fill="#6E4A2C" opacity="0.35"/>
+    </svg>`,
+
+    'lamp-floor': `<svg viewBox="0 0 300 700" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="lampGlowGrad" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#FFE9A8" stop-opacity="0.9"/>
+          <stop offset="100%" stop-color="#FFE9A8" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <circle cx="150" cy="235" r="130" fill="url(#lampGlowGrad)"/>
+      <ellipse cx="150" cy="650" rx="60" ry="14" fill="#2B2B35"/>
+      <rect x="142" y="300" width="16" height="350" fill="#3B3B46"/>
+      <path d="M80 220 L220 220 L250 300 L50 300 Z" fill="#E8C98A"/>
+      <ellipse cx="150" cy="235" rx="55" ry="60" fill="#FFF3CE" opacity="0.9"/>
+    </svg>`,
+
+    'bush': `<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="260" width="400" height="40" fill="#375C2B"/>
+      <ellipse cx="120" cy="190" rx="110" ry="90" fill="#3F7D3A"/>
+      <ellipse cx="230" cy="160" rx="130" ry="110" fill="#4C9348"/>
+      <ellipse cx="320" cy="200" rx="90" ry="75" fill="#3F7D3A"/>
+      <ellipse cx="220" cy="140" rx="50" ry="35" fill="#5FAE56" opacity="0.6"/>
+    </svg>`,
+
+    'entrance-gate': `<svg viewBox="0 0 700 500" xmlns="http://www.w3.org/2000/svg">
+      <rect x="60" y="80" width="26" height="380" fill="#6B4A32"/>
+      <rect x="614" y="80" width="26" height="380" fill="#6B4A32"/>
+      <path d="M86 150 C86 55 614 55 614 150 L588 150 C588 85 112 85 112 150 Z" fill="#6B4A32"/>
+      <path d="M110 150 C110 90 590 90 590 150" stroke="#2E7D4F" stroke-width="16" fill="none" stroke-linecap="round"/>
+      <path d="M150 140 C150 100 250 95 300 125" stroke="#4C9348" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.8"/>
+      <path d="M400 125 C450 95 550 100 550 140" stroke="#4C9348" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.8"/>
+    </svg>`,
+
+    'grass': `<svg viewBox="0 0 1080 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 200 L0 70 L40 100 L80 60 L120 95 L160 55 L200 90 L240 50 L280 85 L320 58 L360 92 L400 55 L440 88 L480 52 L520 90 L560 58 L600 95 L640 55 L680 90 L720 58 L760 95 L800 55 L840 90 L880 58 L920 95 L960 55 L1000 90 L1040 60 L1080 85 L1080 200 Z" fill="#4C8A3B"/>
+      <path d="M0 200 L0 110 L50 135 L100 100 L150 140 L200 105 L250 138 L300 100 L350 140 L400 105 L450 138 L500 100 L550 140 L600 105 L650 138 L700 100 L750 140 L800 105 L850 138 L900 100 L950 140 L1000 105 L1050 138 L1080 110 L1080 200 Z" fill="#3B6E2D"/>
     </svg>`
   };
 

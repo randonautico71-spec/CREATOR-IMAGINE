@@ -1,0 +1,50 @@
+{
+  "meta": {
+    "title": "TEST — Nuevas figuras",
+    "slug": "shape_test",
+    "description": "Prueba visual de las nuevas siluetas vectoriales",
+    "duration": 6,
+    "fps": 30,
+    "width": 1080,
+    "height": 1920,
+    "category": "documentary",
+    "tags": ["test"],
+    "brand": "CREATOR IMAGINE",
+    "brandTag": "TEST FIGURAS",
+    "createdAt": "2026-10-18T00:00:00Z"
+  },
+  "theme": "dramatic",
+  "music": { "bpm": 80, "genre": "minimal", "intensity": 0.3, "baseVolume": 0.3, "fadeIn": 0.3, "fadeOut": 0.5 },
+  "globalEffects": { "grain": 0.03, "vignette": 0.5, "bloom": 0.15, "colorGrading": "cinematic" },
+  "scenes": [
+    {
+      "id": "casa_jardin",
+      "label": "Casa y jardin",
+      "duration": 3,
+      "transition": { "in": "fade", "out": "fade", "duration": 0.3 },
+      "elements": [
+        { "type": "background", "style": "space", "animated": true },
+        { "type": "figure", "shape": "grass", "position": {"x":0.5,"y":1.0,"anchor":"bottom-center"}, "width": 1080, "height": 200, "delay": 0, "duration": 0.6, "layer": "foreground" },
+        { "type": "figure", "shape": "bush", "position": {"x":0.12,"y":0.86,"anchor":"bottom-left"}, "width": 260, "height": 195, "delay": 0.1, "duration": 0.6 },
+        { "type": "figure", "shape": "bush", "position": {"x":0.9,"y":0.86,"anchor":"bottom-right"}, "flip": true, "width": 220, "height": 165, "delay": 0.15, "duration": 0.6 },
+        { "type": "figure", "shape": "entrance-gate", "position": {"x":0.5,"y":0.78,"anchor":"bottom-center"}, "width": 300, "height": 214, "delay": 0.05, "duration": 0.6 },
+        { "type": "figure", "shape": "house", "position": {"x":0.5,"y":0.55,"anchor":"center"}, "width": 640, "height": 480, "delay": 0.2, "motion": "none", "duration": 0.7 },
+        { "type": "figure", "shape": "person-standing", "position": {"x":0.75,"y":0.78,"anchor":"bottom-center"}, "width": 90, "height": 195, "delay": 0.5, "motion": "breathe", "duration": 0.6 }
+      ]
+    },
+    {
+      "id": "salon",
+      "label": "Salon interior",
+      "duration": 3,
+      "transition": { "in": "fade", "out": "fade", "duration": 0.3 },
+      "elements": [
+        { "type": "figure", "shape": "room-interior", "position": {"x":0.5,"y":0.0,"anchor":"top-center"}, "width": 1080, "height": 1200, "delay": 0, "duration": 0.5, "layer": "background" },
+        { "type": "figure", "shape": "sofa", "position": {"x":0.5,"y":0.78,"anchor":"bottom-center"}, "width": 560, "height": 280, "delay": 0.15, "duration": 0.6 },
+        { "type": "figure", "shape": "person-sitting", "position": {"x":0.42,"y":0.72,"anchor":"bottom-center"}, "width": 220, "height": 192, "delay": 0.3, "duration": 0.6 },
+        { "type": "figure", "shape": "table", "position": {"x":0.78,"y":0.82,"anchor":"bottom-center"}, "width": 260, "height": 148, "delay": 0.2, "duration": 0.6 },
+        { "type": "figure", "shape": "lamp-floor", "position": {"x":0.92,"y":0.80,"anchor":"bottom-center"}, "style": "glow", "width": 110, "height": 260, "delay": 0.1, "duration": 0.6 },
+        { "type": "figure", "shape": "entity-glow", "position": {"x":0.5,"y":0.35,"anchor":"center"}, "style": "glow", "width": 140, "height": 300, "opacity": 0.85, "delay": 0.6, "motion": "float", "duration": 0.8 }
+      ]
+    }
+  ]
+}
