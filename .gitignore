@@ -18,6 +18,7 @@ projects/*/frames_*
 projects/*/temp/
 projects/*/*.jpg
 projects/*/*.png
+projects/*/control_frames/
 projects/*/*.wav
 projects/*/*.mp3
 projects/*/*.mp4
