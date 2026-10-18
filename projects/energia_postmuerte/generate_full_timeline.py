@@ -9,16 +9,18 @@ import json
 scene_words = json.load(open('scene_words.json', encoding='utf-8'))
 scene_text = json.load(open('scene_text.json', encoding='utf-8'))
 
-def caption(scene_id, style="cinematic", position=None):
+def caption(scene_id, style="standard", position=None):
+    # Posicionados arriba (no "cinematic"/uppercase, para que la caja sea más
+    # baja) de modo que NUNCA se superpongan con la casa/salón/figuras, que
+    # ocupan la mitad inferior y central del encuadre (instrucción #4 del
+    # proyecto: subtítulos sin tapar la imagen).
     el = {
         "type": "caption",
         "text": scene_text[scene_id],
         "words": scene_words[scene_id],
         "style": style,
-        "fontSize": "md"
+        "position": position or {"x": 0.5, "y": 0.045, "anchor": "top-center"}
     }
-    if position:
-        el["position"] = position
     return el
 
 def narration(scene_id, stability=0.5, similarity=0.8):

@@ -260,8 +260,12 @@
               "accent": true
             }
           ],
-          "style": "cinematic",
-          "fontSize": "md"
+          "style": "standard",
+          "position": {
+            "x": 0.5,
+            "y": 0.045,
+            "anchor": "top-center"
+          }
         }
       ],
       "narration": {
@@ -552,8 +556,12 @@
               "accent": false
             }
           ],
-          "style": "cinematic",
-          "fontSize": "md"
+          "style": "standard",
+          "position": {
+            "x": 0.5,
+            "y": 0.045,
+            "anchor": "top-center"
+          }
         }
       ],
       "narration": {
@@ -774,8 +782,12 @@
               "accent": false
             }
           ],
-          "style": "cinematic",
-          "fontSize": "md"
+          "style": "standard",
+          "position": {
+            "x": 0.5,
+            "y": 0.045,
+            "anchor": "top-center"
+          }
         }
       ],
       "narration": {
@@ -1013,8 +1025,12 @@
               "accent": true
             }
           ],
-          "style": "cinematic",
-          "fontSize": "md"
+          "style": "standard",
+          "position": {
+            "x": 0.5,
+            "y": 0.045,
+            "anchor": "top-center"
+          }
         }
       ],
       "narration": {
@@ -1213,8 +1229,12 @@
               "accent": true
             }
           ],
-          "style": "cinematic",
-          "fontSize": "md"
+          "style": "standard",
+          "position": {
+            "x": 0.5,
+            "y": 0.045,
+            "anchor": "top-center"
+          }
         }
       ],
       "narration": {
@@ -1380,8 +1400,12 @@
               "accent": false
             }
           ],
-          "style": "cinematic",
-          "fontSize": "md"
+          "style": "standard",
+          "position": {
+            "x": 0.5,
+            "y": 0.045,
+            "anchor": "top-center"
+          }
         }
       ],
       "narration": {
