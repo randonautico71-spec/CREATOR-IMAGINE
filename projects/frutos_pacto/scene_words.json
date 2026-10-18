@@ -1,0 +1,1550 @@
+{
+  "hook": [
+    {
+      "word": "Imagina",
+      "start": 0.0,
+      "end": 0.522,
+      "accent": false
+    },
+    {
+      "word": "un",
+      "start": 0.557,
+      "end": 0.604,
+      "accent": false
+    },
+    {
+      "word": "mundo",
+      "start": 0.662,
+      "end": 0.952,
+      "accent": false
+    },
+    {
+      "word": "sin",
+      "start": 0.998,
+      "end": 1.173,
+      "accent": false
+    },
+    {
+      "word": "frutas.",
+      "start": 1.231,
+      "end": 1.95,
+      "accent": true
+    },
+    {
+      "word": "Sin",
+      "start": 2.461,
+      "end": 2.682,
+      "accent": false
+    },
+    {
+      "word": "manzanas,",
+      "start": 2.74,
+      "end": 3.634,
+      "accent": false
+    },
+    {
+      "word": "sin",
+      "start": 3.959,
+      "end": 4.261,
+      "accent": false
+    },
+    {
+      "word": "higos,",
+      "start": 4.296,
+      "end": 5.039,
+      "accent": false
+    },
+    {
+      "word": "sin",
+      "start": 5.364,
+      "end": 5.584,
+      "accent": false
+    },
+    {
+      "word": "una",
+      "start": 5.666,
+      "end": 5.805,
+      "accent": false
+    },
+    {
+      "word": "sola",
+      "start": 5.851,
+      "end": 6.072,
+      "accent": false
+    },
+    {
+      "word": "fresa.",
+      "start": 6.13,
+      "end": 6.745,
+      "accent": false
+    },
+    {
+      "word": "Así",
+      "start": 7.349,
+      "end": 7.697,
+      "accent": false
+    },
+    {
+      "word": "fue",
+      "start": 7.767,
+      "end": 7.93,
+      "accent": false
+    },
+    {
+      "word": "la",
+      "start": 7.964,
+      "end": 8.046,
+      "accent": false
+    },
+    {
+      "word": "Tierra",
+      "start": 8.115,
+      "end": 8.382,
+      "accent": false
+    },
+    {
+      "word": "durante",
+      "start": 8.429,
+      "end": 8.777,
+      "accent": false
+    },
+    {
+      "word": "trescientos",
+      "start": 8.824,
+      "end": 9.392,
+      "accent": false
+    },
+    {
+      "word": "millones",
+      "start": 9.451,
+      "end": 9.834,
+      "accent": false
+    },
+    {
+      "word": "de",
+      "start": 9.88,
+      "end": 9.938,
+      "accent": false
+    },
+    {
+      "word": "años:",
+      "start": 10.008,
+      "end": 10.623,
+      "accent": false
+    },
+    {
+      "word": "árboles",
+      "start": 11.134,
+      "end": 11.61,
+      "accent": false
+    },
+    {
+      "word": "por",
+      "start": 11.68,
+      "end": 11.831,
+      "accent": false
+    },
+    {
+      "word": "todas",
+      "start": 11.912,
+      "end": 12.214,
+      "accent": false
+    },
+    {
+      "word": "partes...",
+      "start": 12.283,
+      "end": 12.968,
+      "accent": false
+    },
+    {
+      "word": "que",
+      "start": 13.293,
+      "end": 13.41,
+      "accent": false
+    },
+    {
+      "word": "no",
+      "start": 13.479,
+      "end": 13.549,
+      "accent": false
+    },
+    {
+      "word": "ofrecían",
+      "start": 13.572,
+      "end": 14.106,
+      "accent": false
+    },
+    {
+      "word": "nada",
+      "start": 14.176,
+      "end": 14.431,
+      "accent": false
+    },
+    {
+      "word": "de",
+      "start": 14.489,
+      "end": 14.559,
+      "accent": false
+    },
+    {
+      "word": "comer.",
+      "start": 14.605,
+      "end": 15.128,
+      "accent": false
+    }
+  ],
+  "sin_frutos": [
+    {
+      "word": "Los",
+      "start": 0.48,
+      "end": 0.654,
+      "accent": false
+    },
+    {
+      "word": "primeros",
+      "start": 0.712,
+      "end": 1.095,
+      "accent": false
+    },
+    {
+      "word": "árboles",
+      "start": 1.165,
+      "end": 1.536,
+      "accent": false
+    },
+    {
+      "word": "no",
+      "start": 1.606,
+      "end": 1.699,
+      "accent": false
+    },
+    {
+      "word": "tenían",
+      "start": 1.745,
+      "end": 2.07,
+      "accent": false
+    },
+    {
+      "word": "flores",
+      "start": 2.128,
+      "end": 2.465,
+      "accent": false
+    },
+    {
+      "word": "ni",
+      "start": 2.523,
+      "end": 2.593,
+      "accent": false
+    },
+    {
+      "word": "frutos.",
+      "start": 2.651,
+      "end": 3.313,
+      "accent": true
+    },
+    {
+      "word": "Lanzaban",
+      "start": 3.754,
+      "end": 4.299,
+      "accent": false
+    },
+    {
+      "word": "sus",
+      "start": 4.357,
+      "end": 4.543,
+      "accent": false
+    },
+    {
+      "word": "semillas",
+      "start": 4.566,
+      "end": 4.973,
+      "accent": false
+    },
+    {
+      "word": "desnudas",
+      "start": 5.019,
+      "end": 5.46,
+      "accent": false
+    },
+    {
+      "word": "al",
+      "start": 5.53,
+      "end": 5.611,
+      "accent": false
+    },
+    {
+      "word": "viento,",
+      "start": 5.658,
+      "end": 6.25,
+      "accent": false
+    },
+    {
+      "word": "como",
+      "start": 6.691,
+      "end": 6.923,
+      "accent": false
+    },
+    {
+      "word": "una",
+      "start": 7.005,
+      "end": 7.132,
+      "accent": false
+    },
+    {
+      "word": "apuesta",
+      "start": 7.155,
+      "end": 7.562,
+      "accent": false
+    },
+    {
+      "word": "a",
+      "start": 7.597,
+      "end": 7.62,
+      "accent": false
+    },
+    {
+      "word": "ciegas.",
+      "start": 7.655,
+      "end": 8.34,
+      "accent": true
+    },
+    {
+      "word": "Casi",
+      "start": 9.036,
+      "end": 9.338,
+      "accent": false
+    },
+    {
+      "word": "todas",
+      "start": 9.408,
+      "end": 9.686,
+      "accent": false
+    },
+    {
+      "word": "caían",
+      "start": 9.733,
+      "end": 10.046,
+      "accent": false
+    },
+    {
+      "word": "junto",
+      "start": 10.093,
+      "end": 10.371,
+      "accent": false
+    },
+    {
+      "word": "al",
+      "start": 10.406,
+      "end": 10.453,
+      "accent": false
+    },
+    {
+      "word": "árbol",
+      "start": 10.511,
+      "end": 10.731,
+      "accent": false
+    },
+    {
+      "word": "madre,",
+      "start": 10.789,
+      "end": 11.323,
+      "accent": false
+    },
+    {
+      "word": "a",
+      "start": 11.765,
+      "end": 11.834,
+      "accent": false
+    },
+    {
+      "word": "competir",
+      "start": 11.904,
+      "end": 12.368,
+      "accent": false
+    },
+    {
+      "word": "por",
+      "start": 12.426,
+      "end": 12.577,
+      "accent": false
+    },
+    {
+      "word": "la",
+      "start": 12.635,
+      "end": 12.705,
+      "accent": false
+    },
+    {
+      "word": "misma",
+      "start": 12.751,
+      "end": 13.042,
+      "accent": false
+    },
+    {
+      "word": "luz",
+      "start": 13.088,
+      "end": 13.367,
+      "accent": false
+    },
+    {
+      "word": "y",
+      "start": 13.518,
+      "end": 13.599,
+      "accent": false
+    },
+    {
+      "word": "la",
+      "start": 13.692,
+      "end": 13.75,
+      "accent": false
+    },
+    {
+      "word": "misma",
+      "start": 13.808,
+      "end": 14.121,
+      "accent": false
+    },
+    {
+      "word": "agua.",
+      "start": 14.156,
+      "end": 14.702,
+      "accent": false
+    },
+    {
+      "word": "Durante",
+      "start": 15.515,
+      "end": 15.956,
+      "accent": false
+    },
+    {
+      "word": "millones",
+      "start": 16.014,
+      "end": 16.478,
+      "accent": false
+    },
+    {
+      "word": "de",
+      "start": 16.536,
+      "end": 16.606,
+      "accent": false
+    },
+    {
+      "word": "años,",
+      "start": 16.664,
+      "end": 17.279,
+      "accent": false
+    },
+    {
+      "word": "las",
+      "start": 17.558,
+      "end": 17.767,
+      "accent": false
+    },
+    {
+      "word": "plantas",
+      "start": 17.837,
+      "end": 18.266,
+      "accent": true
+    },
+    {
+      "word": "vivieron",
+      "start": 18.324,
+      "end": 18.765,
+      "accent": false
+    },
+    {
+      "word": "solas.",
+      "start": 18.847,
+      "end": 19.543,
+      "accent": false
+    }
+  ],
+  "el_pacto": [
+    {
+      "word": "Hace",
+      "start": 0.495,
+      "end": 0.762,
+      "accent": false
+    },
+    {
+      "word": "más",
+      "start": 0.82,
+      "end": 0.971,
+      "accent": false
+    },
+    {
+      "word": "de",
+      "start": 1.018,
+      "end": 1.099,
+      "accent": false
+    },
+    {
+      "word": "ciento",
+      "start": 1.157,
+      "end": 1.529,
+      "accent": false
+    },
+    {
+      "word": "treinta",
+      "start": 1.587,
+      "end": 1.889,
+      "accent": false
+    },
+    {
+      "word": "millones",
+      "start": 1.935,
+      "end": 2.307,
+      "accent": false
+    },
+    {
+      "word": "de",
+      "start": 2.353,
+      "end": 2.411,
+      "accent": false
+    },
+    {
+      "word": "años",
+      "start": 2.458,
+      "end": 2.829,
+      "accent": false
+    },
+    {
+      "word": "llegó",
+      "start": 3.108,
+      "end": 3.433,
+      "accent": false
+    },
+    {
+      "word": "una",
+      "start": 3.491,
+      "end": 3.619,
+      "accent": false
+    },
+    {
+      "word": "idea",
+      "start": 3.665,
+      "end": 3.932,
+      "accent": false
+    },
+    {
+      "word": "revolucionaria:",
+      "start": 4.002,
+      "end": 5.07,
+      "accent": false
+    },
+    {
+      "word": "envolver",
+      "start": 5.673,
+      "end": 6.196,
+      "accent": false
+    },
+    {
+      "word": "la",
+      "start": 6.266,
+      "end": 6.335,
+      "accent": false
+    },
+    {
+      "word": "semilla",
+      "start": 6.393,
+      "end": 6.765,
+      "accent": false
+    },
+    {
+      "word": "en",
+      "start": 6.8,
+      "end": 6.858,
+      "accent": false
+    },
+    {
+      "word": "azúcar.",
+      "start": 6.916,
+      "end": 7.496,
+      "accent": true
+    },
+    {
+      "word": "Fósiles",
+      "start": 8.309,
+      "end": 8.785,
+      "accent": false
+    },
+    {
+      "word": "de",
+      "start": 8.82,
+      "end": 8.866,
+      "accent": false
+    },
+    {
+      "word": "Nuevo",
+      "start": 8.913,
+      "end": 9.122,
+      "accent": false
+    },
+    {
+      "word": "México,",
+      "start": 9.18,
+      "end": 9.795,
+      "accent": false
+    },
+    {
+      "word": "de",
+      "start": 10.039,
+      "end": 10.12,
+      "accent": false
+    },
+    {
+      "word": "hace",
+      "start": 10.167,
+      "end": 10.364,
+      "accent": false
+    },
+    {
+      "word": "setenta",
+      "start": 10.41,
+      "end": 10.817,
+      "accent": false
+    },
+    {
+      "word": "y",
+      "start": 10.84,
+      "end": 10.863,
+      "accent": false
+    },
+    {
+      "word": "cuatro",
+      "start": 10.898,
+      "end": 11.177,
+      "accent": false
+    },
+    {
+      "word": "millones",
+      "start": 11.223,
+      "end": 11.583,
+      "accent": false
+    },
+    {
+      "word": "de",
+      "start": 11.629,
+      "end": 11.687,
+      "accent": false
+    },
+    {
+      "word": "años,",
+      "start": 11.745,
+      "end": 12.291,
+      "accent": false
+    },
+    {
+      "word": "muestran",
+      "start": 12.674,
+      "end": 13.127,
+      "accent": false
+    },
+    {
+      "word": "bayas",
+      "start": 13.185,
+      "end": 13.557,
+      "accent": false
+    },
+    {
+      "word": "ya",
+      "start": 13.638,
+      "end": 13.766,
+      "accent": false
+    },
+    {
+      "word": "comidas",
+      "start": 13.812,
+      "end": 14.195,
+      "accent": false
+    },
+    {
+      "word": "por",
+      "start": 14.253,
+      "end": 14.381,
+      "accent": false
+    },
+    {
+      "word": "dinosaurios,",
+      "start": 14.451,
+      "end": 15.345,
+      "accent": false
+    },
+    {
+      "word": "aves",
+      "start": 15.786,
+      "end": 16.053,
+      "accent": false
+    },
+    {
+      "word": "primitivas",
+      "start": 16.099,
+      "end": 16.773,
+      "accent": false
+    },
+    {
+      "word": "y",
+      "start": 17.156,
+      "end": 17.272,
+      "accent": false
+    },
+    {
+      "word": "pequeños",
+      "start": 17.365,
+      "end": 17.829,
+      "accent": false
+    },
+    {
+      "word": "mamíferos.",
+      "start": 17.887,
+      "end": 18.642,
+      "accent": false
+    },
+    {
+      "word": "Fue",
+      "start": 19.153,
+      "end": 19.35,
+      "accent": false
+    },
+    {
+      "word": "un",
+      "start": 19.408,
+      "end": 19.455,
+      "accent": false
+    },
+    {
+      "word": "pacto",
+      "start": 19.501,
+      "end": 19.78,
+      "accent": true
+    },
+    {
+      "word": "simple:",
+      "start": 19.838,
+      "end": 20.384,
+      "accent": true
+    },
+    {
+      "word": "la",
+      "start": 20.987,
+      "end": 21.08,
+      "accent": false
+    },
+    {
+      "word": "planta",
+      "start": 21.127,
+      "end": 21.463,
+      "accent": false
+    },
+    {
+      "word": "paga",
+      "start": 21.51,
+      "end": 21.742,
+      "accent": false
+    },
+    {
+      "word": "con",
+      "start": 21.8,
+      "end": 21.928,
+      "accent": false
+    },
+    {
+      "word": "alimento,",
+      "start": 21.986,
+      "end": 22.648,
+      "accent": false
+    },
+    {
+      "word": "y",
+      "start": 22.891,
+      "end": 22.949,
+      "accent": false
+    },
+    {
+      "word": "el",
+      "start": 22.996,
+      "end": 23.054,
+      "accent": false
+    },
+    {
+      "word": "animal,",
+      "start": 23.112,
+      "end": 23.553,
+      "accent": false
+    },
+    {
+      "word": "al",
+      "start": 23.611,
+      "end": 23.774,
+      "accent": false
+    },
+    {
+      "word": "moverse,",
+      "start": 23.832,
+      "end": 24.482,
+      "accent": false
+    },
+    {
+      "word": "reparte",
+      "start": 24.807,
+      "end": 25.213,
+      "accent": false
+    },
+    {
+      "word": "sus",
+      "start": 25.248,
+      "end": 25.422,
+      "accent": false
+    },
+    {
+      "word": "semillas",
+      "start": 25.446,
+      "end": 25.84,
+      "accent": false
+    },
+    {
+      "word": "por",
+      "start": 25.887,
+      "end": 26.014,
+      "accent": false
+    },
+    {
+      "word": "el",
+      "start": 26.072,
+      "end": 26.119,
+      "accent": false
+    },
+    {
+      "word": "mundo.",
+      "start": 26.165,
+      "end": 26.641,
+      "accent": false
+    },
+    {
+      "word": "Comida",
+      "start": 27.338,
+      "end": 27.837,
+      "accent": true
+    },
+    {
+      "word": "a",
+      "start": 27.884,
+      "end": 27.907,
+      "accent": false
+    },
+    {
+      "word": "cambio",
+      "start": 27.965,
+      "end": 28.267,
+      "accent": false
+    },
+    {
+      "word": "de",
+      "start": 28.302,
+      "end": 28.371,
+      "accent": false
+    },
+    {
+      "word": "transporte.",
+      "start": 28.418,
+      "end": 29.254,
+      "accent": true
+    }
+  ],
+  "domesticacion": [
+    {
+      "word": "Hace",
+      "start": 0.35,
+      "end": 0.664,
+      "accent": false
+    },
+    {
+      "word": "unos",
+      "start": 0.78,
+      "end": 1.024,
+      "accent": false
+    },
+    {
+      "word": "once",
+      "start": 1.093,
+      "end": 1.349,
+      "accent": false
+    },
+    {
+      "word": "mil",
+      "start": 1.407,
+      "end": 1.546,
+      "accent": false
+    },
+    {
+      "word": "cuatrocientos",
+      "start": 1.604,
+      "end": 2.266,
+      "accent": false
+    },
+    {
+      "word": "años,",
+      "start": 2.301,
+      "end": 2.846,
+      "accent": false
+    },
+    {
+      "word": "en",
+      "start": 3.171,
+      "end": 3.322,
+      "accent": false
+    },
+    {
+      "word": "el",
+      "start": 3.392,
+      "end": 3.473,
+      "accent": false
+    },
+    {
+      "word": "valle",
+      "start": 3.531,
+      "end": 3.764,
+      "accent": false
+    },
+    {
+      "word": "del",
+      "start": 3.81,
+      "end": 3.949,
+      "accent": false
+    },
+    {
+      "word": "Jordán,",
+      "start": 4.007,
+      "end": 4.588,
+      "accent": false
+    },
+    {
+      "word": "unos",
+      "start": 5.099,
+      "end": 5.342,
+      "accent": false
+    },
+    {
+      "word": "agricultores",
+      "start": 5.4,
+      "end": 6.039,
+      "accent": false
+    },
+    {
+      "word": "encontraron",
+      "start": 6.108,
+      "end": 6.689,
+      "accent": false
+    },
+    {
+      "word": "higueras",
+      "start": 6.724,
+      "end": 7.072,
+      "accent": false
+    },
+    {
+      "word": "con",
+      "start": 7.142,
+      "end": 7.269,
+      "accent": false
+    },
+    {
+      "word": "frutos",
+      "start": 7.327,
+      "end": 7.676,
+      "accent": false
+    },
+    {
+      "word": "más",
+      "start": 7.745,
+      "end": 7.919,
+      "accent": false
+    },
+    {
+      "word": "dulces...",
+      "start": 7.954,
+      "end": 8.79,
+      "accent": true
+    },
+    {
+      "word": "y,",
+      "start": 9.173,
+      "end": 9.673,
+      "accent": false
+    },
+    {
+      "word": "en",
+      "start": 9.789,
+      "end": 9.94,
+      "accent": false
+    },
+    {
+      "word": "vez",
+      "start": 9.986,
+      "end": 10.114,
+      "accent": false
+    },
+    {
+      "word": "de",
+      "start": 10.137,
+      "end": 10.195,
+      "accent": false
+    },
+    {
+      "word": "dejarlas",
+      "start": 10.241,
+      "end": 10.671,
+      "accent": false
+    },
+    {
+      "word": "morir,",
+      "start": 10.717,
+      "end": 11.205,
+      "accent": false
+    },
+    {
+      "word": "las",
+      "start": 11.646,
+      "end": 11.809,
+      "accent": false
+    },
+    {
+      "word": "plantaron",
+      "start": 11.855,
+      "end": 12.285,
+      "accent": false
+    },
+    {
+      "word": "ellos",
+      "start": 12.343,
+      "end": 12.563,
+      "accent": false
+    },
+    {
+      "word": "mismos.",
+      "start": 12.621,
+      "end": 13.214,
+      "accent": false
+    },
+    {
+      "word": "Pudo",
+      "start": 13.724,
+      "end": 14.038,
+      "accent": false
+    },
+    {
+      "word": "ser",
+      "start": 14.096,
+      "end": 14.235,
+      "accent": false
+    },
+    {
+      "word": "el",
+      "start": 14.282,
+      "end": 14.34,
+      "accent": false
+    },
+    {
+      "word": "primer",
+      "start": 14.398,
+      "end": 14.688,
+      "accent": false
+    },
+    {
+      "word": "cultivo",
+      "start": 14.746,
+      "end": 15.164,
+      "accent": false
+    },
+    {
+      "word": "de",
+      "start": 15.21,
+      "end": 15.28,
+      "accent": false
+    },
+    {
+      "word": "la",
+      "start": 15.327,
+      "end": 15.373,
+      "accent": false
+    },
+    {
+      "word": "historia.",
+      "start": 15.396,
+      "end": 16.081,
+      "accent": true
+    },
+    {
+      "word": "Siglos",
+      "start": 16.685,
+      "end": 17.103,
+      "accent": false
+    },
+    {
+      "word": "después,",
+      "start": 17.161,
+      "end": 17.823,
+      "accent": false
+    },
+    {
+      "word": "en",
+      "start": 18.206,
+      "end": 18.357,
+      "accent": false
+    },
+    {
+      "word": "los",
+      "start": 18.403,
+      "end": 18.554,
+      "accent": false
+    },
+    {
+      "word": "bosques",
+      "start": 18.601,
+      "end": 18.926,
+      "accent": false
+    },
+    {
+      "word": "de",
+      "start": 18.96,
+      "end": 19.019,
+      "accent": false
+    },
+    {
+      "word": "Kazajistán,",
+      "start": 19.065,
+      "end": 20.029,
+      "accent": false
+    },
+    {
+      "word": "un",
+      "start": 20.412,
+      "end": 20.516,
+      "accent": false
+    },
+    {
+      "word": "manzano",
+      "start": 20.563,
+      "end": 20.992,
+      "accent": false
+    },
+    {
+      "word": "salvaje",
+      "start": 21.05,
+      "end": 21.492,
+      "accent": false
+    },
+    {
+      "word": "inició",
+      "start": 21.538,
+      "end": 21.933,
+      "accent": false
+    },
+    {
+      "word": "el",
+      "start": 21.968,
+      "end": 22.037,
+      "accent": false
+    },
+    {
+      "word": "mismo",
+      "start": 22.096,
+      "end": 22.386,
+      "accent": false
+    },
+    {
+      "word": "viaje:",
+      "start": 22.432,
+      "end": 23.013,
+      "accent": false
+    },
+    {
+      "word": "de",
+      "start": 23.616,
+      "end": 23.686,
+      "accent": false
+    },
+    {
+      "word": "fruta",
+      "start": 23.744,
+      "end": 24.011,
+      "accent": false
+    },
+    {
+      "word": "pequeña",
+      "start": 24.058,
+      "end": 24.429,
+      "accent": false
+    },
+    {
+      "word": "y",
+      "start": 24.487,
+      "end": 24.522,
+      "accent": false
+    },
+    {
+      "word": "agria,",
+      "start": 24.568,
+      "end": 25.103,
+      "accent": false
+    },
+    {
+      "word": "a",
+      "start": 25.428,
+      "end": 25.474,
+      "accent": false
+    },
+    {
+      "word": "la",
+      "start": 25.544,
+      "end": 25.602,
+      "accent": false
+    },
+    {
+      "word": "manzana",
+      "start": 25.648,
+      "end": 26.055,
+      "accent": true
+    },
+    {
+      "word": "que",
+      "start": 26.113,
+      "end": 26.194,
+      "accent": false
+    },
+    {
+      "word": "hoy",
+      "start": 26.229,
+      "end": 26.345,
+      "accent": false
+    },
+    {
+      "word": "mordemos.",
+      "start": 26.391,
+      "end": 27.146,
+      "accent": false
+    },
+    {
+      "word": "El",
+      "start": 27.842,
+      "end": 27.993,
+      "accent": false
+    },
+    {
+      "word": "ser",
+      "start": 28.051,
+      "end": 28.202,
+      "accent": false
+    },
+    {
+      "word": "humano",
+      "start": 28.237,
+      "end": 28.504,
+      "accent": false
+    },
+    {
+      "word": "tomó",
+      "start": 28.551,
+      "end": 28.783,
+      "accent": false
+    },
+    {
+      "word": "el",
+      "start": 28.806,
+      "end": 28.853,
+      "accent": false
+    },
+    {
+      "word": "relevo",
+      "start": 28.934,
+      "end": 29.247,
+      "accent": false
+    },
+    {
+      "word": "de",
+      "start": 29.282,
+      "end": 29.34,
+      "accent": false
+    },
+    {
+      "word": "los",
+      "start": 29.375,
+      "end": 29.491,
+      "accent": false
+    },
+    {
+      "word": "dinosaurios.",
+      "start": 29.526,
+      "end": 30.42,
+      "accent": true
+    }
+  ],
+  "resumen": [
+    {
+      "word": "Plantas",
+      "start": 0.231,
+      "end": 0.695,
+      "accent": true
+    },
+    {
+      "word": "que",
+      "start": 0.753,
+      "end": 0.823,
+      "accent": false
+    },
+    {
+      "word": "aprendieron",
+      "start": 0.846,
+      "end": 1.38,
+      "accent": false
+    },
+    {
+      "word": "a",
+      "start": 1.438,
+      "end": 1.461,
+      "accent": false
+    },
+    {
+      "word": "pagar",
+      "start": 1.508,
+      "end": 1.763,
+      "accent": false
+    },
+    {
+      "word": "por",
+      "start": 1.833,
+      "end": 1.972,
+      "accent": false
+    },
+    {
+      "word": "ayuda.",
+      "start": 2.019,
+      "end": 2.588,
+      "accent": false
+    },
+    {
+      "word": "Animales",
+      "start": 3.191,
+      "end": 3.772,
+      "accent": true
+    },
+    {
+      "word": "que",
+      "start": 3.841,
+      "end": 3.911,
+      "accent": false
+    },
+    {
+      "word": "aceptaron",
+      "start": 3.934,
+      "end": 4.434,
+      "accent": false
+    },
+    {
+      "word": "el",
+      "start": 4.503,
+      "end": 4.573,
+      "accent": false
+    },
+    {
+      "word": "trato.",
+      "start": 4.643,
+      "end": 5.188,
+      "accent": false
+    },
+    {
+      "word": "Humanos",
+      "start": 5.699,
+      "end": 6.245,
+      "accent": true
+    },
+    {
+      "word": "que",
+      "start": 6.303,
+      "end": 6.384,
+      "accent": false
+    },
+    {
+      "word": "domesticaron",
+      "start": 6.43,
+      "end": 7.092,
+      "accent": false
+    },
+    {
+      "word": "el",
+      "start": 7.15,
+      "end": 7.22,
+      "accent": false
+    },
+    {
+      "word": "propio",
+      "start": 7.289,
+      "end": 7.603,
+      "accent": false
+    },
+    {
+      "word": "pacto.",
+      "start": 7.649,
+      "end": 8.218,
+      "accent": false
+    },
+    {
+      "word": "La",
+      "start": 8.915,
+      "end": 9.019,
+      "accent": false
+    },
+    {
+      "word": "próxima",
+      "start": 9.066,
+      "end": 9.437,
+      "accent": false
+    },
+    {
+      "word": "vez",
+      "start": 9.484,
+      "end": 9.611,
+      "accent": false
+    },
+    {
+      "word": "que",
+      "start": 9.658,
+      "end": 9.739,
+      "accent": false
+    },
+    {
+      "word": "muerdas",
+      "start": 9.786,
+      "end": 10.122,
+      "accent": false
+    },
+    {
+      "word": "una",
+      "start": 10.192,
+      "end": 10.32,
+      "accent": false
+    },
+    {
+      "word": "fruta,",
+      "start": 10.366,
+      "end": 10.877,
+      "accent": true
+    },
+    {
+      "word": "recuerda:",
+      "start": 11.202,
+      "end": 11.899,
+      "accent": false
+    },
+    {
+      "word": "llevas",
+      "start": 12.34,
+      "end": 12.676,
+      "accent": false
+    },
+    {
+      "word": "en",
+      "start": 12.758,
+      "end": 12.804,
+      "accent": false
+    },
+    {
+      "word": "la",
+      "start": 12.885,
+      "end": 12.943,
+      "accent": false
+    },
+    {
+      "word": "boca",
+      "start": 12.99,
+      "end": 13.234,
+      "accent": false
+    },
+    {
+      "word": "cien",
+      "start": 13.269,
+      "end": 13.489,
+      "accent": false
+    },
+    {
+      "word": "millones",
+      "start": 13.559,
+      "end": 13.965,
+      "accent": false
+    },
+    {
+      "word": "de",
+      "start": 14.012,
+      "end": 14.07,
+      "accent": false
+    },
+    {
+      "word": "años",
+      "start": 14.116,
+      "end": 14.348,
+      "accent": false
+    },
+    {
+      "word": "de",
+      "start": 14.395,
+      "end": 14.441,
+      "accent": false
+    },
+    {
+      "word": "negociación.",
+      "start": 14.488,
+      "end": 15.393,
+      "accent": true
+    }
+  ],
+  "cierre_cta": [
+    {
+      "word": "Dale",
+      "start": 0.297,
+      "end": 0.576,
+      "accent": false
+    },
+    {
+      "word": "like,",
+      "start": 0.634,
+      "end": 1.144,
+      "accent": true
+    },
+    {
+      "word": "suscríbete,",
+      "start": 1.528,
+      "end": 2.456,
+      "accent": true
+    },
+    {
+      "word": "y",
+      "start": 2.839,
+      "end": 2.921,
+      "accent": false
+    },
+    {
+      "word": "síguenos",
+      "start": 3.037,
+      "end": 3.478,
+      "accent": false
+    },
+    {
+      "word": "en",
+      "start": 3.571,
+      "end": 3.71,
+      "accent": false
+    },
+    {
+      "word": "arroba",
+      "start": 3.884,
+      "end": 4.453,
+      "accent": false
+    },
+    {
+      "word": "Randonáutico.",
+      "start": 4.662,
+      "end": 5.939,
+      "accent": true
+    }
+  ]
+}

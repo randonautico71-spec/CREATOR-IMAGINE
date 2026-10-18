@@ -1,0 +1,4705 @@
+{
+  "meta": {
+    "title": "El pacto de la fruta — por qué las plantas inventaron el fruto",
+    "slug": "frutos_pacto",
+    "description": "Historia de los árboles antes de los frutos, el pacto evolutivo con los animales que creó la fruta, y su domesticación por el ser humano.",
+    "duration": 117.89,
+    "fps": 60,
+    "width": 1080,
+    "height": 1920,
+    "category": "science",
+    "tags": [
+      "evolucion",
+      "plantas",
+      "frutos",
+      "domesticacion",
+      "creator_imagine"
+    ],
+    "createdAt": "2026-10-18T19:45:00Z"
+  },
+  "theme": "dramatic",
+  "music": {
+    "bpm": 92,
+    "genre": "orchestral",
+    "intensity": 0.6,
+    "baseVolume": 0.42,
+    "fadeIn": 0.6,
+    "fadeOut": 1.2
+  },
+  "globalEffects": {
+    "grain": 0.04,
+    "vignette": 0.55,
+    "bloom": 0.25,
+    "colorGrading": "cinematic"
+  },
+  "scenes": [
+    {
+      "id": "hook_01",
+      "label": "Imagina un mundo sin frutas. Sin manzana",
+      "duration": 6.13,
+      "transition": {
+        "in": "fade",
+        "out": "fade",
+        "duration": 0.3
+      },
+      "elements": [
+        {
+          "type": "background",
+          "style": "gradient",
+          "colors": [
+            "#0A0D0A",
+            "#141814",
+            "#050605"
+          ],
+          "animated": true,
+          "intensity": 0.5
+        },
+        {
+          "type": "particles",
+          "density": 0.22,
+          "color": "#6E7B6E",
+          "speed": 0.25,
+          "glow": false,
+          "layer": "background",
+          "size": 1.6
+        },
+        {
+          "type": "figure",
+          "shape": "mountains",
+          "position": {
+            "x": 0.5,
+            "y": 1.0,
+            "anchor": "bottom-center"
+          },
+          "width": 1080,
+          "height": 420,
+          "delay": 0,
+          "duration": 0.6,
+          "style": "silhouette",
+          "color": "#1C231C",
+          "layer": "background"
+        },
+        {
+          "type": "figure",
+          "shape": "tree-pine",
+          "position": {
+            "x": 0.18,
+            "y": 0.86,
+            "anchor": "bottom-left"
+          },
+          "width": 220,
+          "height": 340,
+          "delay": 0.1,
+          "duration": 0.5,
+          "motion": "sway",
+          "swayAmount": 4,
+          "style": "silhouette",
+          "color": "#212B21"
+        },
+        {
+          "type": "figure",
+          "shape": "tree-pine",
+          "position": {
+            "x": 0.84,
+            "y": 0.9,
+            "anchor": "bottom-right"
+          },
+          "width": 180,
+          "height": 280,
+          "flip": true,
+          "delay": 0.15,
+          "duration": 0.5,
+          "motion": "sway",
+          "swayAmount": 3,
+          "style": "silhouette",
+          "color": "#1A221A"
+        },
+        {
+          "type": "camera",
+          "effect": "ken-burns",
+          "intensity": 0.06,
+          "duration": 6.13,
+          "easing": "ease-in-out"
+        },
+        {
+          "type": "badge",
+          "text": "CREATOR IMAGINE",
+          "style": "default",
+          "position": {
+            "x": 0.5,
+            "y": 0.14,
+            "anchor": "top-center"
+          },
+          "delay": 0.1
+        },
+        {
+          "type": "title",
+          "text": "UN MUNDO... ¿SIN FRUTAS?",
+          "size": "lg",
+          "position": {
+            "x": 0.5,
+            "y": 0.3,
+            "anchor": "center"
+          },
+          "delay": 0.5,
+          "accentWords": [
+            "SIN",
+            "FRUTAS?"
+          ]
+        },
+        {
+          "type": "caption",
+          "text": "Imagina un mundo sin frutas. Sin manzanas, sin higos, sin una sola",
+          "words": [
+            {
+              "word": "Imagina",
+              "start": 0.0,
+              "end": 0.522,
+              "accent": false
+            },
+            {
+              "word": "un",
+              "start": 0.557,
+              "end": 0.604,
+              "accent": false
+            },
+            {
+              "word": "mundo",
+              "start": 0.662,
+              "end": 0.952,
+              "accent": false
+            },
+            {
+              "word": "sin",
+              "start": 0.998,
+              "end": 1.173,
+              "accent": false
+            },
+            {
+              "word": "frutas.",
+              "start": 1.231,
+              "end": 1.95,
+              "accent": true
+            },
+            {
+              "word": "Sin",
+              "start": 2.461,
+              "end": 2.682,
+              "accent": false
+            },
+            {
+              "word": "manzanas,",
+              "start": 2.74,
+              "end": 3.634,
+              "accent": false
+            },
+            {
+              "word": "sin",
+              "start": 3.959,
+              "end": 4.261,
+              "accent": false
+            },
+            {
+              "word": "higos,",
+              "start": 4.296,
+              "end": 5.039,
+              "accent": false
+            },
+            {
+              "word": "sin",
+              "start": 5.364,
+              "end": 5.584,
+              "accent": false
+            },
+            {
+              "word": "una",
+              "start": 5.666,
+              "end": 5.805,
+              "accent": false
+            },
+            {
+              "word": "sola",
+              "start": 5.851,
+              "end": 6.072,
+              "accent": false
+            }
+          ],
+          "style": "standard",
+          "position": {
+            "x": 0.5,
+            "y": 0.045,
+            "anchor": "top-center"
+          }
+        }
+      ],
+      "narration": {
+        "text": "Imagina un mundo sin frutas. Sin manzanas, sin higos, sin una sola",
+        "voice": "carmen",
+        "stability": 0.5,
+        "similarity": 0.8
+      },
+      "audio": {
+        "sfx": [
+          {
+            "type": "rise",
+            "at": 0.0,
+            "volume": 0.5
+          }
+        ],
+        "musicVolume": 0.35
+      }
+    },
+    {
+      "id": "hook_02",
+      "label": "fresa. Así fue la Tierra durante trescie",
+      "duration": 5.004,
+      "transition": {
+        "in": "fade",
+        "out": "fade",
+        "duration": 0.3
+      },
+      "elements": [
+        {
+          "type": "background",
+          "style": "gradient",
+          "colors": [
+            "#0A0D0A",
+            "#141814",
+            "#050605"
+          ],
+          "animated": true,
+          "intensity": 0.5
+        },
+        {
+          "type": "particles",
+          "density": 0.22,
+          "color": "#6E7B6E",
+          "speed": 0.25,
+          "glow": false,
+          "layer": "background",
+          "size": 1.6
+        },
+        {
+          "type": "figure",
+          "shape": "mountains",
+          "position": {
+            "x": 0.5,
+            "y": 1.0,
+            "anchor": "bottom-center"
+          },
+          "width": 1080,
+          "height": 420,
+          "delay": 0,
+          "duration": 0.6,
+          "style": "silhouette",
+          "color": "#1C231C",
+          "layer": "background"
+        },
+        {
+          "type": "figure",
+          "shape": "tree-pine",
+          "position": {
+            "x": 0.18,
+            "y": 0.86,
+            "anchor": "bottom-left"
+          },
+          "width": 220,
+          "height": 340,
+          "delay": 0.1,
+          "duration": 0.5,
+          "motion": "sway",
+          "swayAmount": 4,
+          "style": "silhouette",
+          "color": "#212B21"
+        },
+        {
+          "type": "figure",
+          "shape": "tree-pine",
+          "position": {
+            "x": 0.84,
+            "y": 0.9,
+            "anchor": "bottom-right"
+          },
+          "width": 180,
+          "height": 280,
+          "flip": true,
+          "delay": 0.15,
+          "duration": 0.5,
+          "motion": "sway",
+          "swayAmount": 3,
+          "style": "silhouette",
+          "color": "#1A221A"
+        },
+        {
+          "type": "camera",
+          "effect": "ken-burns",
+          "intensity": 0.06,
+          "duration": 5.004,
+          "easing": "ease-in-out"
+        },
+        {
+          "type": "caption",
+          "text": "fresa. Así fue la Tierra durante trescientos millones de años:",
+          "words": [
+            {
+              "word": "fresa.",
+              "start": 0.0,
+              "end": 0.615,
+              "accent": false
+            },
+            {
+              "word": "Así",
+              "start": 1.219,
+              "end": 1.567,
+              "accent": false
+            },
+            {
+              "word": "fue",
+              "start": 1.637,
+              "end": 1.8,
+              "accent": false
+            },
+            {
+              "word": "la",
+              "start": 1.834,
+              "end": 1.916,
+              "accent": false
+            },
+            {
+              "word": "Tierra",
+              "start": 1.985,
+              "end": 2.252,
+              "accent": false
+            },
+            {
+              "word": "durante",
+              "start": 2.299,
+              "end": 2.647,
+              "accent": false
+            },
+            {
+              "word": "trescientos",
+              "start": 2.694,
+              "end": 3.262,
+              "accent": false
+            },
+            {
+              "word": "millones",
+              "start": 3.321,
+              "end": 3.704,
+              "accent": false
+            },
+            {
+              "word": "de",
+              "start": 3.75,
+              "end": 3.808,
+              "accent": false
+            },
+            {
+              "word": "años:",
+              "start": 3.878,
+              "end": 4.493,
+              "accent": false
+            }
+          ],
+          "style": "standard",
+          "position": {
+            "x": 0.5,
+            "y": 0.045,
+            "anchor": "top-center"
+          }
+        }
+      ],
+      "narration": {
+        "text": "fresa. Así fue la Tierra durante trescientos millones de años:",
+        "voice": "carmen",
+        "stability": 0.5,
+        "similarity": 0.8
+      },
+      "audio": {
+        "sfx": [],
+        "musicVolume": 0.35
+      }
+    },
+    {
+      "id": "hook_03",
+      "label": "árboles por todas partes... que no ofrec",
+      "duration": 4.946,
+      "transition": {
+        "in": "fade",
+        "out": "fade",
+        "duration": 0.3
+      },
+      "elements": [
+        {
+          "type": "background",
+          "style": "gradient",
+          "colors": [
+            "#0A0D0A",
+            "#141814",
+            "#050605"
+          ],
+          "animated": true,
+          "intensity": 0.5
+        },
+        {
+          "type": "particles",
+          "density": 0.22,
+          "color": "#6E7B6E",
+          "speed": 0.25,
+          "glow": false,
+          "layer": "background",
+          "size": 1.6
+        },
+        {
+          "type": "figure",
+          "shape": "mountains",
+          "position": {
+            "x": 0.5,
+            "y": 1.0,
+            "anchor": "bottom-center"
+          },
+          "width": 1080,
+          "height": 420,
+          "delay": 0,
+          "duration": 0.6,
+          "style": "silhouette",
+          "color": "#1C231C",
+          "layer": "background"
+        },
+        {
+          "type": "figure",
+          "shape": "tree-pine",
+          "position": {
+            "x": 0.18,
+            "y": 0.86,
+            "anchor": "bottom-left"
+          },
+          "width": 220,
+          "height": 340,
+          "delay": 0.1,
+          "duration": 0.5,
+          "motion": "sway",
+          "swayAmount": 4,
+          "style": "silhouette",
+          "color": "#212B21"
+        },
+        {
+          "type": "figure",
+          "shape": "tree-pine",
+          "position": {
+            "x": 0.84,
+            "y": 0.9,
+            "anchor": "bottom-right"
+          },
+          "width": 180,
+          "height": 280,
+          "flip": true,
+          "delay": 0.15,
+          "duration": 0.5,
+          "motion": "sway",
+          "swayAmount": 3,
+          "style": "silhouette",
+          "color": "#1A221A"
+        },
+        {
+          "type": "camera",
+          "effect": "ken-burns",
+          "intensity": 0.06,
+          "duration": 4.946,
+          "easing": "ease-in-out"
+        },
+        {
+          "type": "caption",
+          "text": "árboles por todas partes... que no ofrecían nada de comer.",
+          "words": [
+            {
+              "word": "árboles",
+              "start": 0.0,
+              "end": 0.476,
+              "accent": false
+            },
+            {
+              "word": "por",
+              "start": 0.546,
+              "end": 0.697,
+              "accent": false
+            },
+            {
+              "word": "todas",
+              "start": 0.778,
+              "end": 1.08,
+              "accent": false
+            },
+            {
+              "word": "partes...",
+              "start": 1.149,
+              "end": 1.834,
+              "accent": false
+            },
+            {
+              "word": "que",
+              "start": 2.159,
+              "end": 2.276,
+              "accent": false
+            },
+            {
+              "word": "no",
+              "start": 2.345,
+              "end": 2.415,
+              "accent": false
+            },
+            {
+              "word": "ofrecían",
+              "start": 2.438,
+              "end": 2.972,
+              "accent": false
+            },
+            {
+              "word": "nada",
+              "start": 3.042,
+              "end": 3.297,
+              "accent": false
+            },
+            {
+              "word": "de",
+              "start": 3.355,
+              "end": 3.425,
+              "accent": false
+            },
+            {
+              "word": "comer.",
+              "start": 3.471,
+              "end": 3.994,
+              "accent": false
+            }
+          ],
+          "style": "standard",
+          "position": {
+            "x": 0.5,
+            "y": 0.045,
+            "anchor": "top-center"
+          }
+        }
+      ],
+      "narration": {
+        "text": "árboles por todas partes... que no ofrecían nada de comer.",
+        "voice": "carmen",
+        "stability": 0.5,
+        "similarity": 0.8
+      },
+      "audio": {
+        "sfx": [],
+        "musicVolume": 0.35
+      }
+    },
+    {
+      "id": "sin_frutos_01",
+      "label": "Los primeros árboles no tenían flores ni",
+      "duration": 3.274,
+      "transition": {
+        "in": "fade",
+        "out": "fade",
+        "duration": 0.3
+      },
+      "elements": [
+        {
+          "type": "background",
+          "style": "gradient",
+          "colors": [
+            "#0B0F0B",
+            "#161C16",
+            "#060806"
+          ],
+          "animated": true,
+          "intensity": 0.55
+        },
+        {
+          "type": "particles",
+          "density": 0.2,
+          "color": "#5C6B5C",
+          "speed": 0.2,
+          "glow": false,
+          "layer": "background",
+          "size": 1.4
+        },
+        {
+          "type": "figure",
+          "shape": "tree-pine",
+          "position": {
+            "x": 0.3,
+            "y": 0.88,
+            "anchor": "bottom-center"
+          },
+          "width": 300,
+          "height": 460,
+          "delay": 0,
+          "duration": 0.5,
+          "motion": "sway",
+          "swayAmount": 5,
+          "style": "silhouette",
+          "color": "#263122"
+        },
+        {
+          "type": "figure",
+          "shape": "tree-pine",
+          "position": {
+            "x": 0.72,
+            "y": 0.9,
+            "anchor": "bottom-center"
+          },
+          "width": 230,
+          "height": 360,
+          "flip": true,
+          "delay": 0.05,
+          "duration": 0.5,
+          "motion": "sway",
+          "swayAmount": 4,
+          "style": "silhouette",
+          "color": "#1E281B"
+        },
+        {
+          "type": "camera",
+          "effect": "pan-left",
+          "intensity": 0.05,
+          "duration": 3.274,
+          "easing": "ease-in-out"
+        },
+        {
+          "type": "title",
+          "text": "SEMILLAS AL AZAR DEL VIENTO",
+          "size": "md",
+          "position": {
+            "x": 0.5,
+            "y": 0.24,
+            "anchor": "center"
+          },
+          "delay": 0.2,
+          "accentWords": [
+            "AZAR"
+          ]
+        },
+        {
+          "type": "caption",
+          "text": "Los primeros árboles no tenían flores ni frutos.",
+          "words": [
+            {
+              "word": "Los",
+              "start": 0.0,
+              "end": 0.174,
+              "accent": false
+            },
+            {
+              "word": "primeros",
+              "start": 0.232,
+              "end": 0.615,
+              "accent": false
+            },
+            {
+              "word": "árboles",
+              "start": 0.685,
+              "end": 1.056,
+              "accent": false
+            },
+            {
+              "word": "no",
+              "start": 1.126,
+              "end": 1.219,
+              "accent": false
+            },
+            {
+              "word": "tenían",
+              "start": 1.265,
+              "end": 1.59,
+              "accent": false
+            },
+            {
+              "word": "flores",
+              "start": 1.648,
+              "end": 1.985,
+              "accent": false
+            },
+            {
+              "word": "ni",
+              "start": 2.043,
+              "end": 2.113,
+              "accent": false
+            },
+            {
+              "word": "frutos.",
+              "start": 2.171,
+              "end": 2.833,
+              "accent": true
+            }
+          ],
+          "style": "standard",
+          "position": {
+            "x": 0.5,
+            "y": 0.045,
+            "anchor": "top-center"
+          }
+        }
+      ],
+      "narration": {
+        "text": "Los primeros árboles no tenían flores ni frutos.",
+        "voice": "carmen",
+        "stability": 0.5,
+        "similarity": 0.8
+      },
+      "audio": {
+        "sfx": [
+          {
+            "type": "whoosh",
+            "at": 0.0,
+            "volume": 0.4
+          }
+        ],
+        "musicVolume": 0.4
+      }
+    },
+    {
+      "id": "sin_frutos_02",
+      "label": "Lanzaban sus semillas desnudas al viento",
+      "duration": 5.282,
+      "transition": {
+        "in": "fade",
+        "out": "fade",
+        "duration": 0.3
+      },
+      "elements": [
+        {
+          "type": "background",
+          "style": "gradient",
+          "colors": [
+            "#0B0F0B",
+            "#161C16",
+            "#060806"
+          ],
+          "animated": true,
+          "intensity": 0.55
+        },
+        {
+          "type": "particles",
+          "density": 0.2,
+          "color": "#5C6B5C",
+          "speed": 0.2,
+          "glow": false,
+          "layer": "background",
+          "size": 1.4
+        },
+        {
+          "type": "figure",
+          "shape": "tree-pine",
+          "position": {
+            "x": 0.3,
+            "y": 0.88,
+            "anchor": "bottom-center"
+          },
+          "width": 300,
+          "height": 460,
+          "delay": 0,
+          "duration": 0.5,
+          "motion": "sway",
+          "swayAmount": 5,
+          "style": "silhouette",
+          "color": "#263122"
+        },
+        {
+          "type": "figure",
+          "shape": "tree-pine",
+          "position": {
+            "x": 0.72,
+            "y": 0.9,
+            "anchor": "bottom-center"
+          },
+          "width": 230,
+          "height": 360,
+          "flip": true,
+          "delay": 0.05,
+          "duration": 0.5,
+          "motion": "sway",
+          "swayAmount": 4,
+          "style": "silhouette",
+          "color": "#1E281B"
+        },
+        {
+          "type": "camera",
+          "effect": "pan-left",
+          "intensity": 0.05,
+          "duration": 5.282,
+          "easing": "ease-in-out"
+        },
+        {
+          "type": "caption",
+          "text": "Lanzaban sus semillas desnudas al viento, como una apuesta a ciegas.",
+          "words": [
+            {
+              "word": "Lanzaban",
+              "start": 0.0,
+              "end": 0.545,
+              "accent": false
+            },
+            {
+              "word": "sus",
+              "start": 0.603,
+              "end": 0.789,
+              "accent": false
+            },
+            {
+              "word": "semillas",
+              "start": 0.812,
+              "end": 1.219,
+              "accent": false
+            },
+            {
+              "word": "desnudas",
+              "start": 1.265,
+              "end": 1.706,
+              "accent": false
+            },
+            {
+              "word": "al",
+              "start": 1.776,
+              "end": 1.857,
+              "accent": false
+            },
+            {
+              "word": "viento,",
+              "start": 1.904,
+              "end": 2.496,
+              "accent": false
+            },
+            {
+              "word": "como",
+              "start": 2.937,
+              "end": 3.169,
+              "accent": false
+            },
+            {
+              "word": "una",
+              "start": 3.251,
+              "end": 3.378,
+              "accent": false
+            },
+            {
+              "word": "apuesta",
+              "start": 3.401,
+              "end": 3.808,
+              "accent": false
+            },
+            {
+              "word": "a",
+              "start": 3.843,
+              "end": 3.866,
+              "accent": false
+            },
+            {
+              "word": "ciegas.",
+              "start": 3.901,
+              "end": 4.586,
+              "accent": true
+            }
+          ],
+          "style": "standard",
+          "position": {
+            "x": 0.5,
+            "y": 0.045,
+            "anchor": "top-center"
+          }
+        }
+      ],
+      "narration": {
+        "text": "Lanzaban sus semillas desnudas al viento, como una apuesta a ciegas.",
+        "voice": "carmen",
+        "stability": 0.5,
+        "similarity": 0.8
+      },
+      "audio": {
+        "sfx": [],
+        "musicVolume": 0.4
+      }
+    },
+    {
+      "id": "sin_frutos_03",
+      "label": "Casi todas caían junto al árbol madre, a",
+      "duration": 4.052,
+      "transition": {
+        "in": "fade",
+        "out": "fade",
+        "duration": 0.3
+      },
+      "elements": [
+        {
+          "type": "background",
+          "style": "gradient",
+          "colors": [
+            "#0B0F0B",
+            "#161C16",
+            "#060806"
+          ],
+          "animated": true,
+          "intensity": 0.55
+        },
+        {
+          "type": "particles",
+          "density": 0.2,
+          "color": "#5C6B5C",
+          "speed": 0.2,
+          "glow": false,
+          "layer": "background",
+          "size": 1.4
+        },
+        {
+          "type": "figure",
+          "shape": "tree-pine",
+          "position": {
+            "x": 0.3,
+            "y": 0.88,
+            "anchor": "bottom-center"
+          },
+          "width": 300,
+          "height": 460,
+          "delay": 0,
+          "duration": 0.5,
+          "motion": "sway",
+          "swayAmount": 5,
+          "style": "silhouette",
+          "color": "#263122"
+        },
+        {
+          "type": "figure",
+          "shape": "tree-pine",
+          "position": {
+            "x": 0.72,
+            "y": 0.9,
+            "anchor": "bottom-center"
+          },
+          "width": 230,
+          "height": 360,
+          "flip": true,
+          "delay": 0.05,
+          "duration": 0.5,
+          "motion": "sway",
+          "swayAmount": 4,
+          "style": "silhouette",
+          "color": "#1E281B"
+        },
+        {
+          "type": "camera",
+          "effect": "pan-left",
+          "intensity": 0.05,
+          "duration": 4.052,
+          "easing": "ease-in-out"
+        },
+        {
+          "type": "caption",
+          "text": "Casi todas caían junto al árbol madre, a competir por la misma",
+          "words": [
+            {
+              "word": "Casi",
+              "start": 0.0,
+              "end": 0.302,
+              "accent": false
+            },
+            {
+              "word": "todas",
+              "start": 0.372,
+              "end": 0.65,
+              "accent": false
+            },
+            {
+              "word": "caían",
+              "start": 0.697,
+              "end": 1.01,
+              "accent": false
+            },
+            {
+              "word": "junto",
+              "start": 1.057,
+              "end": 1.335,
+              "accent": false
+            },
+            {
+              "word": "al",
+              "start": 1.37,
+              "end": 1.417,
+              "accent": false
+            },
+            {
+              "word": "árbol",
+              "start": 1.475,
+              "end": 1.695,
+              "accent": false
+            },
+            {
+              "word": "madre,",
+              "start": 1.753,
+              "end": 2.287,
+              "accent": false
+            },
+            {
+              "word": "a",
+              "start": 2.729,
+              "end": 2.798,
+              "accent": false
+            },
+            {
+              "word": "competir",
+              "start": 2.868,
+              "end": 3.332,
+              "accent": false
+            },
+            {
+              "word": "por",
+              "start": 3.39,
+              "end": 3.541,
+              "accent": false
+            },
+            {
+              "word": "la",
+              "start": 3.599,
+              "end": 3.669,
+              "accent": false
+            },
+            {
+              "word": "misma",
+              "start": 3.715,
+              "end": 4.006,
+              "accent": false
+            }
+          ],
+          "style": "standard",
+          "position": {
+            "x": 0.5,
+            "y": 0.045,
+            "anchor": "top-center"
+          }
+        }
+      ],
+      "narration": {
+        "text": "Casi todas caían junto al árbol madre, a competir por la misma",
+        "voice": "carmen",
+        "stability": 0.5,
+        "similarity": 0.8
+      },
+      "audio": {
+        "sfx": [],
+        "musicVolume": 0.4
+      }
+    },
+    {
+      "id": "sin_frutos_04",
+      "label": "luz y la misma agua. Durante millones de",
+      "duration": 5.759,
+      "transition": {
+        "in": "fade",
+        "out": "fade",
+        "duration": 0.3
+      },
+      "elements": [
+        {
+          "type": "background",
+          "style": "gradient",
+          "colors": [
+            "#0B0F0B",
+            "#161C16",
+            "#060806"
+          ],
+          "animated": true,
+          "intensity": 0.55
+        },
+        {
+          "type": "particles",
+          "density": 0.2,
+          "color": "#5C6B5C",
+          "speed": 0.2,
+          "glow": false,
+          "layer": "background",
+          "size": 1.4
+        },
+        {
+          "type": "figure",
+          "shape": "tree-pine",
+          "position": {
+            "x": 0.3,
+            "y": 0.88,
+            "anchor": "bottom-center"
+          },
+          "width": 300,
+          "height": 460,
+          "delay": 0,
+          "duration": 0.5,
+          "motion": "sway",
+          "swayAmount": 5,
+          "style": "silhouette",
+          "color": "#263122"
+        },
+        {
+          "type": "figure",
+          "shape": "tree-pine",
+          "position": {
+            "x": 0.72,
+            "y": 0.9,
+            "anchor": "bottom-center"
+          },
+          "width": 230,
+          "height": 360,
+          "flip": true,
+          "delay": 0.05,
+          "duration": 0.5,
+          "motion": "sway",
+          "swayAmount": 4,
+          "style": "silhouette",
+          "color": "#1E281B"
+        },
+        {
+          "type": "camera",
+          "effect": "pan-left",
+          "intensity": 0.05,
+          "duration": 5.759,
+          "easing": "ease-in-out"
+        },
+        {
+          "type": "card",
+          "title": "APUESTA A CIEGAS",
+          "value": "300.000.000 de años",
+          "description": "Sin flores ni frutos: la semilla desnuda caía junto al árbol madre y competía por luz y agua",
+          "position": {
+            "x": 0.5,
+            "y": 0.86,
+            "anchor": "bottom-center"
+          },
+          "delay": 0.3,
+          "enter": "rise",
+          "accentColor": "#9AA98B"
+        },
+        {
+          "type": "caption",
+          "text": "luz y la misma agua. Durante millones de años, las plantas vivieron",
+          "words": [
+            {
+              "word": "luz",
+              "start": 0.0,
+              "end": 0.279,
+              "accent": false
+            },
+            {
+              "word": "y",
+              "start": 0.43,
+              "end": 0.511,
+              "accent": false
+            },
+            {
+              "word": "la",
+              "start": 0.604,
+              "end": 0.662,
+              "accent": false
+            },
+            {
+              "word": "misma",
+              "start": 0.72,
+              "end": 1.033,
+              "accent": false
+            },
+            {
+              "word": "agua.",
+              "start": 1.068,
+              "end": 1.614,
+              "accent": false
+            },
+            {
+              "word": "Durante",
+              "start": 2.427,
+              "end": 2.868,
+              "accent": false
+            },
+            {
+              "word": "millones",
+              "start": 2.926,
+              "end": 3.39,
+              "accent": false
+            },
+            {
+              "word": "de",
+              "start": 3.448,
+              "end": 3.518,
+              "accent": false
+            },
+            {
+              "word": "años,",
+              "start": 3.576,
+              "end": 4.191,
+              "accent": false
+            },
+            {
+              "word": "las",
+              "start": 4.47,
+              "end": 4.679,
+              "accent": false
+            },
+            {
+              "word": "plantas",
+              "start": 4.749,
+              "end": 5.178,
+              "accent": true
+            },
+            {
+              "word": "vivieron",
+              "start": 5.236,
+              "end": 5.677,
+              "accent": false
+            }
+          ],
+          "style": "standard",
+          "position": {
+            "x": 0.5,
+            "y": 0.045,
+            "anchor": "top-center"
+          }
+        }
+      ],
+      "narration": {
+        "text": "luz y la misma agua. Durante millones de años, las plantas vivieron",
+        "voice": "carmen",
+        "stability": 0.5,
+        "similarity": 0.8
+      },
+      "audio": {
+        "sfx": [],
+        "musicVolume": 0.4
+      }
+    },
+    {
+      "id": "el_pacto_01",
+      "label": "solas. Hace más de ciento treinta millon",
+      "duration": 5.155,
+      "transition": {
+        "in": "fade",
+        "out": "fade",
+        "duration": 0.3
+      },
+      "elements": [
+        {
+          "type": "background",
+          "style": "gradient",
+          "colors": [
+            "#0E2410",
+            "#143018",
+            "#060D06"
+          ],
+          "animated": true,
+          "intensity": 0.7
+        },
+        {
+          "type": "particles",
+          "density": 0.5,
+          "color": "#FFC24B",
+          "speed": 0.45,
+          "glow": true,
+          "layer": "background",
+          "size": 2.6
+        },
+        {
+          "type": "figure",
+          "shape": "tree-oak",
+          "position": {
+            "x": 0.5,
+            "y": 0.9,
+            "anchor": "bottom-center"
+          },
+          "width": 560,
+          "height": 480,
+          "delay": 0,
+          "duration": 0.5,
+          "motion": "breathe",
+          "style": "duotone",
+          "primaryColor": "#1F7A3D",
+          "secondaryColor": "#164D27"
+        },
+        {
+          "type": "figure",
+          "shape": "custom",
+          "position": {
+            "x": 0.36,
+            "y": 0.64,
+            "anchor": "center"
+          },
+          "width": 46,
+          "height": 46,
+          "svg": "<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='58' r='32' fill='currentColor'/><path d='M50 26 C 54 14, 66 10, 74 14 C 68 22, 58 24, 50 26 Z' fill='#4CAF50'/><rect x='47' y='14' width='6' height='16' rx='3' fill='#6B4226'/></svg>",
+          "color": "#FFC24B",
+          "primaryColor": "#FFC24B",
+          "delay": 0.3,
+          "duration": 0.4,
+          "motion": "pulse",
+          "pulseFreq": 1.2,
+          "pulseAmount": 0.1
+        },
+        {
+          "type": "figure",
+          "shape": "custom",
+          "position": {
+            "x": 0.6,
+            "y": 0.6,
+            "anchor": "center"
+          },
+          "width": 38,
+          "height": 38,
+          "svg": "<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='58' r='32' fill='currentColor'/><path d='M50 26 C 54 14, 66 10, 74 14 C 68 22, 58 24, 50 26 Z' fill='#4CAF50'/><rect x='47' y='14' width='6' height='16' rx='3' fill='#6B4226'/></svg>",
+          "color": "#FFC24B",
+          "primaryColor": "#FFC24B",
+          "delay": 0.4,
+          "duration": 0.4,
+          "motion": "pulse",
+          "pulseFreq": 1.0,
+          "pulseAmount": 0.08
+        },
+        {
+          "type": "figure",
+          "shape": "custom",
+          "position": {
+            "x": 0.47,
+            "y": 0.7,
+            "anchor": "center"
+          },
+          "width": 34,
+          "height": 34,
+          "svg": "<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='58' r='32' fill='currentColor'/><path d='M50 26 C 54 14, 66 10, 74 14 C 68 22, 58 24, 50 26 Z' fill='#4CAF50'/><rect x='47' y='14' width='6' height='16' rx='3' fill='#6B4226'/></svg>",
+          "color": "#FFC24B",
+          "primaryColor": "#FFC24B",
+          "delay": 0.5,
+          "duration": 0.4,
+          "motion": "pulse",
+          "pulseFreq": 1.4,
+          "pulseAmount": 0.09
+        },
+        {
+          "type": "figure",
+          "shape": "bird-flock",
+          "position": {
+            "x": 0.5,
+            "y": 0.2,
+            "anchor": "center"
+          },
+          "width": 420,
+          "height": 160,
+          "delay": 0.3,
+          "duration": 0.5,
+          "motion": "parallax",
+          "style": "silhouette",
+          "color": "#FFE2A0"
+        },
+        {
+          "type": "camera",
+          "effect": "zoom-in",
+          "intensity": 0.06,
+          "duration": 5.155,
+          "easing": "ease-in-out"
+        },
+        {
+          "type": "title",
+          "text": "UN FRUTO = UN PACTO",
+          "size": "lg",
+          "position": {
+            "x": 0.5,
+            "y": 0.1,
+            "anchor": "center"
+          },
+          "delay": 0.3,
+          "accentWords": [
+            "PACTO"
+          ]
+        },
+        {
+          "type": "caption",
+          "text": "solas. Hace más de ciento treinta millones de años llegó una idea",
+          "words": [
+            {
+              "word": "solas.",
+              "start": 0.0,
+              "end": 0.696,
+              "accent": false
+            },
+            {
+              "word": "Hace",
+              "start": 1.648,
+              "end": 1.915,
+              "accent": false
+            },
+            {
+              "word": "más",
+              "start": 1.973,
+              "end": 2.124,
+              "accent": false
+            },
+            {
+              "word": "de",
+              "start": 2.171,
+              "end": 2.252,
+              "accent": false
+            },
+            {
+              "word": "ciento",
+              "start": 2.31,
+              "end": 2.682,
+              "accent": false
+            },
+            {
+              "word": "treinta",
+              "start": 2.74,
+              "end": 3.042,
+              "accent": false
+            },
+            {
+              "word": "millones",
+              "start": 3.088,
+              "end": 3.46,
+              "accent": false
+            },
+            {
+              "word": "de",
+              "start": 3.506,
+              "end": 3.564,
+              "accent": false
+            },
+            {
+              "word": "años",
+              "start": 3.611,
+              "end": 3.982,
+              "accent": false
+            },
+            {
+              "word": "llegó",
+              "start": 4.261,
+              "end": 4.586,
+              "accent": false
+            },
+            {
+              "word": "una",
+              "start": 4.644,
+              "end": 4.772,
+              "accent": false
+            },
+            {
+              "word": "idea",
+              "start": 4.818,
+              "end": 5.085,
+              "accent": false
+            }
+          ],
+          "style": "standard",
+          "position": {
+            "x": 0.5,
+            "y": 0.045,
+            "anchor": "top-center"
+          }
+        }
+      ],
+      "narration": {
+        "text": "solas. Hace más de ciento treinta millones de años llegó una idea",
+        "voice": "carmen",
+        "stability": 0.5,
+        "similarity": 0.8
+      },
+      "audio": {
+        "sfx": [
+          {
+            "type": "chime",
+            "at": 0.0,
+            "volume": 0.55
+          }
+        ],
+        "musicVolume": 0.45
+      }
+    },
+    {
+      "id": "el_pacto_02",
+      "label": "revolucionaria: envolver la semilla en a",
+      "duration": 6.408,
+      "transition": {
+        "in": "fade",
+        "out": "fade",
+        "duration": 0.3
+      },
+      "elements": [
+        {
+          "type": "background",
+          "style": "gradient",
+          "colors": [
+            "#0E2410",
+            "#143018",
+            "#060D06"
+          ],
+          "animated": true,
+          "intensity": 0.7
+        },
+        {
+          "type": "particles",
+          "density": 0.5,
+          "color": "#FFC24B",
+          "speed": 0.45,
+          "glow": true,
+          "layer": "background",
+          "size": 2.6
+        },
+        {
+          "type": "figure",
+          "shape": "tree-oak",
+          "position": {
+            "x": 0.5,
+            "y": 0.9,
+            "anchor": "bottom-center"
+          },
+          "width": 560,
+          "height": 480,
+          "delay": 0,
+          "duration": 0.5,
+          "motion": "breathe",
+          "style": "duotone",
+          "primaryColor": "#1F7A3D",
+          "secondaryColor": "#164D27"
+        },
+        {
+          "type": "figure",
+          "shape": "custom",
+          "position": {
+            "x": 0.36,
+            "y": 0.64,
+            "anchor": "center"
+          },
+          "width": 46,
+          "height": 46,
+          "svg": "<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='58' r='32' fill='currentColor'/><path d='M50 26 C 54 14, 66 10, 74 14 C 68 22, 58 24, 50 26 Z' fill='#4CAF50'/><rect x='47' y='14' width='6' height='16' rx='3' fill='#6B4226'/></svg>",
+          "color": "#FFC24B",
+          "primaryColor": "#FFC24B",
+          "delay": 0.3,
+          "duration": 0.4,
+          "motion": "pulse",
+          "pulseFreq": 1.2,
+          "pulseAmount": 0.1
+        },
+        {
+          "type": "figure",
+          "shape": "custom",
+          "position": {
+            "x": 0.6,
+            "y": 0.6,
+            "anchor": "center"
+          },
+          "width": 38,
+          "height": 38,
+          "svg": "<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='58' r='32' fill='currentColor'/><path d='M50 26 C 54 14, 66 10, 74 14 C 68 22, 58 24, 50 26 Z' fill='#4CAF50'/><rect x='47' y='14' width='6' height='16' rx='3' fill='#6B4226'/></svg>",
+          "color": "#FFC24B",
+          "primaryColor": "#FFC24B",
+          "delay": 0.4,
+          "duration": 0.4,
+          "motion": "pulse",
+          "pulseFreq": 1.0,
+          "pulseAmount": 0.08
+        },
+        {
+          "type": "figure",
+          "shape": "custom",
+          "position": {
+            "x": 0.47,
+            "y": 0.7,
+            "anchor": "center"
+          },
+          "width": 34,
+          "height": 34,
+          "svg": "<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='58' r='32' fill='currentColor'/><path d='M50 26 C 54 14, 66 10, 74 14 C 68 22, 58 24, 50 26 Z' fill='#4CAF50'/><rect x='47' y='14' width='6' height='16' rx='3' fill='#6B4226'/></svg>",
+          "color": "#FFC24B",
+          "primaryColor": "#FFC24B",
+          "delay": 0.5,
+          "duration": 0.4,
+          "motion": "pulse",
+          "pulseFreq": 1.4,
+          "pulseAmount": 0.09
+        },
+        {
+          "type": "figure",
+          "shape": "bird-flock",
+          "position": {
+            "x": 0.5,
+            "y": 0.2,
+            "anchor": "center"
+          },
+          "width": 420,
+          "height": 160,
+          "delay": 0.3,
+          "duration": 0.5,
+          "motion": "parallax",
+          "style": "silhouette",
+          "color": "#FFE2A0"
+        },
+        {
+          "type": "camera",
+          "effect": "zoom-in",
+          "intensity": 0.06,
+          "duration": 6.408,
+          "easing": "ease-in-out"
+        },
+        {
+          "type": "caption",
+          "text": "revolucionaria: envolver la semilla en azúcar. Fósiles de Nuevo México, de hace",
+          "words": [
+            {
+              "word": "revolucionaria:",
+              "start": 0.0,
+              "end": 1.068,
+              "accent": false
+            },
+            {
+              "word": "envolver",
+              "start": 1.671,
+              "end": 2.194,
+              "accent": false
+            },
+            {
+              "word": "la",
+              "start": 2.264,
+              "end": 2.333,
+              "accent": false
+            },
+            {
+              "word": "semilla",
+              "start": 2.391,
+              "end": 2.763,
+              "accent": false
+            },
+            {
+              "word": "en",
+              "start": 2.798,
+              "end": 2.856,
+              "accent": false
+            },
+            {
+              "word": "azúcar.",
+              "start": 2.914,
+              "end": 3.494,
+              "accent": true
+            },
+            {
+              "word": "Fósiles",
+              "start": 4.307,
+              "end": 4.783,
+              "accent": false
+            },
+            {
+              "word": "de",
+              "start": 4.818,
+              "end": 4.864,
+              "accent": false
+            },
+            {
+              "word": "Nuevo",
+              "start": 4.911,
+              "end": 5.12,
+              "accent": false
+            },
+            {
+              "word": "México,",
+              "start": 5.178,
+              "end": 5.793,
+              "accent": false
+            },
+            {
+              "word": "de",
+              "start": 6.037,
+              "end": 6.118,
+              "accent": false
+            },
+            {
+              "word": "hace",
+              "start": 6.165,
+              "end": 6.362,
+              "accent": false
+            }
+          ],
+          "style": "standard",
+          "position": {
+            "x": 0.5,
+            "y": 0.045,
+            "anchor": "top-center"
+          }
+        }
+      ],
+      "narration": {
+        "text": "revolucionaria: envolver la semilla en azúcar. Fósiles de Nuevo México, de hace",
+        "voice": "carmen",
+        "stability": 0.5,
+        "similarity": 0.8
+      },
+      "audio": {
+        "sfx": [],
+        "musicVolume": 0.45
+      }
+    },
+    {
+      "id": "el_pacto_03",
+      "label": "setenta y cuatro millones de años, muest",
+      "duration": 5.376,
+      "transition": {
+        "in": "fade",
+        "out": "fade",
+        "duration": 0.3
+      },
+      "elements": [
+        {
+          "type": "background",
+          "style": "gradient",
+          "colors": [
+            "#0E2410",
+            "#143018",
+            "#060D06"
+          ],
+          "animated": true,
+          "intensity": 0.7
+        },
+        {
+          "type": "particles",
+          "density": 0.5,
+          "color": "#FFC24B",
+          "speed": 0.45,
+          "glow": true,
+          "layer": "background",
+          "size": 2.6
+        },
+        {
+          "type": "figure",
+          "shape": "tree-oak",
+          "position": {
+            "x": 0.5,
+            "y": 0.9,
+            "anchor": "bottom-center"
+          },
+          "width": 560,
+          "height": 480,
+          "delay": 0,
+          "duration": 0.5,
+          "motion": "breathe",
+          "style": "duotone",
+          "primaryColor": "#1F7A3D",
+          "secondaryColor": "#164D27"
+        },
+        {
+          "type": "figure",
+          "shape": "custom",
+          "position": {
+            "x": 0.36,
+            "y": 0.64,
+            "anchor": "center"
+          },
+          "width": 46,
+          "height": 46,
+          "svg": "<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='58' r='32' fill='currentColor'/><path d='M50 26 C 54 14, 66 10, 74 14 C 68 22, 58 24, 50 26 Z' fill='#4CAF50'/><rect x='47' y='14' width='6' height='16' rx='3' fill='#6B4226'/></svg>",
+          "color": "#FFC24B",
+          "primaryColor": "#FFC24B",
+          "delay": 0.3,
+          "duration": 0.4,
+          "motion": "pulse",
+          "pulseFreq": 1.2,
+          "pulseAmount": 0.1
+        },
+        {
+          "type": "figure",
+          "shape": "custom",
+          "position": {
+            "x": 0.6,
+            "y": 0.6,
+            "anchor": "center"
+          },
+          "width": 38,
+          "height": 38,
+          "svg": "<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='58' r='32' fill='currentColor'/><path d='M50 26 C 54 14, 66 10, 74 14 C 68 22, 58 24, 50 26 Z' fill='#4CAF50'/><rect x='47' y='14' width='6' height='16' rx='3' fill='#6B4226'/></svg>",
+          "color": "#FFC24B",
+          "primaryColor": "#FFC24B",
+          "delay": 0.4,
+          "duration": 0.4,
+          "motion": "pulse",
+          "pulseFreq": 1.0,
+          "pulseAmount": 0.08
+        },
+        {
+          "type": "figure",
+          "shape": "custom",
+          "position": {
+            "x": 0.47,
+            "y": 0.7,
+            "anchor": "center"
+          },
+          "width": 34,
+          "height": 34,
+          "svg": "<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='58' r='32' fill='currentColor'/><path d='M50 26 C 54 14, 66 10, 74 14 C 68 22, 58 24, 50 26 Z' fill='#4CAF50'/><rect x='47' y='14' width='6' height='16' rx='3' fill='#6B4226'/></svg>",
+          "color": "#FFC24B",
+          "primaryColor": "#FFC24B",
+          "delay": 0.5,
+          "duration": 0.4,
+          "motion": "pulse",
+          "pulseFreq": 1.4,
+          "pulseAmount": 0.09
+        },
+        {
+          "type": "figure",
+          "shape": "bird-flock",
+          "position": {
+            "x": 0.5,
+            "y": 0.2,
+            "anchor": "center"
+          },
+          "width": 420,
+          "height": 160,
+          "delay": 0.3,
+          "duration": 0.5,
+          "motion": "parallax",
+          "style": "silhouette",
+          "color": "#FFE2A0"
+        },
+        {
+          "type": "camera",
+          "effect": "zoom-in",
+          "intensity": 0.06,
+          "duration": 5.376,
+          "easing": "ease-in-out"
+        },
+        {
+          "type": "counter",
+          "value": 130,
+          "valueStart": 0,
+          "prefix": "+",
+          "suffix": " M. DE AÑOS",
+          "decimals": 0,
+          "label": "DESDE EL PRIMER FRUTO",
+          "sublabel": "azúcar a cambio de transporte",
+          "position": {
+            "x": 0.5,
+            "y": 0.88,
+            "anchor": "bottom-center"
+          },
+          "countDuration": 1.4,
+          "delay": 0.3,
+          "accentColor": "#FFC24B"
+        },
+        {
+          "type": "caption",
+          "text": "setenta y cuatro millones de años, muestran bayas ya comidas por dinosaurios,",
+          "words": [
+            {
+              "word": "setenta",
+              "start": 0.0,
+              "end": 0.407,
+              "accent": false
+            },
+            {
+              "word": "y",
+              "start": 0.43,
+              "end": 0.453,
+              "accent": false
+            },
+            {
+              "word": "cuatro",
+              "start": 0.488,
+              "end": 0.767,
+              "accent": false
+            },
+            {
+              "word": "millones",
+              "start": 0.813,
+              "end": 1.173,
+              "accent": false
+            },
+            {
+              "word": "de",
+              "start": 1.219,
+              "end": 1.277,
+              "accent": false
+            },
+            {
+              "word": "años,",
+              "start": 1.335,
+              "end": 1.881,
+              "accent": false
+            },
+            {
+              "word": "muestran",
+              "start": 2.264,
+              "end": 2.717,
+              "accent": false
+            },
+            {
+              "word": "bayas",
+              "start": 2.775,
+              "end": 3.147,
+              "accent": false
+            },
+            {
+              "word": "ya",
+              "start": 3.228,
+              "end": 3.356,
+              "accent": false
+            },
+            {
+              "word": "comidas",
+              "start": 3.402,
+              "end": 3.785,
+              "accent": false
+            },
+            {
+              "word": "por",
+              "start": 3.843,
+              "end": 3.971,
+              "accent": false
+            },
+            {
+              "word": "dinosaurios,",
+              "start": 4.041,
+              "end": 4.935,
+              "accent": false
+            }
+          ],
+          "style": "standard",
+          "position": {
+            "x": 0.5,
+            "y": 0.045,
+            "anchor": "top-center"
+          }
+        }
+      ],
+      "narration": {
+        "text": "setenta y cuatro millones de años, muestran bayas ya comidas por dinosaurios,",
+        "voice": "carmen",
+        "stability": 0.5,
+        "similarity": 0.8
+      },
+      "audio": {
+        "sfx": [],
+        "musicVolume": 0.45
+      }
+    },
+    {
+      "id": "el_pacto_04",
+      "label": "aves primitivas y pequeños mamíferos. Fu",
+      "duration": 5.201,
+      "transition": {
+        "in": "fade",
+        "out": "fade",
+        "duration": 0.3
+      },
+      "elements": [
+        {
+          "type": "background",
+          "style": "gradient",
+          "colors": [
+            "#0E2410",
+            "#143018",
+            "#060D06"
+          ],
+          "animated": true,
+          "intensity": 0.7
+        },
+        {
+          "type": "particles",
+          "density": 0.5,
+          "color": "#FFC24B",
+          "speed": 0.45,
+          "glow": true,
+          "layer": "background",
+          "size": 2.6
+        },
+        {
+          "type": "figure",
+          "shape": "tree-oak",
+          "position": {
+            "x": 0.5,
+            "y": 0.9,
+            "anchor": "bottom-center"
+          },
+          "width": 560,
+          "height": 480,
+          "delay": 0,
+          "duration": 0.5,
+          "motion": "breathe",
+          "style": "duotone",
+          "primaryColor": "#1F7A3D",
+          "secondaryColor": "#164D27"
+        },
+        {
+          "type": "figure",
+          "shape": "custom",
+          "position": {
+            "x": 0.36,
+            "y": 0.64,
+            "anchor": "center"
+          },
+          "width": 46,
+          "height": 46,
+          "svg": "<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='58' r='32' fill='currentColor'/><path d='M50 26 C 54 14, 66 10, 74 14 C 68 22, 58 24, 50 26 Z' fill='#4CAF50'/><rect x='47' y='14' width='6' height='16' rx='3' fill='#6B4226'/></svg>",
+          "color": "#FFC24B",
+          "primaryColor": "#FFC24B",
+          "delay": 0.3,
+          "duration": 0.4,
+          "motion": "pulse",
+          "pulseFreq": 1.2,
+          "pulseAmount": 0.1
+        },
+        {
+          "type": "figure",
+          "shape": "custom",
+          "position": {
+            "x": 0.6,
+            "y": 0.6,
+            "anchor": "center"
+          },
+          "width": 38,
+          "height": 38,
+          "svg": "<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='58' r='32' fill='currentColor'/><path d='M50 26 C 54 14, 66 10, 74 14 C 68 22, 58 24, 50 26 Z' fill='#4CAF50'/><rect x='47' y='14' width='6' height='16' rx='3' fill='#6B4226'/></svg>",
+          "color": "#FFC24B",
+          "primaryColor": "#FFC24B",
+          "delay": 0.4,
+          "duration": 0.4,
+          "motion": "pulse",
+          "pulseFreq": 1.0,
+          "pulseAmount": 0.08
+        },
+        {
+          "type": "figure",
+          "shape": "custom",
+          "position": {
+            "x": 0.47,
+            "y": 0.7,
+            "anchor": "center"
+          },
+          "width": 34,
+          "height": 34,
+          "svg": "<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='58' r='32' fill='currentColor'/><path d='M50 26 C 54 14, 66 10, 74 14 C 68 22, 58 24, 50 26 Z' fill='#4CAF50'/><rect x='47' y='14' width='6' height='16' rx='3' fill='#6B4226'/></svg>",
+          "color": "#FFC24B",
+          "primaryColor": "#FFC24B",
+          "delay": 0.5,
+          "duration": 0.4,
+          "motion": "pulse",
+          "pulseFreq": 1.4,
+          "pulseAmount": 0.09
+        },
+        {
+          "type": "figure",
+          "shape": "bird-flock",
+          "position": {
+            "x": 0.5,
+            "y": 0.2,
+            "anchor": "center"
+          },
+          "width": 420,
+          "height": 160,
+          "delay": 0.3,
+          "duration": 0.5,
+          "motion": "parallax",
+          "style": "silhouette",
+          "color": "#FFE2A0"
+        },
+        {
+          "type": "camera",
+          "effect": "zoom-in",
+          "intensity": 0.06,
+          "duration": 5.201,
+          "easing": "ease-in-out"
+        },
+        {
+          "type": "caption",
+          "text": "aves primitivas y pequeños mamíferos. Fue un pacto simple:",
+          "words": [
+            {
+              "word": "aves",
+              "start": 0.0,
+              "end": 0.267,
+              "accent": false
+            },
+            {
+              "word": "primitivas",
+              "start": 0.313,
+              "end": 0.987,
+              "accent": false
+            },
+            {
+              "word": "y",
+              "start": 1.37,
+              "end": 1.486,
+              "accent": false
+            },
+            {
+              "word": "pequeños",
+              "start": 1.579,
+              "end": 2.043,
+              "accent": false
+            },
+            {
+              "word": "mamíferos.",
+              "start": 2.101,
+              "end": 2.856,
+              "accent": false
+            },
+            {
+              "word": "Fue",
+              "start": 3.367,
+              "end": 3.564,
+              "accent": false
+            },
+            {
+              "word": "un",
+              "start": 3.622,
+              "end": 3.669,
+              "accent": false
+            },
+            {
+              "word": "pacto",
+              "start": 3.715,
+              "end": 3.994,
+              "accent": true
+            },
+            {
+              "word": "simple:",
+              "start": 4.052,
+              "end": 4.598,
+              "accent": true
+            }
+          ],
+          "style": "standard",
+          "position": {
+            "x": 0.5,
+            "y": 0.045,
+            "anchor": "top-center"
+          }
+        }
+      ],
+      "narration": {
+        "text": "aves primitivas y pequeños mamíferos. Fue un pacto simple:",
+        "voice": "carmen",
+        "stability": 0.5,
+        "similarity": 0.8
+      },
+      "audio": {
+        "sfx": [],
+        "musicVolume": 0.45
+      }
+    },
+    {
+      "id": "el_pacto_05",
+      "label": "la planta paga con alimento, y el animal",
+      "duration": 4.459,
+      "transition": {
+        "in": "fade",
+        "out": "fade",
+        "duration": 0.3
+      },
+      "elements": [
+        {
+          "type": "background",
+          "style": "gradient",
+          "colors": [
+            "#0E2410",
+            "#143018",
+            "#060D06"
+          ],
+          "animated": true,
+          "intensity": 0.7
+        },
+        {
+          "type": "particles",
+          "density": 0.5,
+          "color": "#FFC24B",
+          "speed": 0.45,
+          "glow": true,
+          "layer": "background",
+          "size": 2.6
+        },
+        {
+          "type": "figure",
+          "shape": "tree-oak",
+          "position": {
+            "x": 0.5,
+            "y": 0.9,
+            "anchor": "bottom-center"
+          },
+          "width": 560,
+          "height": 480,
+          "delay": 0,
+          "duration": 0.5,
+          "motion": "breathe",
+          "style": "duotone",
+          "primaryColor": "#1F7A3D",
+          "secondaryColor": "#164D27"
+        },
+        {
+          "type": "figure",
+          "shape": "custom",
+          "position": {
+            "x": 0.36,
+            "y": 0.64,
+            "anchor": "center"
+          },
+          "width": 46,
+          "height": 46,
+          "svg": "<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='58' r='32' fill='currentColor'/><path d='M50 26 C 54 14, 66 10, 74 14 C 68 22, 58 24, 50 26 Z' fill='#4CAF50'/><rect x='47' y='14' width='6' height='16' rx='3' fill='#6B4226'/></svg>",
+          "color": "#FFC24B",
+          "primaryColor": "#FFC24B",
+          "delay": 0.3,
+          "duration": 0.4,
+          "motion": "pulse",
+          "pulseFreq": 1.2,
+          "pulseAmount": 0.1
+        },
+        {
+          "type": "figure",
+          "shape": "custom",
+          "position": {
+            "x": 0.6,
+            "y": 0.6,
+            "anchor": "center"
+          },
+          "width": 38,
+          "height": 38,
+          "svg": "<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='58' r='32' fill='currentColor'/><path d='M50 26 C 54 14, 66 10, 74 14 C 68 22, 58 24, 50 26 Z' fill='#4CAF50'/><rect x='47' y='14' width='6' height='16' rx='3' fill='#6B4226'/></svg>",
+          "color": "#FFC24B",
+          "primaryColor": "#FFC24B",
+          "delay": 0.4,
+          "duration": 0.4,
+          "motion": "pulse",
+          "pulseFreq": 1.0,
+          "pulseAmount": 0.08
+        },
+        {
+          "type": "figure",
+          "shape": "custom",
+          "position": {
+            "x": 0.47,
+            "y": 0.7,
+            "anchor": "center"
+          },
+          "width": 34,
+          "height": 34,
+          "svg": "<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='58' r='32' fill='currentColor'/><path d='M50 26 C 54 14, 66 10, 74 14 C 68 22, 58 24, 50 26 Z' fill='#4CAF50'/><rect x='47' y='14' width='6' height='16' rx='3' fill='#6B4226'/></svg>",
+          "color": "#FFC24B",
+          "primaryColor": "#FFC24B",
+          "delay": 0.5,
+          "duration": 0.4,
+          "motion": "pulse",
+          "pulseFreq": 1.4,
+          "pulseAmount": 0.09
+        },
+        {
+          "type": "figure",
+          "shape": "bird-flock",
+          "position": {
+            "x": 0.5,
+            "y": 0.2,
+            "anchor": "center"
+          },
+          "width": 420,
+          "height": 160,
+          "delay": 0.3,
+          "duration": 0.5,
+          "motion": "parallax",
+          "style": "silhouette",
+          "color": "#FFE2A0"
+        },
+        {
+          "type": "camera",
+          "effect": "zoom-in",
+          "intensity": 0.06,
+          "duration": 4.459,
+          "easing": "ease-in-out"
+        },
+        {
+          "type": "caption",
+          "text": "la planta paga con alimento, y el animal, al moverse, reparte sus",
+          "words": [
+            {
+              "word": "la",
+              "start": 0.0,
+              "end": 0.093,
+              "accent": false
+            },
+            {
+              "word": "planta",
+              "start": 0.14,
+              "end": 0.476,
+              "accent": false
+            },
+            {
+              "word": "paga",
+              "start": 0.523,
+              "end": 0.755,
+              "accent": false
+            },
+            {
+              "word": "con",
+              "start": 0.813,
+              "end": 0.941,
+              "accent": false
+            },
+            {
+              "word": "alimento,",
+              "start": 0.999,
+              "end": 1.661,
+              "accent": false
+            },
+            {
+              "word": "y",
+              "start": 1.904,
+              "end": 1.962,
+              "accent": false
+            },
+            {
+              "word": "el",
+              "start": 2.009,
+              "end": 2.067,
+              "accent": false
+            },
+            {
+              "word": "animal,",
+              "start": 2.125,
+              "end": 2.566,
+              "accent": false
+            },
+            {
+              "word": "al",
+              "start": 2.624,
+              "end": 2.787,
+              "accent": false
+            },
+            {
+              "word": "moverse,",
+              "start": 2.845,
+              "end": 3.495,
+              "accent": false
+            },
+            {
+              "word": "reparte",
+              "start": 3.82,
+              "end": 4.226,
+              "accent": false
+            },
+            {
+              "word": "sus",
+              "start": 4.261,
+              "end": 4.435,
+              "accent": false
+            }
+          ],
+          "style": "standard",
+          "position": {
+            "x": 0.5,
+            "y": 0.045,
+            "anchor": "top-center"
+          }
+        }
+      ],
+      "narration": {
+        "text": "la planta paga con alimento, y el animal, al moverse, reparte sus",
+        "voice": "carmen",
+        "stability": 0.5,
+        "similarity": 0.8
+      },
+      "audio": {
+        "sfx": [],
+        "musicVolume": 0.45
+      }
+    },
+    {
+      "id": "el_pacto_06",
+      "label": "semillas por el mundo. Comida a cambio d",
+      "duration": 4.504,
+      "transition": {
+        "in": "fade",
+        "out": "fade",
+        "duration": 0.3
+      },
+      "elements": [
+        {
+          "type": "background",
+          "style": "gradient",
+          "colors": [
+            "#0E2410",
+            "#143018",
+            "#060D06"
+          ],
+          "animated": true,
+          "intensity": 0.7
+        },
+        {
+          "type": "particles",
+          "density": 0.5,
+          "color": "#FFC24B",
+          "speed": 0.45,
+          "glow": true,
+          "layer": "background",
+          "size": 2.6
+        },
+        {
+          "type": "figure",
+          "shape": "tree-oak",
+          "position": {
+            "x": 0.5,
+            "y": 0.9,
+            "anchor": "bottom-center"
+          },
+          "width": 560,
+          "height": 480,
+          "delay": 0,
+          "duration": 0.5,
+          "motion": "breathe",
+          "style": "duotone",
+          "primaryColor": "#1F7A3D",
+          "secondaryColor": "#164D27"
+        },
+        {
+          "type": "figure",
+          "shape": "custom",
+          "position": {
+            "x": 0.36,
+            "y": 0.64,
+            "anchor": "center"
+          },
+          "width": 46,
+          "height": 46,
+          "svg": "<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='58' r='32' fill='currentColor'/><path d='M50 26 C 54 14, 66 10, 74 14 C 68 22, 58 24, 50 26 Z' fill='#4CAF50'/><rect x='47' y='14' width='6' height='16' rx='3' fill='#6B4226'/></svg>",
+          "color": "#FFC24B",
+          "primaryColor": "#FFC24B",
+          "delay": 0.3,
+          "duration": 0.4,
+          "motion": "pulse",
+          "pulseFreq": 1.2,
+          "pulseAmount": 0.1
+        },
+        {
+          "type": "figure",
+          "shape": "custom",
+          "position": {
+            "x": 0.6,
+            "y": 0.6,
+            "anchor": "center"
+          },
+          "width": 38,
+          "height": 38,
+          "svg": "<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='58' r='32' fill='currentColor'/><path d='M50 26 C 54 14, 66 10, 74 14 C 68 22, 58 24, 50 26 Z' fill='#4CAF50'/><rect x='47' y='14' width='6' height='16' rx='3' fill='#6B4226'/></svg>",
+          "color": "#FFC24B",
+          "primaryColor": "#FFC24B",
+          "delay": 0.4,
+          "duration": 0.4,
+          "motion": "pulse",
+          "pulseFreq": 1.0,
+          "pulseAmount": 0.08
+        },
+        {
+          "type": "figure",
+          "shape": "custom",
+          "position": {
+            "x": 0.47,
+            "y": 0.7,
+            "anchor": "center"
+          },
+          "width": 34,
+          "height": 34,
+          "svg": "<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='58' r='32' fill='currentColor'/><path d='M50 26 C 54 14, 66 10, 74 14 C 68 22, 58 24, 50 26 Z' fill='#4CAF50'/><rect x='47' y='14' width='6' height='16' rx='3' fill='#6B4226'/></svg>",
+          "color": "#FFC24B",
+          "primaryColor": "#FFC24B",
+          "delay": 0.5,
+          "duration": 0.4,
+          "motion": "pulse",
+          "pulseFreq": 1.4,
+          "pulseAmount": 0.09
+        },
+        {
+          "type": "figure",
+          "shape": "bird-flock",
+          "position": {
+            "x": 0.5,
+            "y": 0.2,
+            "anchor": "center"
+          },
+          "width": 420,
+          "height": 160,
+          "delay": 0.3,
+          "duration": 0.5,
+          "motion": "parallax",
+          "style": "silhouette",
+          "color": "#FFE2A0"
+        },
+        {
+          "type": "camera",
+          "effect": "zoom-in",
+          "intensity": 0.06,
+          "duration": 4.504,
+          "easing": "ease-in-out"
+        },
+        {
+          "type": "badge",
+          "text": "FÓSILES · NUEVO MÉXICO · 74 M AÑOS",
+          "style": "outline",
+          "position": {
+            "x": 0.5,
+            "y": 0.17,
+            "anchor": "top-center"
+          },
+          "delay": 0.3
+        },
+        {
+          "type": "caption",
+          "text": "semillas por el mundo. Comida a cambio de transporte.",
+          "words": [
+            {
+              "word": "semillas",
+              "start": 0.0,
+              "end": 0.394,
+              "accent": false
+            },
+            {
+              "word": "por",
+              "start": 0.441,
+              "end": 0.568,
+              "accent": false
+            },
+            {
+              "word": "el",
+              "start": 0.626,
+              "end": 0.673,
+              "accent": false
+            },
+            {
+              "word": "mundo.",
+              "start": 0.719,
+              "end": 1.195,
+              "accent": false
+            },
+            {
+              "word": "Comida",
+              "start": 1.892,
+              "end": 2.391,
+              "accent": true
+            },
+            {
+              "word": "a",
+              "start": 2.438,
+              "end": 2.461,
+              "accent": false
+            },
+            {
+              "word": "cambio",
+              "start": 2.519,
+              "end": 2.821,
+              "accent": false
+            },
+            {
+              "word": "de",
+              "start": 2.856,
+              "end": 2.925,
+              "accent": false
+            },
+            {
+              "word": "transporte.",
+              "start": 2.972,
+              "end": 3.808,
+              "accent": true
+            }
+          ],
+          "style": "standard",
+          "position": {
+            "x": 0.5,
+            "y": 0.045,
+            "anchor": "top-center"
+          }
+        }
+      ],
+      "narration": {
+        "text": "semillas por el mundo. Comida a cambio de transporte.",
+        "voice": "carmen",
+        "stability": 0.5,
+        "similarity": 0.8
+      },
+      "audio": {
+        "sfx": [],
+        "musicVolume": 0.45
+      }
+    },
+    {
+      "id": "domesticacion_01",
+      "label": "Hace unos once mil cuatrocientos años, e",
+      "duration": 5.05,
+      "transition": {
+        "in": "fade",
+        "out": "fade",
+        "duration": 0.3
+      },
+      "elements": [
+        {
+          "type": "background",
+          "style": "gradient",
+          "colors": [
+            "#2B1706",
+            "#1A0F04",
+            "#0A0502"
+          ],
+          "animated": true,
+          "intensity": 0.65
+        },
+        {
+          "type": "particles",
+          "density": 0.3,
+          "color": "#FFB25C",
+          "speed": 0.3,
+          "glow": true,
+          "layer": "background",
+          "size": 2.0
+        },
+        {
+          "type": "figure",
+          "shape": "mountains",
+          "position": {
+            "x": 0.5,
+            "y": 1.0,
+            "anchor": "bottom-center"
+          },
+          "width": 1080,
+          "height": 380,
+          "delay": 0,
+          "duration": 0.5,
+          "style": "silhouette",
+          "color": "#231206",
+          "layer": "background"
+        },
+        {
+          "type": "figure",
+          "shape": "tree-oak",
+          "position": {
+            "x": 0.72,
+            "y": 0.86,
+            "anchor": "bottom-center"
+          },
+          "width": 320,
+          "height": 300,
+          "delay": 0.05,
+          "duration": 0.5,
+          "motion": "breathe",
+          "style": "duotone",
+          "primaryColor": "#C97A2B",
+          "secondaryColor": "#7A4414"
+        },
+        {
+          "type": "figure",
+          "shape": "custom",
+          "position": {
+            "x": 0.66,
+            "y": 0.72,
+            "anchor": "center"
+          },
+          "width": 30,
+          "height": 30,
+          "svg": "<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='58' r='32' fill='currentColor'/><path d='M50 26 C 54 14, 66 10, 74 14 C 68 22, 58 24, 50 26 Z' fill='#4CAF50'/><rect x='47' y='14' width='6' height='16' rx='3' fill='#6B4226'/></svg>",
+          "color": "#FFC24B",
+          "primaryColor": "#FFC24B",
+          "delay": 0.3,
+          "duration": 0.4,
+          "motion": "pulse",
+          "pulseFreq": 1.1,
+          "pulseAmount": 0.08
+        },
+        {
+          "type": "figure",
+          "shape": "person-standing",
+          "position": {
+            "x": 0.28,
+            "y": 0.88,
+            "anchor": "bottom-center"
+          },
+          "width": 110,
+          "height": 230,
+          "delay": 0.2,
+          "duration": 0.5,
+          "motion": "breathe",
+          "style": "silhouette",
+          "color": "#1A0D04"
+        },
+        {
+          "type": "camera",
+          "effect": "pan-right",
+          "intensity": 0.05,
+          "duration": 5.05,
+          "easing": "ease-in-out"
+        },
+        {
+          "type": "title",
+          "text": "LA DOMESTICACIÓN DEL PACTO",
+          "size": "md",
+          "position": {
+            "x": 0.5,
+            "y": 0.1,
+            "anchor": "center"
+          },
+          "delay": 0.2,
+          "accentWords": [
+            "DOMESTICACIÓN"
+          ]
+        },
+        {
+          "type": "caption",
+          "text": "Hace unos once mil cuatrocientos años, en el valle del Jordán, unos",
+          "words": [
+            {
+              "word": "Hace",
+              "start": 0.0,
+              "end": 0.314,
+              "accent": false
+            },
+            {
+              "word": "unos",
+              "start": 0.43,
+              "end": 0.674,
+              "accent": false
+            },
+            {
+              "word": "once",
+              "start": 0.743,
+              "end": 0.999,
+              "accent": false
+            },
+            {
+              "word": "mil",
+              "start": 1.057,
+              "end": 1.196,
+              "accent": false
+            },
+            {
+              "word": "cuatrocientos",
+              "start": 1.254,
+              "end": 1.916,
+              "accent": false
+            },
+            {
+              "word": "años,",
+              "start": 1.951,
+              "end": 2.496,
+              "accent": false
+            },
+            {
+              "word": "en",
+              "start": 2.821,
+              "end": 2.972,
+              "accent": false
+            },
+            {
+              "word": "el",
+              "start": 3.042,
+              "end": 3.123,
+              "accent": false
+            },
+            {
+              "word": "valle",
+              "start": 3.181,
+              "end": 3.414,
+              "accent": false
+            },
+            {
+              "word": "del",
+              "start": 3.46,
+              "end": 3.599,
+              "accent": false
+            },
+            {
+              "word": "Jordán,",
+              "start": 3.657,
+              "end": 4.238,
+              "accent": false
+            },
+            {
+              "word": "unos",
+              "start": 4.749,
+              "end": 4.992,
+              "accent": false
+            }
+          ],
+          "style": "standard",
+          "position": {
+            "x": 0.5,
+            "y": 0.045,
+            "anchor": "top-center"
+          }
+        }
+      ],
+      "narration": {
+        "text": "Hace unos once mil cuatrocientos años, en el valle del Jordán, unos",
+        "voice": "carmen",
+        "stability": 0.5,
+        "similarity": 0.8
+      },
+      "audio": {
+        "sfx": [
+          {
+            "type": "deep-hit",
+            "at": 0.0,
+            "volume": 0.5
+          }
+        ],
+        "musicVolume": 0.42
+      }
+    },
+    {
+      "id": "domesticacion_02",
+      "label": "agricultores encontraron higueras con fr",
+      "duration": 3.773,
+      "transition": {
+        "in": "fade",
+        "out": "fade",
+        "duration": 0.3
+      },
+      "elements": [
+        {
+          "type": "background",
+          "style": "gradient",
+          "colors": [
+            "#2B1706",
+            "#1A0F04",
+            "#0A0502"
+          ],
+          "animated": true,
+          "intensity": 0.65
+        },
+        {
+          "type": "particles",
+          "density": 0.3,
+          "color": "#FFB25C",
+          "speed": 0.3,
+          "glow": true,
+          "layer": "background",
+          "size": 2.0
+        },
+        {
+          "type": "figure",
+          "shape": "mountains",
+          "position": {
+            "x": 0.5,
+            "y": 1.0,
+            "anchor": "bottom-center"
+          },
+          "width": 1080,
+          "height": 380,
+          "delay": 0,
+          "duration": 0.5,
+          "style": "silhouette",
+          "color": "#231206",
+          "layer": "background"
+        },
+        {
+          "type": "figure",
+          "shape": "tree-oak",
+          "position": {
+            "x": 0.72,
+            "y": 0.86,
+            "anchor": "bottom-center"
+          },
+          "width": 320,
+          "height": 300,
+          "delay": 0.05,
+          "duration": 0.5,
+          "motion": "breathe",
+          "style": "duotone",
+          "primaryColor": "#C97A2B",
+          "secondaryColor": "#7A4414"
+        },
+        {
+          "type": "figure",
+          "shape": "custom",
+          "position": {
+            "x": 0.66,
+            "y": 0.72,
+            "anchor": "center"
+          },
+          "width": 30,
+          "height": 30,
+          "svg": "<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='58' r='32' fill='currentColor'/><path d='M50 26 C 54 14, 66 10, 74 14 C 68 22, 58 24, 50 26 Z' fill='#4CAF50'/><rect x='47' y='14' width='6' height='16' rx='3' fill='#6B4226'/></svg>",
+          "color": "#FFC24B",
+          "primaryColor": "#FFC24B",
+          "delay": 0.3,
+          "duration": 0.4,
+          "motion": "pulse",
+          "pulseFreq": 1.1,
+          "pulseAmount": 0.08
+        },
+        {
+          "type": "figure",
+          "shape": "person-standing",
+          "position": {
+            "x": 0.28,
+            "y": 0.88,
+            "anchor": "bottom-center"
+          },
+          "width": 110,
+          "height": 230,
+          "delay": 0.2,
+          "duration": 0.5,
+          "motion": "breathe",
+          "style": "silhouette",
+          "color": "#1A0D04"
+        },
+        {
+          "type": "camera",
+          "effect": "pan-right",
+          "intensity": 0.05,
+          "duration": 3.773,
+          "easing": "ease-in-out"
+        },
+        {
+          "type": "caption",
+          "text": "agricultores encontraron higueras con frutos más dulces...",
+          "words": [
+            {
+              "word": "agricultores",
+              "start": 0.0,
+              "end": 0.639,
+              "accent": false
+            },
+            {
+              "word": "encontraron",
+              "start": 0.708,
+              "end": 1.289,
+              "accent": false
+            },
+            {
+              "word": "higueras",
+              "start": 1.324,
+              "end": 1.672,
+              "accent": false
+            },
+            {
+              "word": "con",
+              "start": 1.742,
+              "end": 1.869,
+              "accent": false
+            },
+            {
+              "word": "frutos",
+              "start": 1.927,
+              "end": 2.276,
+              "accent": false
+            },
+            {
+              "word": "más",
+              "start": 2.345,
+              "end": 2.519,
+              "accent": false
+            },
+            {
+              "word": "dulces...",
+              "start": 2.554,
+              "end": 3.39,
+              "accent": true
+            }
+          ],
+          "style": "standard",
+          "position": {
+            "x": 0.5,
+            "y": 0.045,
+            "anchor": "top-center"
+          }
+        }
+      ],
+      "narration": {
+        "text": "agricultores encontraron higueras con frutos más dulces...",
+        "voice": "carmen",
+        "stability": 0.5,
+        "similarity": 0.8
+      },
+      "audio": {
+        "sfx": [],
+        "musicVolume": 0.42
+      }
+    },
+    {
+      "id": "domesticacion_03",
+      "label": "y, en vez de dejarlas morir, las plantar",
+      "duration": 4.551,
+      "transition": {
+        "in": "fade",
+        "out": "fade",
+        "duration": 0.3
+      },
+      "elements": [
+        {
+          "type": "background",
+          "style": "gradient",
+          "colors": [
+            "#2B1706",
+            "#1A0F04",
+            "#0A0502"
+          ],
+          "animated": true,
+          "intensity": 0.65
+        },
+        {
+          "type": "particles",
+          "density": 0.3,
+          "color": "#FFB25C",
+          "speed": 0.3,
+          "glow": true,
+          "layer": "background",
+          "size": 2.0
+        },
+        {
+          "type": "figure",
+          "shape": "mountains",
+          "position": {
+            "x": 0.5,
+            "y": 1.0,
+            "anchor": "bottom-center"
+          },
+          "width": 1080,
+          "height": 380,
+          "delay": 0,
+          "duration": 0.5,
+          "style": "silhouette",
+          "color": "#231206",
+          "layer": "background"
+        },
+        {
+          "type": "figure",
+          "shape": "tree-oak",
+          "position": {
+            "x": 0.72,
+            "y": 0.86,
+            "anchor": "bottom-center"
+          },
+          "width": 320,
+          "height": 300,
+          "delay": 0.05,
+          "duration": 0.5,
+          "motion": "breathe",
+          "style": "duotone",
+          "primaryColor": "#C97A2B",
+          "secondaryColor": "#7A4414"
+        },
+        {
+          "type": "figure",
+          "shape": "custom",
+          "position": {
+            "x": 0.66,
+            "y": 0.72,
+            "anchor": "center"
+          },
+          "width": 30,
+          "height": 30,
+          "svg": "<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='58' r='32' fill='currentColor'/><path d='M50 26 C 54 14, 66 10, 74 14 C 68 22, 58 24, 50 26 Z' fill='#4CAF50'/><rect x='47' y='14' width='6' height='16' rx='3' fill='#6B4226'/></svg>",
+          "color": "#FFC24B",
+          "primaryColor": "#FFC24B",
+          "delay": 0.3,
+          "duration": 0.4,
+          "motion": "pulse",
+          "pulseFreq": 1.1,
+          "pulseAmount": 0.08
+        },
+        {
+          "type": "figure",
+          "shape": "person-standing",
+          "position": {
+            "x": 0.28,
+            "y": 0.88,
+            "anchor": "bottom-center"
+          },
+          "width": 110,
+          "height": 230,
+          "delay": 0.2,
+          "duration": 0.5,
+          "motion": "breathe",
+          "style": "silhouette",
+          "color": "#1A0D04"
+        },
+        {
+          "type": "camera",
+          "effect": "pan-right",
+          "intensity": 0.05,
+          "duration": 4.551,
+          "easing": "ease-in-out"
+        },
+        {
+          "type": "caption",
+          "text": "y, en vez de dejarlas morir, las plantaron ellos mismos.",
+          "words": [
+            {
+              "word": "y,",
+              "start": 0.0,
+              "end": 0.5,
+              "accent": false
+            },
+            {
+              "word": "en",
+              "start": 0.616,
+              "end": 0.767,
+              "accent": false
+            },
+            {
+              "word": "vez",
+              "start": 0.813,
+              "end": 0.941,
+              "accent": false
+            },
+            {
+              "word": "de",
+              "start": 0.964,
+              "end": 1.022,
+              "accent": false
+            },
+            {
+              "word": "dejarlas",
+              "start": 1.068,
+              "end": 1.498,
+              "accent": false
+            },
+            {
+              "word": "morir,",
+              "start": 1.544,
+              "end": 2.032,
+              "accent": false
+            },
+            {
+              "word": "las",
+              "start": 2.473,
+              "end": 2.636,
+              "accent": false
+            },
+            {
+              "word": "plantaron",
+              "start": 2.682,
+              "end": 3.112,
+              "accent": false
+            },
+            {
+              "word": "ellos",
+              "start": 3.17,
+              "end": 3.39,
+              "accent": false
+            },
+            {
+              "word": "mismos.",
+              "start": 3.448,
+              "end": 4.041,
+              "accent": false
+            }
+          ],
+          "style": "standard",
+          "position": {
+            "x": 0.5,
+            "y": 0.045,
+            "anchor": "top-center"
+          }
+        }
+      ],
+      "narration": {
+        "text": "y, en vez de dejarlas morir, las plantaron ellos mismos.",
+        "voice": "carmen",
+        "stability": 0.5,
+        "similarity": 0.8
+      },
+      "audio": {
+        "sfx": [],
+        "musicVolume": 0.42
+      }
+    },
+    {
+      "id": "domesticacion_04",
+      "label": "Pudo ser el primer cultivo de la histori",
+      "duration": 2.961,
+      "transition": {
+        "in": "fade",
+        "out": "fade",
+        "duration": 0.3
+      },
+      "elements": [
+        {
+          "type": "background",
+          "style": "gradient",
+          "colors": [
+            "#2B1706",
+            "#1A0F04",
+            "#0A0502"
+          ],
+          "animated": true,
+          "intensity": 0.65
+        },
+        {
+          "type": "particles",
+          "density": 0.3,
+          "color": "#FFB25C",
+          "speed": 0.3,
+          "glow": true,
+          "layer": "background",
+          "size": 2.0
+        },
+        {
+          "type": "figure",
+          "shape": "mountains",
+          "position": {
+            "x": 0.5,
+            "y": 1.0,
+            "anchor": "bottom-center"
+          },
+          "width": 1080,
+          "height": 380,
+          "delay": 0,
+          "duration": 0.5,
+          "style": "silhouette",
+          "color": "#231206",
+          "layer": "background"
+        },
+        {
+          "type": "figure",
+          "shape": "tree-oak",
+          "position": {
+            "x": 0.72,
+            "y": 0.86,
+            "anchor": "bottom-center"
+          },
+          "width": 320,
+          "height": 300,
+          "delay": 0.05,
+          "duration": 0.5,
+          "motion": "breathe",
+          "style": "duotone",
+          "primaryColor": "#C97A2B",
+          "secondaryColor": "#7A4414"
+        },
+        {
+          "type": "figure",
+          "shape": "custom",
+          "position": {
+            "x": 0.66,
+            "y": 0.72,
+            "anchor": "center"
+          },
+          "width": 30,
+          "height": 30,
+          "svg": "<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='58' r='32' fill='currentColor'/><path d='M50 26 C 54 14, 66 10, 74 14 C 68 22, 58 24, 50 26 Z' fill='#4CAF50'/><rect x='47' y='14' width='6' height='16' rx='3' fill='#6B4226'/></svg>",
+          "color": "#FFC24B",
+          "primaryColor": "#FFC24B",
+          "delay": 0.3,
+          "duration": 0.4,
+          "motion": "pulse",
+          "pulseFreq": 1.1,
+          "pulseAmount": 0.08
+        },
+        {
+          "type": "figure",
+          "shape": "person-standing",
+          "position": {
+            "x": 0.28,
+            "y": 0.88,
+            "anchor": "bottom-center"
+          },
+          "width": 110,
+          "height": 230,
+          "delay": 0.2,
+          "duration": 0.5,
+          "motion": "breathe",
+          "style": "silhouette",
+          "color": "#1A0D04"
+        },
+        {
+          "type": "camera",
+          "effect": "pan-right",
+          "intensity": 0.05,
+          "duration": 2.961,
+          "easing": "ease-in-out"
+        },
+        {
+          "type": "caption",
+          "text": "Pudo ser el primer cultivo de la historia.",
+          "words": [
+            {
+              "word": "Pudo",
+              "start": 0.0,
+              "end": 0.314,
+              "accent": false
+            },
+            {
+              "word": "ser",
+              "start": 0.372,
+              "end": 0.511,
+              "accent": false
+            },
+            {
+              "word": "el",
+              "start": 0.558,
+              "end": 0.616,
+              "accent": false
+            },
+            {
+              "word": "primer",
+              "start": 0.674,
+              "end": 0.964,
+              "accent": false
+            },
+            {
+              "word": "cultivo",
+              "start": 1.022,
+              "end": 1.44,
+              "accent": false
+            },
+            {
+              "word": "de",
+              "start": 1.486,
+              "end": 1.556,
+              "accent": false
+            },
+            {
+              "word": "la",
+              "start": 1.603,
+              "end": 1.649,
+              "accent": false
+            },
+            {
+              "word": "historia.",
+              "start": 1.672,
+              "end": 2.357,
+              "accent": true
+            }
+          ],
+          "style": "standard",
+          "position": {
+            "x": 0.5,
+            "y": 0.045,
+            "anchor": "top-center"
+          }
+        }
+      ],
+      "narration": {
+        "text": "Pudo ser el primer cultivo de la historia.",
+        "voice": "carmen",
+        "stability": 0.5,
+        "similarity": 0.8
+      },
+      "audio": {
+        "sfx": [],
+        "musicVolume": 0.42
+      }
+    },
+    {
+      "id": "domesticacion_05",
+      "label": "Siglos después, en los bosques de Kazaji",
+      "duration": 5.411,
+      "transition": {
+        "in": "fade",
+        "out": "fade",
+        "duration": 0.3
+      },
+      "elements": [
+        {
+          "type": "background",
+          "style": "gradient",
+          "colors": [
+            "#2B1706",
+            "#1A0F04",
+            "#0A0502"
+          ],
+          "animated": true,
+          "intensity": 0.65
+        },
+        {
+          "type": "particles",
+          "density": 0.3,
+          "color": "#FFB25C",
+          "speed": 0.3,
+          "glow": true,
+          "layer": "background",
+          "size": 2.0
+        },
+        {
+          "type": "figure",
+          "shape": "mountains",
+          "position": {
+            "x": 0.5,
+            "y": 1.0,
+            "anchor": "bottom-center"
+          },
+          "width": 1080,
+          "height": 380,
+          "delay": 0,
+          "duration": 0.5,
+          "style": "silhouette",
+          "color": "#231206",
+          "layer": "background"
+        },
+        {
+          "type": "figure",
+          "shape": "tree-oak",
+          "position": {
+            "x": 0.72,
+            "y": 0.86,
+            "anchor": "bottom-center"
+          },
+          "width": 320,
+          "height": 300,
+          "delay": 0.05,
+          "duration": 0.5,
+          "motion": "breathe",
+          "style": "duotone",
+          "primaryColor": "#C97A2B",
+          "secondaryColor": "#7A4414"
+        },
+        {
+          "type": "figure",
+          "shape": "custom",
+          "position": {
+            "x": 0.66,
+            "y": 0.72,
+            "anchor": "center"
+          },
+          "width": 30,
+          "height": 30,
+          "svg": "<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='58' r='32' fill='currentColor'/><path d='M50 26 C 54 14, 66 10, 74 14 C 68 22, 58 24, 50 26 Z' fill='#4CAF50'/><rect x='47' y='14' width='6' height='16' rx='3' fill='#6B4226'/></svg>",
+          "color": "#FFC24B",
+          "primaryColor": "#FFC24B",
+          "delay": 0.3,
+          "duration": 0.4,
+          "motion": "pulse",
+          "pulseFreq": 1.1,
+          "pulseAmount": 0.08
+        },
+        {
+          "type": "figure",
+          "shape": "person-standing",
+          "position": {
+            "x": 0.28,
+            "y": 0.88,
+            "anchor": "bottom-center"
+          },
+          "width": 110,
+          "height": 230,
+          "delay": 0.2,
+          "duration": 0.5,
+          "motion": "breathe",
+          "style": "silhouette",
+          "color": "#1A0D04"
+        },
+        {
+          "type": "camera",
+          "effect": "pan-right",
+          "intensity": 0.05,
+          "duration": 5.411,
+          "easing": "ease-in-out"
+        },
+        {
+          "type": "caption",
+          "text": "Siglos después, en los bosques de Kazajistán, un manzano salvaje inició el",
+          "words": [
+            {
+              "word": "Siglos",
+              "start": 0.0,
+              "end": 0.418,
+              "accent": false
+            },
+            {
+              "word": "después,",
+              "start": 0.476,
+              "end": 1.138,
+              "accent": false
+            },
+            {
+              "word": "en",
+              "start": 1.521,
+              "end": 1.672,
+              "accent": false
+            },
+            {
+              "word": "los",
+              "start": 1.718,
+              "end": 1.869,
+              "accent": false
+            },
+            {
+              "word": "bosques",
+              "start": 1.916,
+              "end": 2.241,
+              "accent": false
+            },
+            {
+              "word": "de",
+              "start": 2.275,
+              "end": 2.334,
+              "accent": false
+            },
+            {
+              "word": "Kazajistán,",
+              "start": 2.38,
+              "end": 3.344,
+              "accent": false
+            },
+            {
+              "word": "un",
+              "start": 3.727,
+              "end": 3.831,
+              "accent": false
+            },
+            {
+              "word": "manzano",
+              "start": 3.878,
+              "end": 4.307,
+              "accent": false
+            },
+            {
+              "word": "salvaje",
+              "start": 4.365,
+              "end": 4.807,
+              "accent": false
+            },
+            {
+              "word": "inició",
+              "start": 4.853,
+              "end": 5.248,
+              "accent": false
+            },
+            {
+              "word": "el",
+              "start": 5.283,
+              "end": 5.352,
+              "accent": false
+            }
+          ],
+          "style": "standard",
+          "position": {
+            "x": 0.5,
+            "y": 0.045,
+            "anchor": "top-center"
+          }
+        }
+      ],
+      "narration": {
+        "text": "Siglos después, en los bosques de Kazajistán, un manzano salvaje inició el",
+        "voice": "carmen",
+        "stability": 0.5,
+        "similarity": 0.8
+      },
+      "audio": {
+        "sfx": [],
+        "musicVolume": 0.42
+      }
+    },
+    {
+      "id": "domesticacion_06",
+      "label": "mismo viaje: de fruta pequeña y agria, a",
+      "duration": 4.295,
+      "transition": {
+        "in": "fade",
+        "out": "fade",
+        "duration": 0.3
+      },
+      "elements": [
+        {
+          "type": "background",
+          "style": "gradient",
+          "colors": [
+            "#2B1706",
+            "#1A0F04",
+            "#0A0502"
+          ],
+          "animated": true,
+          "intensity": 0.65
+        },
+        {
+          "type": "particles",
+          "density": 0.3,
+          "color": "#FFB25C",
+          "speed": 0.3,
+          "glow": true,
+          "layer": "background",
+          "size": 2.0
+        },
+        {
+          "type": "figure",
+          "shape": "mountains",
+          "position": {
+            "x": 0.5,
+            "y": 1.0,
+            "anchor": "bottom-center"
+          },
+          "width": 1080,
+          "height": 380,
+          "delay": 0,
+          "duration": 0.5,
+          "style": "silhouette",
+          "color": "#231206",
+          "layer": "background"
+        },
+        {
+          "type": "figure",
+          "shape": "tree-oak",
+          "position": {
+            "x": 0.72,
+            "y": 0.86,
+            "anchor": "bottom-center"
+          },
+          "width": 320,
+          "height": 300,
+          "delay": 0.05,
+          "duration": 0.5,
+          "motion": "breathe",
+          "style": "duotone",
+          "primaryColor": "#C97A2B",
+          "secondaryColor": "#7A4414"
+        },
+        {
+          "type": "figure",
+          "shape": "custom",
+          "position": {
+            "x": 0.66,
+            "y": 0.72,
+            "anchor": "center"
+          },
+          "width": 30,
+          "height": 30,
+          "svg": "<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='58' r='32' fill='currentColor'/><path d='M50 26 C 54 14, 66 10, 74 14 C 68 22, 58 24, 50 26 Z' fill='#4CAF50'/><rect x='47' y='14' width='6' height='16' rx='3' fill='#6B4226'/></svg>",
+          "color": "#FFC24B",
+          "primaryColor": "#FFC24B",
+          "delay": 0.3,
+          "duration": 0.4,
+          "motion": "pulse",
+          "pulseFreq": 1.1,
+          "pulseAmount": 0.08
+        },
+        {
+          "type": "figure",
+          "shape": "person-standing",
+          "position": {
+            "x": 0.28,
+            "y": 0.88,
+            "anchor": "bottom-center"
+          },
+          "width": 110,
+          "height": 230,
+          "delay": 0.2,
+          "duration": 0.5,
+          "motion": "breathe",
+          "style": "silhouette",
+          "color": "#1A0D04"
+        },
+        {
+          "type": "camera",
+          "effect": "pan-right",
+          "intensity": 0.05,
+          "duration": 4.295,
+          "easing": "ease-in-out"
+        },
+        {
+          "type": "ranking",
+          "title": "PRIMEROS FRUTALES DOMÉSTICOS",
+          "items": [
+            {
+              "rank": 1,
+              "label": "Higos · Valle del Jordán",
+              "value": "~11.400 años",
+              "highlight": true
+            },
+            {
+              "rank": 2,
+              "label": "Manzana · Kazajistán",
+              "value": "Malus sieversii"
+            }
+          ],
+          "position": {
+            "x": 0.5,
+            "y": 0.74,
+            "anchor": "center"
+          },
+          "accentColor": "#FFC24B",
+          "enter": "rise",
+          "delay": 0.3,
+          "stagger": 0.18
+        },
+        {
+          "type": "caption",
+          "text": "mismo viaje: de fruta pequeña y agria, a la manzana que hoy",
+          "words": [
+            {
+              "word": "mismo",
+              "start": 0.0,
+              "end": 0.29,
+              "accent": false
+            },
+            {
+              "word": "viaje:",
+              "start": 0.336,
+              "end": 0.917,
+              "accent": false
+            },
+            {
+              "word": "de",
+              "start": 1.52,
+              "end": 1.59,
+              "accent": false
+            },
+            {
+              "word": "fruta",
+              "start": 1.648,
+              "end": 1.915,
+              "accent": false
+            },
+            {
+              "word": "pequeña",
+              "start": 1.962,
+              "end": 2.333,
+              "accent": false
+            },
+            {
+              "word": "y",
+              "start": 2.391,
+              "end": 2.426,
+              "accent": false
+            },
+            {
+              "word": "agria,",
+              "start": 2.472,
+              "end": 3.007,
+              "accent": false
+            },
+            {
+              "word": "a",
+              "start": 3.332,
+              "end": 3.378,
+              "accent": false
+            },
+            {
+              "word": "la",
+              "start": 3.448,
+              "end": 3.506,
+              "accent": false
+            },
+            {
+              "word": "manzana",
+              "start": 3.552,
+              "end": 3.959,
+              "accent": true
+            },
+            {
+              "word": "que",
+              "start": 4.017,
+              "end": 4.098,
+              "accent": false
+            },
+            {
+              "word": "hoy",
+              "start": 4.133,
+              "end": 4.249,
+              "accent": false
+            }
+          ],
+          "style": "standard",
+          "position": {
+            "x": 0.5,
+            "y": 0.045,
+            "anchor": "top-center"
+          }
+        }
+      ],
+      "narration": {
+        "text": "mismo viaje: de fruta pequeña y agria, a la manzana que hoy",
+        "voice": "carmen",
+        "stability": 0.5,
+        "similarity": 0.8
+      },
+      "audio": {
+        "sfx": [],
+        "musicVolume": 0.42
+      }
+    },
+    {
+      "id": "domesticacion_07",
+      "label": "mordemos. El ser humano tomó el relevo d",
+      "duration": 4.54,
+      "transition": {
+        "in": "fade",
+        "out": "fade",
+        "duration": 0.3
+      },
+      "elements": [
+        {
+          "type": "background",
+          "style": "gradient",
+          "colors": [
+            "#2B1706",
+            "#1A0F04",
+            "#0A0502"
+          ],
+          "animated": true,
+          "intensity": 0.65
+        },
+        {
+          "type": "particles",
+          "density": 0.3,
+          "color": "#FFB25C",
+          "speed": 0.3,
+          "glow": true,
+          "layer": "background",
+          "size": 2.0
+        },
+        {
+          "type": "figure",
+          "shape": "mountains",
+          "position": {
+            "x": 0.5,
+            "y": 1.0,
+            "anchor": "bottom-center"
+          },
+          "width": 1080,
+          "height": 380,
+          "delay": 0,
+          "duration": 0.5,
+          "style": "silhouette",
+          "color": "#231206",
+          "layer": "background"
+        },
+        {
+          "type": "figure",
+          "shape": "tree-oak",
+          "position": {
+            "x": 0.72,
+            "y": 0.86,
+            "anchor": "bottom-center"
+          },
+          "width": 320,
+          "height": 300,
+          "delay": 0.05,
+          "duration": 0.5,
+          "motion": "breathe",
+          "style": "duotone",
+          "primaryColor": "#C97A2B",
+          "secondaryColor": "#7A4414"
+        },
+        {
+          "type": "figure",
+          "shape": "custom",
+          "position": {
+            "x": 0.66,
+            "y": 0.72,
+            "anchor": "center"
+          },
+          "width": 30,
+          "height": 30,
+          "svg": "<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='58' r='32' fill='currentColor'/><path d='M50 26 C 54 14, 66 10, 74 14 C 68 22, 58 24, 50 26 Z' fill='#4CAF50'/><rect x='47' y='14' width='6' height='16' rx='3' fill='#6B4226'/></svg>",
+          "color": "#FFC24B",
+          "primaryColor": "#FFC24B",
+          "delay": 0.3,
+          "duration": 0.4,
+          "motion": "pulse",
+          "pulseFreq": 1.1,
+          "pulseAmount": 0.08
+        },
+        {
+          "type": "figure",
+          "shape": "person-standing",
+          "position": {
+            "x": 0.28,
+            "y": 0.88,
+            "anchor": "bottom-center"
+          },
+          "width": 110,
+          "height": 230,
+          "delay": 0.2,
+          "duration": 0.5,
+          "motion": "breathe",
+          "style": "silhouette",
+          "color": "#1A0D04"
+        },
+        {
+          "type": "camera",
+          "effect": "pan-right",
+          "intensity": 0.05,
+          "duration": 4.54,
+          "easing": "ease-in-out"
+        },
+        {
+          "type": "caption",
+          "text": "mordemos. El ser humano tomó el relevo de los dinosaurios.",
+          "words": [
+            {
+              "word": "mordemos.",
+              "start": 0.0,
+              "end": 0.755,
+              "accent": false
+            },
+            {
+              "word": "El",
+              "start": 1.451,
+              "end": 1.602,
+              "accent": false
+            },
+            {
+              "word": "ser",
+              "start": 1.66,
+              "end": 1.811,
+              "accent": false
+            },
+            {
+              "word": "humano",
+              "start": 1.846,
+              "end": 2.113,
+              "accent": false
+            },
+            {
+              "word": "tomó",
+              "start": 2.16,
+              "end": 2.392,
+              "accent": false
+            },
+            {
+              "word": "el",
+              "start": 2.415,
+              "end": 2.462,
+              "accent": false
+            },
+            {
+              "word": "relevo",
+              "start": 2.543,
+              "end": 2.856,
+              "accent": false
+            },
+            {
+              "word": "de",
+              "start": 2.891,
+              "end": 2.949,
+              "accent": false
+            },
+            {
+              "word": "los",
+              "start": 2.984,
+              "end": 3.1,
+              "accent": false
+            },
+            {
+              "word": "dinosaurios.",
+              "start": 3.135,
+              "end": 4.029,
+              "accent": true
+            }
+          ],
+          "style": "standard",
+          "position": {
+            "x": 0.5,
+            "y": 0.045,
+            "anchor": "top-center"
+          }
+        }
+      ],
+      "narration": {
+        "text": "mordemos. El ser humano tomó el relevo de los dinosaurios.",
+        "voice": "carmen",
+        "stability": 0.5,
+        "similarity": 0.8
+      },
+      "audio": {
+        "sfx": [],
+        "musicVolume": 0.42
+      }
+    },
+    {
+      "id": "resumen_01",
+      "label": "Plantas que aprendieron a pagar por ayud",
+      "duration": 2.96,
+      "transition": {
+        "in": "fade",
+        "out": "fade",
+        "duration": 0.3
+      },
+      "elements": [
+        {
+          "type": "background",
+          "style": "gradient",
+          "colors": [
+            "#0C0014",
+            "#130020",
+            "#060008"
+          ],
+          "animated": true,
+          "intensity": 0.6
+        },
+        {
+          "type": "particles",
+          "density": 0.4,
+          "color": "#FFC24B",
+          "speed": 0.35,
+          "glow": true,
+          "layer": "background",
+          "size": 2.2
+        },
+        {
+          "type": "figure",
+          "shape": "dna-helix",
+          "position": {
+            "x": 0.5,
+            "y": 0.14,
+            "anchor": "top-center"
+          },
+          "width": 160,
+          "height": 160,
+          "delay": 0.1,
+          "duration": 0.5,
+          "style": "glow",
+          "opacity": 0.5,
+          "motion": "float",
+          "color": "#BF5CFF"
+        },
+        {
+          "type": "camera",
+          "effect": "ken-burns",
+          "intensity": 0.05,
+          "duration": 2.96,
+          "easing": "ease-in-out"
+        },
+        {
+          "type": "ranking",
+          "title": "TRES ACTOS, UN SOLO PACTO",
+          "items": [
+            {
+              "rank": 1,
+              "label": "Plantas",
+              "value": "pagan con fruto"
+            },
+            {
+              "rank": 2,
+              "label": "Animales",
+              "value": "reparten semillas"
+            },
+            {
+              "rank": 3,
+              "label": "Humanos",
+              "value": "domestican el pacto",
+              "highlight": true
+            }
+          ],
+          "position": {
+            "x": 0.5,
+            "y": 0.5,
+            "anchor": "center"
+          },
+          "accentColor": "#FFC24B",
+          "enter": "rise",
+          "delay": 0.3,
+          "stagger": 0.18
+        },
+        {
+          "type": "caption",
+          "text": "Plantas que aprendieron a pagar por ayuda.",
+          "words": [
+            {
+              "word": "Plantas",
+              "start": 0.0,
+              "end": 0.464,
+              "accent": true
+            },
+            {
+              "word": "que",
+              "start": 0.522,
+              "end": 0.592,
+              "accent": false
+            },
+            {
+              "word": "aprendieron",
+              "start": 0.615,
+              "end": 1.149,
+              "accent": false
+            },
+            {
+              "word": "a",
+              "start": 1.207,
+              "end": 1.23,
+              "accent": false
+            },
+            {
+              "word": "pagar",
+              "start": 1.277,
+              "end": 1.532,
+              "accent": false
+            },
+            {
+              "word": "por",
+              "start": 1.602,
+              "end": 1.741,
+              "accent": false
+            },
+            {
+              "word": "ayuda.",
+              "start": 1.788,
+              "end": 2.357,
+              "accent": false
+            }
+          ],
+          "style": "standard",
+          "position": {
+            "x": 0.5,
+            "y": 0.045,
+            "anchor": "top-center"
+          }
+        }
+      ],
+      "narration": {
+        "text": "Plantas que aprendieron a pagar por ayuda.",
+        "voice": "carmen",
+        "stability": 0.5,
+        "similarity": 0.8
+      },
+      "audio": {
+        "sfx": [
+          {
+            "type": "rise",
+            "at": 0.0,
+            "volume": 0.35
+          }
+        ],
+        "musicVolume": 0.4
+      }
+    },
+    {
+      "id": "resumen_02",
+      "label": "Animales que aceptaron el trato. Humanos",
+      "duration": 5.724,
+      "transition": {
+        "in": "fade",
+        "out": "fade",
+        "duration": 0.3
+      },
+      "elements": [
+        {
+          "type": "background",
+          "style": "gradient",
+          "colors": [
+            "#0C0014",
+            "#130020",
+            "#060008"
+          ],
+          "animated": true,
+          "intensity": 0.6
+        },
+        {
+          "type": "particles",
+          "density": 0.4,
+          "color": "#FFC24B",
+          "speed": 0.35,
+          "glow": true,
+          "layer": "background",
+          "size": 2.2
+        },
+        {
+          "type": "figure",
+          "shape": "dna-helix",
+          "position": {
+            "x": 0.5,
+            "y": 0.14,
+            "anchor": "top-center"
+          },
+          "width": 160,
+          "height": 160,
+          "delay": 0.1,
+          "duration": 0.5,
+          "style": "glow",
+          "opacity": 0.5,
+          "motion": "float",
+          "color": "#BF5CFF"
+        },
+        {
+          "type": "camera",
+          "effect": "ken-burns",
+          "intensity": 0.05,
+          "duration": 5.724,
+          "easing": "ease-in-out"
+        },
+        {
+          "type": "caption",
+          "text": "Animales que aceptaron el trato. Humanos que domesticaron el propio pacto.",
+          "words": [
+            {
+              "word": "Animales",
+              "start": 0.0,
+              "end": 0.581,
+              "accent": true
+            },
+            {
+              "word": "que",
+              "start": 0.65,
+              "end": 0.72,
+              "accent": false
+            },
+            {
+              "word": "aceptaron",
+              "start": 0.743,
+              "end": 1.243,
+              "accent": false
+            },
+            {
+              "word": "el",
+              "start": 1.312,
+              "end": 1.382,
+              "accent": false
+            },
+            {
+              "word": "trato.",
+              "start": 1.452,
+              "end": 1.997,
+              "accent": false
+            },
+            {
+              "word": "Humanos",
+              "start": 2.508,
+              "end": 3.054,
+              "accent": true
+            },
+            {
+              "word": "que",
+              "start": 3.112,
+              "end": 3.193,
+              "accent": false
+            },
+            {
+              "word": "domesticaron",
+              "start": 3.239,
+              "end": 3.901,
+              "accent": false
+            },
+            {
+              "word": "el",
+              "start": 3.959,
+              "end": 4.029,
+              "accent": false
+            },
+            {
+              "word": "propio",
+              "start": 4.098,
+              "end": 4.412,
+              "accent": false
+            },
+            {
+              "word": "pacto.",
+              "start": 4.458,
+              "end": 5.027,
+              "accent": false
+            }
+          ],
+          "style": "standard",
+          "position": {
+            "x": 0.5,
+            "y": 0.045,
+            "anchor": "top-center"
+          }
+        }
+      ],
+      "narration": {
+        "text": "Animales que aceptaron el trato. Humanos que domesticaron el propio pacto.",
+        "voice": "carmen",
+        "stability": 0.5,
+        "similarity": 0.8
+      },
+      "audio": {
+        "sfx": [],
+        "musicVolume": 0.4
+      }
+    },
+    {
+      "id": "resumen_03",
+      "label": "La próxima vez que muerdas una fruta, re",
+      "duration": 3.425,
+      "transition": {
+        "in": "fade",
+        "out": "fade",
+        "duration": 0.3
+      },
+      "elements": [
+        {
+          "type": "background",
+          "style": "gradient",
+          "colors": [
+            "#0C0014",
+            "#130020",
+            "#060008"
+          ],
+          "animated": true,
+          "intensity": 0.6
+        },
+        {
+          "type": "particles",
+          "density": 0.4,
+          "color": "#FFC24B",
+          "speed": 0.35,
+          "glow": true,
+          "layer": "background",
+          "size": 2.2
+        },
+        {
+          "type": "figure",
+          "shape": "dna-helix",
+          "position": {
+            "x": 0.5,
+            "y": 0.14,
+            "anchor": "top-center"
+          },
+          "width": 160,
+          "height": 160,
+          "delay": 0.1,
+          "duration": 0.5,
+          "style": "glow",
+          "opacity": 0.5,
+          "motion": "float",
+          "color": "#BF5CFF"
+        },
+        {
+          "type": "camera",
+          "effect": "ken-burns",
+          "intensity": 0.05,
+          "duration": 3.425,
+          "easing": "ease-in-out"
+        },
+        {
+          "type": "caption",
+          "text": "La próxima vez que muerdas una fruta, recuerda:",
+          "words": [
+            {
+              "word": "La",
+              "start": 0.0,
+              "end": 0.104,
+              "accent": false
+            },
+            {
+              "word": "próxima",
+              "start": 0.151,
+              "end": 0.522,
+              "accent": false
+            },
+            {
+              "word": "vez",
+              "start": 0.569,
+              "end": 0.696,
+              "accent": false
+            },
+            {
+              "word": "que",
+              "start": 0.743,
+              "end": 0.824,
+              "accent": false
+            },
+            {
+              "word": "muerdas",
+              "start": 0.871,
+              "end": 1.207,
+              "accent": false
+            },
+            {
+              "word": "una",
+              "start": 1.277,
+              "end": 1.405,
+              "accent": false
+            },
+            {
+              "word": "fruta,",
+              "start": 1.451,
+              "end": 1.962,
+              "accent": true
+            },
+            {
+              "word": "recuerda:",
+              "start": 2.287,
+              "end": 2.984,
+              "accent": false
+            }
+          ],
+          "style": "standard",
+          "position": {
+            "x": 0.5,
+            "y": 0.045,
+            "anchor": "top-center"
+          }
+        }
+      ],
+      "narration": {
+        "text": "La próxima vez que muerdas una fruta, recuerda:",
+        "voice": "carmen",
+        "stability": 0.5,
+        "similarity": 0.8
+      },
+      "audio": {
+        "sfx": [],
+        "musicVolume": 0.4
+      }
+    },
+    {
+      "id": "resumen_04",
+      "label": "llevas en la boca cien millones de años ",
+      "duration": 3.657,
+      "transition": {
+        "in": "fade",
+        "out": "fade",
+        "duration": 0.3
+      },
+      "elements": [
+        {
+          "type": "background",
+          "style": "gradient",
+          "colors": [
+            "#0C0014",
+            "#130020",
+            "#060008"
+          ],
+          "animated": true,
+          "intensity": 0.6
+        },
+        {
+          "type": "particles",
+          "density": 0.4,
+          "color": "#FFC24B",
+          "speed": 0.35,
+          "glow": true,
+          "layer": "background",
+          "size": 2.2
+        },
+        {
+          "type": "figure",
+          "shape": "dna-helix",
+          "position": {
+            "x": 0.5,
+            "y": 0.14,
+            "anchor": "top-center"
+          },
+          "width": 160,
+          "height": 160,
+          "delay": 0.1,
+          "duration": 0.5,
+          "style": "glow",
+          "opacity": 0.5,
+          "motion": "float",
+          "color": "#BF5CFF"
+        },
+        {
+          "type": "camera",
+          "effect": "ken-burns",
+          "intensity": 0.05,
+          "duration": 3.657,
+          "easing": "ease-in-out"
+        },
+        {
+          "type": "caption",
+          "text": "llevas en la boca cien millones de años de negociación.",
+          "words": [
+            {
+              "word": "llevas",
+              "start": 0.0,
+              "end": 0.336,
+              "accent": false
+            },
+            {
+              "word": "en",
+              "start": 0.418,
+              "end": 0.464,
+              "accent": false
+            },
+            {
+              "word": "la",
+              "start": 0.545,
+              "end": 0.603,
+              "accent": false
+            },
+            {
+              "word": "boca",
+              "start": 0.65,
+              "end": 0.894,
+              "accent": false
+            },
+            {
+              "word": "cien",
+              "start": 0.929,
+              "end": 1.149,
+              "accent": false
+            },
+            {
+              "word": "millones",
+              "start": 1.219,
+              "end": 1.625,
+              "accent": false
+            },
+            {
+              "word": "de",
+              "start": 1.672,
+              "end": 1.73,
+              "accent": false
+            },
+            {
+              "word": "años",
+              "start": 1.776,
+              "end": 2.008,
+              "accent": false
+            },
+            {
+              "word": "de",
+              "start": 2.055,
+              "end": 2.101,
+              "accent": false
+            },
+            {
+              "word": "negociación.",
+              "start": 2.148,
+              "end": 3.053,
+              "accent": true
+            }
+          ],
+          "style": "standard",
+          "position": {
+            "x": 0.5,
+            "y": 0.045,
+            "anchor": "top-center"
+          }
+        }
+      ],
+      "narration": {
+        "text": "llevas en la boca cien millones de años de negociación.",
+        "voice": "carmen",
+        "stability": 0.5,
+        "similarity": 0.8
+      },
+      "audio": {
+        "sfx": [],
+        "musicVolume": 0.4
+      }
+    },
+    {
+      "id": "cierre_cta_01",
+      "label": "Dale like, suscríbete, y síguenos en arr",
+      "duration": 5.992,
+      "transition": {
+        "in": "fade",
+        "out": "fade",
+        "duration": 0.3
+      },
+      "elements": [
+        {
+          "type": "background",
+          "style": "gradient",
+          "colors": [
+            "#0C0014",
+            "#1B0030",
+            "#060008"
+          ],
+          "animated": true,
+          "intensity": 0.75
+        },
+        {
+          "type": "particles",
+          "density": 0.55,
+          "color": "#FFC24B",
+          "speed": 0.5,
+          "glow": true,
+          "layer": "background",
+          "size": 2.8
+        },
+        {
+          "type": "camera",
+          "effect": "zoom-in",
+          "intensity": 0.08,
+          "duration": 5.992,
+          "easing": "ease-in-out"
+        },
+        {
+          "type": "badge",
+          "text": "RANDONÁUTICO",
+          "style": "default",
+          "position": {
+            "x": 0.5,
+            "y": 0.14,
+            "anchor": "top-center"
+          },
+          "delay": 0.1
+        },
+        {
+          "type": "title",
+          "text": "DALE LIKE Y SUSCRÍBETE",
+          "size": "lg",
+          "position": {
+            "x": 0.5,
+            "y": 0.38,
+            "anchor": "center"
+          },
+          "delay": 0.2,
+          "accentWords": [
+            "LIKE",
+            "SUSCRÍBETE"
+          ]
+        },
+        {
+          "type": "caption",
+          "text": "Dale like, suscríbete, y síguenos en arroba Randonáutico.",
+          "words": [
+            {
+              "word": "Dale",
+              "start": 0.0,
+              "end": 0.279,
+              "accent": false
+            },
+            {
+              "word": "like,",
+              "start": 0.337,
+              "end": 0.847,
+              "accent": true
+            },
+            {
+              "word": "suscríbete,",
+              "start": 1.231,
+              "end": 2.159,
+              "accent": true
+            },
+            {
+              "word": "y",
+              "start": 2.542,
+              "end": 2.624,
+              "accent": false
+            },
+            {
+              "word": "síguenos",
+              "start": 2.74,
+              "end": 3.181,
+              "accent": false
+            },
+            {
+              "word": "en",
+              "start": 3.274,
+              "end": 3.413,
+              "accent": false
+            },
+            {
+              "word": "arroba",
+              "start": 3.587,
+              "end": 4.156,
+              "accent": false
+            },
+            {
+              "word": "Randonáutico.",
+              "start": 4.365,
+              "end": 5.642,
+              "accent": true
+            }
+          ],
+          "style": "standard",
+          "position": {
+            "x": 0.5,
+            "y": 0.045,
+            "anchor": "top-center"
+          }
+        }
+      ],
+      "narration": {
+        "text": "Dale like, suscríbete, y síguenos en arroba Randonáutico.",
+        "voice": "carmen",
+        "stability": 0.5,
+        "similarity": 0.8
+      },
+      "audio": {
+        "sfx": [
+          {
+            "type": "sparkle",
+            "at": 0.0,
+            "volume": 0.55
+          }
+        ],
+        "musicVolume": 0.5
+      }
+    }
+  ]
+}
