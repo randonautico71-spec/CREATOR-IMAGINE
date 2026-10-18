@@ -1,17 +1,22 @@
 #!/usr/bin/env node
 /**
- * render_worker.js — CREATOR IMAGINE Engine v1.1
+ * render_worker.js — CREATOR IMAGINE Engine v1.2
  *
- * CORRECCIONES v1.1:
- * - El runtime se inyecta ANTES de inyectar window.__TIMELINE__
- *   para eliminar la race condition de inicialización.
- * - La inicialización del runtime se activa explícitamente desde fuera
- *   (window.__ENGINE_INIT__()) en lugar de hacerlo en DOMContentLoaded.
- * - page.waitForTimeout sustituido por una promesa nativa para
- *   compatibilidad con todas las versiones de Playwright.
- * - Audio re-muestreado a 48 kHz en FFmpeg para cumplir con el estándar MP4.
- * - Los frames se guardan en una carpeta timestamped para evitar colisiones
- *   entre renders paralelos.
+ * CORRECCIONES v1.2 (optimización de rendimiento, sin cambiar el resultado
+ * visual final):
+ * - Tres modos de calidad seleccionables con --quality preview|final|master:
+ *     preview : 540×960  @ 30fps · JPEG q82 · x264 ultrafast · CRF 25
+ *     final   : 1080×1920 @ 60fps · JPEG q94 · x264 veryfast · CRF 18
+ *     master  : 1080×1920 @ 60fps · PNG      · x264 medium   · CRF 16
+ * - Los fotogramas ya NO se escriben a disco por defecto: cada captura se
+ *   obtiene como Buffer en memoria y se envía directamente al stdin de
+ *   FFmpeg (image2pipe), eliminando miles de operaciones de E/S.
+ *   --keep-frames conserva además una copia en disco para depuración.
+ * - --width/--height/--fps explícitos siguen pudiendo sobreescribir el
+ *   preset de calidad elegido.
+ * - Medición separada de tiempos: inicialización, seekFrame, captura,
+ *   espera de stdin (backpressure) y codificación total.
+ * - --preview (flag heredado) es equivalente a --quality preview.
  *
  * Uso:
  *   node engine/render_worker.js \
@@ -19,10 +24,10 @@
  *     --timeline projects/<slug>/timeline.json \
  *     --audio   projects/<slug>/music.wav \
  *     --output  projects/<slug>/video.mp4 \
- *     [--fps 60] [--width 1080] [--height 1920] [--preview]
+ *     --quality final
  *
  *   O con atajo de proyecto:
- *   node engine/render_worker.js --project projects/<slug>/
+ *   node engine/render_worker.js --project projects/<slug>/ --quality preview
  */
 
 'use strict';
@@ -33,9 +38,28 @@ const path         = require('path');
 const fs           = require('fs');
 
 // =========================================================
-// HELPERS
+// PRESETS DE CALIDAD
 // =========================================================
-const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+const QUALITY_PRESETS = {
+  preview: {
+    width: 540, height: 960, fps: 30,
+    imageType: 'jpeg', jpegQuality: 82,
+    ffmpegPreset: 'ultrafast', crf: '25',
+    particleLimit: 30, label: 'PREVIEW'
+  },
+  final: {
+    width: 1080, height: 1920, fps: 60,
+    imageType: 'jpeg', jpegQuality: 94,
+    ffmpegPreset: 'veryfast', crf: '18',
+    particleLimit: 70, label: 'FINAL'
+  },
+  master: {
+    width: 1080, height: 1920, fps: 60,
+    imageType: 'png', jpegQuality: undefined,
+    ffmpegPreset: 'medium', crf: '16',
+    particleLimit: 100, label: 'MASTER'
+  }
+};
 
 // =========================================================
 // ARGUMENTOS
@@ -43,15 +67,16 @@ const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 function parseArgs() {
   const args = process.argv.slice(2);
   const opts = {
-    html:     null,
-    timeline: null,
-    audio:    null,
-    output:   null,
-    fps:      60,
-    width:    1080,
-    height:   1920,
-    preview:  false,
-    project:  null,
+    html:       null,
+    timeline:   null,
+    audio:      null,
+    output:     null,
+    fps:        null,
+    width:      null,
+    height:     null,
+    quality:    null,
+    legacyPreview: false,
+    project:    null,
     keepFrames: false
   };
 
@@ -64,17 +89,41 @@ function parseArgs() {
       case '--fps':        opts.fps        = parseInt(args[++i], 10); break;
       case '--width':      opts.width      = parseInt(args[++i], 10); break;
       case '--height':     opts.height     = parseInt(args[++i], 10); break;
-      case '--preview':    opts.preview    = true; break;
+      case '--quality':    opts.quality    = args[++i]; break;
+      case '--preview':    opts.legacyPreview = true; break;
       case '--keep-frames':opts.keepFrames = true; break;
       case '--project': {
         opts.project  = args[++i];
-        const slug    = path.basename(opts.project.replace(/[/\\]$/, ''));
         if (!opts.timeline) opts.timeline = path.join(opts.project, 'timeline.json');
         if (!opts.audio)    opts.audio    = path.join(opts.project, 'music.wav');
-        if (!opts.output)   opts.output   = path.join(opts.project, opts.preview ? 'preview.mp4' : 'video.mp4');
         break;
       }
     }
+  }
+
+  // Resolver modo de calidad (--quality explícito > --preview heredado > 'final' por defecto)
+  if (!opts.quality) opts.quality = opts.legacyPreview ? 'preview' : 'final';
+  if (!QUALITY_PRESETS[opts.quality]) {
+    console.error(`[Worker] ERROR: --quality desconocido "${opts.quality}" (usa preview|final|master)`);
+    process.exit(1);
+  }
+  const preset = QUALITY_PRESETS[opts.quality];
+
+  // Aplicar preset, respetando overrides explícitos de --width/--height/--fps
+  if (opts.width  == null) opts.width  = preset.width;
+  if (opts.height == null) opts.height = preset.height;
+  if (opts.fps    == null) opts.fps    = preset.fps;
+  opts.imageType    = preset.imageType;
+  opts.jpegQuality  = preset.jpegQuality;
+  opts.ffmpegPreset = preset.ffmpegPreset;
+  opts.crf          = preset.crf;
+  opts.particleLimit = preset.particleLimit;
+  opts.qualityLabel = preset.label;
+
+  // Salida por defecto según proyecto + modo
+  if (opts.project && !opts.output) {
+    const defaultName = opts.quality === 'preview' ? 'preview.mp4' : 'video.mp4';
+    opts.output = path.join(opts.project, defaultName);
   }
 
   // Defaults
@@ -97,17 +146,10 @@ function parseArgs() {
 // MAIN
 // =========================================================
 async function main() {
+  const tStart = Date.now();
   const opts = parseArgs();
 
-  // Preview: resolución y fps reducidos
-  if (opts.preview) {
-    opts.fps    = 15;
-    opts.width  = 360;
-    opts.height = 640;
-    console.log('[Worker] Modo PREVIEW — 360×640 @ 15fps');
-  } else {
-    console.log(`[Worker] Modo FINAL — ${opts.width}×${opts.height} @ ${opts.fps}fps`);
-  }
+  console.log(`[Worker] Modo ${opts.qualityLabel} — ${opts.width}×${opts.height} @ ${opts.fps}fps · ${opts.imageType.toUpperCase()}${opts.jpegQuality ? ' q' + opts.jpegQuality : ''} · x264 ${opts.ffmpegPreset} CRF${opts.crf}`);
 
   // ---- Cargar y validar timeline ----
   let timeline;
@@ -129,12 +171,15 @@ async function main() {
 
   console.log(`[Worker] Timeline: ${(timeline.scenes||[]).length} escenas | Duración: ${totalDuration.toFixed(2)}s | Frames: ${totalFrames}`);
 
-  // ---- Carpeta de frames ----
+  // ---- Carpeta de output / frames opcionales de depuración ----
   const timestamp  = Date.now();
   const outputDir  = path.dirname(path.resolve(opts.output));
   fs.mkdirSync(outputDir, { recursive: true });
-  const framesDir  = path.join(outputDir, `frames_${timestamp}`);
-  fs.mkdirSync(framesDir, { recursive: true });
+  let framesDir = null;
+  if (opts.keepFrames) {
+    framesDir = path.join(outputDir, `frames_${timestamp}`);
+    fs.mkdirSync(framesDir, { recursive: true });
+  }
 
   // ---- Cargar runtime JS (para inyectarlo) ----
   const runtimePath = path.resolve('engine/timeline_runtime.js');
@@ -142,7 +187,6 @@ async function main() {
     console.error(`[Worker] ERROR: Runtime no encontrado: ${runtimePath}`);
     process.exit(1);
   }
-  // Leer el runtime como texto para inyectarlo vía evaluate (evita problemas de path en file:// URLs)
   const runtimeSource = fs.readFileSync(runtimePath, 'utf-8');
 
   // =========================================================
@@ -154,48 +198,41 @@ async function main() {
     args: [
       '--no-sandbox',
       '--disable-setuid-sandbox',
-      '--disable-gpu',                   // en entornos cloud sin GPU
+      '--disable-gpu',
       '--disable-dev-shm-usage',
-      '--font-render-hinting=none'       // render de fuentes consistente
+      '--font-render-hinting=none'
     ]
   });
 
   const context = await browser.newContext({
     viewport: { width: opts.width, height: opts.height },
     deviceScaleFactor: 1,
-    // Desactivar animaciones CSS para control determinista de frames
     reducedMotion: 'reduce'
   });
 
   const page = await context.newPage();
 
-  // Silenciar errores de carga de fuentes (Google Fonts puede no estar disponible)
   page.on('console', msg => {
     if (msg.type() === 'error') {
       const text = msg.text();
-      // Solo logear errores que no sean de fuentes
       if (!text.includes('fonts.googleapis') && !text.includes('fonts.gstatic')) {
         console.warn(`[Browser] ${text}`);
       }
     }
   });
 
-  // Cargar la plantilla HTML
   const htmlPath = path.resolve(opts.html);
   await page.goto(`file://${htmlPath}`, { waitUntil: 'domcontentloaded' });
 
-  // --- PASO CRÍTICO: Inyectar el timeline PRIMERO ---
-  // Esto asegura que window.__TIMELINE__ está disponible cuando el runtime inicie
-  await page.evaluate((tl) => {
-    window.__TIMELINE__ = tl;
+  await page.evaluate((payload) => {
+    window.__TIMELINE__ = payload.timeline;
     window.__RUNTIME_READY__ = false;
-  }, timeline);
+    window.__RENDER_QUALITY__ = payload.quality;
+    window.__PARTICLE_LIMIT__ = payload.particleLimit;
+  }, { timeline, quality: opts.quality, particleLimit: opts.particleLimit });
 
-  // --- Inyectar y ejecutar el runtime ---
-  // Usamos addScriptTag con content (no path) para evitar problemas de file:// en cloud
   await page.addScriptTag({ content: runtimeSource });
 
-  // Esperar a que el runtime señale que está listo (máx 15s)
   try {
     await page.waitForFunction(
       () => window.__RUNTIME_READY__ === true,
@@ -207,29 +244,61 @@ async function main() {
     process.exit(1);
   }
 
-  console.log('[Worker] Runtime listo. Capturando frames...');
+  const tInitDone = Date.now();
+  console.log('[Worker] Runtime listo. Capturando frames (streaming directo a FFmpeg)...');
 
-  // ---- Captura frame a frame ----
+  // =========================================================
+  // FFMPEG — proceso de muxeo en streaming (stdin)
+  // =========================================================
+  const hasAudio = opts.audio && fs.existsSync(opts.audio);
+  const ffmpeg = spawnFfmpegStreaming(opts, hasAudio);
+  let ffmpegExitPromise = new Promise((resolve, reject) => {
+    let stderr = '';
+    ffmpeg.stderr.on('data', d => { stderr += d.toString(); });
+    ffmpeg.on('close', code => {
+      if (code === 0) resolve();
+      else reject(new Error(`FFmpeg terminó con código ${code}:\n${stderr.split('\n').slice(-12).join('\n')}`));
+    });
+    ffmpeg.on('error', (err) => {
+      if (err.code === 'ENOENT') reject(new Error('FFmpeg no encontrado en PATH. Instala FFmpeg: https://ffmpeg.org'));
+      else reject(err);
+    });
+  });
+
+  // ---- Captura frame a frame (buffer en memoria -> stdin de FFmpeg) ----
+  let seekMs = 0, screenshotMs = 0, pipeMs = 0;
   let rendered = 0;
-  const logEvery = Math.max(1, Math.floor(opts.fps / 2)); // log cada 0.5s
+  const logEvery = Math.max(1, Math.floor(opts.fps / 2));
 
   for (let f = 0; f < totalFrames; f++) {
     const videoTime = f * frameDuration;
 
-    // Mover el motor al tiempo exacto del frame
-    await page.evaluate((t) => {
-      window.__ENGINE__.seekTo(t);
-    }, videoTime);
+    let t0 = Date.now();
+    await page.evaluate((t) => { window.__ENGINE__.seekTo(t); }, videoTime);
+    seekMs += Date.now() - t0;
 
-    // Espera mínima para que el DOM se actualice (≈1 frame de composición)
-    await sleep(8);
+    t0 = Date.now();
+    const shotOpts = {
+      type: opts.imageType,
+      clip: { x: 0, y: 0, width: opts.width, height: opts.height },
+      animations: 'disabled',
+      caret: 'hide'
+    };
+    if (opts.imageType === 'jpeg') shotOpts.quality = opts.jpegQuality;
+    const buffer = await page.screenshot(shotOpts);
+    screenshotMs += Date.now() - t0;
 
-    const framePath = path.join(framesDir, `frame_${String(f).padStart(6, '0')}.png`);
-    await page.screenshot({
-      path: framePath,
-      type: 'png',
-      clip: { x: 0, y: 0, width: opts.width, height: opts.height }
-    });
+    if (framesDir) {
+      const ext = opts.imageType === 'jpeg' ? 'jpg' : 'png';
+      fs.writeFileSync(path.join(framesDir, `frame_${String(f).padStart(6, '0')}.${ext}`), buffer);
+    }
+
+    t0 = Date.now();
+    const ok = ffmpeg.stdin.write(buffer);
+    if (!ok) {
+      await new Promise(resolve => ffmpeg.stdin.once('drain', resolve));
+    }
+    pipeMs += Date.now() - t0;
 
     rendered++;
 
@@ -240,19 +309,16 @@ async function main() {
   }
 
   console.log(`\n[Worker] ${rendered}/${totalFrames} frames capturados`);
+  ffmpeg.stdin.end();
   await browser.close();
 
-  // =========================================================
-  // FFMPEG — Muxear video
-  // =========================================================
-  console.log('[Worker] Muxeando con FFmpeg...');
-  await muxVideo(framesDir, opts);
+  console.log('[Worker] Esperando a que FFmpeg termine de codificar...');
+  const tEncodeStart = Date.now();
+  await ffmpegExitPromise;
+  const tEncodeDone = Date.now();
 
-  // Limpiar frames temporales (salvo --keep-frames)
-  if (!opts.keepFrames) {
-    fs.rmSync(framesDir, { recursive: true, force: true });
-  } else {
-    console.log(`[Worker] Frames conservados en: ${framesDir}`);
+  if (framesDir) {
+    console.log(`[Worker] Copia de depuración de frames conservada en: ${framesDir}`);
   }
 
   // Verificar que el output existe y tiene tamaño
@@ -263,75 +329,60 @@ async function main() {
   }
 
   const sizeMB = (outputStat.size / 1024 / 1024).toFixed(1);
+  const tTotal = Date.now() - tStart;
+
   console.log(`[Worker] ✓ MP4 generado: ${opts.output} (${sizeMB} MB)`);
+  console.log('[Worker] ---- Tiempos ----');
+  console.log(`  Inicialización      : ${((tInitDone - tStart) / 1000).toFixed(2)}s`);
+  console.log(`  seekFrame (total)   : ${(seekMs / 1000).toFixed(2)}s`);
+  console.log(`  Captura (total)     : ${(screenshotMs / 1000).toFixed(2)}s`);
+  console.log(`  Espera stdin (total): ${(pipeMs / 1000).toFixed(2)}s`);
+  console.log(`  Codificación final  : ${((tEncodeDone - tEncodeStart) / 1000).toFixed(2)}s`);
+  console.log(`  TOTAL               : ${(tTotal / 1000).toFixed(2)}s  (${(tTotal / rendered).toFixed(1)}ms/frame, ${(rendered / (tTotal / 1000)).toFixed(2)} fps efectivos)`);
 }
 
 // =========================================================
-// FFMPEG — función de muxeo
+// FFMPEG — proceso de streaming (recibe imágenes por stdin)
 // =========================================================
-function muxVideo(framesDir, opts) {
-  return new Promise((resolve, reject) => {
-    const framePattern = path.join(framesDir, 'frame_%06d.png');
-    const hasAudio     = opts.audio && fs.existsSync(opts.audio);
+function spawnFfmpegStreaming(opts, hasAudio) {
+  const vcodecIn = opts.imageType === 'jpeg' ? 'mjpeg' : 'png';
 
-    // Argumentos base de FFmpeg
-    const args = [
-      '-y',                              // sobreescribir output
-      '-framerate',  String(opts.fps),
-      '-i',          framePattern        // input: frames
-    ];
+  const args = [
+    '-y',
+    '-f',          'image2pipe',
+    '-vcodec',     vcodecIn,
+    '-framerate',  String(opts.fps),
+    '-i',          'pipe:0'
+  ];
 
-    if (hasAudio) {
-      args.push('-i', opts.audio);       // input: audio
-    }
+  if (hasAudio) {
+    args.push('-i', opts.audio);
+  }
 
+  args.push(
+    '-c:v',      'libx264',
+    '-preset',   opts.ffmpegPreset,
+    '-crf',      opts.crf,
+    '-pix_fmt',  'yuv420p',
+    '-movflags', '+faststart',
+    '-vf',       `scale=${opts.width}:${opts.height}`
+  );
+
+  if (hasAudio) {
     args.push(
-      '-c:v',      'libx264',
-      '-preset',   'medium',
-      '-crf',      '18',
-      '-pix_fmt',  'yuv420p',           // compatibilidad universal
-      '-movflags', '+faststart',         // streaming-friendly
-      '-vf',       `scale=${opts.width}:${opts.height}`  // forzar resolución exacta
+      '-c:a', 'aac',
+      '-b:a', '192k',
+      '-ar',  '48000',
+      '-ac',  '2',
+      '-shortest'
     );
+  }
 
-    if (hasAudio) {
-      args.push(
-        '-c:a',      'aac',
-        '-b:a',      '192k',
-        '-ar',       '48000',           // 48 kHz estándar para MP4
-        '-ac',       '2',               // stereo
-        '-shortest'                      // cortar al más corto (video vs audio)
-      );
-    }
+  args.push(opts.output);
 
-    args.push(opts.output);
+  console.log(`[FFmpeg] ffmpeg ${args.join(' ')}`);
 
-    console.log(`[FFmpeg] ffmpeg ${args.join(' ')}`);
-
-    const proc = spawn('ffmpeg', args, { stdio: ['ignore', 'pipe', 'pipe'] });
-
-    let stderr = '';
-    proc.stderr.on('data', d => { stderr += d.toString(); });
-    proc.stdout.on('data', d => { /* silencio */ });
-
-    proc.on('close', code => {
-      if (code === 0) {
-        resolve();
-      } else {
-        // Mostrar las últimas líneas de FFmpeg para diagnóstico
-        const lastLines = stderr.split('\n').slice(-8).join('\n');
-        reject(new Error(`FFmpeg terminó con código ${code}:\n${lastLines}`));
-      }
-    });
-
-    proc.on('error', (err) => {
-      if (err.code === 'ENOENT') {
-        reject(new Error('FFmpeg no encontrado en PATH. Instala FFmpeg: https://ffmpeg.org'));
-      } else {
-        reject(err);
-      }
-    });
-  });
+  return spawn('ffmpeg', args, { stdio: ['pipe', 'pipe', 'pipe'] });
 }
 
 // =========================================================

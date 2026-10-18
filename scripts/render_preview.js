@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
- * render_preview.js — Preview rápido a 360p / 15fps
+ * render_preview.js — Preview rápido (540×960 @ 30fps, JPEG q82, x264 ultrafast)
  */
 'use strict';
-process.argv.push('--preview');
+process.argv.push('--quality', 'preview');
 require('./render_final.js');

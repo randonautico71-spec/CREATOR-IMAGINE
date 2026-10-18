@@ -549,6 +549,16 @@
     }
 
     .will-animate { opacity: 0; }
+
+    /* Modo PREVIEW: desactiva efectos costosos de Chromium (blur,
+       backdrop-filter, drop-shadow múltiples) para acelerar la captura.
+       No afecta a los modos final/master. */
+    body.render-preview * {
+      backdrop-filter: none !important;
+      filter: none !important;
+      box-shadow: none !important;
+      text-shadow: none !important;
+    }
   </style>
 </head>
 <body>

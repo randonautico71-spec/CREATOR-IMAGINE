@@ -82,9 +82,13 @@ def validate_timeline(project_dir, root_dir):
 def main():
     parser = argparse.ArgumentParser(description="Orquestador único de producción para CREATOR IMAGINE")
     parser.add_argument('project', help="Directorio del proyecto o ejemplo (ej. examples/cloud_smoke_test)")
-    parser.add_argument('--preview', action='store_true', help="Renderizar en modo preview (rápido)")
-    parser.add_argument('--keep-frames', action='store_true', help="Conservar carpeta de frames png")
+    parser.add_argument('--preview', action='store_true', help="Renderizar en modo preview (rápido). Equivalente a --quality preview")
+    parser.add_argument('--quality', choices=['preview', 'final', 'master'], default=None,
+                         help="Modo de calidad del render (preview=540x960@30fps JPEG, final=1080x1920@60fps JPEG, master=1080x1920@60fps PNG)")
+    parser.add_argument('--keep-frames', action='store_true', help="Conservar también una copia en disco de los fotogramas (depuración)")
     args = parser.parse_args()
+    if not args.quality:
+        args.quality = 'preview' if args.preview else 'final'
 
     root_dir = Path(__file__).resolve().parent.parent
     project_dir = (root_dir / args.project).resolve() if not Path(args.project).is_absolute() else Path(args.project)
@@ -95,7 +99,7 @@ def main():
 
     timeline_path = project_dir / 'timeline.json'
     audio_path = project_dir / 'music.wav'
-    video_path = project_dir / ('preview.mp4' if args.preview else 'video.mp4')
+    video_path = project_dir / ('preview.mp4' if args.quality == 'preview' else 'video.mp4')
     output_dir = root_dir / 'output'
     output_dir.mkdir(parents=True, exist_ok=True)
 
@@ -129,10 +133,9 @@ def main():
     render_script = root_dir / 'engine' / 'render_worker.js'
     cmd_render = [
         'node', str(render_script),
-        '--project', str(project_dir)
+        '--project', str(project_dir),
+        '--quality', args.quality
     ]
-    if args.preview:
-        cmd_render.append('--preview')
     if args.keep_frames:
         cmd_render.append('--keep-frames')
 

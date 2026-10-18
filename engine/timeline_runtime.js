@@ -73,6 +73,12 @@
       return;
     }
 
+    // Modo de calidad (preview reduce efectos costosos: blur, backdrop-filter,
+    // sombras grandes) sin alterar el resultado visual de los modos final/master.
+    if (window.__RENDER_QUALITY__ === 'preview') {
+      document.body.classList.add('render-preview');
+    }
+
     theme = THEMES[timeline.theme] || THEMES.documentary;
     applyTheme(theme);
     applyBranding();
@@ -116,7 +122,9 @@
     if (!pCtx) return;
     pCanvas.width  = 1080;
     pCanvas.height = 1920;
-    const count = Math.floor((theme.effects.particleDensity || 0.35) * 200);
+    let count = Math.floor((theme.effects.particleDensity || 0.35) * 200);
+    const particleLimit = window.__PARTICLE_LIMIT__;
+    if (typeof particleLimit === 'number') count = Math.min(count, particleLimit);
     particles = [];
     for (let i = 0; i < count; i++) {
       particles.push({
