@@ -58,3 +58,7 @@ Thumbs.db
 # IDE
 .vscode/settings.json
 *.log
+
+# Clips de vídeo y su caché de fotogramas (componente `video`)
+projects/**/*.mp4
+**/.video_frames/

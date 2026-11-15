@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://creatorima gine.com/schema/timeline.schema.json",
+  "$id": "https://creatorimagine.com/schema/timeline.schema.json",
   "title": "Timeline Schema — CREATOR IMAGINE Engine",
   "description": "Contrato de datos para vídeos audiovisuales verticales 1080x1920",
   "type": "object",
@@ -429,6 +429,29 @@
       }
     },
 
+    "elementVideo": {
+      "type": "object",
+      "required": ["type", "src"],
+      "additionalProperties": false,
+      "properties": {
+        "type": { "const": "video" },
+        "id": { "type": "string" },
+        "src": { "type": "string", "description": "Clip MP4 local (p. ej. generado con kit-animaciones-3d). Ruta relativa a la carpeta del proyecto o a la raiz del repo. El motor extrae sus fotogramas antes de renderizar: render determinista" },
+        "startAt": { "type": "number", "minimum": 0, "description": "Segundo del clip en el que empieza (por defecto 0)" },
+        "speed": { "type": "number", "minimum": 0.1, "maximum": 4, "description": "Velocidad de reproduccion (por defecto 1)" },
+        "loop": { "type": "boolean", "description": "Repetir el clip si la escena dura mas (por defecto false: se congela el ultimo fotograma)" },
+        "width": { "type": "number", "minimum": 10, "maximum": 2000, "description": "Ancho en px (por defecto 1080)" },
+        "height": { "type": "number", "minimum": 10, "maximum": 2000, "description": "Alto en px (por defecto 1920)" },
+        "fit": { "type": "string", "enum": ["contain", "cover", "fill"] },
+        "radius": { "type": "number", "minimum": 0, "maximum": 200, "description": "Esquinas redondeadas en px" },
+        "position": { "$ref": "#/definitions/position" },
+        "delay": { "type": "number", "minimum": 0 },
+        "duration": { "$ref": "#/definitions/duration" },
+        "opacity": { "type": "number", "minimum": 0, "maximum": 1 },
+        "layer": { "type": "string", "enum": ["background", "midground", "foreground"] }
+      }
+    },
+
     "element": {
       "oneOf": [
         { "$ref": "#/definitions/elementTitle" },
@@ -445,7 +468,8 @@
         { "$ref": "#/definitions/elementFigure" },
         { "$ref": "#/definitions/elementImage" },
         { "$ref": "#/definitions/elementLottie" },
-        { "$ref": "#/definitions/elementCanvasBg" }
+        { "$ref": "#/definitions/elementCanvasBg" },
+        { "$ref": "#/definitions/elementVideo" }
       ]
     },
 

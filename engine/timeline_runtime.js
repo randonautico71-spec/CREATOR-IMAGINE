@@ -210,7 +210,7 @@
     layerCaptions.innerHTML = '';
     const overlay = document.getElementById('layer-overlay');
     if (overlay) overlay.innerHTML = '';
-    document.querySelectorAll('#layer-bg .c-figure, #layer-bg .c-image, #layer-bg .c-lottie').forEach(n => n.remove());
+    document.querySelectorAll('#layer-bg .c-figure, #layer-bg .c-image, #layer-bg .c-video, #layer-bg .c-lottie').forEach(n => n.remove());
 
     // 3. Reset cámara
     stage.style.transform = '';
@@ -239,6 +239,7 @@
         case 'candle':     renderCandle(el, localTime);  break;
         case 'figure':     renderFigure(el, localTime);  break;
         case 'image':      renderImage(el, localTime);   break;
+        case 'video':      renderVideo(el, localTime);   break;
         case 'lottie':     renderLottie(el, localTime, sceneIdx); break;
         case 'canvas-bg':  renderCanvasBg(el, localTime, videoTime); break;
         // background y camera ya procesados
@@ -1347,6 +1348,43 @@
     div.style.transform = (div.style.transform || '') + extraTransform;
     const maxOpacity = el.opacity != null ? el.opacity : 1.0;
     div.style.opacity = String(ease * maxOpacity);
+
+    const targetLayer = el.layer === 'background'
+      ? document.getElementById('layer-bg')
+      : (el.layer === 'foreground' ? document.getElementById('layer-overlay') : layerContent);
+    if (targetLayer) targetLayer.appendChild(div);
+  }
+
+  // --- VIDEO (clips MP4: el worker extrae sus fotogramas antes de renderizar) ---
+  // Determinista: el fotograma mostrado depende solo del tiempo local de la escena.
+  function videoKey(el) {
+    return `${el.src}|${el.width || 1080}x${el.height || 1920}`;
+  }
+  function renderVideo(el, lt) {
+    const delay = el.delay || 0;
+    if (lt < delay) return;
+    const info = (window.__VIDEO_FRAMES__ || {})[videoKey(el)];
+    if (!info || !info.n) return;
+    const fade = el.duration != null ? el.duration : 0.4;
+    const progress = fade > 0 ? Math.min(1, (lt - delay) / fade) : 1;
+    const srcTime = (el.startAt || 0) + (lt - delay) * (el.speed || 1);
+    let idx = Math.floor(srcTime * info.fps + 1e-6);
+    idx = el.loop ? ((idx % info.n) + info.n) % info.n : Math.min(info.n - 1, Math.max(0, idx));
+
+    const div = document.createElement('div');
+    div.className = 'c-video';
+    div.style.width  = (el.width  || 1080) + 'px';
+    div.style.height = (el.height || 1920) + 'px';
+    if (el.radius) div.style.borderRadius = el.radius + 'px';
+    positionElement(div, el.position || { x: 0.5, y: 0.5, anchor: 'center' }, 'center');
+
+    const img = document.createElement('img');
+    img.src = `${info.url}/f_${String(idx + 1).padStart(6, '0')}.jpg`;
+    if (el.fit) img.style.objectFit = el.fit;
+    div.appendChild(img);
+
+    const maxOpacity = el.opacity != null ? el.opacity : 1.0;
+    div.style.opacity = String(easeOutCubic(progress) * maxOpacity);
 
     const targetLayer = el.layer === 'background'
       ? document.getElementById('layer-bg')
