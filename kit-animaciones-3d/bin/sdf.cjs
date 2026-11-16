@@ -8,6 +8,7 @@ const { Worker, isMainThread, parentPort, workerData } = require('worker_threads
 const path = require('path'), fs = require('fs'), { spawn, spawnSync } = require('child_process');
 if (!isMainThread) {
   const M = require('../sdf/motor'), E = require(workerData.escena);
+  const orb = +(process.env.ORBITA || 0); if (orb) { const p0 = E.prepara.bind(E); E.prepara = t => { const sc = p0(t), a2 = t * orb, d = [sc.eye[0] - sc.target[0], sc.eye[1] - sc.target[1], sc.eye[2] - sc.target[2]]; sc.eye = [sc.target[0] + d[0] * Math.cos(a2) + d[2] * Math.sin(a2), sc.eye[1], sc.target[2] - d[0] * Math.sin(a2) + d[2] * Math.cos(a2)]; return sc; }; }
   parentPort.on('message', ({ i, t }) => { const buf = M.renderFrame(E, t, workerData.w, workerData.h); parentPort.postMessage({ i, buf }, [buf.buffer]); });
   return;
 }

@@ -18,6 +18,28 @@ El instalador:
 
 Con eso, cuando pidas una animación, Claude te preguntará primero la familia y luego el estilo, con el catálogo delante.
 
+## Temas detallados (4 temas × 12 estilos)
+
+`leon`, `planeta`, `ciudad` y `persona`, modelados con máximo detalle, en cualquiera de los estilos `pixel voxel iso lowpoly wire toon paper galaxy dither ascii info realista`:
+
+```bash
+node kit-animaciones-3d/bin/tema.cjs ciudad toon salida/ciudad.png
+node kit-animaciones-3d/bin/tema.cjs planeta realista salida/planeta.mp4 --seg 8 --w 540 --h 960
+```
+
+| Ruta | Qué es |
+|---|---|
+| `temas/<tema>/modelo.js` | Modelo y entorno (malla para motor3d) |
+| `temas/<tema>/estilos.js` | Los 11 estilos de malla para ese tema |
+| `temas/<tema>/realista.js` | Escena SDF con texturas procedurales (sombras suaves, oclusión) |
+| `temas/persona/sdf_persona.js`, `cabeza.js` | Persona y cabeza esculpidas como volumen SDF |
+| `temas/persona/mallador.js`, `voxeles.js` | Convierten el volumen en malla (*surface nets*) y en vóxeles → `temas/persona/generado/` (se crean solos la primera vez) |
+| `bin/tema.cjs` | Fotograma o vídeo de cualquier tema y estilo |
+| `catalogos/tema_*.jpg` | Hoja de los 12 estilos de cada tema (para enseñarla al preguntar) |
+| `bin/fotograma_sdf.cjs` | Fotograma SDF con suavizado 2× repartido entre núcleos |
+
+En vídeo, la cámara orbita despacio (`--orbita`, rad/s), el león camina, el planeta rota con el cohete en órbita y la gente de la ciudad avanza.
+
 ## Uso directo
 
 ```bash

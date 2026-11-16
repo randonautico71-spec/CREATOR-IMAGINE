@@ -17,9 +17,27 @@ Todo se genera por código, en CPU, sin GPU ni recursos externos. Las rutas son 
      - *Retro y píxel*: pixel art 3D, vóxel, retro de consola, ASCII 3D
      - *Geométrico 3D*: low-poly, isométrico / diorama, wireframe retro, infografía 3D
      - *Ilustrado*: toon / cel shading, 2.5D papercraft, partículas 3D
-     - *Realista (SDF)*: gotas SDF, planeta con texturas procedurales, animales en el bosque, animales con texturas en la sabana
+     - *Realista (SDF + texturas procedurales)*: gotas SDF, planeta, animales en el bosque o la sabana, y el estilo `realista` de cualquier tema
    - **Pregunta 2, estilo:** las opciones de la familia elegida (tabla de abajo). Con una recomendación, ponla la primera con «(Recomendado)» y di por qué en la descripción.
 3. Pregunta también, si no está claro: duración, si lleva letrero final «SIGUE A @…» y si lleva audio (el kit no compone música; usa un WAV del proyecto si lo hay).
+
+## Paso 1 bis · Temas detallados listos para usar
+
+Además de las demos de cada estilo, hay **4 temas modelados con máximo detalle** que se pueden generar en **cualquiera de los 12 estilos** (11 de malla + `realista`):
+
+| Tema | Qué incluye | En vídeo se mueve |
+|---|---|---|
+| `leon` | León de ~280 piezas (melena en mechas, ojos con pupila, bigoteras, dedos, borla) en la sabana con acacias, hierba, rocas y termitero | Camina; la cámara orbita |
+| `planeta` | Planeta tipo Tierra (continentes inventados, no el mapa real), nubes con sombra, ciudades nocturnas, atmósfera, Luna y cohete en órbita | El planeta rota y el cohete recorre la órbita |
+| `ciudad` | Calle con ~220 personas distintas, edificios con ventanas, escaparates, farolas, árboles, semáforos y coches | La gente avanza; la cámara orbita |
+| `persona` | Persona esculpida como volumen SDF (cara con párpados, iris, nariz, labios, orejas; manos con dedos; ropa con botones y cordones) | Pose fija en malla; en `realista` camina (≈50 s por fotograma) |
+
+```bash
+node kit-animaciones-3d/bin/tema.cjs <tema> <estilo> salida.png                 # fotograma (realista: suavizado 2×)
+node kit-animaciones-3d/bin/tema.cjs <tema> <estilo> salida.mp4 --seg 8 [--fps 30] [--orbita 0.06] [--audio m.wav] [--letrero @handle --letrero-s 5]
+```
+Coste medido (4 CPU): estilos de malla 0,1–4 s por fotograma; `realista`: planeta ~10 s, persona ~50 s, ciudad ~90 s, león ~100 s por fotograma a 1080×1920 (en vídeo usar `--w 540 --h 960`).
+Estilo `realista` = SDF + texturas procedurales (los antiguos 12 y 13 se unieron: la diferencia no se apreciaba).
 
 ## Paso 2 · Catálogo
 
