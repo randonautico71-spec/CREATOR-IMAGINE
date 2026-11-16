@@ -224,12 +224,16 @@ async function main() {
   const htmlPath = path.resolve(opts.html);
   await page.goto(`file://${htmlPath}`, { waitUntil: 'domcontentloaded' });
 
+  // ---- Clips de vídeo: extraer fotogramas (a los fps y escala del render) ----
+  const videoFrames = extractVideoFrames(timeline, opts, outputDir);
+
   await page.evaluate((payload) => {
+    window.__VIDEO_FRAMES__ = payload.videoFrames;
     window.__TIMELINE__ = payload.timeline;
     window.__RUNTIME_READY__ = false;
     window.__RENDER_QUALITY__ = payload.quality;
     window.__PARTICLE_LIMIT__ = payload.particleLimit;
-  }, { timeline, quality: opts.quality, particleLimit: opts.particleLimit });
+  }, { timeline, quality: opts.quality, particleLimit: opts.particleLimit, videoFrames });
 
   await page.addScriptTag({ content: runtimeSource });
 
@@ -242,6 +246,15 @@ async function main() {
     console.error('[Worker] ERROR: Runtime no inicializó en 15s');
     await browser.close();
     process.exit(1);
+  }
+
+  // El escenario mide siempre 1080×1920: en resoluciones menores (preview) se escala entero
+  // para que la captura muestre el fotograma completo y no solo su esquina superior izquierda.
+  if (opts.width !== 1080 || opts.height !== 1920) {
+    await page.evaluate(([w, h]) => {
+      const st = document.getElementById('stage');
+      if (st) st.style.zoom = String(Math.min(w / 1080, h / 1920));
+    }, [opts.width, opts.height]);
   }
 
   const tInitDone = Date.now();
@@ -274,7 +287,13 @@ async function main() {
     const videoTime = f * frameDuration;
 
     let t0 = Date.now();
-    await page.evaluate((t) => { window.__ENGINE__.seekTo(t); }, videoTime);
+    await page.evaluate(async (t) => {
+      window.__ENGINE__.seekTo(t);
+      // Esperar a que las imágenes del fotograma (p. ej. el de un clip de vídeo) estén cargadas y decodificadas
+      const pend = Array.from(document.images).filter(i => !i.complete);
+      if (pend.length) await Promise.all(pend.map(i => new Promise(r => { i.onload = i.onerror = r; })));
+      await Promise.all(Array.from(document.images).map(i => (i.decode ? i.decode().catch(() => {}) : null)));
+    }, videoTime);
     seekMs += Date.now() - t0;
 
     t0 = Date.now();
@@ -339,6 +358,42 @@ async function main() {
   console.log(`  Espera stdin (total): ${(pipeMs / 1000).toFixed(2)}s`);
   console.log(`  Codificación final  : ${((tEncodeDone - tEncodeStart) / 1000).toFixed(2)}s`);
   console.log(`  TOTAL               : ${(tTotal / 1000).toFixed(2)}s  (${(tTotal / rendered).toFixed(1)}ms/frame, ${(rendered / (tTotal / 1000)).toFixed(2)} fps efectivos)`);
+}
+
+// =========================================================
+// CLIPS DE VÍDEO — extracción de fotogramas (caché en <salida>/.video_frames/)
+// Cada clip se convierte a JPG numerados a los fps del render y a la escala
+// del elemento; el runtime elige el fotograma según el tiempo de la escena.
+// =========================================================
+function extractVideoFrames(timeline, opts, outputDir) {
+  const { spawnSync } = require('child_process');
+  const out = {};
+  const k = opts.width / 1080;
+  const baseDir = path.dirname(path.resolve(opts.timeline));
+  for (const scene of (timeline.scenes || [])) {
+    for (const el of (scene.elements || [])) {
+      if (el.type !== 'video') continue;
+      const w = el.width || 1080, h = el.height || 1920, key = `${el.src}|${w}x${h}`;
+      if (out[key]) continue;
+      const cand = [path.resolve(baseDir, el.src), path.resolve(el.src)];
+      const src = cand.find(p => fs.existsSync(p));
+      if (!src) { console.error(`[Worker] ERROR: clip de vídeo no encontrado: ${el.src} (buscado en ${cand.join(' y ')})`); process.exit(1); }
+      const st = fs.statSync(src);
+      const tag = `${path.basename(src).replace(/[^\w.-]/g, '_')}_${Math.round(w * k)}x${Math.round(h * k)}_${opts.fps}fps_${st.size}_${Math.round(st.mtimeMs)}`;
+      const dir = path.join(outputDir, '.video_frames', tag);
+      let n = fs.existsSync(dir) ? fs.readdirSync(dir).filter(f => f.endsWith('.jpg')).length : 0;
+      if (!n) {
+        fs.mkdirSync(dir, { recursive: true });
+        const vf = `fps=${opts.fps},scale=${Math.round(w * k)}:${Math.round(h * k)}:force_original_aspect_ratio=increase:flags=lanczos`;
+        const r = spawnSync('ffmpeg', ['-v', 'error', '-y', '-i', src, '-vf', vf, '-q:v', '2', path.join(dir, 'f_%06d.jpg')], { stdio: 'inherit' });
+        if (r.status !== 0) { console.error(`[Worker] ERROR: FFmpeg no pudo extraer fotogramas de ${src}`); process.exit(1); }
+        n = fs.readdirSync(dir).filter(f => f.endsWith('.jpg')).length;
+        console.log(`[Worker] Clip ${el.src}: ${n} fotogramas extraídos`);
+      }
+      out[key] = { url: 'file://' + dir, n, fps: opts.fps };
+    }
+  }
+  return out;
 }
 
 // =========================================================
