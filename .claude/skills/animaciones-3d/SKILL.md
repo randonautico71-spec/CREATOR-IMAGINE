@@ -23,20 +23,21 @@ Todo se genera por código, en CPU, sin GPU ni recursos externos. Las rutas son 
 
 ## Paso 1 bis · Temas detallados listos para usar
 
-Además de las demos de cada estilo, hay **4 temas modelados con máximo detalle** que se pueden generar en **cualquiera de los 12 estilos** (11 de malla + `realista`):
+Además de las demos de cada estilo, hay **5 temas modelados con máximo detalle** que se pueden generar en **cualquiera de los 12 estilos** (11 de malla + `realista`):
 
 | Tema | Qué incluye | En vídeo se mueve |
 |---|---|---|
 | `leon` | León de ~280 piezas (melena en mechas, ojos con pupila, bigoteras, dedos, borla) en la sabana con acacias, hierba, rocas y termitero | Camina; la cámara orbita |
 | `planeta` | Planeta tipo Tierra (continentes inventados, no el mapa real), nubes con sombra, ciudades nocturnas, atmósfera, Luna y cohete en órbita | El planeta rota y el cohete recorre la órbita |
 | `ciudad` | Calle con ~220 personas distintas, edificios con ventanas, escaparates, farolas, árboles, semáforos y coches | La gente avanza; la cámara orbita |
+| `oceano` | Ballena jorobada y tiburón blanco esculpidos (tubérculos, pliegues, aletas, branquias, dientes) sobre arena con ondas y cáusticas, rocas con algas, bosque de kelp, cardumen, estrellas de mar y erizos, rayos de luz. En `realista`, ambos con la boca abierta y primeros planos con `TOMA=ballena` / `TOMA=tiburon` | Nadan; algas y cáusticas se mueven; la cámara orbita |
 | `persona` | Persona esculpida como volumen SDF (cara con párpados, iris, nariz, labios, orejas; manos con dedos; ropa con botones y cordones) | Pose fija en malla; en `realista` camina (≈50 s por fotograma) |
 
 ```bash
 node kit-animaciones-3d/bin/tema.cjs <tema> <estilo> salida.png                 # fotograma (realista: suavizado 2×)
 node kit-animaciones-3d/bin/tema.cjs <tema> <estilo> salida.mp4 --seg 8 [--fps 30] [--orbita 0.06] [--audio m.wav] [--letrero @handle --letrero-s 5]
 ```
-Coste medido (4 CPU): estilos de malla 0,1–4 s por fotograma; `realista`: planeta ~10 s, persona ~50 s, ciudad ~90 s, león ~100 s por fotograma a 1080×1920 (en vídeo usar `--w 540 --h 960`).
+Coste medido (4 CPU): estilos de malla 0,1–4 s por fotograma; `realista`: planeta ~10 s, océano ~3 min, persona ~50 s, ciudad ~90 s, león ~100 s por fotograma a 1080×1920 (en vídeo usar `--w 540 --h 960`).
 Estilo `realista` = SDF + texturas procedurales (los antiguos 12 y 13 se unieron: la diferencia no se apreciaba).
 
 ## Paso 2 · Catálogo

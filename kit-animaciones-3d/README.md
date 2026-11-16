@@ -18,9 +18,9 @@ El instalador:
 
 Con eso, cuando pidas una animación, Claude te preguntará primero la familia y luego el estilo, con el catálogo delante.
 
-## Temas detallados (4 temas × 12 estilos)
+## Temas detallados (5 temas × 12 estilos)
 
-`leon`, `planeta`, `ciudad` y `persona`, modelados con máximo detalle, en cualquiera de los estilos `pixel voxel iso lowpoly wire toon paper galaxy dither ascii info realista`:
+`leon`, `planeta`, `ciudad`, `persona` y `oceano` (ballena jorobada y tiburón blanco en el fondo marino), modelados con máximo detalle, en cualquiera de los estilos `pixel voxel iso lowpoly wire toon paper galaxy dither ascii info realista`:
 
 ```bash
 node kit-animaciones-3d/bin/tema.cjs ciudad toon salida/ciudad.png
@@ -34,11 +34,13 @@ node kit-animaciones-3d/bin/tema.cjs planeta realista salida/planeta.mp4 --seg 8
 | `temas/<tema>/realista.js` | Escena SDF con texturas procedurales (sombras suaves, oclusión) |
 | `temas/persona/sdf_persona.js`, `cabeza.js` | Persona y cabeza esculpidas como volumen SDF |
 | `temas/persona/mallador.js`, `voxeles.js` | Convierten el volumen en malla (*surface nets*) y en vóxeles → `temas/persona/generado/` (se crean solos la primera vez) |
+| `temas/oceano/animales_hd.js` | Versión de alto detalle para `realista`: ballena con la boca abierta (barbas, lengua, bolsa de la garganta con pliegues) y tiburón con la boca abierta (encías, dos filas de dientes, narinas, poros). Primeros planos: `TOMA=ballena` o `TOMA=tiburon` delante del comando |
+| `temas/oceano/animales.js`, `mallador.js` | Ballena jorobada y tiburón blanco esculpidos como SDF; el mallador genera mallas y vóxeles en `temas/oceano/generado/` (solo, la primera vez, ~15 s) |
 | `bin/tema.cjs` | Fotograma o vídeo de cualquier tema y estilo |
 | `catalogos/tema_*.jpg` | Hoja de los 12 estilos de cada tema (para enseñarla al preguntar) |
 | `bin/fotograma_sdf.cjs` | Fotograma SDF con suavizado 2× repartido entre núcleos |
 
-En vídeo, la cámara orbita despacio (`--orbita`, rad/s), el león camina, el planeta rota con el cohete en órbita y la gente de la ciudad avanza.
+En vídeo, la cámara orbita despacio (`--orbita`, rad/s), el león camina, el planeta rota con el cohete en órbita, la gente de la ciudad avanza y en el océano nadan la ballena y el tiburón, se mecen las algas y se mueven las cáusticas.
 
 ## Uso directo
 
