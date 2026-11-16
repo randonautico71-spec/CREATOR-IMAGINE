@@ -98,4 +98,4 @@ function colorTiburon(x, y, z, t) {
   if (n3(x * 8, y * 2, z * 8) > .8 && y > linea) c = c.map(v => v + .1);   // arañazos
   return c;
 }
-module.exports = { ballena, colorBallena, tiburon, colorTiburon, n3, h3, sdEll, smin, smax };
+module.exports = { ballena, colorBallena, tiburon, colorTiburon, n3, h3, sdEll, smin, smax, sdRC, sdTri2, aleta };

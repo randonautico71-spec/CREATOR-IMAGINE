@@ -34,6 +34,7 @@ node kit-animaciones-3d/bin/tema.cjs planeta realista salida/planeta.mp4 --seg 8
 | `temas/<tema>/realista.js` | Escena SDF con texturas procedurales (sombras suaves, oclusión) |
 | `temas/persona/sdf_persona.js`, `cabeza.js` | Persona y cabeza esculpidas como volumen SDF |
 | `temas/persona/mallador.js`, `voxeles.js` | Convierten el volumen en malla (*surface nets*) y en vóxeles → `temas/persona/generado/` (se crean solos la primera vez) |
+| `temas/oceano/animales_hd.js` | Versión de alto detalle para `realista`: ballena con la boca abierta (barbas, lengua, bolsa de la garganta con pliegues) y tiburón con la boca abierta (encías, dos filas de dientes, narinas, poros). Primeros planos: `TOMA=ballena` o `TOMA=tiburon` delante del comando |
 | `temas/oceano/animales.js`, `mallador.js` | Ballena jorobada y tiburón blanco esculpidos como SDF; el mallador genera mallas y vóxeles en `temas/oceano/generado/` (solo, la primera vez, ~15 s) |
 | `bin/tema.cjs` | Fotograma o vídeo de cualquier tema y estilo |
 | `catalogos/tema_*.jpg` | Hoja de los 12 estilos de cada tema (para enseñarla al preguntar) |

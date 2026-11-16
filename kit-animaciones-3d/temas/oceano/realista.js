@@ -1,7 +1,7 @@
 'use strict';
 // Estilo REALISTA (SDF + texturas procedurales): ballena jorobada y tiburón blanco sobre el fondo de arena.
 // Luz que entra por la superficie con cáusticas, absorción del agua por color (el rojo se pierde antes), rayos volumétricos y sombras suaves.
-const A = require('./animales'), M = require('../../sdf/motor');
+const A = require('./animales'), AH = require('./animales_hd'), M = require('../../sdf/motor');
 const { n3, sdEll } = A, clamp = (x, a = 0, b = 1) => x < a ? a : x > b ? b : x, mix = M.mix;
 const SUP = 24, L = (() => { const v = [.25, 1, .35], l = Math.hypot(...v); return v.map(x => x / l); })();
 const EXT = [.11, .042, .03], AGUA = [.03, .2, .27];            // extinción por metro (r, g, b) y color del agua dispersada
@@ -36,7 +36,11 @@ function prepara(t) {   // kelp y peces del instante t
   const Rp = rng(5), peces = [], C = [-5.5, 7.5, -9];
   for (let i = 0; i < 150; i++) { const a = Rp() * 6.283 + t * .35, rad = 1 + Math.pow(Rp(), .7) * 2.6, h = (Rp() - .5) * 2.2, p = [C[0] + Math.cos(a) * rad * 1.5, C[1] + h + .4 * Math.sin(a * 2 + i), C[2] + Math.sin(a) * rad]; let d = [-Math.sin(a) * 1.5, .08 * Math.cos(a * 2), Math.cos(a)]; const l = Math.hypot(...d); d = d.map(v => v / l); const s = [d[2], 0, -d[0]], sl = Math.hypot(...s);
     peces.push({ p, d, s: s.map(v => v / sl), L: .12 * (.8 + .4 * Rp()) }); }
-  S = { t, kelps, peces };
+  let kl = kelps, pc = peces; const toma = process.env.TOMA;
+  if (toma === 'ballena' || toma === 'tiburon') { const sc = E.prepara.call({ soloCam: true }, t, true), e = sc.eye, g = sc.target, v = [g[0] - e[0], g[1] - e[1], g[2] - e[2]], L2 = v[0] ** 2 + v[1] ** 2 + v[2] ** 2;
+    const lejos = (x, y, z, r) => { const h = clamp(((x - e[0]) * v[0] + (y - e[1]) * v[1] + (z - e[2]) * v[2]) / L2, 0, 1.3); return Math.hypot(x - e[0] - v[0] * h, y - e[1] - v[1] * h, z - e[2] - v[2] * h) > r; };
+    kl = kelps.filter(K => lejos(K.cx, Math.max(K.y0, Math.min(K.y0 + K.alto, e[1])), K.cz, K.rad + 3)); if (toma === 'ballena') pc = []; }
+  S = { t, kelps: kl, peces: pc };
 }
 function sdKelp(K, x, y, z) { let d = 1e9; const P = K.P, n = P.length - 1, i0 = Math.max(0, Math.min(n - 1, Math.floor((y - K.y0) / K.alto * n)));
   for (let i = Math.max(0, i0 - 2); i <= Math.min(n - 1, i0 + 2); i++) { const a = P[i], b = P[i + 1], bx = b[0] - a[0], by = b[1] - a[1], bz = b[2] - a[2], h = clamp(((x - a[0]) * bx + (y - a[1]) * by + (z - a[2]) * bz) / (bx * bx + by * by + bz * bz), 0, 1); d = Math.min(d, Math.hypot(x - a[0] - bx * h, y - a[1] - by * h, z - a[2] - bz * h) - .035); }
@@ -46,7 +50,7 @@ function sdKelp(K, x, y, z) { let d = 1e9; const P = K.P, n = P.length - 1, i0 =
 function sdPeces(x, y, z) { let d = 1e9; for (const f of S.peces) { const px = x - f.p[0], py = y - f.p[1], pz = z - f.p[2]; if (px * px + py * py + pz * pz > .09) { d = Math.min(d, Math.sqrt(px * px + py * py + pz * pz) - .2); continue; }
   const u = px * f.d[0] + py * f.d[1] + pz * f.d[2], v = px * f.s[0] + pz * f.s[2], w = py - u * f.d[1]; d = Math.min(d, sdEll(u, w, v, f.L, f.L * .3, f.L * .13), sdEll(u + f.L * 1.05, w, v, f.L * .22, f.L * .32, .006)); } return d; }
 function animalD(nombre, x, y, z, lejos) { const c = COLOCA[nombre], t = S.t, cx = c.pos[0] + c.d[0] * c.v * t, cz = c.pos[2] + c.d[2] * c.v * t, db = Math.hypot(x - cx, y - c.pos[1], z - cz) - c.R; if (db > (lejos || .4)) return db;
-  const [lx, ly, lz] = aLocal(c, t, x, y, z); return (nombre === 'ballena' ? A.ballena(lx, ly, lz, 0) : A.tiburon(lx, ly, lz, 0)) * .9; }
+  const [lx, ly, lz] = aLocal(c, t, x, y, z); return (nombre === 'ballena' ? AH.ballenaHD(lx, ly, lz) : AH.tiburonHD(lx, ly, lz)) * .75; }
 function escena(x, y, z, lejos) { let d = y - alturaFondo(x, z), tipo = 0; const cand = (dd, k) => { if (dd < d) { d = dd; tipo = k; } };
   for (const R of ROCAS) { const db = Math.hypot((x - R.x) / 1.15, (y - R.y) / .62, z - R.z) - R.r * 1.3; cand(db > .5 ? db * .6 : sdRoca(R, x, y, z, !lejos) * .8, 1); }
   for (const K of S.kelps) { if (y > K.y0 + K.alto + 1.2) continue; const db = Math.hypot(x - K.cx, z - K.cz) - K.rad; cand(db > .3 ? Math.max(db, y - K.y0 - K.alto - 1.2) : sdKelp(K, x, y, z) * .9, 2); }
@@ -61,14 +65,17 @@ function rayosVol(sc, dx, dy, dz, T) {   // dispersión hacia la cámara con la 
     acc += Math.pow(causticas(sx * .16, sz * .16, sc.t * .5), 1.5) * Math.exp(-s * .045) * Math.exp(-h * .03); }
   return acc / N * Tm * .022; }
 const E = {
-  prepara(t) { if (!S || S.t !== t) prepara(t); return { t, eye: [0, 1.5, 9.5], target: [.4, 5.6, -6], fov: 62, far: 75, pasos: 300 }; },
+  prepara(t, soloCam) { if (!soloCam && (!S || S.t !== t)) prepara(t); const toma = process.env.TOMA;
+    if (toma === 'ballena' || toma === 'tiburon') { const c = COLOCA[toma], W = p => { const cp = Math.cos(c.pitch), sp = Math.sin(c.pitch), x1 = p[0] * cp - p[1] * sp, y1 = p[0] * sp + p[1] * cp, ca = Math.cos(c.a), sa = Math.sin(c.a); return [c.pos[0] + c.d[0] * c.v * t + x1 * ca + p[2] * sa, c.pos[1] + y1, c.pos[2] + c.d[2] * c.v * t - x1 * sa + p[2] * ca]; };
+      return toma === 'ballena' ? { t, eye: W([12.5, -2.4, 3.2]), target: W([3.8, -1.2, 0]), fov: 50, far: 75, pasos: 320 } : { t, eye: W([3.6, -.55, 2.3]), target: W([.9, -.12, 0]), fov: 46, far: 75, pasos: 320 }; }
+    return { t, eye: [0, 1.5, 9.5], target: [.4, 5.6, -6], fov: 62, far: 75, pasos: 300 }; },
   map(sc, x, y, z, lejos) { return escena(x, y, z, lejos)[0]; },
   cielo(sc, dx, dy, dz) { let c = colAgua(dx, dy, dz);
     if (dy > .02) { const T = (SUP - sc.eye[1]) / dy, x = sc.eye[0] + dx * T, z = sc.eye[2] + dz * T, ventana = clamp((dy - .5) / .3) ** 1.5, ola = .5 + .5 * Math.sin(x * .8 + 2 * Math.sin(z * .45 + sc.t * .7)) * Math.sin(z * .7 - sc.t * .5), pat = causticas(x * .3, z * .3, sc.t);
       const luz = ventana * (.35 + .25 * ola + .5 * Math.pow(pat, .7)) * Math.exp(-T * .015); c = [c[0] + .4 * luz, c[1] + .85 * luz, c[2] + .9 * luz]; }
     const v = rayosVol(sc, dx, dy, dz, 60); return [c[0] + v * .35, c[1] + v * .9, c[2] + v * 1.0]; },
   shade(sc, x, y, z, nx, ny, nz, dx, dy, dz, T) {
-    const [, tipo] = escena(x, y, z); let alb = [.7, .65, .5], spec = .05, rough = 20, n = [nx, ny, nz];
+    const [, tipo] = escena(x, y, z); let alb = [.7, .65, .5], spec = .05, rough = 20, n = [nx, ny, nz], relleno = 1;
     const bump = (f, k) => { const e = .004, f0 = f(x, y, z), g = [(f(x + e, y, z) - f0) / e, (f(x, y + e, z) - f0) / e, (f(x, y, z + e) - f0) / e]; let m = [n[0] - k * g[0], n[1] - k * g[1], n[2] - k * g[2]]; const l = Math.hypot(...m); n = m.map(v => v / l); };
     if (tipo === 0) { const nn = fbm(x * .3, 0, z * .3, 3), g = n3(x * 40, 0, z * 40); alb = [.78, .7, .52].map((v, k) => v * (.8 + .25 * g) * (1 - .25 * clamp(nn * 1.6 - .3)));
       if (fbm(x * .12 + 9, 2, z * .12, 3) > .62) alb = alb.map((v, k) => mix(v, [.42, .48, .3][k], .5)); bump((a, b, c) => n3(a * 30, 0, c * 30) * .6 + n3(a * 90, 0, c * 90) * .25, .004); }
@@ -80,13 +87,13 @@ const E = {
     else if (tipo === 7) { alb = [.16, .05, .2]; spec = .8; rough = 50; }
     else if (tipo === 3) { alb = ny > 0 ? [.28, .38, .46] : [.75, .8, .82]; spec = 1.6; rough = 60; }
     else { const nom = tipo === 4 ? 'ballena' : 'tiburon', c = COLOCA[nom], [lx, ly, lz] = aLocal(c, S.t, x, y, z);
-      if (tipo === 4) { const r = A.ballena(lx, ly, lz, 0, true); alb = A.colorBallena(lx, ly, lz, r[1], r[2]).map(v => clamp(v, 0, 1)); spec = r[1] === 'ojo' ? 3 : .45; rough = r[1] === 'ojo' ? 300 : 45; bump((a, b, cc) => n3(a * 25, b * 25, cc * 25), .006); }
-      else { const r = A.tiburon(lx, ly, lz, 0, true); alb = A.colorTiburon(lx, ly, r[2], r[1]).map(v => clamp(v, 0, 1)); spec = r[1] === 'ojo' ? 3 : r[1] === 'diente' ? .8 : .5; rough = r[1] === 'ojo' ? 300 : 60; bump((a, b, cc) => n3(a * 120, b * 120, cc * 120), .0012); } }
+      if (tipo === 4) { const r = AH.ballenaHD(lx, ly, lz, true); alb = AH.colorBallenaHD(lx, ly, lz, r[1], r[2], r[3], r[4]).map(v => clamp(v, 0, 1)); spec = r[1] === 'ojo' ? 3 : r[1] === 'lengua' || r[1] === 'boca' ? .7 : .45; rough = r[1] === 'ojo' ? 300 : 45; if (r[1] !== 'piel' && r[1] !== 'ojo') relleno = 1.4; if (r[1] === 'piel') bump((a, b, cc) => n3(a * 25, b * 25, cc * 25), .006); }
+      else { const r = AH.tiburonHD(lx, ly, lz, true); alb = AH.colorTiburonHD(lx, ly, r[2], r[1]).map(v => clamp(v, 0, 1)); spec = r[1] === 'ojo' ? 3 : r[1] === 'diente' ? 1.2 : r[1] === 'encia' ? .8 : .5; rough = r[1] === 'ojo' ? 300 : 60; bump((a, b, cc) => n3(a * 120, b * 120, cc * 120), .0012); } }
     const [Nx, Ny, Nz] = n, ndl = Nx * L[0] + Ny * L[1] + Nz * L[2], prof = Math.max(0, SUP - y);
     const mapS = (a, b, c) => escena(a, b, c, .8)[0], sh = ndl > -.1 ? M.sombra(mapS, x + Nx * .01, y + Ny * .01, z + Nz * .01, L[0], L[1], L[2], 10, 18, 40) : 0, ao = M.oclusion(mapS, x, y, z, Nx, Ny, Nz);
     const h = prof, cau = .45 + 1.9 * causticas((x + L[0] / L[1] * h) * .95, (z + L[2] / L[1] * h) * .95, sc.t), sol = [0, 1, 2].map(k => [1.05, 1.0, .95][k] * Math.exp(-EXT[k] * prof * .4) * cau);
     const amb = [.07, .24, .31].map(v => v * (.55 + .45 * Ny)), hv = (() => { const v = [L[0] - dx, L[1] - dy, L[2] - dz], l = Math.hypot(...v); return v.map(q => q / l); })(), sp = Math.pow(Math.max(0, Nx * hv[0] + Ny * hv[1] + Nz * hv[2]), rough) * spec;
-    let c = [0, 1, 2].map(k => alb[k] * (sol[k] * Math.max(0, ndl) * sh + amb[k] * ao) + sp * sh * sol[k] * .6);
+    let c = [0, 1, 2].map(k => alb[k] * (sol[k] * Math.max(0, ndl) * sh + amb[k] * Math.max(ao, relleno > 1 ? .7 : 0) * relleno) + sp * sh * sol[k] * .6);
     // absorción y dispersión a lo largo del rayo de la cámara
     const ag = colAgua(dx, dy, dz); c = c.map((v, k) => v * Math.exp(-EXT[k] * T * .38) + ag[k] * (1 - Math.exp(-.03 * T)));
     const vv = rayosVol(sc, dx, dy, dz, T); return [c[0] + vv * .35, c[1] + vv * .9, c[2] + vv]; },

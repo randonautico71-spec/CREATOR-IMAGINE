@@ -30,7 +30,7 @@ Además de las demos de cada estilo, hay **5 temas modelados con máximo detalle
 | `leon` | León de ~280 piezas (melena en mechas, ojos con pupila, bigoteras, dedos, borla) en la sabana con acacias, hierba, rocas y termitero | Camina; la cámara orbita |
 | `planeta` | Planeta tipo Tierra (continentes inventados, no el mapa real), nubes con sombra, ciudades nocturnas, atmósfera, Luna y cohete en órbita | El planeta rota y el cohete recorre la órbita |
 | `ciudad` | Calle con ~220 personas distintas, edificios con ventanas, escaparates, farolas, árboles, semáforos y coches | La gente avanza; la cámara orbita |
-| `oceano` | Ballena jorobada y tiburón blanco esculpidos (tubérculos, pliegues, aletas, branquias, dientes) sobre arena con ondas y cáusticas, rocas con algas, bosque de kelp, cardumen, estrellas de mar y erizos, rayos de luz | Nadan; algas y cáusticas se mueven; la cámara orbita |
+| `oceano` | Ballena jorobada y tiburón blanco esculpidos (tubérculos, pliegues, aletas, branquias, dientes) sobre arena con ondas y cáusticas, rocas con algas, bosque de kelp, cardumen, estrellas de mar y erizos, rayos de luz. En `realista`, ambos con la boca abierta y primeros planos con `TOMA=ballena` / `TOMA=tiburon` | Nadan; algas y cáusticas se mueven; la cámara orbita |
 | `persona` | Persona esculpida como volumen SDF (cara con párpados, iris, nariz, labios, orejas; manos con dedos; ropa con botones y cordones) | Pose fija en malla; en `realista` camina (≈50 s por fotograma) |
 
 ```bash
