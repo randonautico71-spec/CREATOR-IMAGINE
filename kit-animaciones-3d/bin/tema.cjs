@@ -1,8 +1,8 @@
 #!/usr/bin/env node
-/* TEMAS DETALLADOS × 12 ESTILOS (fotograma o vídeo vertical 1080×1920)
+/* TEMAS DETALLADOS × 14 ESTILOS (fotograma o vídeo vertical 1080×1920)
    node bin/tema.cjs <tema> <estilo> <salida.png | salida.mp4> [opciones]
    Temas:   leon · planeta · ciudad · persona · oceano
-   Estilos: pixel voxel iso lowpoly wire toon paper galaxy dither ascii info realista
+   Estilos: pixel voxel iso lowpoly wire toon paper galaxy dither ascii info realista clay (13 · claymotion: plastilina en stop-motion, 12 imágenes/s) fieltro (14 · fieltro: mismas escenas en fieltro, 12 imágenes/s)
    Opciones de vídeo: --seg 8 --fps 30 --hilos 4 --orbita 0.06 (giro de cámara en rad/s; 0 = fija) --audio musica.wav --letrero @handle --letrero-s 5
    Movimiento en vídeo: la cámara orbita despacio; el león camina, el cohete recorre la órbita y el planeta gira, la gente de la ciudad avanza, la ballena y el tiburón nadan.
    (La persona va en pose fija en los estilos de malla: su malla se genera una vez; en 'realista' sí camina, pero cada fotograma tarda ~50 s.) */
@@ -10,7 +10,7 @@
 const fs = require('fs'), path = require('path'), { spawn, spawnSync } = require('child_process');
 const { args, lanzar, finalizar } = require('./comun.cjs');
 const KIT = path.resolve(__dirname, '..'), TEMAS = ['leon', 'planeta', 'ciudad', 'persona', 'oceano'];
-const ESTILOS = ['pixel', 'voxel', 'iso', 'lowpoly', 'wire', 'toon', 'paper', 'galaxy', 'dither', 'ascii', 'info', 'realista'];
+const ESTILOS = ['pixel', 'voxel', 'iso', 'lowpoly', 'wire', 'toon', 'paper', 'galaxy', 'dither', 'ascii', 'info', 'realista', 'clay', 'fieltro'];
 const RENDER = { leon: 'renderHD', planeta: 'renderP', ciudad: 'renderC', persona: 'renderPx', oceano: 'renderMar' };
 (async () => {
   const a = args(process.argv.slice(2)), [tema, estilo, sal] = a._;
@@ -19,6 +19,16 @@ const RENDER = { leon: 'renderHD', planeta: 'renderP', ciudad: 'renderC', person
   if (tema === 'persona' && estilo !== 'realista' && !fs.existsSync(path.join(dir, 'generado', 'persona_malla.js'))) {
     console.log('Generando la malla de la persona (una vez, ~15 s)...'); spawnSync('node', [path.join(dir, 'mallador.js')], { stdio: 'inherit' }); spawnSync('node', [path.join(dir, 'voxeles.js')], { stdio: 'inherit' }); }
   if (tema === 'oceano' && !fs.existsSync(path.join(dir, 'generado', 'animales_malla.js'))) { console.log('Generando las mallas de la ballena y el tiburón (una vez, ~15 s)...'); spawnSync('node', [path.join(dir, 'mallador.js')], { stdio: 'inherit' }); }
+  if (estilo === 'clay' || estilo === 'fieltro') {   // CLAYMOTION y FIELTRO: escena SDF de plastilina; el vídeo se calcula a 12 imágenes/s (stop-motion) y se pasa a los fps pedidos
+    const esc = path.join(dir, 'clay.js'), envM = { ...process.env, MATERIAL: estilo === 'fieltro' ? 'fieltro' : '' };
+    if (!video) { const r = spawnSync('node', [path.join(__dirname, 'fotograma_sdf.cjs'), esc, path.resolve(sal), String(a.t || 0)], { stdio: 'inherit', env: envM }); process.exit(r.status); }
+    const seg = +(a.seg || 8), fps = +(a.fps || 30), tmp = path.resolve(sal).replace(/\.mp4$/i, '') + '_12ips.mp4', mudo = path.resolve(sal).replace(/\.mp4$/i, '') + '_mudo.mp4';
+    const r = spawnSync('node', [path.join(__dirname, 'sdf.cjs'), esc, tmp, '--seg', String(seg), '--fps', '12', ...(a.w ? ['--w', a.w, '--h', a.h] : [])], { stdio: 'inherit', env: { ...envM, ORBITA: a.orbita ?? '0' } });
+    if (r.status) process.exit(r.status);
+    spawnSync('ffmpeg', ['-v', 'error', '-y', '-i', tmp, '-vf', `fps=${fps}`, '-c:v', 'libx264', '-crf', '17', '-preset', 'slow', '-pix_fmt', 'yuv420p', mudo], { stdio: 'inherit' }); fs.unlinkSync(tmp);
+    await finalizar(mudo, path.resolve(sal), { seg, audio: a.audio, letrero: a.letrero, letreroS: a['letrero-s'] });
+    console.log('Listo:', sal, (fs.statSync(sal).size / 1e6).toFixed(1), 'MB'); return;
+  }
   if (estilo === 'realista') {
     const esc = path.join(dir, 'realista.js');
     if (!video) { const r = spawnSync('node', [path.join(__dirname, 'fotograma_sdf.cjs'), esc, path.resolve(sal), String(a.t || 0)], { stdio: 'inherit', env: { ...process.env } }); process.exit(r.status); }
