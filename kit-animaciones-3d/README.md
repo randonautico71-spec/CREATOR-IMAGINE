@@ -43,6 +43,22 @@ node kit-animaciones-3d/bin/tema.cjs planeta realista salida/planeta.mp4 --seg 8
 
 En vídeo, la cámara orbita despacio (`--orbita`, rad/s), el león camina, el planeta rota con el cohete en órbita, la gente de la ciudad avanza y en el océano nadan la ballena y el tiburón, se mecen las algas y se mueven las cáusticas.
 
+## Transiciones entre estilos
+
+```bash
+node kit-animaciones-3d/bin/transicion.cjs leon toon realista salida/leon.mp4 --seg 6 --cambio 3 --dur 1 --tipo pincel
+node kit-animaciones-3d/bin/transicion.cjs a.mp4 b.mp4 salida/union.mp4 --cambio 4 --tipo circulo [--sincro]
+```
+Renderiza el tema en los dos estilos y pasa del uno al otro sin cortar el movimiento. Tipos: `fundido barrido cortina circulo pixeles radial disolver pincel`.
+En el cambio se ve el mismo instante en los dos estilos; el encuadre coincide cuando los dos estilos usan la misma cámara (realista y la mayoría de los de malla; algunos, como pixel o iso, tienen su propia composición, y clay/fieltro su propio plató).
+
+## Usar los clips en vídeos con voz
+- **CREATOR IMAGINE**: componente `video` del timeline.
+- **Video-imagen**: `VE.clip(esc, 'nombre', t, {...})` dentro de `escenas.js` (el MP4 en `proyectos/<tema>/clips/`), con subtítulos y grafismos encima.
+
+## Temas nuevos
+Los 5 temas son los que vienen hechos, no un límite: para cualquier otro tema se escribe su escena con las técnicas del estilo elegido (skill, paso 4). En plastilina y fieltro, `temas/clay/arcilla.js` (material) y `temas/clay/figuras.js` (personajes) se reutilizan: una escena nueva es un `temas/<tema>/clay.js` con `crearEscena({ escena, colores, camara })`.
+
 ## Uso directo
 
 ```bash
