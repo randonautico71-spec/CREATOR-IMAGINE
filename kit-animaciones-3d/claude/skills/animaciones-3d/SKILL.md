@@ -40,6 +40,12 @@ node kit-animaciones-3d/bin/tema.cjs <tema> <estilo> salida.mp4 --seg 8 [--fps 3
 Coste medido (4 CPU): estilos de malla 0,1–4 s por fotograma; `realista`: planeta ~10 s, océano ~3 min, persona ~50 s, ciudad ~90 s, león ~100 s por fotograma a 1080×1920 (en vídeo usar `--w 540 --h 960`).
 Estilo `realista` = SDF + texturas procedurales (12). Estilo `clay` = **13 · Claymotion** (plastilina en stop-motion a 12 imágenes/s; ~4 min por fotograma a 1080×1920, en vídeo usar `--w 540 --h 960`). Estilo `fieltro` = **14 · Fieltro** (las mismas escenas en lana afieltrada, también a 12 imágenes/s y con el mismo coste).
 
+**Los 5 temas no son un límite.** Si el usuario pide otro tema, escribe su escena para ese vídeo (paso 4): en `clay`/`fieltro`, un `temas/<tema>/clay.js` nuevo con `crearEscena` de `temas/clay/arcilla.js` y las figuras de `temas/clay/figuras.js` (añade figuras nuevas si hacen falta); en los estilos de malla, un `ESC.<escena>` con el motor; en `realista`, una escena SDF como `temas/<tema>/realista.js`.
+
+**Combinar estilos:** un estilo por tramo del guion, o pasar de uno a otro sin cortar con `node kit-animaciones-3d/bin/transicion.cjs <tema> <estiloA> <estiloB> clip.mp4 --tipo pincel` (fundido, barrido, cortina, circulo, pixeles, radial, disolver, pincel). Como mucho 2–3 estilos por vídeo y cada cambio en un momento del guion (loop, giro).
+
+**Dentro de un vídeo con voz:** en Video-imagen, `VE.clip(esc, 'nombre', t, {...})` en `escenas.js` con el MP4 en `proyectos/<tema>/clips/`; en CREATOR IMAGINE, el componente `video`.
+
 ## Paso 2 · Catálogo
 
 | Familia | Estilo | Nombre en el kit | Coste por fotograma (4 CPU) | Qué hace la demo |
