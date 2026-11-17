@@ -16,14 +16,14 @@ Todo se genera por código, en CPU, sin GPU ni recursos externos. Las rutas son 
    - **Pregunta 1, familia:** «¿Qué tipo de animación quieres?»
      - *Retro y píxel*: pixel art 3D, vóxel, retro de consola, ASCII 3D
      - *Geométrico 3D*: low-poly, isométrico / diorama, wireframe retro, infografía 3D
-     - *Ilustrado*: toon / cel shading, 2.5D papercraft, partículas 3D
+     - *Ilustrado*: toon / cel shading, 2.5D papercraft, partículas 3D, claymotion (plastilina en stop-motion, estilo `clay`) y fieltro (estilo `fieltro`), en cualquier tema
      - *Realista (SDF + texturas procedurales)*: gotas SDF, planeta, animales en el bosque o la sabana, y el estilo `realista` de cualquier tema
    - **Pregunta 2, estilo:** las opciones de la familia elegida (tabla de abajo). Con una recomendación, ponla la primera con «(Recomendado)» y di por qué en la descripción.
 3. Pregunta también, si no está claro: duración, si lleva letrero final «SIGUE A @…» y si lleva audio (el kit no compone música; usa un WAV del proyecto si lo hay).
 
 ## Paso 1 bis · Temas detallados listos para usar
 
-Además de las demos de cada estilo, hay **5 temas modelados con máximo detalle** que se pueden generar en **cualquiera de los 12 estilos** (11 de malla + `realista`):
+Además de las demos de cada estilo, hay **5 temas modelados con máximo detalle** que se pueden generar en **cualquiera de los 14 estilos** (11 de malla + `realista` + `clay` + `fieltro`):
 
 | Tema | Qué incluye | En vídeo se mueve |
 |---|---|---|
@@ -38,7 +38,7 @@ node kit-animaciones-3d/bin/tema.cjs <tema> <estilo> salida.png                 
 node kit-animaciones-3d/bin/tema.cjs <tema> <estilo> salida.mp4 --seg 8 [--fps 30] [--orbita 0.06] [--audio m.wav] [--letrero @handle --letrero-s 5]
 ```
 Coste medido (4 CPU): estilos de malla 0,1–4 s por fotograma; `realista`: planeta ~10 s, océano ~3 min, persona ~50 s, ciudad ~90 s, león ~100 s por fotograma a 1080×1920 (en vídeo usar `--w 540 --h 960`).
-Estilo `realista` = SDF + texturas procedurales (los antiguos 12 y 13 se unieron: la diferencia no se apreciaba).
+Estilo `realista` = SDF + texturas procedurales (12). Estilo `clay` = **13 · Claymotion** (plastilina en stop-motion a 12 imágenes/s; ~4 min por fotograma a 1080×1920, en vídeo usar `--w 540 --h 960`). Estilo `fieltro` = **14 · Fieltro** (las mismas escenas en lana afieltrada, también a 12 imágenes/s y con el mismo coste).
 
 ## Paso 2 · Catálogo
 

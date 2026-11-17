@@ -64,7 +64,7 @@ function coches(x, y, z) { let d = 1e9, c = null; for (const k of COCHES) { if (
   if (e < d) { d = e; c = k; } } return [d, c]; }
 function suelo(x, y, z) { const ax = Math.abs(x); return Math.min(y, sdBox(ax - 5.5, y - .08, 0, 1.5, .08, 1e3)); }
 const E = {
-  prepara(t) { T_DATOS = t; datos(t); return { t, eye: [0, 5.2, 16.5], target: [0, 1.8, -6], fov: 50, far: 140, pasos: 700 }; },
+  prepara(t) { T_DATOS = t; datos(t); if (process.env.TOMA === 'alta') return { t, eye: [2.5, 17, 15], target: [0, .5, -6], fov: 40, far: 140, pasos: 700 }; return { t, eye: [0, 5.2, 16.5], target: [0, 1.8, -6], fov: 50, far: 140, pasos: 700 }; },
   map(sc, x, y, z, sl) { let d = suelo(x, y, z); d = Math.min(d, edificios(x, y, z)[0], farolas(x, y, z), arboles(x, y, z), coches(x, y, z)[0]); if (Math.abs(x) < A) d = Math.min(d, gente(x, y, z, sl)[0]); return d; },
   cielo(sc, dx, dy, dz) { const t = clampN(dy * 2, 0, 1); let c = [G.mix(.95, .32, t), G.mix(.9, .55, t), G.mix(.85, .92, t)];
     const cl = G.smooth(.5, .75, G.fbm3(dx * 3 / Math.max(dy, .05), dz * 3 / Math.max(dy, .05), 1, 5)); if (dy > 0) c = c.map((v, k) => G.mix(v, 1.05, cl * .7 * Math.min(1, dy * 5)));
