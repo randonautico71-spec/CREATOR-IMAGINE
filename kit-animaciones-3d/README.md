@@ -43,6 +43,9 @@ node kit-animaciones-3d/bin/tema.cjs planeta realista salida/planeta.mp4 --seg 8
 
 En vídeo, la cámara orbita despacio (`--orbita`, rad/s), el león camina, el planeta rota con el cohete en órbita, la gente de la ciudad avanza y en el océano nadan la ballena y el tiburón, se mecen las algas y se mueven las cáusticas.
 
+## 15 · Muñecos (2.5D explicativo)
+Personajes propios para vídeos explicativos, con acciones, planos de 3–6 s y transiciones: guía en [`munecos/README.md`](munecos/README.md), catálogo `catalogos/munecos.jpg`.
+
 ## Transiciones entre estilos
 
 ```bash

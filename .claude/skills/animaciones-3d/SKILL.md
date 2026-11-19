@@ -16,7 +16,7 @@ Todo se genera por código, en CPU, sin GPU ni recursos externos. Las rutas son 
    - **Pregunta 1, familia:** «¿Qué tipo de animación quieres?»
      - *Retro y píxel*: pixel art 3D, vóxel, retro de consola, ASCII 3D
      - *Geométrico 3D*: low-poly, isométrico / diorama, wireframe retro, infografía 3D
-     - *Ilustrado*: toon / cel shading, 2.5D papercraft, partículas 3D, claymotion (plastilina en stop-motion, estilo `clay`) y fieltro (estilo `fieltro`), en cualquier tema
+     - *Ilustrado*: toon / cel shading, 2.5D papercraft, partículas 3D, claymotion (plastilina en stop-motion, estilo `clay`) y fieltro (estilo `fieltro`), en cualquier tema, y **muñecos 2.5D** (explicativo con personajes propios, catálogo `kit-animaciones-3d/catalogos/munecos.jpg`)
      - *Realista (SDF + texturas procedurales)*: gotas SDF, planeta, animales en el bosque o la sabana, y el estilo `realista` de cualquier tema
    - **Pregunta 2, estilo:** las opciones de la familia elegida (tabla de abajo). Con una recomendación, ponla la primera con «(Recomendado)» y di por qué en la descripción.
 3. Pregunta también, si no está claro: duración, si lleva letrero final «SIGUE A @…» y si lleva audio (el kit no compone música; usa un WAV del proyecto si lo hay).
@@ -45,6 +45,13 @@ Estilo `realista` = SDF + texturas procedurales (12). Estilo `clay` = **13 · Cl
 **Combinar estilos:** un estilo por tramo del guion, o pasar de uno a otro sin cortar con `node kit-animaciones-3d/bin/transicion.cjs <tema> <estiloA> <estiloB> clip.mp4 --tipo pincel` (fundido, barrido, cortina, circulo, pixeles, radial, disolver, pincel). Como mucho 2–3 estilos por vídeo y cada cambio en un momento del guion (loop, giro).
 
 **Dentro de un vídeo con voz:** en Video-imagen, `VE.clip(esc, 'nombre', t, {...})` en `escenas.js` con el MP4 en `proyectos/<tema>/clips/`; en CREATOR IMAGINE, el componente `video`.
+
+**15 · Muñecos (2.5D explicativo)** — `kit-animaciones-3d/munecos/` (guía en su `README.md`). Personajes propios del canal (figura blanca redondeada, ojos de punto, expresión y accesorio de color) con acciones encadenadas, sombra y reflejo, y un sistema de planos. Los personajes y la cámara están hechos; **escenario, objetos e historia se crean para cada vídeo** según el guion. Reglas del plan visual:
+- planos de **3–6 s**, cámara siempre en movimiento, transición de entrada (`corte fundido zoom barrido deslizar`); comprobar con `MUN.revisar(plan)` (debe devolver `[]`);
+- un plano = una idea del guion; los gestos y objetos entran **en su palabra** (`ctx.palabra('…').ini`);
+- variar el tamaño de plano (general, medio, detalle) y cerrar ideas alejándose para mostrar el conjunto;
+- lo importante por encima del 21 % inferior (subtítulos);
+- en Video-imagen, `MUN` ya está cargado: un plan por párrafo con `MUN.ajustar(planos, ctx.dur)` y `MUN.pintar(esc.ctx, esc.W, esc.H, plan, t)`; como clip suelto, `bin/estilo.cjs <escena> … --extra kit-animaciones-3d/munecos/munecos.js,mi_escena.js`.
 
 ## Paso 2 · Catálogo
 
