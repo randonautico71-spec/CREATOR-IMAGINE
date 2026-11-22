@@ -7,7 +7,7 @@
    Las cifras en pantalla son ilustrativas. Mundo en metros: x a lo ancho, y arriba, nuestro sentido avanza hacia -z. */
 (function () {
   const TR = globalThis.TRAF = {};
-  const dia = () => !!globalThis.TRAF_DIA, wire = () => !!globalThis.TRAF_WIRE;
+  const dia = () => !!globalThis.TRAF_DIA, wire = () => !!globalThis.TRAF_WIRE, cgi = () => !!globalThis.TRAF_CGI;   // TRAF_CGI: acabado CGI (brillos, reflejos, bloom)
   const CARRIL = [2.15, 5.65, 9.15], J0 = -150, J1 = -330, ZMAX = 500, ZMIN = -640, LC = 4.4, Z0 = 470;
   const DT = 1 / 30, TMAX = 34, NP = Math.ceil(TMAX / DT) + 1;
   const R = rng(7);
@@ -37,14 +37,21 @@
   // ------------------------------------------------ geometría
   const tono = (c, k) => c.map(v => Math.max(0, Math.min(255, v * k)));
   const quadO = (F, pts, col, centro, x = {}) => { const f = [{ p: pts, col, ...x }]; orientTo(f, centro); F.push(f[0]); };
+  // brillo de pintura / cristal: color por cara con difusa + especular + reflejo del cielo (Fresnel); se marca como emisiva
+  function brillo(fs, cristal) { if (!cgi() || !TR._cam) return; const cam = TR._cam, Lx = TR._luz;
+    for (const f of fs) { const n = norm(newell(f.p)), c0 = centroid(f.p), v = norm(sub(cam.eye, c0)), h = norm(add(Lx, v)), nl = Math.max(0, dot(n, Lx)), nv = Math.max(0, dot(n, v)), fr = Math.pow(1 - nv, 3);
+      const cielo = dia() ? [205, 225, 245] : [40, 50, 90], amb = dia() ? .55 : .35, dif = dia() ? .75 : .45, sp = Math.pow(Math.max(0, dot(n, h)), cristal ? 80 : 30) * (cristal ? 1.4 : .9) * 255;
+      const k = cristal ? .25 + .6 * fr : .08 + .45 * fr, sube = Math.max(0, n[1]);
+      f.col = f.col.map((q, i) => Math.min(255, q * (amb + dif * nl) * (1 - k) + cielo[i] * k * (.5 + .5 * sube) + sp)); f.emit = true; } }
   function coche(F, c, t) { const [xc, , zc] = pos(c, t), d = c.sent, col = c.heroe ? (dia() ? [255, 255, 255] : [238, 242, 250]) : (dia() ? PAL_D : PAL_N)[c.col], vidrio = dia() ? [70, 96, 124] : [22, 30, 52];
     const P = (u, y, w) => [xc + w, y, zc - d * u], cen = [xc, .6, zc];
     const perfil = [[2.2, .32], [2.25, .62], [2.0, .86], [-2.0, .9], [-2.22, .66], [-2.2, .32]], W1 = .95, lados = [];
     for (let i = 0; i < perfil.length; i++) { const a = perfil[i], b = perfil[(i + 1) % perfil.length]; lados.push({ p: [P(a[0], a[1], -W1), P(b[0], b[1], -W1), P(b[0], b[1], W1), P(a[0], a[1], W1)], col: i === 2 || i === 3 ? tono(col, 1.06) : col }); }
-    lados.push({ p: perfil.map(q => P(q[0], q[1], -W1)), col: tono(col, .82) }, { p: perfil.map(q => P(q[0], q[1], W1)), col: tono(col, .82) }); orientTo(lados, cen); F.push(...lados);
+    lados.push({ p: perfil.map(q => P(q[0], q[1], -W1)), col: tono(col, .82) }, { p: perfil.map(q => P(q[0], q[1], W1)), col: tono(col, .82) }); orientTo(lados, cen); brillo(lados, false); F.push(...lados);
     const cab = [[1.15, .86], [.45, 1.42], [-.85, 1.42], [-1.35, .88]], W2 = .8, cc = [xc, 1.15, zc], cabF = [];
     for (let i = 0; i < 4; i++) { const a = cab[i], b = cab[(i + 1) % 4]; cabF.push({ p: [P(a[0], a[1], -W2), P(b[0], b[1], -W2), P(b[0], b[1], W2), P(a[0], a[1], W2)], col: i === 1 ? (c.heroe ? [90, 170, 255] : tono(col, 1.1)) : i === 3 ? tono(col, .9) : vidrio }); }
-    cabF.push({ p: cab.map(q => P(q[0], q[1], -W2)), col: vidrio }, { p: cab.map(q => P(q[0], q[1], W2)), col: vidrio }); orientTo(cabF, cc); F.push(...cabF);
+    cabF.push({ p: cab.map(q => P(q[0], q[1], -W2)), col: vidrio }, { p: cab.map(q => P(q[0], q[1], W2)), col: vidrio }); orientTo(cabF, cc); brillo(cabF, true); F.push(...cabF);
+    if (cgi()) { const sh = []; for (let k = 0; k < 14; k++) { const a = k / 14 * 6.283; sh.push(P(Math.cos(a) * 2.7, .03, Math.sin(a) * 1.35)); } F.push({ p: sh, col: dia() ? [70, 72, 80] : [4, 5, 10], emit: true, two: true, zb: .6, alfa: .55 }); }
     for (const u of [1.35, -1.35]) for (const s of [-1, 1]) quadO(F, [P(u - .33, .02, s * .97), P(u + .33, .02, s * .97), P(u + .33, .46, s * .97), P(u - .33, .46, s * .97)], [24, 26, 32], [xc, .3, zc]);
     for (const s of [-.6, .6]) { quadO(F, [P(2.255, .5, s - .2), P(2.255, .5, s + .2), P(2.255, .64, s + .2), P(2.255, .64, s - .2)], [255, 246, 220], cen, { emit: true, zb: -.02 });
       quadO(F, [P(-2.235, .48, s - .22), P(-2.235, .48, s + .22), P(-2.235, .6, s + .22), P(-2.235, .6, s - .22)], c.sent === 1 && vel(c, t) < 8 ? [255, 50, 60] : [180, 38, 50], cen, { emit: true, zb: -.02 }); } }
@@ -82,17 +89,44 @@
     const fog = { col: D ? [204, 224, 240] : [12, 16, 42], near: o.near ?? 80, far: o.far ?? 560, max: D ? (o.alto > 100 ? .5 : .8) : .92 };
     const L = D ? { light: norm([-.45, .85, .35]), amb: .52, lightCol: [1.12, 1.06, .96], ambCol: [.78, .86, 1], seam: .8, fog } : { light: norm([-.3, .9, .4]), amb: .56, lightCol: [.6, .64, .9], ambCol: [.46, .5, .86], seam: .8, fog };
     if (wire()) { L.wire = { fill: '#05081a', line: 'rgba(80,220,255,.5)', lw: 1, glow: 'rgba(80,220,255,.07)', gw: 3 }; L.fog = null; }
-    const S = [], F = []; ciudad(S, D); autopista(S, D); render(ctx, cam, S.filter(f => f.suelo), L);
-    if (o.banda !== false) { const B = []; banda(B, t); ctx.globalAlpha = D ? .55 : .48; render(ctx, cam, B, { ...L, wire: null, fog: L.fog ? { ...L.fog, max: .55 } : null }); ctx.globalAlpha = 1; }
+    TR._cam = cam; TR._luz = L.light;
+    const S = [], F = []; ciudad(S, D); autopista(S, D);
+    if (cgi()) {   // reflejo: la escena reflejada bajo el suelo, suavizada, y la carretera semitransparente encima
+      const RF = []; for (const f of S) if (!f.suelo) RF.push({ ...f, p: f.p.map(q => [q[0], -q[1], q[2]]).reverse() });
+      for (const c of COCHES) { const p = pos(c, t); if (p[2] > ZMIN && p[2] < ZMAX && cam.toCam([p[0], 1, p[2]])[2] > -10 && Math.abs(p[2] - cam.eye[2]) < 260) { const T = []; coche(T, c, t); for (const f of T) if (!f.alfa) RF.push({ ...f, p: f.p.map(q => [q[0], -q[1], q[2]]).reverse() }); } }
+      const k = 4, rc = mk(W / k | 0, H / k | 0), rg = rc.getContext('2d'), cr = mk(W, H), cg = cr.getContext('2d'); cg.fillStyle = D ? '#9fb4c8' : '#05070f'; cg.fillRect(0, 0, W, H); render(cg, cam, RF, { ...L, seam: .6 });
+      if (!D) { cg.save(); cg.globalCompositeOperation = 'lighter'; for (let z = ZMAX - 15; z > ZMIN; z -= 30) for (const sx of [-1, 1]) { const q = cam.P([sx * 10.8, -8.3, z]); if (q[2] < 1) continue; const r = 900 / q[2], hh = cg.createRadialGradient(q[0], q[1], 0, q[0], q[1], r); hh.addColorStop(0, 'rgba(255,214,150,.5)'); hh.addColorStop(1, 'rgba(255,214,150,0)'); cg.fillStyle = hh; cg.fillRect(q[0] - r, q[1] - r, 2 * r, 2 * r); } cg.restore(); }
+      rg.drawImage(cr, 0, 0, rc.width, rc.height); const r2 = mk(W / 8 | 0, H / 8 | 0); r2.getContext('2d').drawImage(rc, 0, 0, r2.width, r2.height);
+      render(ctx, cam, S.filter(f => f.suelo && f.zb !== .1), L);
+      // recorte a la calzada (polígono proyectado de sus dos bordes) y reflejo encima: aditivo de noche (solo suman las luces), suave de día
+      const borde = sx => { const r = []; for (let z = ZMAX; z > ZMIN; z -= 6) { const q = cam.toCam([sx, 0, z]); if (q[2] > .3) r.push(cam.proj(q)); } return r; }, iz = borde(-11.6), de = borde(11.6).reverse();
+      if (iz.length > 1) { ctx.save(); ctx.beginPath(); [...iz, ...de].forEach((q, k) => k ? ctx.lineTo(q[0], q[1]) : ctx.moveTo(q[0], q[1])); ctx.closePath(); ctx.clip(); ctx.imageSmoothingEnabled = true;
+        ctx.globalCompositeOperation = D ? 'source-over' : 'lighter'; ctx.globalAlpha = D ? .22 : .85; ctx.drawImage(rc, 0, 0, W, H); ctx.globalAlpha = D ? .15 : .6; ctx.drawImage(r2, 0, 0, W, H); ctx.restore(); }
+      render(ctx, cam, S.filter(f => f.suelo && f.zb === .1), L); }
+    else render(ctx, cam, S.filter(f => f.suelo), L);
+    if (o.banda !== false) { const B = []; banda(B, t); ctx.globalAlpha = cgi() ? (D ? .26 : .2) : D ? .55 : .48; render(ctx, cam, B, { ...L, wire: null, fog: L.fog ? { ...L.fog, max: .55 } : null }); ctx.globalAlpha = 1; }
     for (const c of COCHES) { const p = pos(c, t); if (p[2] > ZMIN && p[2] < ZMAX && cam.toCam([p[0], 1, p[2]])[2] > -10) coche(F, c, t); }
-    render(ctx, cam, [...S.filter(f => !f.suelo), ...F], L);
+    if (cgi()) { ctx.globalAlpha = D ? .35 : .6; render(ctx, cam, F.filter(f => f.alfa), L); ctx.globalAlpha = 1; }
+    render(ctx, cam, [...S.filter(f => !f.suelo), ...F.filter(f => !f.alfa)], L);
+    if (cgi() && !D) { ctx.save(); ctx.globalCompositeOperation = 'lighter';   // haces de los faros sobre el asfalto
+      for (const c of COCHES) { const [x, , z] = pos(c, t), d = c.sent; if (Math.abs(z - cam.eye[2]) > 140) continue; const a = cam.P([x - .8, .02, z - d * 2.3]), b = cam.P([x + .8, .02, z - d * 2.3]), e = cam.P([x + 3, .02, z - d * 22]), f = cam.P([x - 3, .02, z - d * 22]); if ([a, b, e, f].some(q => q[2] < 1)) continue;
+        const g2 = ctx.createLinearGradient(a[0], a[1], (e[0] + f[0]) / 2, (e[1] + f[1]) / 2); g2.addColorStop(0, 'rgba(255,240,200,.22)'); g2.addColorStop(1, 'rgba(255,240,200,0)'); ctx.fillStyle = g2; ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.lineTo(e[0], e[1]); ctx.lineTo(f[0], f[1]); ctx.fill(); }
+      ctx.restore(); }
     if (!D && !wire()) { ctx.save(); ctx.globalCompositeOperation = 'lighter';
       for (let z = ZMAX - 15; z > ZMIN; z -= 30) for (const s of [-1, 1]) { const q = cam.P([s * 10.8, 8.3, z]); if (q[2] < 1) continue; const r = 1100 / q[2], h = ctx.createRadialGradient(q[0], q[1], 0, q[0], q[1], r); h.addColorStop(0, 'rgba(255,214,150,.42)'); h.addColorStop(1, 'rgba(255,214,150,0)'); ctx.fillStyle = h; ctx.fillRect(q[0] - r, q[1] - r, 2 * r, 2 * r); }
       for (const c of COCHES) { const [x, , z] = pos(c, t), d = c.sent; for (const [u, rgb, a] of [[2.3, '255,240,210', .5], [-2.3, '255,60,70', .38]]) for (const s of [-.6, .6]) { const q = cam.P([x + s, .56, z - d * u]); if (q[2] < 1 || q[2] > 160) continue;
           const nf = cam.toCam([x, .56, z - d * u * 1.5])[2] - cam.toCam([x, .56, z])[2]; if ((u > 0) !== (nf * d * (u > 0 ? 1 : -1) < 0 ? true : false) && false) continue;
           const vistaDelante = (cam.eye[2] - z) * -d > 0; if ((u > 0) !== vistaDelante) continue;                                     // solo se ve el halo de la cara que mira a la cámara
           const r = 200 / q[2], h = ctx.createRadialGradient(q[0], q[1], 0, q[0], q[1], r); h.addColorStop(0, `rgba(${rgb},${a})`); h.addColorStop(1, `rgba(${rgb},0)`); ctx.fillStyle = h; ctx.fillRect(q[0] - r, q[1] - r, 2 * r, 2 * r); } }
-      ctx.restore(); } }
+      ctx.restore(); }
+    if (cgi()) postCGI(ctx, D); }
+  // bloom (resplandor de las zonas brillantes, a dos escalas) + gradación de color y viñeta. Sin ctx.filter: se reduce y se amplía con suavizado.
+  function postCGI(ctx, D) { const w = W / 6 | 0, h = H / 6 | 0, a = mk(w, h), g = a.getContext('2d'); g.drawImage(ctx.canvas, 0, 0, w, h); const im = g.getImageData(0, 0, w, h), d = im.data, um = D ? 215 : 150;
+    for (let i = 0; i < d.length; i += 4) { const l = d[i] * .3 + d[i + 1] * .59 + d[i + 2] * .11, k = Math.max(0, l - um) / (255 - um); d[i] *= k; d[i + 1] *= k; d[i + 2] *= k; } g.putImageData(im, 0, 0);
+    const b = mk(w / 3 | 0, h / 3 | 0); b.getContext('2d').drawImage(a, 0, 0, b.width, b.height); const c2 = mk(w / 9 | 0, h / 9 | 0); c2.getContext('2d').drawImage(b, 0, 0, c2.width, c2.height);
+    ctx.save(); ctx.imageSmoothingEnabled = true; ctx.globalCompositeOperation = 'lighter'; ctx.globalAlpha = D ? .35 : .7; ctx.drawImage(a, 0, 0, W, H); ctx.globalAlpha = D ? .3 : .6; ctx.drawImage(b, 0, 0, W, H); ctx.globalAlpha = D ? .25 : .5; ctx.drawImage(c2, 0, 0, W, H);
+    ctx.globalCompositeOperation = 'soft-light'; ctx.globalAlpha = .35; const gr = ctx.createLinearGradient(0, 0, 0, H); gr.addColorStop(0, D ? '#3b6ea5' : '#1b3c7a'); gr.addColorStop(1, D ? '#f0a860' : '#e0784a'); ctx.fillStyle = gr; ctx.fillRect(0, 0, W, H);
+    ctx.globalCompositeOperation = 'source-over'; ctx.globalAlpha = 1; const v = ctx.createRadialGradient(W / 2, H * .5, H * .3, W / 2, H * .5, H * .78); v.addColorStop(0, 'rgba(0,0,0,0)'); v.addColorStop(1, D ? 'rgba(10,20,40,.28)' : 'rgba(0,0,8,.5)'); ctx.fillStyle = v; ctx.fillRect(0, 0, W, H); ctx.restore(); }
   TR.escena = escena;
   // ------------------------------------------------ gráficos (un solo diseño en todo el vídeo)
   const COL = { azul: '94,200,255', verde: '64,224,150', ambar: '255,196,70', rojo: '255,80,92' }, colVel = v => v > 22 ? COL.verde : v > 9 ? COL.ambar : COL.rojo;

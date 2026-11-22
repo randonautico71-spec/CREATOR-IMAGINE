@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /* TEMAS DETALLADOS × 14 ESTILOS (fotograma o vídeo vertical 1080×1920)
    node bin/tema.cjs <tema> <estilo> <salida.png | salida.mp4> [opciones]
-   Temas:   leon · planeta · ciudad · persona · oceano · delfin · trafico (estilos lowpoly info toon paper pixel dither ascii wire; --dia para de día)
+   Temas:   leon · planeta · ciudad · persona · oceano · delfin · trafico (estilos realista lowpoly info toon paper pixel dither ascii wire; --dia para de día; realista --exacto = CGI por ray marching)
    Estilos: pixel voxel iso lowpoly wire toon paper galaxy dither ascii info realista clay (13 · claymotion: plastilina en stop-motion, 12 imágenes/s) fieltro (14 · fieltro: mismas escenas en fieltro, 12 imágenes/s)
    Opciones de vídeo: --seg 8 --fps 30 --hilos 4 --orbita 0.06 (giro de cámara en rad/s; 0 = fija) --audio musica.wav --letrero @handle --letrero-s 5
    Movimiento en vídeo: la cámara orbita despacio; el león camina, el cohete recorre la órbita y el planeta gira, la gente de la ciudad avanza, la ballena y el tiburón nadan.
@@ -15,7 +15,7 @@ const RENDER = { leon: 'renderHD', planeta: 'renderP', ciudad: 'renderC', person
 (async () => {
   const a = args(process.argv.slice(2)), [tema, estilo, sal] = a._;
   if (!TEMAS.includes(tema) || !ESTILOS.includes(estilo) || !sal) { console.error(fs.readFileSync(__filename, 'utf8').split('*/')[0]); process.exit(1); }
-  if (tema === 'trafico' && !['lowpoly', 'info', 'toon', 'paper', 'pixel', 'dither', 'ascii', 'wire'].includes(estilo)) { console.error(`El tema tráfico aún no tiene el estilo "${estilo}". Hay: lowpoly info toon paper pixel dither ascii wire (y --dia para de día). Para otro estilo hay que escribir su escena.`); process.exit(1); }
+  if (tema === 'trafico' && !['realista', 'lowpoly', 'info', 'toon', 'paper', 'pixel', 'dither', 'ascii', 'wire'].includes(estilo)) { console.error(`El tema tráfico aún no tiene el estilo "${estilo}". Hay: realista lowpoly info toon paper pixel dither ascii wire (y --dia para de día; realista --exacto = CGI por ray marching, muy lento). Para otro estilo hay que escribir su escena.`); process.exit(1); }
   const video = /\.mp4$/i.test(sal), DEL = tema === 'delfin', dir = path.join(KIT, 'temas', DEL ? 'oceano' : tema);
   if (DEL) process.env.MAR = 'delfin';   // las escenas SDF del océano ponen el delfín en vez de la ballena y el tiburón
   if (tema === 'persona' && estilo !== 'realista' && !fs.existsSync(path.join(dir, 'generado', 'persona_malla.js'))) {
@@ -31,8 +31,8 @@ const RENDER = { leon: 'renderHD', planeta: 'renderP', ciudad: 'renderC', person
     await finalizar(mudo, path.resolve(sal), { seg, audio: a.audio, letrero: a.letrero, letreroS: a['letrero-s'] });
     console.log('Listo:', sal, (fs.statSync(sal).size / 1e6).toFixed(1), 'MB'); return;
   }
-  if (estilo === 'realista') {
-    const esc = path.join(dir, 'realista.js');
+  if (estilo === 'realista' && !(tema === 'trafico' && !a.exacto)) {
+    const esc = path.join(dir, tema === 'trafico' ? 'cgi.js' : 'realista.js'); if (tema === 'trafico' && a.dia) process.env.TRAF_DIA = '1';
     if (!video) { const r = spawnSync('node', [path.join(__dirname, 'fotograma_sdf.cjs'), esc, path.resolve(sal), String(a.t || 0)], { stdio: 'inherit', env: { ...process.env } }); process.exit(r.status); }
     const r = spawnSync('node', [path.join(__dirname, 'sdf.cjs'), esc, path.resolve(sal), '--seg', String(a.seg || 8), '--fps', String(a.fps || 30), ...(a.audio ? ['--audio', a.audio] : []), ...(a.letrero ? ['--letrero', a.letrero] : []), ...(a['letrero-s'] ? ['--letrero-s', a['letrero-s']] : []), ...(a.w ? ['--w', a.w, '--h', a.h] : [])], { stdio: 'inherit', env: { ...process.env, ORBITA: a.orbita ?? '0.06' } });
     process.exit(r.status);
