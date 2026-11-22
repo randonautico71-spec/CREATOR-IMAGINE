@@ -98,4 +98,32 @@ function colorTiburon(x, y, z, t) {
   if (n3(x * 8, y * 2, z * 8) > .8 && y > linea) c = c.map(v => v + .1);   // arañazos
   return c;
 }
-module.exports = { ballena, colorBallena, tiburon, colorTiburon, n3, h3, sdEll, smin, smax, sdRC, sdTri2, aleta };
+// ---------- DELFÍN MULAR (≈2,6 m, hocico hacia +x) ----------
+function delfin(x, y, z, fase = 0, tag) {
+  const curva = .07 * Math.sin(x * 1.8 + fase) * Math.min(1, Math.max(0, (.3 - x) / 1.5)), yb = y - curva, az = Math.abs(z);
+  let d = sdEll(x - .2, yb, z, .9, .3, .28);                                          // tronco
+  d = smin(d, sdEll(x + .55, yb + .01, z, .62, .2, .17), .25);                        // zona caudal
+  d = smin(d, sdEll(x + 1.05, yb, z, .36, .085, .06), .14);                          // pedúnculo comprimido
+  d = smin(d, sdEll(x - .75, yb + .01, z, .32, .21, .2), .2);                         // cabeza
+  d = smin(d, sdEll(x - .86, yb - .05, z, .15, .13, .14), .09);                        // melón
+  const pico = sdRC(x, yb, z, .92, -.075, 0, 1.36, -.085, 0, .068, .038); d = smin(d, pico, .04);   // hocico largo
+  d = smax(d, -sdEll(x - 1.15, yb + .1, z, .24, .006, .2), .01);                     // boca («sonrisa»)
+  d = smin(d, aleta(x + .1, yb - .26, z, [.2, 0], [-.26, .3], [-.24, 0], .028), .07);                 // dorsal falcada
+  { const ang = .85, py = yb + .14, pz = az - .2, ry = py * Math.cos(ang) + pz * Math.sin(ang), rz = -py * Math.sin(ang) + pz * Math.cos(ang);
+    d = smin(d, aleta(x - .5, rz, ry, [.1, 0], [-.18, .3], [-.12, 0], .02), .05); }                   // pectorales
+  d = smin(d, aleta(x + 1.32, az, yb, [.12, 0], [-.2, .33], [-.12, .03], .022), .06);                 // aleta caudal (horizontal)
+  d = smax(d, -sdEll(x - .72, yb - .2, z, .025, .012, .03), .008);                    // espiráculo
+  const ojo = Math.hypot(x - .86, yb - .0, az - .232) - .022; d = Math.min(d, ojo);
+  if (tag) { let t = 'piel'; if (ojo < .005) t = 'ojo'; return [d, t, yb]; }
+  return d;
+}
+function colorDelfin(x, y, z, t) {
+  if (t === 'ojo') return [.02, .02, .025];
+  const m = n3(x * 5, y * 5, z * 5), m2 = n3(x * 30, y * 30, z * 30), az = Math.abs(z);
+  const lomo = [.32, .36, .42], flanco = [.56, .6, .66], vientre = [.9, .89, .9];
+  const lim = -.02 + .05 * Math.sin(x * 3) + (m - .5) * .06, lim2 = .1 + .04 * Math.sin(x * 2 + 1);
+  let c = y < lim ? vientre : y < lim2 ? flanco.map((v, k) => v + (vientre[k] - v) * Math.max(0, (lim2 - y) / (lim2 - lim)) * .3) : lomo;
+  if (x > 1.0 && y > -.06) c = lomo.map(v => v * .9);                                 // hocico más oscuro por arriba
+  return c.map(v => v * (.92 + .12 * m2));
+}
+module.exports = { ballena, colorBallena, tiburon, colorTiburon, delfin, colorDelfin, n3, h3, sdEll, smin, smax, sdRC, sdTri2, aleta };

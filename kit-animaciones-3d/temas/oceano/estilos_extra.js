@@ -115,7 +115,7 @@ EX.termica = ctx => { const w = 540, h = 960, cam = CAMM(w, h), S = escenaMar({ 
   const T = (F, f) => F.map(q => { const v = f(q) * 255 | 0; return { ...q, col: [v, v, v], emit: true }; });
   render(g, cam, [...T(S.fondo, q => .1), ...T(S.rocas, q => .12), ...T(S.vida, q => .11), ...T(S.peces, q => .14),
     ...T(S.ballena, q => { const p = centroid(q.p), r = Math.hypot(p[1] - cB[1], (p[0] - cB[0]) * .3, (p[2] - cB[2]) * .3); return .62 + .3 * clamp(1 - r / 2.2) + .05 * vnoise3(p[0], p[1], p[2]); }),
-    ...T(S.tiburon, q => { const p = centroid(q.p), r = Math.hypot(p[0] - cT[0], p[1] - cT[1], p[2] - cT[2]); return .3 + .18 * clamp(1 - r / 1.6); })], { seam: .8 });
+    ...T(S.tiburon, q => { const p = centroid(q.p), r = Math.hypot(p[0] - cT[0], p[1] - cT[1], p[2] - cT[2]); k = globalThis.TEMP_TIBURON || [.3, .18, 1.6]; return k[0] + k[1] * clamp(1 - r / k[2]); })], { seam: .8 });
   const n = w * h, A = desenfoca(aF(g.getImageData(0, 0, w, h).data, n), w, h, 2), R = rng(4);
   const pal = [[0, [0, 0, 10]], [.2, [40, 0, 90]], [.4, [140, 10, 120]], [.6, [220, 60, 30]], [.8, [255, 170, 0]], [1, [255, 255, 220]]], mapa = v => { for (let k = 1; k < pal.length; k++) if (v <= pal[k][0]) { const [a, ca] = pal[k - 1], [b, cb] = pal[k], f = (v - a) / (b - a); return ca.map((q, i) => q + (cb[i] - q) * f); } return pal[pal.length - 1][1]; };
   const img = vuelca(ctx, w, h, (x, y, i) => mapa(clamp(A[i * 3] / 255 + (R() - .5) * .03)));

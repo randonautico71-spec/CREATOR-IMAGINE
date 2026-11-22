@@ -5,7 +5,7 @@ const { sdEll, smin, smax, cl, len, cap, sph, hs, hfijo, bulto } = require('./ar
 const A = require('../oceano/animales');   // aleta(): triángulo extruido para aletas
 const COLORES = {
   cuerpo: [.88, .62, .26], cara: [.9, .66, .3], hocico: [.97, .88, .68], melena: [.62, .3, .1], nariz: [.36, .16, .12], ojo: [.97, .97, .95], pupila: [.04, .03, .03],
-  lomo: [.2, .24, .32], vientre: [.88, .9, .92], aleta: [.85, .87, .9], tib_lomo: [.45, .5, .56], tib_vientre: [.93, .93, .9], diente: [.98, .97, .92], encia: [.85, .45, .5],
+  lomo: [.2, .24, .32], vientre: [.88, .9, .92], del_lomo: [.48, .58, .7], del_vientre: [.92, .9, .92], aleta: [.85, .87, .9], tib_lomo: [.45, .5, .56], tib_vientre: [.93, .93, .9], diente: [.98, .97, .92], encia: [.85, .45, .5],
   piel: [.93, .72, .58], mejilla: [.95, .55, .5], pelo: [.32, .18, .1], jersey: [.82, .25, .22], pantalon: [.22, .35, .62], zapato: [.95, .95, .92], suela: [.3, .3, .32], boca: [.42, .12, .14],
   tronco: [.55, .36, .2], hoja: [.3, .62, .22], coco: [.42, .27, .14], roca: [.5, .48, .46], acacia: [.38, .55, .2],
   cohete: [.95, .95, .93], punta: [.88, .2, .18], ventana: [.35, .7, .95], llama: [1.0, .7, .15], llama2: [1.0, .35, .1] };
@@ -66,6 +66,23 @@ function tiburon(x, y, z, t = 0, nado = 0) {
   if (ojo < d) { d = ojo; p = 'ojo'; } if (pup < d) { d = pup; p = 'pupila'; }
   return [d + bulto(x, y, z, .012), p];
 }
+// ---------- DELFÍN de plastilina (≈1,6 de largo, hocico hacia +x), sonriente ----------
+function delfin(x, y, z, t = 0, nado = 0) {
+  y -= nado * .06 * Math.sin(x * 2.2 - t * 4) * cl((.2 - x) / 1.1); const az = Math.abs(z);
+  let d = sdEll(x - .05, y, z, .6, .22, .2), p = 'del_lomo';
+  d = smin(d, sdEll(x + .45, y + .01, z, .38, .14, .12), .18); d = smin(d, sdEll(x + .72, y, z, .2, .06, .045), .1);
+  d = smin(d, sdEll(x - .5, y - .01, z, .22, .17, .16), .14);                                    // cabeza
+  d = smin(d, sdEll(x - .58, y - .05, z, .12, .11, .11), .07);                                   // melón
+  d = smin(d, sdEll(x - .76, y + .055, z, .14, .045, .055), .05);                                // hocico
+  d = smin(d, A.aleta(x + .03, y - .19, z, [.13, 0], [-.18, .2], [-.15, 0], .025), .05);          // dorsal
+  { const py = y + .1, pz = az - .14, c = Math.cos(.8), s = Math.sin(.8), ry = py * c + pz * s, rz = -py * s + pz * c; d = smin(d, A.aleta(x - .28, rz, ry, [.08, 0], [-.12, .19], [-.08, 0], .018), .04); }
+  d = smin(d, A.aleta(x + .88, az, y, [.08, 0], [-.13, .22], [-.08, .02], .02), .04);              // cola
+  const boca = cap(x, y, z, .68, -.075, -.1, .86, -.065, 0, .007); d = smax(d, -Math.min(boca, cap(x, y, z, .86, -.065, 0, .68, -.075, .1, .007)), .01);
+  if (y < -.04 && d < .03) p = 'del_vientre';
+  const ojo = sph(x, y, z, .55, .03, Math.sign(z) * .15, .035), pup = sph(x, y, z, .575, .035, Math.sign(z) * .168, .019);
+  if (ojo < d) { d = ojo; p = 'ojo'; } if (pup < d) { d = pup; p = 'pupila'; }
+  return [d + bulto(x, y, z, .01), p];
+}
 // ---------- PERSONA de plastilina (≈1,8 de alto, mira hacia +x). saluda: mueve la mano. ropa: colores opcionales ----------
 function persona(x, y, z, t = 0, o = {}) {
   const az = Math.abs(z), anda = !!o.anda, ph = t * 6 + (o.fase || 0); let d = 1e9, p = 'pantalon', c;
@@ -85,7 +102,7 @@ function persona(x, y, z, t = 0, o = {}) {
   { const s1 = cap(x, y, z, .2, hy - .085, -.065, .218, hy - .108, 0, .009), s2 = cap(x, y, z, .218, hy - .108, 0, .2, hy - .085, .065, .009), sonr = Math.min(s1, s2); d = smax(d, -sonr, .006); if (sonr < d + .003) p = 'boca'; }   // sonrisa
   for (const sd of [1, -1]) { const ojo = sph(x, y, z, .165, hy + .055, sd * .08, .05), pup = sph(x, y, z, .208, hy + .06, sd * .084, .024); if (ojo < d) { d = ojo; p = 'ojo'; } if (pup < d) { d = pup; p = 'pupila'; }
     pega(cap(x, y, z, .19, hy + .135, sd * .04, .18, hy + .145, sd * .13, .014), 'pelo', .005); }
-  let pelo = sdEll(x + .02, y - hy - .03, z, .225, .18, .23); pelo = smax(pelo, -(x - .14 + (y - hy - .03) * .5), .03); pelo = smax(pelo, -(y - hy + .02 - Math.max(0, -x) * .4), .04);
+  let pelo = sdEll(x + .02, y - hy - .03, z, .225, .18, .23); pelo = smax(pelo, x - .14 + (y - hy - .03) * .5, .03); pelo = smax(pelo, -(y - hy + .02 - Math.max(0, -x) * .4), .04);
   for (let k = 0; k < 6; k++) pelo = smin(pelo, sph(x, y, z, .13, hy + .14, (k - 2.5) * .055, .045), .03);                       // flequillo
   if (pelo < d + .005) p = 'pelo'; d = smin(d, pelo, .015);
   return [d + bulto(x, y, z, .012), p];
@@ -114,4 +131,4 @@ function acacia(x, y, z) { let d = Math.min(cap(x, y, z, 0, 0, 0, .1, .9, 0, .07
   c = smin(c, sdEll(x, y - 1.5, z, .6, .14, .5), .15); if (c < d) p = 'acacia'; d = smin(d, c, .05);
   return [d + bulto(x * 2, y * 2, z * 2, .03), p]; }
 const roca = (x, y, z, rx, ry, rz) => sdEll(x, y, z, rx, ry, rz) + bulto(x * 2, y * 2, z * 2, Math.min(rx, ry) * .4);
-module.exports = { COLORES, leon, ballena, tiburon, persona, cohete, palmera, acacia, roca };
+module.exports = { COLORES, leon, ballena, tiburon, delfin, persona, cohete, palmera, acacia, roca };
