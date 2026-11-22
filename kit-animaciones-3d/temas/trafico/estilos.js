@@ -1,14 +1,15 @@
 'use strict';
-// Estilos del tema TRÁFICO sobre la misma escena (ESC.trafico): el natural es lowpoly; el resto son tratamientos de la imagen.
+// Estilos del tema TRÁFICO sobre la misma escena (ESC.trafico): lowpoly, realista (acabado CGI rápido: brillos, reflejos del asfalto, bloom) y tratamientos de la imagen.
+// El CGI exacto por ray marching (mucho más lento) está en temas/trafico/cgi.js: bin/tema.cjs trafico realista ... --exacto
 // Día: --dia en bin/tema.cjs (TRAF_DIA). Los estilos SDF (realista, clay, fieltro), vóxel, iso, partículas y muñecos necesitan su propia escena.
-const TRAF_ESTILOS = ['lowpoly', 'info', 'toon', 'paper', 'pixel', 'dither', 'ascii', 'wire'];
+const TRAF_ESTILOS = ['realista', 'lowpoly', 'info', 'toon', 'paper', 'pixel', 'dither', 'ascii', 'wire'];
 function trafBordes(ctx, w, h, umbral = 40, col = [12, 14, 26]) { const img = ctx.getImageData(0, 0, w, h), d = img.data, L = new Float32Array(w * h); for (let i = 0; i < w * h; i++) L[i] = d[i * 4] * .3 + d[i * 4 + 1] * .59 + d[i * 4 + 2] * .11;
   for (let y = 1; y < h - 1; y++) for (let x = 1; x < w - 1; x++) { const i = y * w + x, gx = L[i + 1] - L[i - 1], gy = L[i + w] - L[i - w]; if (Math.hypot(gx, gy) > umbral) { d[i * 4] = col[0]; d[i * 4 + 1] = col[1]; d[i * 4 + 2] = col[2]; } } ctx.putImageData(img, 0, 0); }
 function trafPoster(ctx, w, h, n) { const img = ctx.getImageData(0, 0, w, h), d = img.data; for (let i = 0; i < d.length; i += 4) for (let k = 0; k < 3; k++) d[i + k] = Math.round(d[i + k] / 255 * n) / n * 255; ctx.putImageData(img, 0, 0); }
 function renderTraf(est) {
   if (!TRAF_ESTILOS.includes(est)) throw new Error(`El tema tráfico aún no tiene el estilo "${est}". Hay: ${TRAF_ESTILOS.join(', ')}. Para otro estilo hay que escribir su escena.`);
   const t = globalThis.T_ANIM || 0, c = mk(W, H), ctx = c.getContext('2d');
-  globalThis.TRAF_WIRE = est === 'wire'; ESC.trafico(ctx, t); globalThis.TRAF_WIRE = false;
+  globalThis.TRAF_WIRE = est === 'wire'; globalThis.TRAF_CGI = est === 'realista'; ESC.trafico(ctx, t); globalThis.TRAF_WIRE = false; globalThis.TRAF_CGI = false;
   if (est === 'toon') { trafPoster(ctx, W, H, 6); trafBordes(ctx, W, H, 34); }
   else if (est === 'paper') { trafPoster(ctx, W, H, 9); const img = ctx.getImageData(0, 0, W, H), d = img.data, R = rng(5); for (let i = 0; i < d.length; i += 4) { const v = (R() - .5) * 18 + 6 * Math.sin(i * .0007); d[i] += v; d[i + 1] += v; d[i + 2] += v; } ctx.putImageData(img, 0, 0); }
   else if (est === 'pixel' || est === 'dither') { const lw = 270, lh = 480, p = mk(lw, lh), g = p.getContext('2d'); g.imageSmoothingEnabled = true; g.drawImage(c, 0, 0, lw, lh);
