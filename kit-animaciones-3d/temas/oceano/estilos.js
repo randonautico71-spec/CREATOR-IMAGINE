@@ -18,7 +18,7 @@ EM.pixel = ctx => { const lw = 270, lh = 480, c = mk(lw, lh), g = c.getContext('
   ctx.imageSmoothingEnabled = false; ctx.drawImage(c, 0, 0, W, H); };
 
 // 2 · VÓXEL
-function voxAnimal(F, nombre, coloca = COLOCA) { const V = VOX_MAR[nombre], u = VOX_MAR.u, c = coloca[nombre], mapa = new Set(V.map(v => v[0] + ',' + v[1] + ',' + v[2])), dirs = [['top', 0, 1, 0], ['bottom', 0, -1, 0], ['right', 1, 0, 0], ['left', -1, 0, 0], ['front', 0, 0, 1], ['back', 0, 0, -1]];
+function voxAnimal(F, nombre, coloca = COLOCA) { const V = VOX_MAR[nombre], u = VOX_MAR['u_' + nombre] || VOX_MAR.u, c = coloca[nombre], mapa = new Set(V.map(v => v[0] + ',' + v[1] + ',' + v[2])), dirs = [['top', 0, 1, 0], ['bottom', 0, -1, 0], ['right', 1, 0, 0], ['left', -1, 0, 0], ['front', 0, 0, 1], ['back', 0, 0, -1]];
   for (const v of V) { const sk = {}; let vis = 0; for (const [nm, a, b, cc] of dirs) { if (mapa.has((v[0] + a) + ',' + (v[1] + b) + ',' + (v[2] + cc))) sk[nm] = 1; else vis++; } if (!vis) continue;
     const L = []; box(L, v[0] * u - u / 2, v[1] * u - u / 2, v[2] * u - u / 2, v[0] * u + u / 2, v[1] * u + u / 2, v[2] * u + u / 2, [v[3], v[4], v[5]], { skip: sk }); for (const f of L) { f.p = f.p.map(p => colocaP(p, c)); F.push(f); } } }
 EM.voxel = ctx => { const cam = CAMM(W, H); aguaFondo(ctx, W, H); render(ctx, cam, superficie(), { ...LUZM, fog: { ...NIEBLA, near: 20, far: 90, max: .75 } }); rayos(ctx, W, H);

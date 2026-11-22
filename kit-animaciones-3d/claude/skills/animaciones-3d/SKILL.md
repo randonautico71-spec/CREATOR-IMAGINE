@@ -31,6 +31,8 @@ Además de las demos de cada estilo, hay **5 temas modelados con máximo detalle
 | `planeta` | Planeta tipo Tierra (continentes inventados, no el mapa real), nubes con sombra, ciudades nocturnas, atmósfera, Luna y cohete en órbita | El planeta rota y el cohete recorre la órbita |
 | `ciudad` | Calle con ~220 personas distintas, edificios con ventanas, escaparates, farolas, árboles, semáforos y coches | La gente avanza; la cámara orbita |
 | `oceano` | Ballena jorobada y tiburón blanco esculpidos (tubérculos, pliegues, aletas, branquias, dientes) sobre arena con ondas y cáusticas, rocas con algas, bosque de kelp, cardumen, estrellas de mar y erizos, rayos de luz. En `realista`, ambos con la boca abierta y primeros planos con `TOMA=ballena` / `TOMA=tiburon` | Nadan; algas y cáusticas se mueven; la cámara orbita |
+| `delfin` | Delfín mular (hocico, melón, espiráculo, dorsal curvada, pectorales, cola horizontal) en el fondo marino del tema `oceano`; en `munecos/delfin.js`, ejemplo de muñecos viendo saltar a un delfín | Nada; algas y cáusticas se mueven |
+| `trafico` | Ciudad low-poly con autopista de 3 carriles por sentido, tráfico que forma un atasco, coche protagonista con pulsos, etiquetas de velocidad y hora, regla de distancia, carretera verde→roja, pin de destino con haz de luz. De noche o de día (`--dia`). Estilos: lowpoly (el natural), info, toon, paper, pixel, dither, ascii, wire | Plan de 4 planos de 3–6 s (19 s): aérea, seguimiento a 108 km/h, cenital del atasco, alejamiento al destino. Cifras ilustrativas |
 | `persona` | Persona esculpida como volumen SDF (cara con párpados, iris, nariz, labios, orejas; manos con dedos; ropa con botones y cordones) | Pose fija en malla; en `realista` camina (≈50 s por fotograma) |
 
 ```bash

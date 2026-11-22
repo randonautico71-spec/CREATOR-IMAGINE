@@ -1,5 +1,5 @@
 'use strict';
-// Estilo REALISTA (SDF + texturas procedurales): ballena jorobada y tiburón blanco sobre el fondo de arena.
+// Estilo REALISTA (SDF + texturas procedurales): ballena jorobada y tiburón blanco (o un delfín mular con MAR=delfin) sobre el fondo de arena.
 // Luz que entra por la superficie con cáusticas, absorción del agua por color (el rojo se pierde antes), rayos volumétricos y sombras suaves.
 const A = require('./animales'), AH = require('./animales_hd'), M = require('../../sdf/motor');
 const { n3, sdEll } = A, clamp = (x, a = 0, b = 1) => x < a ? a : x > b ? b : x, mix = M.mix;
@@ -8,6 +8,8 @@ const EXT = [.11, .042, .03], AGUA = [.03, .2, .27];            // extinción po
 const fbm = (x, y, z, o = 4) => { let s = 0, a = .5, f = 1, n = 0; for (let i = 0; i < o; i++) { s += a * n3(x * f, y * f, z * f); n += a; a *= .5; f *= 2.03; } return s / n; };
 function rng(seed) { let s = seed >>> 0; return () => { s = (s + 0x6D2B79F5) >>> 0; let t = s; t = Math.imul(t ^ t >>> 15, t | 1); t ^= t + Math.imul(t ^ t >>> 7, t | 61); return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
 const COLOCA = { tiburon: { pos: [-.2, 2.8, -.8], dir: [1, 0, .45], pitch: .05, v: 1.1, R: 3.1 }, ballena: { pos: [1.4, 10.2, -14], dir: [-.7, 0, 1], pitch: -.1, v: 1.4, R: 8.6 } };
+const DELFIN = process.env.MAR === 'delfin';   // tema delfín: un delfín mular en vez de la ballena y el tiburón
+if (DELFIN) COLOCA.delfin = { pos: [.1, 2.9, 2.0], dir: [1, 0, .35], pitch: .16, v: 1.4, R: 1.8 };
 for (const c of Object.values(COLOCA)) { const l = Math.hypot(...c.dir); c.d = c.dir.map(v => v / l); c.a = Math.atan2(-c.d[2], c.d[0]); }
 // mundo → local del animal (inversa de colocaP del navegador: p = pos + rotY(rotZ(local, pitch), a))
 function aLocal(c, t, x, y, z) { const px = x - c.pos[0] - c.d[0] * c.v * t, py = y - c.pos[1], pz = z - c.pos[2] - c.d[2] * c.v * t, ca = Math.cos(-c.a), sa = Math.sin(-c.a);
@@ -50,13 +52,13 @@ function sdKelp(K, x, y, z) { let d = 1e9; const P = K.P, n = P.length - 1, i0 =
 function sdPeces(x, y, z) { let d = 1e9; for (const f of S.peces) { const px = x - f.p[0], py = y - f.p[1], pz = z - f.p[2]; if (px * px + py * py + pz * pz > .09) { d = Math.min(d, Math.sqrt(px * px + py * py + pz * pz) - .2); continue; }
   const u = px * f.d[0] + py * f.d[1] + pz * f.d[2], v = px * f.s[0] + pz * f.s[2], w = py - u * f.d[1]; d = Math.min(d, sdEll(u, w, v, f.L, f.L * .3, f.L * .13), sdEll(u + f.L * 1.05, w, v, f.L * .22, f.L * .32, .006)); } return d; }
 function animalD(nombre, x, y, z, lejos) { const c = COLOCA[nombre], t = S.t, cx = c.pos[0] + c.d[0] * c.v * t, cz = c.pos[2] + c.d[2] * c.v * t, db = Math.hypot(x - cx, y - c.pos[1], z - cz) - c.R; if (db > (lejos || .4)) return db;
-  const [lx, ly, lz] = aLocal(c, t, x, y, z); return (nombre === 'ballena' ? AH.ballenaHD(lx, ly, lz) : AH.tiburonHD(lx, ly, lz)) * .75; }
+  const [lx, ly, lz] = aLocal(c, t, x, y, z); return (nombre === 'delfin' ? A.delfin(lx, ly, lz) : nombre === 'ballena' ? AH.ballenaHD(lx, ly, lz) : AH.tiburonHD(lx, ly, lz)) * .75; }
 function escena(x, y, z, lejos) { let d = y - alturaFondo(x, z), tipo = 0; const cand = (dd, k) => { if (dd < d) { d = dd; tipo = k; } };
   for (const R of ROCAS) { const db = Math.hypot((x - R.x) / 1.15, (y - R.y) / .62, z - R.z) - R.r * 1.3; cand(db > .5 ? db * .6 : sdRoca(R, x, y, z, !lejos) * .8, 1); }
   for (const K of S.kelps) { if (y > K.y0 + K.alto + 1.2) continue; const db = Math.hypot(x - K.cx, z - K.cz) - K.rad; cand(db > .3 ? Math.max(db, y - K.y0 - K.alto - 1.2) : sdKelp(K, x, y, z) * .9, 2); }
   if (z > -1 && y < .6) { for (const Es of ESTRELLAS) cand(sdEstrella(Es, x, y, z), 6); for (const U of ERIZOS) cand(sdErizo(U, x, y, z), 7); }
   { const db = Math.hypot(x + 5.5, y - 7.5, z + 9) - 5.2; cand(db > .3 ? db : sdPeces(x, y, z), 3); }
-  cand(animalD('ballena', x, y, z, lejos), 4); cand(animalD('tiburon', x, y, z, lejos), 5);
+  if (DELFIN) cand(animalD('delfin', x, y, z, lejos), 8); else { cand(animalD('ballena', x, y, z, lejos), 4); cand(animalD('tiburon', x, y, z, lejos), 5); }
   return [d, tipo]; }
 function colAgua(dx, dy, dz) { const up = clamp(dy * .5 + .5); return [mix(.005, .05, up ** 2), mix(.04, .3, up ** 1.6), mix(.07, .4, up ** 1.4)]; }
 function rayosVol(sc, dx, dy, dz, T) {   // dispersión hacia la cámara con la luz filtrada por las cáusticas de la superficie
@@ -86,6 +88,7 @@ const E = {
     else if (tipo === 6) { const Es = ESTRELLAS.reduce((m, e) => Math.hypot(x - e.x, z - e.z) < Math.hypot(x - m.x, z - m.z) ? e : m), g = n3(x * 160, y * 160, z * 160); alb = Es.col.map(v => v * (.75 + .45 * g)); bump((a, b, c) => Math.pow(n3(a * 140, b * 140, c * 140), 3), .006); spec = .3; rough = 30; }
     else if (tipo === 7) { alb = [.16, .05, .2]; spec = .8; rough = 50; }
     else if (tipo === 3) { alb = ny > 0 ? [.28, .38, .46] : [.75, .8, .82]; spec = 1.6; rough = 60; }
+    else if (tipo === 8) { const c = COLOCA.delfin, [lx, ly, lz] = aLocal(c, S.t, x, y, z), r = A.delfin(lx, ly, lz, 0, true); alb = A.colorDelfin(lx, ly, lz, r[1]).map(v => clamp(v, 0, 1)); spec = r[1] === 'ojo' ? 3 : .7; rough = r[1] === 'ojo' ? 300 : 55; bump((a, b, cc) => n3(a * 60, b * 60, cc * 60), .0015); }
     else { const nom = tipo === 4 ? 'ballena' : 'tiburon', c = COLOCA[nom], [lx, ly, lz] = aLocal(c, S.t, x, y, z);
       if (tipo === 4) { const r = AH.ballenaHD(lx, ly, lz, true); alb = AH.colorBallenaHD(lx, ly, lz, r[1], r[2], r[3], r[4]).map(v => clamp(v, 0, 1)); spec = r[1] === 'ojo' ? 3 : r[1] === 'lengua' || r[1] === 'boca' ? .7 : .45; rough = r[1] === 'ojo' ? 300 : 45; if (r[1] !== 'piel' && r[1] !== 'ojo') relleno = 1.4; if (r[1] === 'piel') bump((a, b, cc) => n3(a * 25, b * 25, cc * 25), .006); }
       else { const r = AH.tiburonHD(lx, ly, lz, true); alb = AH.colorTiburonHD(lx, ly, r[2], r[1]).map(v => clamp(v, 0, 1)); spec = r[1] === 'ojo' ? 3 : r[1] === 'diente' ? 1.2 : r[1] === 'encia' ? .8 : .5; rough = r[1] === 'ojo' ? 300 : 60; bump((a, b, cc) => n3(a * 120, b * 120, cc * 120), .0012); } }

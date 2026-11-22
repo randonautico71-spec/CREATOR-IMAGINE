@@ -6,6 +6,7 @@ const { sdEll, smin, len, cap, sph, bulto, hfijo, figura, crearEscena, dirYaw, n
 let T = 0;
 const BALL0 = { pos: [.9, 2.5, -4.2], yaw: dirYaw(-1, .45), esc: .85 }, TIB0 = { pos: [-.35, 1.05, .2], yaw: dirYaw(1, .35), esc: .8 };
 let BALL = BALL0, TIB = TIB0;
+const DELFIN = process.env.MAR === 'delfin', DEL0 = { pos: [.1, 1.9, -.6], yaw: dirYaw(1, .45), pitch: .12, esc: 1.25 }; let DEL = DEL0;   // tema delfín
 const suelo = (x, z) => .04 * (n3(x * 1.1, 0, z * 1.1) - .5) + .015 * Math.sin(x * 6 + z * 1.5);
 const ALGAS = [[-1.9, -1.6, 2.6, 1], [-1.4, -2.6, 3.2, 2], [2.0, -2.0, 2.4, 3], [2.5, -3.4, 3.0, 4], [-2.6, -4, 3.4, 5], [-.6, -5.5, 2.8, 6]];
 const PECES = (() => { const r = []; for (let k = 0; k < 9; k++) r.push([-2.2 + hfijo(k, 1, 4) * 1.6, 2.4 + hfijo(k, 2, 4) * 1.3, -2.2 - hfijo(k, 3, 4) * 1.6, k]); return r; })();
@@ -15,8 +16,9 @@ function alga(x, y, z, ax, az, h, s) { let d = 1e9; const n = 9; let pr = [ax, 0
   return d; }
 function escena(x, y, z) {
   let d = y - suelo(x, z), m = 'arena'; const c = (dd, mm) => { if (dd < d) { d = dd; m = mm; } };
-  c(figura(BALL, (a, b, e) => Fg.ballena(a, b, e, T, 1), x, y, z, [-.4, 0, 0], 2.7)[0], 'ballena');
-  c(figura(TIB, (a, b, e) => Fg.tiburon(a, b, e, T, 1), x, y, z, [-.2, 0, 0], 1.75)[0], 'tiburon');
+  if (DELFIN) c(figura(DEL, (a, b, e) => Fg.delfin(a, b, e, T, 1), x, y, z, [0, 0, 0], 1.05)[0], 'delfin');
+  else { c(figura(BALL, (a, b, e) => Fg.ballena(a, b, e, T, 1), x, y, z, [-.4, 0, 0], 2.7)[0], 'ballena');
+  c(figura(TIB, (a, b, e) => Fg.tiburon(a, b, e, T, 1), x, y, z, [-.2, 0, 0], 1.75)[0], 'tiburon'); }
   for (const [ax, az, h, s] of ALGAS) if (len(x - ax, z - az) < 1 && y < h + .3) c(alga(x, y, z, ax, az, h, s) + bulto(x, y, z, .01), 'alga');
   // rocas con coral y anémonas
   c(Fg.roca(x + 1.55, y - .1, z - .3, .5, .32, .4), 'roca'); c(Fg.roca(x - 1.6, y - .05, z + .4, .42, .26, .35), 'roca');
@@ -30,8 +32,8 @@ function escena(x, y, z) {
 }
 module.exports = crearEscena({
   escena, lejos: 25,
-  prepara(t) { T = t; BALL = { ...BALL0, pos: [BALL0.pos[0] - .3 * t, BALL0.pos[1], BALL0.pos[2] + .13 * t] }; TIB = { ...TIB0, pos: [TIB0.pos[0] + .35 * t, TIB0.pos[1], TIB0.pos[2] + .12 * t] }; },
-  parte(m, x, y, z) { if (m === 'ballena') return figura(BALL, (a, b, e) => Fg.ballena(a, b, e, T, 1), x, y, z, [-.4, 0, 0], 2.7)[1]; if (m === 'tiburon') return figura(TIB, (a, b, e) => Fg.tiburon(a, b, e, T, 1), x, y, z, [-.2, 0, 0], 1.75)[1]; return m; },
+  prepara(t) { T = t; DEL = { ...DEL0, pos: [DEL0.pos[0] + .3 * t, DEL0.pos[1] + .05 * Math.sin(t * 2), DEL0.pos[2] + .12 * t] }; BALL = { ...BALL0, pos: [BALL0.pos[0] - .3 * t, BALL0.pos[1], BALL0.pos[2] + .13 * t] }; TIB = { ...TIB0, pos: [TIB0.pos[0] + .35 * t, TIB0.pos[1], TIB0.pos[2] + .12 * t] }; },
+  parte(m, x, y, z) { if (m === 'delfin') return figura(DEL, (a, b, e) => Fg.delfin(a, b, e, T, 1), x, y, z, [0, 0, 0], 1.05)[1]; if (m === 'ballena') return figura(BALL, (a, b, e) => Fg.ballena(a, b, e, T, 1), x, y, z, [-.4, 0, 0], 2.7)[1]; if (m === 'tiburon') return figura(TIB, (a, b, e) => Fg.tiburon(a, b, e, T, 1), x, y, z, [-.2, 0, 0], 1.75)[1]; return m; },
   colores: { ...Fg.COLORES, arena: [.86, .76, .55], alga: [.3, .6, .28], roca: [.45, .45, .48], coral: [.95, .45, .55], anemona: [1, .55, .2], estrella: [.95, .4, .2], pez: [1, .82, .2], burbuja: [.75, .9, 1], carton: [.2, .5, .75] },
   pinta(part, x, y, z, alb) { if (part === 'carton') { const h = cl((y + .3) / 5), r = Math.pow(Math.max(0, Math.sin(x * 1.3 + y * .4)), 8) * h; return [mix(.06, .3, h) + r * .3, mix(.25, .62, h) + r * .35, mix(.45, .85, h) + r * .3]; } },
   brillantes: new Set(['ojo', 'pupila', 'burbuja', 'diente']),

@@ -2,7 +2,7 @@
 // node temas/oceano/mallador.js
 const { Worker, isMainThread, parentPort, workerData } = require('worker_threads');
 const fs = require('fs'), path = require('path'), A = require('./animales');
-const FN = { ballena: A.ballena, tiburon: A.tiburon };
+const FN = { ballena: A.ballena, tiburon: A.tiburon, delfin: A.delfin };
 if (!isMainThread) { const w = workerData, f = FN[w.cual], v = new Float32Array(w.nx * (w.j1 - w.j0) * w.nz); let i = 0;
   for (let j = w.j0; j < w.j1; j++) for (let k = 0; k < w.nz; k++) for (let a = 0; a < w.nx; a++) v[i++] = f(w.x0 + a * w.h, w.y0 + j * w.h, w.z0 + k * w.h, 0); parentPort.postMessage(v, [v.buffer]); return; }
 async function rejilla(cual, x0, y0, z0, x1, y1, z1, h) {
@@ -25,20 +25,20 @@ function nets(Gd) {
 }
 function colorear(cual, m) { const col = [];
   for (let i = 0; i < m.f.length; i += 3) { const c = [0, 1, 2].map(k => (m.v[m.f[i] * 3 + k] + m.v[m.f[i + 1] * 3 + k] + m.v[m.f[i + 2] * 3 + k]) / 3);
-    let cc; if (cual === 'ballena') { const [, t, yb] = A.ballena(c[0], c[1], c[2], 0, true); cc = A.colorBallena(c[0], c[1], c[2], t, yb); } else { const [, t, zb] = A.tiburon(c[0], c[1], c[2], 0, true); cc = A.colorTiburon(c[0], c[1], zb, t); }
+    let cc; if (cual === 'ballena') { const [, t, yb] = A.ballena(c[0], c[1], c[2], 0, true); cc = A.colorBallena(c[0], c[1], c[2], t, yb); } else if (cual === 'delfin') { const [, t] = A.delfin(c[0], c[1], c[2], 0, true); cc = A.colorDelfin(c[0], c[1], c[2], t); } else { const [, t, zb] = A.tiburon(c[0], c[1], c[2], 0, true); cc = A.colorTiburon(c[0], c[1], zb, t); }
     col.push(...cc.map(v => Math.round(Math.max(0, Math.min(1, v)) * 255))); } return col; }
 (async () => {
   const t0 = Date.now(), dst = path.join(__dirname, 'generado'); fs.mkdirSync(dst, { recursive: true }); const res = {};
-  for (const [cual, bb, h] of [['ballena', [-7.6, -3.6, -5.2, 7.0, 2.6, 5.2], +(process.env.RES_B || .045)], ['tiburon', [-2.6, -1.2, -1.4, 2.4, 1.3, 1.4], +(process.env.RES_T || .016)]]) {
+  for (const [cual, bb, h] of [['ballena', [-7.6, -3.6, -5.2, 7.0, 2.6, 5.2], +(process.env.RES_B || .045)], ['tiburon', [-2.6, -1.2, -1.4, 2.4, 1.3, 1.4], +(process.env.RES_T || .016)], ['delfin', [-1.65, -.55, -.75, 1.5, .7, .75], .011]]) {
     const g = await rejilla(cual, ...bb, h), m = nets(g); m.c = colorear(cual, m); res[cual] = { v: m.v.map(x => +x.toFixed(3)), f: m.f, c: m.c };
     console.log(cual, 'triángulos', m.f.length / 3, ((Date.now() - t0) / 1000).toFixed(1), 's'); }
-  for (const [cual, bb, h] of [['ballena', [-7.6, -3.6, -5.2, 7.0, 2.6, 5.2], .2], ['tiburon', [-2.6, -1.2, -1.4, 2.4, 1.3, 1.4], .075]]) { const g = await rejilla(cual, ...bb, h), m = nets(g); m.c = colorear(cual, m); res[cual + '_lp'] = { v: m.v.map(x => +x.toFixed(3)), f: m.f, c: m.c }; }
+  for (const [cual, bb, h] of [['ballena', [-7.6, -3.6, -5.2, 7.0, 2.6, 5.2], .2], ['tiburon', [-2.6, -1.2, -1.4, 2.4, 1.3, 1.4], .075], ['delfin', [-1.65, -.55, -.75, 1.5, .7, .75], .05]]) { const g = await rejilla(cual, ...bb, h), m = nets(g); m.c = colorear(cual, m); res[cual + '_lp'] = { v: m.v.map(x => +x.toFixed(3)), f: m.f, c: m.c }; }
   fs.writeFileSync(path.join(dst, 'animales_malla.js'), 'const MALLAS_MAR=' + JSON.stringify(res) + ';');
   // vóxeles (0,12 m) para el estilo vóxel
   const u = +(process.env.VOX_U || .12), vox = {};
-  for (const [cual, f, cf, bb] of [['ballena', A.ballena, A.colorBallena, [-7.6, -3.6, -5.2, 7.0, 2.6, 5.2]], ['tiburon', A.tiburon, A.colorTiburon, [-2.6, -1.2, -1.4, 2.4, 1.3, 1.4]]]) { const L = [];
-    for (let x = bb[0]; x < bb[3]; x += u) for (let y = bb[1]; y < bb[4]; y += u) for (let z = bb[2]; z < bb[5]; z += u) { const r = f(x + u / 2, y + u / 2, z + u / 2, 0, true); if (r[0] < 0) { const c = cual === 'ballena' ? cf(x, y, z, r[1], r[2]) : cf(x, y, r[2], r[1]); L.push([Math.round(x / u), Math.round(y / u), Math.round(z / u), ...c.map(v => Math.round(Math.max(0, Math.min(1, v)) * 255))]); } }
-    vox[cual] = L; console.log('vóxeles', cual, L.length); }
+  for (const [cual, f, cf, bb, uu] of [['ballena', A.ballena, A.colorBallena, [-7.6, -3.6, -5.2, 7.0, 2.6, 5.2], u], ['tiburon', A.tiburon, A.colorTiburon, [-2.6, -1.2, -1.4, 2.4, 1.3, 1.4], u], ['delfin', A.delfin, A.colorDelfin, [-1.65, -.55, -.75, 1.5, .7, .75], .05]]) { const L = [];
+    for (let x = bb[0]; x < bb[3]; x += uu) for (let y = bb[1]; y < bb[4]; y += uu) for (let z = bb[2]; z < bb[5]; z += uu) { const r = f(x + uu / 2, y + uu / 2, z + uu / 2, 0, true); if (r[0] < 0) { const c = cual === 'ballena' ? cf(x, y, z, r[1], r[2]) : cual === 'delfin' ? cf(x, y, z, r[1]) : cf(x, y, r[2], r[1]); L.push([Math.round(x / uu), Math.round(y / uu), Math.round(z / uu), ...c.map(v => Math.round(Math.max(0, Math.min(1, v)) * 255))]); } }
+    vox[cual] = L; if (uu !== u) vox['u_' + cual] = uu; console.log('vóxeles', cual, L.length); }
   fs.writeFileSync(path.join(dst, 'vox_animales.js'), 'const VOX_MAR=' + JSON.stringify({ u, ...vox }) + ';');
   console.log('total', ((Date.now() - t0) / 1000).toFixed(1), 's');
 })();
