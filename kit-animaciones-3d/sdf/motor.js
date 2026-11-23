@@ -87,14 +87,21 @@ function cuadrupedo(nombre, ox, oz, t, ph, esc = 1, o = {}) {
     else { const q = (p - g.beta) / (1 - g.beta), e = q * q * (3 - 2 * q); fxr = -half + e * 2 * half; lift = Math.sin(Math.PI * q) * alza; }
     const fxl = hipx + fxr, wx = ox + fxl * s, wz = oz + hipz * s;
     let fx = fxl, fy = (suelo(wx, wz) - oy) / s + S.lr * .9 + lift;
-    // cinemática inversa de dos huesos: rodilla delantera hacia delante, corvejón trasero hacia atrás
-    let dx = fx - hipx, dy = fy - hipy, d = Math.hypot(dx, dy); const dmax = (L1 + L2) * .999;
-    if (d > dmax) { dx *= dmax / d; dy *= dmax / d; fx = hipx + dx; fy = hipy + dy; d = dmax; }
-    const a = (d * d + L1 * L1 - L2 * L2) / (2 * d), h = Math.sqrt(Math.max(0, L1 * L1 - a * a)), ux = dx / d, uy = dy / d, sg = front ? 1 : -1;
+    // ANATOMÍA DE TRES SEGMENTOS (como en perros, caballos, ciervos…):
+    //  · delantera: hombro → codo (el codo queda ATRÁS) → muñeca → mano; al levantarla, la muñeca se flexiona y la mano queda detrás
+    //  · trasera: cadera → rodilla (queda DELANTE) → corvejón (queda ATRÁS) → pie casi vertical
+    const qv = p < g.beta ? 0 : Math.sin(Math.PI * (p - g.beta) / (1 - g.beta));   // 0 apoyado, 1 en mitad del vuelo
+    const L3 = front ? L2 * .24 : L2 * .42, L2b = L2 - L3 * .85;
+    const wx2 = front ? fx + L3 * (.05 + .75 * qv) : fx - L3 * (.28 - .15 * qv), wy2 = front ? fy + L3 * (1 - .35 * qv) : fy + L3 * .96;   // muñeca / corvejón
+    let dx = wx2 - hipx, dy = wy2 - hipy, d = Math.hypot(dx, dy); const dmax = (L1 + L2b) * .999; let jx = wx2, jy = wy2;
+    if (d > dmax) { dx *= dmax / d; dy *= dmax / d; jx = hipx + dx; jy = hipy + dy; d = dmax; }
+    const a = (d * d + L1 * L1 - L2b * L2b) / (2 * d), h = Math.sqrt(Math.max(0, L1 * L1 - a * a)), ux = dx / d, uy = dy / d, sg = front ? -1 : 1;
     const kx = hipx + ux * a - uy * h * sg, ky = hipy + uy * a + ux * h * sg;
     RC(hipx, hipy, hipz, kx, ky, hipz, S.lr * 1.9, S.lr * .95, 'pata');
     E(kx, ky, hipz, S.lr * 1.05, S.lr * 1.1, S.lr * 1.0, 'patab');
-    RC(kx, ky, hipz, fx, fy, hipz, S.lr * .85, S.lr * .62, 'patab');
+    RC(kx, ky, hipz, jx, jy, hipz, S.lr * .85, S.lr * .66, 'patab');
+    E(jx, jy, hipz, S.lr * .75, S.lr * .75, S.lr * .72, 'patab');
+    RC(jx, jy, hipz, fx, fy, hipz, S.lr * .62, S.lr * .55, 'patab');
     if (S.zarpa) E(fx + S.lr * .35, fy - S.lr * .15, hipz, S.lr * 1.1, S.lr * .6, S.lr * .85, 'zarpa');
     else E(fx + S.lr * .15, fy - S.lr * .15, hipz, S.lr * .95, S.lr * .9, S.lr * .9, 'pezuna', true);
   }
